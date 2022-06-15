@@ -2,7 +2,7 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
+import { StatusBar } from 'expo-status-bar';
 // Screens
 import Beranda from './beranda';
 import Jadwal from './jadwal';
@@ -15,7 +15,7 @@ const homeName = "Beranda";
 const presensiName = "Presensi";
 const jadwalName = "Jadwal";
 const pengaturanName = "Pengaturan";
-const keluarName = "Keluar"
+const keluarName = "Masuk"
 
 const Tab = createBottomTabNavigator();
 
@@ -28,6 +28,7 @@ function MainContainer() {
                     tabBarStyle: {
                         padding: 10,
                         height: 70,
+                        backgroundColor: '#1F76C6'
                     },
 
                     tabBarIcon: ({ focused, color, size }) => {
@@ -52,8 +53,8 @@ function MainContainer() {
 
 
                 tabBarOptions={{
-                    activeTintColor: '#00579c',
-                    inactiveTintColor: 'grey',
+                    activeTintColor: 'yellow',
+                    inactiveTintColor: 'white',
                     labelStyle: { paddingBottom: 10, fontSize: 12 },
 
                 }}>
@@ -85,14 +86,10 @@ function MainContainer() {
                     }} />
                 <Tab.Screen name={keluarName} component={Keluar}
                     options={{
-                        headerTitle: 'Keluar',
-                        headerTitleAlign: 'center',
-                        headerStyle: {
-                            backgroundColor: '#024d88'
-                        },
-                        headerTintColor: 'white'
+                        headerShown: false
                     }} />
             </Tab.Navigator>
+
         </NavigationContainer>
     );
 }
