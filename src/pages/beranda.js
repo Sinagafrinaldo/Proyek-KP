@@ -32,7 +32,7 @@ const Beranda = () => {
 
 
             <ScrollView>
-                <View style={{ display: 'flex', flexDirection: 'row', }}>
+                <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
                     <View>
                         <View style={styles.bgmenu}>
                             <Ionicons style={styles.ikonMenu} name='calendar' size={34} color='white' />
@@ -55,7 +55,7 @@ const Beranda = () => {
 
                 </View>
 
-                <View style={{ display: 'flex', flexDirection: 'row', marginTop: 30 }}>
+                <View style={{ display: 'flex', flexDirection: 'row', marginTop: 30, justifyContent: 'center' }}>
                     <View>
                         <View style={styles.bgmenu}>
                             <Ionicons style={styles.ikonMenu} name='calendar' size={34} color='white' />
