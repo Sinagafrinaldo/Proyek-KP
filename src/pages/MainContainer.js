@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { StatusBar } from 'expo-status-bar';
 // Screens
-import Beranda from './beranda';
+import Beranda from './Stack';
 import Jadwal from './jadwal';
 import Presensi from './presensi';
 import Pengaturan from './pengaturan';
@@ -19,6 +19,7 @@ const pengaturanName = "Pengaturan";
 const keluarName = "Masuk"
 
 const Tab = createBottomTabNavigator();
+
 
 function MainContainer() {
     return (

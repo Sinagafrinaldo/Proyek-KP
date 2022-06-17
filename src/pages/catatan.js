@@ -1,5 +1,7 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { View, Text } from 'react-native'
 import React from 'react'
+import { createStackNavigator } from '@react-navigation/stack';
+const Stack = createStackNavigator();
 
 const Catatan = () => {
     return (
@@ -10,5 +12,3 @@ const Catatan = () => {
 }
 
 export default Catatan
-
-const styles = StyleSheet.create({})
