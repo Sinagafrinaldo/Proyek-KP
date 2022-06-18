@@ -9,14 +9,13 @@ import { initializeApp } from 'firebase/app';
 // import * as firebase from 'firebase';
 
 
-const Keluar1 = () => {
+const Keluar = () => {
     const navigation = useNavigation()
     const [email, onChangeNip] = React.useState('');
     const [password, onChangePassword] = React.useState('');
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const [status, setStatus] = useState(false)
-    
     useFocusEffect(
         React.useCallback(() => {
             const unsubscribe = auth.onAuthStateChanged(user => {
@@ -29,6 +28,14 @@ const Keluar1 = () => {
         }, [])
     );
 
+    const handleSignUp = () => {
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log('Registered with:', user.email);
+            })
+            .catch(error => alert(error.message))
+    }
     const signOutUser = async () => {
         try {
             await auth.signOut();
@@ -68,16 +75,15 @@ const Keluar1 = () => {
         );
     };
     return (
-        <ScrollView>
-            <View style={styles.container}>
+        <ScrollView style={{ backgroundColor: 'white'}}>
                 {status == false && (
-                    <View>
+                    <View style={styles.container}>
                         <View style={styles.wrap1}>
                             <Text style={styles.login}>Selamat Datang di Menu Login</Text>
                         </View>
                         <View style={styles.card}>
 
-                            <Text>Email</Text>
+                            <Text style={{marginBottom:5}}>Email</Text>
 
                             <TextInput
                                 onChangeText={email => onChangeNip(email)}
@@ -85,7 +91,7 @@ const Keluar1 = () => {
                                 style={styles.boxnip}
                                 placeholder='Email...'
                             />
-                            <Text style={{ marginTop: 20 }}>Kata Sandi</Text>
+                            <Text style={{ marginTop: 20, marginBottom:5 }}>Kata Sandi</Text>
                             <TextInput
 
                                 onChangeText={password => onChangePassword(password)}
@@ -104,9 +110,7 @@ const Keluar1 = () => {
                                         onPress={() => {
                                             navigation.navigate("Daftar");
                                         }}>
-                                        <Text style={styles.teksdaftar}>
-                                                Daftar
-                                        </Text>
+                                        <Text style={styles.teksdaftar}>  Daftar</Text>
                                     </TouchableOpacity>
                                 </View>
                             </View>
@@ -127,11 +131,8 @@ const Keluar1 = () => {
                         </TouchableOpacity>
                     </View>
                 )}
-
-
-            </View>
         </ScrollView>
     )
 }
 
-export default Keluar1
+export default Keluar

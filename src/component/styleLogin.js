@@ -5,21 +5,32 @@ const styles = StyleSheet.create({
     container: {
         display: 'flex',
         flex: 1,
-        backgroundColor: 'white'
     },
+
     wrap1: {
         backgroundColor: '#1F76C6',
-        padding: 20,
-        paddingBottom: 90,
         borderBottomEndRadius: 20,
         borderBottomStartRadius: 20,
         height: 350,
         justifyContent: 'center',
 
     },
-    card: {
 
-        marginTop: -70,
+    login: {
+        marginTop:-100,
+        textAlign: 'center',
+        color: 'white',
+        fontSize: 28,
+        fontWeight: '700',
+        width: '80%',
+        marginLeft: '10%',
+    },
+
+    card: {
+        marginTop: -150,
+        marginBottom:130,
+        paddingTop: 30,
+        paddingBottom: 30,
         backgroundColor: 'white',
         padding: 20,
         borderRadius: 8,
@@ -42,16 +53,10 @@ const styles = StyleSheet.create({
         padding: 10,
 
     },
-    login: {
-        textAlign: 'center',
-        color: 'white',
-        fontSize: 28,
-        fontWeight: '700',
-        maxWidth: 300
-    },
+   
     tombol: {
         backgroundColor: '#1F76C6',
-        marginTop: 15,
+        marginTop: 20,
         padding: 10,
         alignItems: 'center',
         borderRadius: 10
@@ -61,7 +66,8 @@ const styles = StyleSheet.create({
         fontSize: 20
     },
     teksdaftar: {
-        color: '#1F76C6'
+        color: '#1F76C6',
+        fontWeight: 'bold',
     }
 })
 
