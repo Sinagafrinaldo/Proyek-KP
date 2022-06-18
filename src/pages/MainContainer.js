@@ -9,7 +9,7 @@ import Beranda from './Stack';
 import Jadwal from './jadwal';
 import Presensi from './presensi';
 import Pengaturan from './pengaturan';
-import Keluar from './keluar';
+import Keluar from './StackLogin';
 
 //Screen names
 const homeName = "Beranda";
