@@ -15,14 +15,15 @@ import { db } from '../firebase/crudConf';
 
 const TambahJadwal = ({ navigation }) => {
     const [newName, setNewName] = useState("");
-    const [newAge, setNewAge] = useState(0);
+    const [newLokasi, setNewLokasi] = useState("");
+    const [newKeterangan, setNewKeterangan] = useState("");
     const usersCollectionRef = collection(db, "jadwal");
     const [selectedDate, setSelectedDate] = useState(null);
     const [open, setOpen] = useState(false)
     // const [date, setDate] = useState(null);
 
     const createUser = async () => {
-        await addDoc(usersCollectionRef, { name: newName, age: Number(newAge), time: new Date() });
+        await addDoc(usersCollectionRef, { nama: newName, lokasi: newLokasi, tanggal: selectedDate, keterangan: newKeterangan });
     };
     useEffect(() => {
         let today = new Date();
@@ -31,20 +32,21 @@ const TambahJadwal = ({ navigation }) => {
     }, []);
     return (
         <View>
-
+            <Text>Nama Peliput</Text>
             <TextInput
                 style={styles.input}
                 onChangeText={setNewName}
                 value={newName}
                 placeholder='Nama'
             />
-
+            <Text>Lokasi</Text>
             <TextInput
                 style={styles.input}
-                onChangeText={setNewAge}
-                value={newAge}
-                placeholder='Umur'
+                onChangeText={setNewLokasi}
+                value={newLokasi}
+                placeholder='Lokasi'
             />
+            <Text>Tanggal</Text>
             <TouchableOpacity
                 onPress={() => setOpen(true)}
                 style={styles.box_tanggal}
@@ -86,9 +88,20 @@ const TambahJadwal = ({ navigation }) => {
                 />
             </Modal>
 
+            <TextInput
+                style={styles.input}
+                onChangeText={setNewKeterangan}
+                value={newKeterangan}
+                placeholder='Keterangan'
+            />
+
             <TouchableOpacity
                 style={styles.button}
-                onPress={createUser}
+                onPress={() => {
+                    createUser()
+                    navigation.navigate('Jadwal Liput')
+                }
+                }
             >
                 <Text style={{ color: 'white', fontSize: 16 }}>Tambah Jadwal</Text>
             </TouchableOpacity>

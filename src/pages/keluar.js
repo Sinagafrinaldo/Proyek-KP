@@ -56,81 +56,83 @@ const Keluar = () => {
                 console.log(error)
             })
     }
-    const showConfirmDialog = () => {
-        return Alert.alert(
-            "Keluar?",
-            "Apakah anda yakin ingin keluar dari aplikasi?",
-            [
-                {
-                    text: "Ya",
-                    onPress: () => {
+    // const showConfirmDialog = () => {
+    //     return Alert.alert(
+    //         "Keluar?",
+    //         "Apakah anda yakin ingin keluar dari aplikasi?",
+    //         [
+    //             {
+    //                 text: "Ya",
+    //                 onPress: () => {
+    //                     signOutUser()
+    //                     setStatus(false)
+    //                 },
+    //             },
+    //             {
+    //                 text: "Tidak",
+    //             },
+    //         ]
+    //     );
+    // };
+    return (
+        <ScrollView style={{ backgroundColor: 'white' }}>
+            {status == false && (
+                <View style={styles.container}>
+                    <View style={styles.wrap1}>
+                        <Text style={styles.login}>Selamat Datang di Menu Login</Text>
+                    </View>
+                    <View style={styles.card}>
+
+                        <Text style={{ marginBottom: 5 }}>Email</Text>
+
+                        <TextInput
+                            onChangeText={email => onChangeNip(email)}
+                            value={email}
+                            style={styles.boxnip}
+                            placeholder='Email...'
+                        />
+                        <Text style={{ marginTop: 20, marginBottom: 5 }}>Kata Sandi</Text>
+                        <TextInput
+
+                            onChangeText={password => onChangePassword(password)}
+                            value={password}
+                            style={styles.boxnip}
+                            placeholder='Kata Sandi...'
+                            secureTextEntry
+                        />
+                        <TouchableOpacity style={styles.tombol} onPress={handleSignIn}>
+                            <Text style={styles.tekslogin}>Login</Text>
+                        </TouchableOpacity>
+                        <View style={{ display: 'flex', flexDirection: 'row', marginTop: 20 }}>
+                            <Text>Belum punya akun?</Text>
+                            <View>
+                                <TouchableOpacity
+                                    onPress={() => {
+                                        navigation.navigate("Daftar");
+                                    }}>
+                                    <Text style={styles.teksdaftar}>  Daftar</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+
+                    </View>
+                </View>
+
+            )}
+
+            {status == true && (
+                <View>
+                    <Text>Anda sudah login</Text>
+                    <TouchableOpacity style={styles.tombol} onPress={() => {
+
+
                         signOutUser()
                         setStatus(false)
-                    },
-                },
-                {
-                    text: "Tidak",
-                },
-            ]
-        );
-    };
-    return (
-        <ScrollView style={{ backgroundColor: 'white'}}>
-                {status == false && (
-                    <View style={styles.container}>
-                        <View style={styles.wrap1}>
-                            <Text style={styles.login}>Selamat Datang di Menu Login</Text>
-                        </View>
-                        <View style={styles.card}>
-
-                            <Text style={{marginBottom:5}}>Email</Text>
-
-                            <TextInput
-                                onChangeText={email => onChangeNip(email)}
-                                value={email}
-                                style={styles.boxnip}
-                                placeholder='Email...'
-                            />
-                            <Text style={{ marginTop: 20, marginBottom:5 }}>Kata Sandi</Text>
-                            <TextInput
-
-                                onChangeText={password => onChangePassword(password)}
-                                value={password}
-                                style={styles.boxnip}
-                                placeholder='Kata Sandi...'
-                                secureTextEntry
-                            />
-                            <TouchableOpacity style={styles.tombol} onPress={handleSignIn}>
-                                <Text style={styles.tekslogin}>Login</Text>
-                            </TouchableOpacity>
-                            <View style={{ display: 'flex', flexDirection: 'row', marginTop: 20 }}>
-                                <Text>Belum punya akun?</Text>
-                                <View>
-                                    <TouchableOpacity
-                                        onPress={() => {
-                                            navigation.navigate("Daftar");
-                                        }}>
-                                        <Text style={styles.teksdaftar}>  Daftar</Text>
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
-
-                        </View>
-                    </View>
-
-                )}
-
-                {status == true && (
-                    <View>
-                        <Text>Anda sudah login</Text>
-                        <TouchableOpacity style={styles.tombol} onPress={() => {
-
-                            showConfirmDialog()
-                        }}>
-                            <Text style={styles.tekslogin}>Logout</Text>
-                        </TouchableOpacity>
-                    </View>
-                )}
+                    }}>
+                        <Text style={styles.tekslogin}>Logout</Text>
+                    </TouchableOpacity>
+                </View>
+            )}
         </ScrollView>
     )
 }
