@@ -10,6 +10,7 @@ import Catatan from './catatan'
 import JadwalLiput from "./JadwalLiput";
 import Lainnya from "./Lainnya";
 import Pengingat from "./Pengingat";
+import TambahJadwal from "./tambahJadwal";
 
 const Stack = createStackNavigator();
 
@@ -35,6 +36,11 @@ function Beranda() {
         // options={{ headerShown: false }}
         name="Jadwal Liput"
         component={JadwalLiput}
+      />
+      <Stack.Screen
+        // options={{ headerShown: false }}
+        name="Tambah Jadwal"
+        component={TambahJadwal}
       />
       <Stack.Screen
         // options={{ headerShown: false }}

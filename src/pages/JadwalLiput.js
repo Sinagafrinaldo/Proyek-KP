@@ -10,19 +10,16 @@ import {
 } from "firebase/firestore"
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { db } from '../firebase/crudConf';
-import { useNavigation, useFocusEffect } from '@react-navigation/native';
+import { useNavigation, useFocusEffect, NavigationContainer } from '@react-navigation/native';
 
-const JadwalLiput = () => {
+const JadwalLiput = ({ navigation }) => {
     const [text, onChangeText] = useState('')
-    const [newName, setNewName] = useState("");
-    const [newAge, setNewAge] = useState(0);
+
 
     const [users, setUsers] = useState([]);
     const usersCollectionRef = collection(db, "jadwal");
 
-    const createUser = async () => {
-        await addDoc(usersCollectionRef, { name: newName, age: Number(newAge) });
-    };
+
     const getUsers = async () => {
         const data = await getDocs(usersCollectionRef);
         setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
@@ -56,23 +53,8 @@ const JadwalLiput = () => {
 
                 <Text style={{ fontSize: 16, textAlign: 'center', fontWeight: 'bold' }}>Jadwal Liput</Text>
 
-                {/* <TextInput
-                    style={styles.input}
-                    onChangeText={onChangeText}
-                    value={text}
-                /> */}
 
-                <TextInput
-                    style={styles.input}
-                    onChangeText={setNewName}
-                    value={newName}
-                />
 
-                <TextInput
-                    style={styles.input}
-                    onChangeText={setNewAge}
-                    value={newAge}
-                />
                 {/* {users.map((user, index) => {
                     return (
                         <View key={index}>
@@ -131,7 +113,7 @@ const JadwalLiput = () => {
                 />
                 <TouchableOpacity
                     style={styles.ikonAdd}
-                    onPress={createUser}
+                    onPress={() => { navigation.navigate('Tambah Jadwal') }}
                 >
                     <Ionicons
 
