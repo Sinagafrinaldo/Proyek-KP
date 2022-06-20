@@ -93,11 +93,11 @@ const JadwalLiput = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <View style={styles.container2}>
-                <Text style={{alignSelf:'center', fontWeight:'bold',marginTop:10}}>Pilih Berdasarkan Tanggal</Text>
-                
-                
-                <View style={styles.cari}> 
-                    <View style={{width:'70%'}}>
+                <Text style={{ alignSelf: 'center', fontWeight: 'bold', marginTop: 10 }}>Pilih Berdasarkan Tanggal</Text>
+
+
+                <View style={styles.cari}>
+                    <View style={{ width: '70%' }}>
                         <TouchableOpacity
                             onPress={() => {
                                 setOpen(true)
@@ -110,13 +110,15 @@ const JadwalLiput = ({ navigation }) => {
                             <Text>{selectedDate}</Text>
                         </TouchableOpacity>
                     </View>
-                    
+
                     <Modal
                         animationType={'fade'}
+                        // onBackButtonPress={() => { }}
                         transparent={true}
                         backdropOpacity={0.3}
                         visible={open}
                         onRequestClose={() => {
+                            setOpen(false)
                             console.log('Modal has been closed.');
                         }}>
 
@@ -154,14 +156,14 @@ const JadwalLiput = ({ navigation }) => {
                         }}
                         style={styles.button}
                     >
-                        <Text style={{ color: 'white' }}>Tampilkan</Text>
+                        <Text style={{ color: 'white' }}>All</Text>
                     </TouchableOpacity>
 
                 </View>
 
                 {filter == false && (
                     <FlatList
-                        contentContainerStyle={{ paddingBottom: 120 }}
+                        contentContainerStyle={{ paddingBottom: 30 }}
                         data={users}
                         renderItem={({ item }) => (
                             <View style={styles.list}>
@@ -189,18 +191,18 @@ const JadwalLiput = ({ navigation }) => {
 
                 {filter == true && (
                     <FlatList
-                        contentContainerStyle={{ paddingBottom: 120 }}
+                        contentContainerStyle={{ paddingBottom: 30 }}
                         data={users}
                         renderItem={({ item }) => (
 
                             <View>
                                 {item.tanggal == selectedDate && (
                                     <>
-                                    <View style={styles.list}>
-                                        <Text>Nama: {item.nama}</Text>
-                                        <Text>Lokasi: {item.lokasi}</Text>
-                                        <Text>Tanggal: {item.tanggal}</Text>
-                                        <Text>Keterangan: {item.keterangan}</Text>
+                                        <View style={styles.list}>
+                                            <Text>Nama: {item.nama}</Text>
+                                            <Text>Lokasi: {item.lokasi}</Text>
+                                            <Text>Tanggal: {item.tanggal}</Text>
+                                            <Text>Keterangan: {item.keterangan}</Text>
                                             {status && (
                                                 <TouchableOpacity
                                                     style={styles.btnHapus}
@@ -211,7 +213,7 @@ const JadwalLiput = ({ navigation }) => {
 
                                                     <Text style={{ color: 'white' }}>Hapus Jadwal</Text>
                                                 </TouchableOpacity>)}
-                                    </View>
+                                        </View>
                                     </>
 
                                 )}

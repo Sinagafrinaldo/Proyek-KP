@@ -28,14 +28,20 @@ const TambahJadwal = ({ navigation }) => {
     };
     useEffect(() => {
         let today = new Date();
-        let date = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
-        setSelectedDate(date);
+        if (today.getMonth() < 10) {
+            let date = today.getFullYear() + '/0' + (today.getMonth() + 1) + '/' + today.getDate();
+            setSelectedDate(date);
+        } else {
+            setSelectedDate(date);
+            let date = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
+        }
+
     }, []);
     return (
-     
+
         <ScrollView style={styles.container}>
             <View style={styles.bg}>
-            <Text style={{color:'#1F76C6'}}>-</Text>
+                <Text style={{ color: '#1F76C6' }}>-</Text>
             </View>
             <View style={styles.card}>
                 <View style={styles.card2}>
@@ -53,7 +59,7 @@ const TambahJadwal = ({ navigation }) => {
                         value={newLokasi}
                         placeholder='Lokasi'
                     />
-                    <Text style={{marginBottom:8}}>Tanggal</Text>
+                    <Text style={{ marginBottom: 8 }}>Tanggal</Text>
                     <TouchableOpacity
                         onPress={() => setOpen(true)}
                         style={styles.box_tanggal}
@@ -95,7 +101,7 @@ const TambahJadwal = ({ navigation }) => {
                         />
                     </Modal>
 
-                    <Text style={{marginTop:15}}>Keterangan</Text>
+                    <Text style={{ marginTop: 15 }}>Keterangan</Text>
                     <TextInput
                         style={styles.input}
                         onChangeText={setNewKeterangan}
@@ -115,9 +121,9 @@ const TambahJadwal = ({ navigation }) => {
                     </TouchableOpacity>
                 </View>
             </View>
-            
+
         </ScrollView>
-        
+
     )
 }
 
