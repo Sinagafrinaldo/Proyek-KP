@@ -9,22 +9,22 @@ const styles = StyleSheet.create({
     },
 
     wrap1: {
-        backgroundColor: '#1F76C6',
+        backgroundColor: '#118eeb',
         padding: 13,
-        marginTop:10,
-        
+        paddingTop: 20,
+
     },
 
-    pageScroll :{
-        height:1000, 
+    pageScroll: {
+        height: 1000,
     },
 
-    infoProfil :{
-        marginTop:-330,
-        alignSelf:'center',
+    infoProfil: {
+        marginTop: -330,
+        alignSelf: 'center',
         opacity: 1,
         backgroundColor: 'rgba(13,53,89, 0.5)',
-        borderRadius:10,
+        borderRadius: 10,
         width: '95%',
         height: 174,
         alignItems: 'center',
@@ -36,32 +36,32 @@ const styles = StyleSheet.create({
         width: 80,
         borderRadius: 40,
         backgroundColor: 'white',
-        marginLeft:15,
+        marginLeft: 15,
     },
 
     wrap2: {
-        flexDirection:'row',
-        marginTop:-128,
+        flexDirection: 'row',
+        marginTop: -128,
     },
 
     stretch: {
-        marginTop:-48,
+        marginTop: -48,
         resizeMode: 'stretch',
         width: '100%',
-        opacity:0.6,
-      },
+        opacity: 0.6,
+    },
 
-    
-    namaProfil :{
+
+    namaProfil: {
         marginTop: 5,
     },
 
-    mainMenu :{
-        alignSelf:'center',
-        borderRadius:10,
-        width:'95%',
-        marginTop:30,
-        backgroundColor:'white',
+    mainMenu: {
+        alignSelf: 'center',
+        borderRadius: 10,
+        width: '95%',
+        marginTop: 30,
+        backgroundColor: 'white',
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginTop:15,
+        marginTop: 15,
 
     },
     title: {
@@ -88,17 +88,17 @@ const styles = StyleSheet.create({
     },
     title2: {
         fontSize: 24,
-        color:'white',
-        paddingLeft:30,
-        paddingRight:30,
+        color: 'white',
+        paddingLeft: 30,
+        paddingRight: 30,
         fontWeight: 'bold',
     },
 
     title3: {
         fontSize: 24,
-        color:'white',
-        paddingLeft:30,
-        paddingRight:30,
+        color: 'white',
+        paddingLeft: 30,
+        paddingRight: 30,
         fontWeight: 'bold',
     },
 
@@ -114,9 +114,9 @@ const styles = StyleSheet.create({
     ikon2: {
         marginHorizontal: 10,
     },
-   
+
     bgmenu: {
-        backgroundColor: '#1F76C6',
+        backgroundColor: '#118eeb',
         height: 60,
         width: 60,
         marginHorizontal: 30,
@@ -126,11 +126,11 @@ const styles = StyleSheet.create({
     ikonMenu: {
         alignSelf: 'center'
     },
-    fontBlack :{
-        textAlign: "center", 
-        fontWeight: "700", 
+    fontBlack: {
+        textAlign: "center",
+        fontWeight: "700",
         color: 'gray',
-        padding:5,
+        padding: 5,
     },
 })
 

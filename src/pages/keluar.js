@@ -32,7 +32,8 @@ const Keluar = () => {
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                console.log('Registered with:', user.email);
+                // console.log('Registered with:', user.email);
+                alert("Selamat akun anda telah terdaftar!")
             })
             .catch(error => alert(error.message))
     }
@@ -47,13 +48,27 @@ const Keluar = () => {
     const handleSignIn = () => {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                console.log('Signed In!')
+                // console.log('Signed In!')
+                alert('Selamat anda berhasil Login!')
                 const user = userCredential.user
-                console.log(user)
+                // console.log(user)
                 navigation.navigate('Beranda')
             })
             .catch(error => {
-                console.log(error)
+                // console.log(error.code)
+                switch (error.code) {
+                    case "auth/invalid-email":
+                        alert("Maaf format email yang anda masukkan salah.")
+                        break
+                    case "auth/user-not-found":
+                        alert("Maaf pengguna tidak ditemukan.")
+                        break
+                    case "auth/wrong-password":
+                        alert("Kata sandi yang anda masukkan salah.")
+                        break
+                    // default:
+                    //     alert("Autentifikasi gagal, silahkan coba lagi nanti.")
+                }
             })
     }
     // const showConfirmDialog = () => {

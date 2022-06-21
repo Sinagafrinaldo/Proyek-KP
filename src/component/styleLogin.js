@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     },
 
     wrap1: {
-        backgroundColor: '#1F76C6',
+        backgroundColor: '#118eeb',
         borderBottomEndRadius: 20,
         borderBottomStartRadius: 20,
         height: 350,
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     },
 
     login: {
-        marginTop:-100,
+        marginTop: -80,
         textAlign: 'center',
         color: 'white',
         fontSize: 28,
@@ -25,10 +25,14 @@ const styles = StyleSheet.create({
         width: '80%',
         marginLeft: '10%',
     },
-
+    back: {
+        position: 'absolute',
+        left: 30,
+        top: 50
+    },
     card: {
         marginTop: -150,
-        marginBottom:130,
+        marginBottom: 130,
         paddingTop: 30,
         paddingBottom: 30,
         backgroundColor: 'white',
@@ -53,7 +57,7 @@ const styles = StyleSheet.create({
         padding: 10,
 
     },
-   
+
     tombol: {
         backgroundColor: '#1F76C6',
         marginTop: 20,

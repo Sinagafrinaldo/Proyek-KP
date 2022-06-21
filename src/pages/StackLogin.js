@@ -19,7 +19,7 @@ function Keluar() {
         component={Keluar1}
       />
       <StackLogin.Screen
-        // options={{ headerShown: false }}
+        options={{ headerShown: false }}
         name="Daftar"
         component={Daftar}
       />

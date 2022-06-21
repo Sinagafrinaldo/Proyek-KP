@@ -30,7 +30,7 @@ function MainContainer() {
                     tabBarStyle: {
                         padding: 10,
                         height: 70,
-                        backgroundColor: '#1F76C6'
+                        backgroundColor: '#118eeb'
                     },
 
                     tabBarIcon: ({ focused, color, size }) => {
