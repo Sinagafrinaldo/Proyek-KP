@@ -31,163 +31,182 @@ const Beranda1 = ({ navigation }) => {
               color="white"
             />
           </View>
-        </View>
-        <View style={styles.wrap2}>
-          <View style={styles.dummy}></View>
-
-          <Text style={styles.title3}>Selamat Datang</Text>
-          <Text style={styles.title2}>John Doe</Text>
-        </View>
+        </View>     
       </View>
-      <View style={{ alignItems: "center", marginTop: -70 }}>
-        <Image
-          style={styles.stretch}
-          source={require("../../assets/siger.png")}
-        />
-      </View>
-
-      <Text
-        style={{
-          fontSize: 16,
-          fontWeight: "bold",
-          marginLeft: 20,
-          marginVertical: 8,
-          marginTop: 15,
-        }}
-      >
-        Main Menu
-      </Text>
-
+      
+      <View style={{height:0.5, backgroundColor:'#D7DBDD'}}></View>
       <ScrollView>
-        <View
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-          }}
-        >
-          <View>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate("Jadwal Liput");
-              }}>
-              <View style={styles.bgmenu}>
-                <Ionicons
-                  style={styles.ikonMenu}
-                  name="calendar"
-                  size={34}
-                  color="white"
-                />
-              </View>
-              <Text style={{ textAlign: "center", fontWeight: "700" }}>
-                Jadwal Liput
-              </Text>
-            </TouchableOpacity>
-          </View>
-          <View>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate("Catatan");
-              }}
-            >
-              <View style={styles.bgmenu}>
-                <Ionicons
-                  style={styles.ikonMenu}
-                  name="newspaper"
-                  size={34}
-                  color="white"
-                />
-              </View>
-            </TouchableOpacity>
-            <Text style={{ textAlign: "center", fontWeight: "700" }}>
-              Catatan
-            </Text>
-          </View>
-          <View>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate("Pengingat");
-              }}
-            >
-              <View style={styles.bgmenu}>
-                <Ionicons
-                  style={styles.ikonMenu}
-                  name="megaphone"
-                  size={34}
-                  color="white"
-                />
-              </View>
-              <Text style={{ textAlign: "center", fontWeight: "700" }}>
-                Pengingat
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
+        <View style={styles.pageScroll}>
 
-        <View
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            marginTop: 30,
-            justifyContent: "center",
-          }}
-        >
-          <View>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate("Jadwal Liput");
-              }}
-            >
-              <View style={styles.bgmenu}>
-                <Ionicons
-                  style={styles.ikonMenu}
-                  name="calendar"
-                  size={34}
-                  color="white"
-                />
-              </View>
-              <Text style={{ textAlign: "center", fontWeight: "700" }}>
-                Jadwal Liput
-              </Text>
-            </TouchableOpacity>
+          <View style={{backgroundColor:'#1F76C6', height:350, borderBottomEndRadius: 10, 
+          borderBottomStartRadius: 10,}}>
+            <Text style={{color:'#1F76C6'}}>-</Text>
           </View>
-          <View>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate("Catatan");
-              }}
-            >
-              <View style={styles.bgmenu}>
-                <Ionicons
-                  style={styles.ikonMenu}
-                  name="newspaper"
-                  size={34}
-                  color="white"
-                />
-              </View>
-              <Text style={{ textAlign: "center", fontWeight: "700" }}>
-                Catatan
-              </Text>
-            </TouchableOpacity>
-          </View>
-          <View style={{ marginBottom: 20 }}>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate("Lainnya");
-              }}>
-              <View style={styles.bgmenu}>
 
-                <Ionicons
-                  style={styles.ikonMenu}
-                  name="grid"
-                  size={34}
-                  color="white"
-                />
-              </View>
-              <Text style={{ textAlign: "center", fontWeight: "700" }}>
-                Lainnya
+          <View style={styles.infoProfil}>  
+            <Image
+              style={styles.stretch}
+              source={require("../../assets/siger.png")}
+            />
+            <View style={styles.wrap2}>
+                <View style={styles.dummy}></View>
+                <View style={styles.namaProfil}>
+                  <Text style={styles.title3}>Selamat Datang</Text>
+                  <Text style={styles.title2}>John Doe</Text>
+                </View>
+            </View>
+          </View>
+      
+          <View style={styles.mainMenu}> 
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontWeight: "bold",
+                  marginLeft: 20,
+                  marginVertical: 8,
+                  marginTop: 15,
+                  color: 'gray',
+                }}
+              >
+                Main Menu
               </Text>
-            </TouchableOpacity>
+
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "center",
+                  }}
+                >
+
+                  <View>
+                    <TouchableOpacity
+                      onPress={() => {
+                        navigation.navigate("Jadwal Liput");
+                      }}>
+                      <View style={styles.bgmenu}>
+                        <Ionicons
+                          style={styles.ikonMenu}
+                          name="calendar"
+                          size={34}
+                          color="white"
+                        />
+                      </View>
+                      <Text style={styles.fontBlack}>
+                        Jadwal Liput
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                  
+                  <View>
+                    <TouchableOpacity
+                      onPress={() => {
+                        navigation.navigate("Catatan");
+                      }}
+                    >
+                      <View style={styles.bgmenu}>
+                        <Ionicons
+                          style={styles.ikonMenu}
+                          name="newspaper"
+                          size={34}
+                          color="white"
+                        />
+                      </View>
+                    </TouchableOpacity>
+                    <Text style={styles.fontBlack}>
+                      Catatan
+                    </Text>
+                  </View>
+                
+                  <View>
+                    <TouchableOpacity
+                      onPress={() => {
+                        navigation.navigate("Pengingat");
+                      }}
+                    >
+                      <View style={styles.bgmenu}>
+                        <Ionicons
+                          style={styles.ikonMenu}
+                          name="megaphone"
+                          size={34}
+                          color="white"
+                        />
+                      </View>
+                      <Text style={styles.fontBlack}>
+                        Pengingat
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    marginTop: 30,
+                    justifyContent: "center",
+                  }}
+                >
+                  <View>
+                    <TouchableOpacity
+                      onPress={() => {
+                        navigation.navigate("Jadwal Liput");
+                      }}
+                    >
+                      <View style={styles.bgmenu}>
+                        <Ionicons
+                          style={styles.ikonMenu}
+                          name="calendar"
+                          size={34}
+                          color="white"
+                        />
+                      </View>
+                      <Text style={styles.fontBlack}>
+                        Jadwal Liput
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                  
+                  <View>
+                    <TouchableOpacity
+                      onPress={() => {
+                        navigation.navigate("Catatan");
+                      }}
+                    >
+                      <View style={styles.bgmenu}>
+                        <Ionicons
+                          style={styles.ikonMenu}
+                          name="newspaper"
+                          size={34}
+                          color="white"
+                        />
+                      </View>
+                      <Text style={styles.fontBlack}>
+                        Catatan
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                  
+                  <View style={{ marginBottom: 20 }}>
+                    <TouchableOpacity
+                      onPress={() => {
+                        navigation.navigate("Lainnya");
+                      }}>
+                      <View style={styles.bgmenu}>
+
+                        <Ionicons
+                          style={styles.ikonMenu}
+                          name="grid"
+                          size={34}
+                          color="white"
+                        />
+                      </View>
+                      <Text style={styles.fontBlack}>
+                        Lainnya
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
           </View>
         </View>
       </ScrollView>
