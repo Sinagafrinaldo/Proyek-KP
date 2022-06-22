@@ -37,8 +37,20 @@ const Daftar = ({ navigation }) => {
             .then((userCredential) => {
                 const user = userCredential.user;
                 console.log('Registered with:', user.email);
+                alert("Selamat akun anda telah terdaftar.")
+                navigation.navigate('Beranda')
             })
-            .catch(error => alert(error.message))
+            .catch(error => {
+                // console.log(error.code)
+                switch (error.code) {
+                    case "auth/email-already-in-use":
+                        alert("Maaf akun dengan email tersebut telah terdaftar.")
+                        break
+
+                    // default:
+                    //     alert("Autentifikasi gagal, silahkan coba lagi nanti.")
+                }
+            })
     }
 
     useFocusEffect(
@@ -122,7 +134,7 @@ const Daftar = ({ navigation }) => {
                             } else {
                                 handleSignUp()
                                 createUser()
-                                navigation.navigate('Beranda')
+
                             }
                         }
                         }>

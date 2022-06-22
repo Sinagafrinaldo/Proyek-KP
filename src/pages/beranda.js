@@ -5,7 +5,8 @@ import {
   TouchableOpacity,
   Image,
   ScrollView,
-  FlatList
+  FlatList,
+  Linking
 } from "react-native";
 import {
   collection,
@@ -23,7 +24,7 @@ import React, { useState } from "react";
 import { useNavigation, useFocusEffect, NavigationContainer } from '@react-navigation/native';
 import styles from "../component/stylesLandingPage";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import { StatusBar } from "expo-status-bar";
+
 
 
 const Beranda1 = ({ navigation }) => {
@@ -261,13 +262,17 @@ const Beranda1 = ({ navigation }) => {
                   </Text>
                 </TouchableOpacity>
               </View>
+
+
             </View>
+            <TouchableOpacity onPress={() => Linking.openURL('google.navigation:q=100+101')}>
+              <Text>Press me</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
-      <StatusBar style="dark" />
+
     </View>
   );
 };
-
 export default Beranda1;

@@ -32,6 +32,24 @@ function MainContainer() {
                         height: 70,
                         backgroundColor: '#118eeb'
                     },
+                    tabBarActiveTintColor: "yellow",
+                    tabBarInactiveTintColor: "white",
+                    tabBarLabelStyle: {
+                        paddingBottom: 5,
+                        fontSize: 12,
+                        paddingTop: -30,
+
+                    },
+                    tabBarStyle: [
+                        {
+                            backgroundColor: '#118eeb',
+                            display: "flex",
+                            height: 70,
+                        },
+                        null
+                    ]
+                    ,
+
 
                     tabBarIcon: ({ focused, color, size }) => {
                         let iconName;
@@ -54,12 +72,13 @@ function MainContainer() {
                 })}
 
 
-                tabBarOptions={{
-                    activeTintColor: 'yellow',
-                    inactiveTintColor: 'white',
-                    labelStyle: { paddingBottom: 10, fontSize: 12 },
+            // tabBarOptions={{
+            //     activeTintColor: 'yellow',
+            //     inactiveTintColor: 'white',
+            //     labelStyle: { paddingBottom: 10, fontSize: 12 },
 
-                }}>
+            // }}
+            >
 
                 <Tab.Screen name={homeName} component={Beranda}
 
@@ -91,8 +110,8 @@ function MainContainer() {
                         headerShown: false
                     }} />
             </Tab.Navigator>
-
-        </NavigationContainer>
+            <StatusBar style="dark" />
+        </NavigationContainer >
     );
 }
 
