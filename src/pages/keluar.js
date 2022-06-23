@@ -1,5 +1,5 @@
-import { View, Text, StyleSheet, Image, ScrollView, TextInput, TouchableOpacity, Alert } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import { View, Text, StyleSheet, Image, ScrollView, TextInput, TouchableOpacity, Alert, RefreshControl} from 'react-native'
+import React, { useEffect, useState, useCallback } from 'react'
 import styles from '../component/styleLogin'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
@@ -8,11 +8,16 @@ import { firebaseConfig } from '../firebase/config';
 import { initializeApp } from 'firebase/app';
 // import * as firebase from 'firebase';
 
+const wait = (timeout) => {
+    return new Promise(resolve => setTimeout(resolve, timeout));
+  }
 
 const Keluar = () => {
     const navigation = useNavigation()
     const [email, onChangeNip] = React.useState('');
     const [password, onChangePassword] = React.useState('');
+    const [refreshing, setRefreshing] = React.useState(false);
+
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const [status, setStatus] = useState(false)
@@ -89,8 +94,23 @@ const Keluar = () => {
     //         ]
     //     );
     // };
+    
+    const onRefresh = useCallback(() => {
+        setRefreshing(true);
+        onChangeNip();
+        onChangePassword();
+        wait(1000).then(() => setRefreshing(false));
+      }, []);
+
     return (
-        <ScrollView style={{ backgroundColor: 'white' }}>
+        <ScrollView 
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+          />
+        }
+        style={{ backgroundColor: 'white' }}>
             {status == false && (
                 <View style={styles.container}>
                     <View style={styles.wrap1}>

@@ -3,7 +3,7 @@ import React from 'react'
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'white',
+        backgroundColor: '#F5FBFF',
         height: '100%'
     },
 

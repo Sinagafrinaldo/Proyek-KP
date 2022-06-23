@@ -34,6 +34,16 @@ function Beranda() {
       />
       <Stack.Screen
         // options={{ headerShown: false }}
+        options={{
+          headerStyle: {
+            backgroundColor: '#118eeb',
+            height:90
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: '700',
+          },
+        }}
         name="Jadwal Liput"
         component={JadwalLiput}
       />

@@ -1,6 +1,6 @@
-import { View, Text, StyleSheet, Image, ScrollView, TextInput, TouchableOpacity, Alert } from 'react-native'
-import React from 'react'
-import styles from '../component/styleLogin'
+import { View, Text, StyleSheet, Image, ScrollView, TextInput, TouchableOpacity, Alert, RefreshControl } from 'react-native'
+import React, {useCallback} from 'react'
+import styles from '../component/styleDaftar'
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { firebaseConfig } from '../firebase/config';
 import { initializeApp } from 'firebase/app';
@@ -16,6 +16,10 @@ import {
     doc,
 } from "firebase/firestore"
 
+const wait = (timeout) => {
+    return new Promise(resolve => setTimeout(resolve, timeout));
+  }
+
 const Daftar = ({ navigation }) => {
     // const navigation = useNavigation();
     const [email, onChangeEmail] = React.useState('');
@@ -27,6 +31,7 @@ const Daftar = ({ navigation }) => {
     const [nama, setNama] = React.useState('');
     const [nip, setNip] = React.useState('');
     const [confPw, setConfPw] = React.useState('');
+    const [refreshing, setRefreshing] = React.useState(false);
 
     const createUser = async () => {
         await addDoc(usersCollectionRef, { nama: nama, nip: nip, email: email });
@@ -65,8 +70,24 @@ const Daftar = ({ navigation }) => {
         }, [])
     );
 
+    const onRefresh = useCallback(() => {
+        setRefreshing(true);
+        setNama();
+        setNip();
+        onChangeEmail();
+        onChangePassword();
+        setConfPw();
+        wait(1000).then(() => setRefreshing(false));
+      }, []);
+
     return (
-        <ScrollView>
+        <ScrollView
+        refreshControl={
+        <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            />
+          }>
             <View style={styles.container}>
                 <View>
 
@@ -93,7 +114,7 @@ const Daftar = ({ navigation }) => {
                             placeholder='Nama Lengkap ...'
                         />
 
-                        <Text>NIP</Text>
+                        <Text style={{ marginTop: 20 }}>NIP</Text>
 
                         <TextInput
                             onChangeText={nip => setNip(nip)}
@@ -101,7 +122,7 @@ const Daftar = ({ navigation }) => {
                             style={styles.boxnip}
                             placeholder='NIP'
                         />
-                        <Text>Email</Text>
+                        <Text style={{ marginTop: 20 }}>Email</Text>
 
                         <TextInput
                             onChangeText={email => onChangeEmail(email)}

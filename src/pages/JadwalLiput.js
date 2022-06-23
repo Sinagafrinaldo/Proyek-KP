@@ -71,23 +71,23 @@ const JadwalLiput = ({ navigation }) => {
     );
 
     const showConfirmDialog = (value) => {
-        // return Alert.alert(
-        //     "Hapus ?",
-        //     "Apakah anda yakin ingin menghapus jadwal ?",
-        //     [
-        //         {
-        //             text: "Ya",
-        //             onPress: () => {
-        //                 deleteUser(value)
-        //             },
-        //         },
-        //         {
-        //             text: "Tidak",
-        //         },
-        //     ]
-        // );
-        // console.log(value)
-        deleteUser(value)
+        console.log(value)
+        return Alert.alert(
+            "Hapus ?",
+            "Apakah anda yakin ingin menghapus jadwal ?",
+            [
+                {
+                    text: "Ya",
+                    onPress: () => {
+                        deleteUser(value)
+                    },
+                },
+                {
+                    text: "Tidak",
+                },
+            ]
+        ); 
+        // deleteUser(value)
     };
 
     return (
@@ -97,7 +97,7 @@ const JadwalLiput = ({ navigation }) => {
 
 
                 <View style={styles.cari}>
-                    <View style={{ width: '70%' }}>
+                    <View style={{ width: '75%' }}>
                         <TouchableOpacity
                             onPress={() => {
                                 setOpen(true)
@@ -156,7 +156,7 @@ const JadwalLiput = ({ navigation }) => {
                         }}
                         style={styles.button}
                     >
-                        <Text style={{ color: 'white' }}>All</Text>
+                        <Text style={{ width:50, textAlign:'center', color: 'white' }}>Semua</Text>
                     </TouchableOpacity>
 
                 </View>
