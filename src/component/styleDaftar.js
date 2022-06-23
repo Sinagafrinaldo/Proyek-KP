@@ -52,9 +52,10 @@ const styles = StyleSheet.create({
     },
     boxnip: {
         borderWidth: 1,
-        borderRadius: 7,
+        borderRadius: 10,
         width: 260,
         padding: 10,
+        borderColor: 'gray'
 
     },
 

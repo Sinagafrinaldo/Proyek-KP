@@ -27,10 +27,12 @@ function MainContainer() {
             <Tab.Navigator
                 initialRouteName={homeName}
                 screenOptions={({ route }) => ({
+                    tabBarHideOnKeyboard: true,
                     tabBarStyle: {
                         padding: 10,
                         height: 70,
-                        backgroundColor: '#118eeb'
+                        backgroundColor: '#118eeb',
+
                     },
                     tabBarActiveTintColor: "yellow",
                     tabBarInactiveTintColor: "white",
@@ -45,6 +47,7 @@ function MainContainer() {
                             backgroundColor: '#118eeb',
                             display: "flex",
                             height: 70,
+
                         },
                         null
                     ]

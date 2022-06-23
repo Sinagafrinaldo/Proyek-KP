@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, ScrollView, TextInput, TouchableOpacity, Alert, RefreshControl} from 'react-native'
+import { View, Text, StyleSheet, Image, ScrollView, TextInput, TouchableOpacity, Alert, RefreshControl } from 'react-native'
 import React, { useEffect, useState, useCallback } from 'react'
 import styles from '../component/styleLogin'
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -10,7 +10,7 @@ import { initializeApp } from 'firebase/app';
 
 const wait = (timeout) => {
     return new Promise(resolve => setTimeout(resolve, timeout));
-  }
+}
 
 const Keluar = () => {
     const navigation = useNavigation()
@@ -94,23 +94,23 @@ const Keluar = () => {
     //         ]
     //     );
     // };
-    
+
     const onRefresh = useCallback(() => {
         setRefreshing(true);
         onChangeNip();
         onChangePassword();
         wait(1000).then(() => setRefreshing(false));
-      }, []);
+    }, []);
 
     return (
-        <ScrollView 
-        refreshControl={
-          <RefreshControl
-            refreshing={refreshing}
-            onRefresh={onRefresh}
-          />
-        }
-        style={{ backgroundColor: 'white' }}>
+        <ScrollView
+            refreshControl={
+                <RefreshControl
+                    refreshing={refreshing}
+                    onRefresh={onRefresh}
+                />
+            }
+            style={{ backgroundColor: 'white' }}>
             {status == false && (
                 <View style={styles.container}>
                     <View style={styles.wrap1}>
