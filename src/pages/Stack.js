@@ -65,11 +65,11 @@ function Beranda() {
         name="Tambah Jadwal"
         component={TambahJadwal}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
         // options={{ headerShown: false }}
         name="Lainnya"
         component={Lainnya}
-      />
+      /> */}
     </Stack.Navigator>
   );
 }

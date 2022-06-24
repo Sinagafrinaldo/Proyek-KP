@@ -8,7 +8,7 @@ import { StatusBar } from 'expo-status-bar';
 import Beranda from './Stack';
 import Jadwal from './jadwal';
 import Presensi from './presensi';
-import Pengaturan from './pengaturan';
+import Pengaturan from './StackPengaturan';
 import Keluar from './StackLogin';
 
 //Screen names
@@ -104,7 +104,7 @@ function MainContainer() {
                         headerTitle: 'Pengaturan',
                         headerTitleAlign: 'center',
                         headerStyle: {
-                            backgroundColor: '#024d88'
+                            backgroundColor: '#118eeb'
                         },
                         headerTintColor: 'white'
                     }} />
