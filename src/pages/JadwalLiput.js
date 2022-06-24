@@ -156,7 +156,7 @@ const JadwalLiput = ({ navigation }) => {
                         }}
                         style={styles.button}
                     >
-                        <Text style={{ width:50, textAlign:'center', color: 'white' }}>Semua</Text>
+                        <Text style={{ width:50, textAlign:'center', fontWeight:'700',color: 'white' }}>Semua</Text>
                     </TouchableOpacity>
 
                 </View>
@@ -165,24 +165,46 @@ const JadwalLiput = ({ navigation }) => {
                     <FlatList
                         contentContainerStyle={{ paddingBottom: 30 }}
                         data={users}
-                        renderItem={({ item }) => (
-                            <View style={styles.list}>
-                                <Text>Nama: {item.nama}</Text>
-                                <Text>Lokasi: {item.lokasi}</Text>
-                                <Text>Tanggal: {item.tanggal}</Text>
-                                <Text>Keterangan: {item.keterangan}</Text>
-                                {status && (
-                                    <TouchableOpacity
-                                        style={styles.btnHapus}
-                                        onPress={() => {
-                                            showConfirmDialog(item.id);
-                                        }}
-                                    >
+                        renderItem={({ item }) => (    
+                            <View style={styles.list1}>
+                                <View  style={styles.list2}></View>
+                                <View style={styles.data}>
+                                    <View style={{flexDirection:'row', justifyContent: 'space-between',}}>
+                                        <Text style={{fontSize:18, fontWeight:'bold', paddingBottom: 7, color:'grey'}}>Peliput : {item.nama}</Text>
+                                        <Ionicons
+                                                style={styles.ikonLokasi}
+                                                name="bookmarks"
+                                                size={24}
+                                                color="#118eeb"
+                                                />
+                                    </View>
+                                    
+                                    <Text style={{paddingBottom: 12, color:'grey'}}>Keterangan : {item.keterangan}</Text>
+                                    <Text style={{textAlign:'right', paddingBottom: 7, color :'grey'}}>{item.tanggal}</Text>
+                                    <View style={{width: '100%', height: 0.5, backgroundColor: '#D7DBDD' }}></View>
+                                    
+                                    <View style={{paddingTop: 7,flexDirection:'row', justifyContent: 'space-between',}}>
+                                    <Text style={{fontSize: 16, color:'grey', alignSelf:'center'}}>Lokasi : {item.lokasi}</Text>
+                                        <Ionicons
+                                            style={styles.ikonLokasi}
+                                            name="location"
+                                            size={24}
+                                            color="red"
+                                            />
+                                    </View>
+                                    {status && (
+                                        <TouchableOpacity
+                                            style={styles.btnHapus}
+                                            onPress={() => {
+                                                showConfirmDialog(item.id);
+                                            }}
+                                        >
 
 
-                                        <Text style={{ color: 'white' }}>Hapus Jadwal</Text>
-                                    </TouchableOpacity>
-                                )}
+                                            <Text style={{ color: 'white' }}>Hapus Jadwal</Text>
+                                        </TouchableOpacity>
+                                    )}
+                                </View>
                             </View>
                         )}
                         keyExtractor={(item, index) => index.toString()}
@@ -198,21 +220,45 @@ const JadwalLiput = ({ navigation }) => {
                             <View>
                                 {item.tanggal == selectedDate && (
                                     <>
-                                        <View style={styles.list}>
-                                            <Text>Nama: {item.nama}</Text>
-                                            <Text>Lokasi: {item.lokasi}</Text>
-                                            <Text>Tanggal: {item.tanggal}</Text>
-                                            <Text>Keterangan: {item.keterangan}</Text>
-                                            {status && (
-                                                <TouchableOpacity
-                                                    style={styles.btnHapus}
-                                                    onPress={() => {
-                                                        deleteUser(item.id);
-                                                    }}
-                                                >
+                                        <View style={styles.list1}>
+                                            <View  style={styles.list2}></View>
+                                            <View style={styles.data}>
+                                                <View style={{flexDirection:'row', justifyContent: 'space-between',}}>
+                                                    <Text style={{fontSize:18, fontWeight:'bold', paddingBottom: 7, color:'grey'}}>Peliput : {item.nama}</Text>
+                                                    <Ionicons
+                                                            style={styles.ikonLokasi}
+                                                            name="bookmarks"
+                                                            size={24}
+                                                            color="#118eeb"
+                                                            />
+                                                </View>
+                                                
+                                                <Text style={{paddingBottom: 12, color:'grey'}}>Keterangan : {item.keterangan}</Text>
+                                                <Text style={{textAlign:'right', paddingBottom: 7, color :'grey'}}>{item.tanggal}</Text>
+                                                <View style={{width: '100%', height: 0.5, backgroundColor: '#D7DBDD' }}></View>
+                                                
+                                                <View style={{paddingTop: 7,flexDirection:'row', justifyContent: 'space-between',}}>
+                                                <Text style={{fontSize: 16, color:'grey', alignSelf:'center'}}>Lokasi : {item.lokasi}</Text>
+                                                    <Ionicons
+                                                        style={styles.ikonLokasi}
+                                                        name="location"
+                                                        size={24}
+                                                        color="red"
+                                                        />
+                                                </View>
+                                                {status && (
+                                                    <TouchableOpacity
+                                                        style={styles.btnHapus}
+                                                        onPress={() => {
+                                                            showConfirmDialog(item.id);
+                                                        }}
+                                                    >
 
-                                                    <Text style={{ color: 'white' }}>Hapus Jadwal</Text>
-                                                </TouchableOpacity>)}
+
+                                                        <Text style={{ color: 'white' }}>Hapus Jadwal</Text>
+                                                    </TouchableOpacity>
+                                                )}
+                                            </View>
                                         </View>
                                     </>
 

@@ -3,11 +3,11 @@ import React from 'react'
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'white',
+        backgroundColor: '#F5FBFF',
     },
 
    bg :{
-        backgroundColor:'#1F76C6', 
+        backgroundColor: '#118eeb',
         height:300,
         borderBottomEndRadius: 20,
         borderBottomStartRadius: 20,
@@ -34,10 +34,6 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
 
-    card2 :{
-        padding: 0,
-    },
-
     ikonAdd: {
         position: 'absolute',
         bottom: 30,
@@ -50,13 +46,15 @@ const styles = StyleSheet.create({
         padding: 8,
         height:45,
         borderRadius:8,
+        borderColor: 'gray'
     },
 
     button: {
-        backgroundColor: 'brown',
+        backgroundColor: '#118eeb',
         borderRadius: 5,
         alignItems: 'center',
         padding: 10,
+        height:45,
         marginTop:10,
         marginBottom: 8,
 
@@ -65,7 +63,8 @@ const styles = StyleSheet.create({
         height:45,
         padding: 10,
         borderWidth: 1,
-        borderRadius: 7
+        borderRadius: 7,
+        borderColor: 'gray'
     }
 })
 

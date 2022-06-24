@@ -26,19 +26,21 @@ const styles = StyleSheet.create({
         margin: 10,
         padding: 10,
         borderWidth: 1,
-        borderRadius: 7
+        borderRadius: 7,
+        borderColor:'grey',
     },
     button: {
-        backgroundColor: 'brown',
+        backgroundColor: '#118eeb',
         borderRadius: 5,
         alignItems: 'center',
         margin: 10,
         padding: 10
     },
 
-    list :{
+    list1 :{
         backgroundColor: 'white',
-        padding:10,
+        flexDirection: 'row',
+        padding:15,
         margin:10,
         borderRadius:8,
         shadowColor: "#000",
@@ -50,6 +52,17 @@ const styles = StyleSheet.create({
         shadowRadius: 4.65,
 
         elevation: 6,
+    },
+
+    list2 :{
+        backgroundColor: '#118eeb',
+        height:26,
+        width :5,
+    },
+
+    data :{
+        paddingLeft: 8,
+        width: '98%',
     },
 
     btnHapus :{

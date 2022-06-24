@@ -105,7 +105,7 @@ const Daftar = ({ navigation }) => {
                         />
                     </TouchableOpacity>
                     <View style={styles.card}>
-                        <Text>Nama</Text>
+                        <Text style={{marginBottom: 5}}>Nama</Text>
 
                         <TextInput
                             onChangeText={nama => setNama(nama)}
@@ -114,15 +114,15 @@ const Daftar = ({ navigation }) => {
                             placeholder='Nama Lengkap ...'
                         />
 
-                        <Text style={{ marginTop: 20 }}>NIP</Text>
+                        <Text style={{ marginTop: 20, marginBottom: 5}}>NIP</Text>
 
                         <TextInput
                             onChangeText={nip => setNip(nip)}
                             value={nip}
                             style={styles.boxnip}
-                            placeholder='NIP'
+                            placeholder='NIP...'
                         />
-                        <Text style={{ marginTop: 20 }}>Email</Text>
+                        <Text style={{ marginTop: 20, marginBottom: 5}}>Email</Text>
 
                         <TextInput
                             onChangeText={email => onChangeEmail(email)}
@@ -131,7 +131,7 @@ const Daftar = ({ navigation }) => {
                             placeholder='Email...'
                         />
 
-                        <Text style={{ marginTop: 20 }}>Kata Sandi</Text>
+                        <Text style={{ marginTop: 20, marginBottom: 5}}>Kata Sandi</Text>
                         <TextInput
 
                             onChangeText={password => onChangePassword(password)}
@@ -140,7 +140,7 @@ const Daftar = ({ navigation }) => {
                             placeholder='Kata Sandi...'
                             secureTextEntry
                         />
-                        <Text style={{ marginTop: 20 }}>Konfirmasi Sandi</Text>
+                        <Text style={{ marginTop: 20, marginBottom: 5 }}>Konfirmasi Sandi</Text>
                         <TextInput
 
                             onChangeText={confPw => setConfPw(confPw)}

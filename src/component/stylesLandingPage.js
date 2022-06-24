@@ -108,11 +108,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     ikon1: {
-        marginHorizontal: 10,
-        marginTop: 6
+        marginTop: 6,
+        paddingRight:10,
     },
     ikon2: {
-        marginHorizontal: 10,
+
     },
 
     bgmenu: {

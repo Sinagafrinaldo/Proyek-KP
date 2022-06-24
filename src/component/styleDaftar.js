@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
     container: {
         display: 'flex',
         flex: 1,
+        backgroundColor: '#F5FBFF',
     },
 
     wrap1: {
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
     },
 
     tombol: {
-        backgroundColor: '#1F76C6',
+        backgroundColor: '#118eeb',
         marginTop: 20,
         padding: 10,
         alignItems: 'center',
@@ -68,8 +69,9 @@ const styles = StyleSheet.create({
     },
     tekslogin: {
         color: 'white',
-        fontSize: 20
-    },
+        fontSize: 20,
+        fontWeight : 'bold'
+,    },
     teksdaftar: {
         color: '#1F76C6',
         fontWeight: 'bold',

@@ -50,14 +50,14 @@ const TambahJadwal = ({ navigation }) => {
                         style={styles.input}
                         onChangeText={setNewName}
                         value={newName}
-                        placeholder='Nama'
+                        placeholder='Nama...'
                     />
                     <Text>Lokasi</Text>
                     <TextInput
                         style={styles.input}
                         onChangeText={setNewLokasi}
                         value={newLokasi}
-                        placeholder='Lokasi'
+                        placeholder='Lokasi...'
                     />
                     <Text style={{ marginBottom: 8 }}>Tanggal</Text>
                     <TouchableOpacity
@@ -106,7 +106,7 @@ const TambahJadwal = ({ navigation }) => {
                         style={styles.input}
                         onChangeText={setNewKeterangan}
                         value={newKeterangan}
-                        placeholder='Keterangan'
+                        placeholder='Keterangan...'
                     />
 
                     <TouchableOpacity
@@ -117,7 +117,7 @@ const TambahJadwal = ({ navigation }) => {
                         }
                         }
                     >
-                        <Text style={{ color: 'white', fontSize: 16 }}>Tambah Jadwal</Text>
+                        <Text style={{ color: 'white', fontSize: 16, fontWeight:'bold' }}>Tambah Jadwal</Text>
                     </TouchableOpacity>
                 </View>
             </View>
