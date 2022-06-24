@@ -244,10 +244,10 @@ const Beranda1 = ({ navigation }) => {
               </View>
 
               <View style={{ marginBottom: 20 }}>
-                {/* <TouchableOpacity
+                <TouchableOpacity
                   onPress={() => {
                     navigation.navigate("Lainnya");
-                  }}> */}
+                  }}>
                   <View style={styles.bgmenu}>
 
                     <Ionicons
@@ -260,9 +260,14 @@ const Beranda1 = ({ navigation }) => {
                   <Text style={styles.fontBlack}>
                     Lainnya
                   </Text>
-                {/* </TouchableOpacity> */}
+                </TouchableOpacity>
               </View>
+
+
             </View>
+            <TouchableOpacity onPress={() => Linking.openURL('google.navigation:q=100+101')}>
+              <Text>Press me</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>

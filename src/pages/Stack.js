@@ -11,7 +11,6 @@ import JadwalLiput from "./JadwalLiput";
 import Lainnya from "./Lainnya";
 import Pengingat from "./Pengingat";
 import TambahJadwal from "./tambahJadwal";
-
 const Stack = createStackNavigator();
 
 function Beranda() {
@@ -37,7 +36,7 @@ function Beranda() {
         options={{
           headerStyle: {
             backgroundColor: '#118eeb',
-            height:90
+            height: 90
           },
           headerTintColor: '#fff',
           headerTitleAlign: 'center',
@@ -48,28 +47,29 @@ function Beranda() {
         name="Jadwal Liput"
         component={JadwalLiput}
       />
+
       <Stack.Screen
         // options={{ headerShown: false }}
         options={{
           headerStyle: {
             backgroundColor: '#118eeb',
-            height:90
+            height: 90
           },
           headerTintColor: '#fff',
           headerTitleAlign: 'center',
           headerTitleStyle: {
             fontWeight: '500',
-            justifyContent:'center',
+            justifyContent: 'center',
           },
         }}
         name="Tambah Jadwal"
         component={TambahJadwal}
       />
-      {/* <Stack.Screen
+      <Stack.Screen
         // options={{ headerShown: false }}
         name="Lainnya"
         component={Lainnya}
-      /> */}
+      />
     </Stack.Navigator>
   );
 }

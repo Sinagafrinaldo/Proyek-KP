@@ -117,7 +117,7 @@ const TambahJadwal = ({ navigation }) => {
                         }
                         }
                     >
-                        <Text style={{ color: 'white', fontSize: 16, fontWeight:'bold' }}>Tambah Jadwal</Text>
+                        <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold' }}>Tambah Jadwal</Text>
                     </TouchableOpacity>
                 </View>
             </View>

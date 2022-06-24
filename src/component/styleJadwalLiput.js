@@ -63,7 +63,6 @@ const styles = StyleSheet.create({
     data :{
         paddingLeft: 8,
         width: '98%',
-        backgroundColor : 'white'
     },
 
     btnHapus :{

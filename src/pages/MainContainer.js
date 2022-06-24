@@ -7,10 +7,9 @@ import { StatusBar } from 'expo-status-bar';
 // Screens
 import Beranda from './Stack';
 import Jadwal from './jadwal';
-import Presensi from './presensi';
-import Pengaturan from './StackPengaturan';
+import Pengaturan from './stackPengaturan';
 import Keluar from './StackLogin';
-
+import StackPresensi from './stackPresensi';
 //Screen names
 const homeName = "Beranda";
 const presensiName = "Presensi";
@@ -88,7 +87,7 @@ function MainContainer() {
                     options={{
                         headerShown: false
                     }} />
-                <Tab.Screen name={presensiName} component={Presensi}
+                <Tab.Screen name={presensiName} component={StackPresensi}
                     options={{
                         headerTitle: 'Presensi',
                         headerTitleAlign: 'center',
@@ -104,7 +103,7 @@ function MainContainer() {
                         headerTitle: 'Pengaturan',
                         headerTitleAlign: 'center',
                         headerStyle: {
-                            backgroundColor: '#118eeb'
+                            backgroundColor: '#024d88'
                         },
                         headerTintColor: 'white'
                     }} />
