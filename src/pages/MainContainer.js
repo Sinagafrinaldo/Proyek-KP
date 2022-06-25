@@ -7,7 +7,7 @@ import { StatusBar } from 'expo-status-bar';
 // Screens
 import Beranda from './Stack';
 import Jadwal from './jadwal';
-import Pengaturan from './stackPengaturan';
+import Pengaturan from './StackPengaturan';
 import Keluar from './StackLogin';
 import StackPresensi from './stackPresensi';
 //Screen names
