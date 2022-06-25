@@ -9,7 +9,8 @@ import Beranda from './Stack';
 import Jadwal from './jadwal';
 import Pengaturan from './StackPengaturan';
 import Keluar from './StackLogin';
-import StackPresensi from './stackPresensi';
+// import StackPresensi from './stackPresensi';
+import TopPresensi from './topNav';
 //Screen names
 const homeName = "Beranda";
 const presensiName = "Presensi";
@@ -87,7 +88,7 @@ function MainContainer() {
                     options={{
                         headerShown: false
                     }} />
-                <Tab.Screen name={presensiName} component={StackPresensi}
+                <Tab.Screen name={presensiName} component={TopPresensi}
                     options={{
                         headerTitle: 'Presensi',
                         headerTitleAlign: 'center',

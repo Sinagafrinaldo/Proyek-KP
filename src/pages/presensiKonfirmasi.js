@@ -42,7 +42,7 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
 
     };
     const createPresensi = async (nama, onlyTime, nip, onlyDate) => {
-        await addDoc(presensiCollectionRef, { nama: nama, waktu: onlyTime, nip: nip, tanggal: onlyDate, keterangan: 'Hadir' });
+        await addDoc(presensiCollectionRef, { nama: nama, waktu: onlyTime, nip: nip, tanggal: onlyDate, keterangan: 'Hadir', email: email });
     };
     const handleMasuk = (nama, nip) => {
         let today = new Date()
@@ -126,11 +126,11 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
 
                                                         handleMasuk(item.nama, item.nip)
                                                         getInfo()
-                                                        navigation.navigate('Presensi1')
+
                                                     }}
                                                 >
 
-                                                    <Text style={styles.teksin}>PRESENSI SEKARANG</Text>
+                                                    <Text style={styles.teksin}>PRESENSI SEKARANG-</Text>
                                                 </TouchableOpacity>
                                             )}
                                             {check == true && (
@@ -184,6 +184,7 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
                 }}
                 onConfirmPressed={() => {
                     setShowAlert(false)
+                    navigation.navigate('Presensi1')
                 }}
             />
         </View >

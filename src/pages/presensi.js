@@ -130,7 +130,7 @@ const Presensi = ({ navigation }) => {
                                                 }}
                                             >
 
-                                                <Text style={styles.teksin}>Menu Presensi</Text>
+                                                <Text style={styles.teksin}>Lakukan Presensi</Text>
                                             </TouchableOpacity>
                                             {/* )} */}
                                             {/* {check == true && (
