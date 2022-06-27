@@ -110,7 +110,7 @@ const Keluar = () => {
                     onRefresh={onRefresh}
                 />
             }
-            style={{ backgroundColor: 'white' }}>
+            style={{ backgroundColor: 'white', }}>
             {status == false && (
                 <View style={styles.container}>
                     <View style={styles.wrap1}>
@@ -157,17 +157,33 @@ const Keluar = () => {
 
             {status == true && (
                 <View>
-                    <Text>Anda sudah login</Text>
-                    <TouchableOpacity style={styles.tombol} onPress={() => {
+                    <View style={{ justifyContent: 'center', padding: 40, }}>
+                        <View style={styles.cardlog}>
+                            <Text style={{ textAlign: 'center', color: '#f75555', fontSize: 18 }}>Logout</Text>
+                            <View style={{ borderBottomWidth: 1, borderColor: '#e0e0e0', marginVertical: 10 }}></View>
+                            <Text style={styles.textout}>Apakah anda yakin ingin keluar?</Text>
+                            <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
+                                <TouchableOpacity style={styles.tombol2} onPress={() => {
 
 
-                        signOutUser()
-                        setStatus(false)
-                    }}>
-                        <Text style={styles.tekslogin}>Logout</Text>
-                    </TouchableOpacity>
+                                    navigation.navigate('Beranda')
+                                }}>
+                                    <Text style={styles.teksbatal}>Batal</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity style={styles.tombol} onPress={() => {
+
+
+                                    signOutUser()
+                                    setStatus(false)
+                                }}>
+                                    <Text style={styles.tekslogin}>Logout</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    </View>
                 </View>
             )}
+
         </ScrollView>
     )
 }
