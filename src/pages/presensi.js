@@ -1,6 +1,7 @@
-import { View, Text, Button, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, Button, StyleSheet, TouchableOpacity, Image } from 'react-native'
 import React, { useState } from 'react'
 import AwesomeAlert from 'react-native-awesome-alerts';
+import styles from "../component/stylePresensi";
 import {
     collection,
     getDocs,
@@ -14,6 +15,7 @@ import { firebaseConfig } from '../firebase/config';
 import { initializeApp } from 'firebase/app';
 import { db } from '../firebase/crudConf';
 import { useNavigation, useFocusEffect, NavigationContainer } from '@react-navigation/native';
+import { ScrollView } from 'react-native-gesture-handler';
 const Presensi = ({ navigation }) => {
     const [alerts, setShowAlert] = useState(false);
     const app = initializeApp(firebaseConfig);
@@ -95,26 +97,24 @@ const Presensi = ({ navigation }) => {
     );
 
     return (
-        <View style={{ justifyContent: 'center', flex: 1, display: 'flex' }}>
-
-            {verif == true && (
-                <View style={{ backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-
-                    {/* <Button title='Data Presensi' onPress={() => {
-                        getInfo()
-                        console.log(check)
-                    }} /> */}
+        <ScrollView>
+                {verif == true && (
                     <View style={styles.card}>
-                        <Text style={{ color: 'gray' }}>Haloo..</Text>
-
+                        <Image
+                            style={styles.stretch}
+                            source={require("../../assets/vector.png")}
+                        />
+                        <Text style={{fontSize:34, fontWeight:'bold', color :'#118eeb', textAlign: 'center', }}>ABSENSI</Text>
+                        <Text style={{fontSize:18,fontWeight:'bold', color :'gray', marginBottom:40, textAlign: 'center', }}>ONLINE</Text>
+                        <Text style={{color :'gray', fontWeight: 'bold', textAlign: 'center'}}> User</Text>
                         {pengguna.map((item, index) => (
 
                             <View key={index} style={{}}>
                                 <View >
                                     {item.email.toLowerCase() == email.toLowerCase() && (
                                         <View>
-                                            <Text style={styles.title2}>Nama:  {item.nama}</Text>
-                                            <Text style={styles.title2}>NIP:  {item.nip}</Text>
+                                            <Text style={styles.title2}>{item.nama}</Text>
+                                            <Text style={styles.title3}>{item.nip}</Text>
                                             {/* {check == false && ( */}
                                             <TouchableOpacity style={styles.cekin}
                                                 onPress={() => {
@@ -151,105 +151,38 @@ const Presensi = ({ navigation }) => {
                                 </View>
                             </View>
                         ))}
-
-
                     </View>
+                )}
 
-                </View>
+                {verif == false && (
+                    <View style={{ backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+                        <Text>Maaf fitur ini hanya tersedia untuk user yang telah mendaftar..</Text>
+                    </View>
+                )}
 
-            )}
+                {/* <Button title='Presensi Sekarang' onPress={() => setShowAlert(true)} /> */}
+                <AwesomeAlert
 
-            {verif == false && (
-                <View style={{ backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-                    <Text>Maaf fitur ini hanya tersedia untuk user yang telah mendaftar..</Text>
-                </View>
-            )}
-
-            {/* <Button title='Presensi Sekarang' onPress={() => setShowAlert(true)} /> */}
-            <AwesomeAlert
-
-                show={alerts}
-                showProgress={false}
-                title="Presensi"
-                message="          Berhasil melakukan presensi!                "
-                closeOnTouchOutside={false}
-                closeOnHardwareBackPress={false}
-                // showCancelButton={true}
-                showConfirmButton={true}
-                // cancelText="No, cancel"
-                confirmText="  Ok  "
-                confirmButtonColor="#DD6B55"
-                onCancelPressed={() => {
-                    setShowAlert(false)
-                }}
-                onConfirmPressed={() => {
-                    setShowAlert(false)
-                }}
-            />
-        </View >
+                    show={alerts}
+                    showProgress={false}
+                    title="Presensi"
+                    message="          Berhasil melakukan presensi!                "
+                    closeOnTouchOutside={false}
+                    closeOnHardwareBackPress={false}
+                    // showCancelButton={true}
+                    showConfirmButton={true}
+                    // cancelText="No, cancel"
+                    confirmText="  Ok  "
+                    confirmButtonColor="#DD6B55"
+                    onCancelPressed={() => {
+                        setShowAlert(false)
+                    }}
+                    onConfirmPressed={() => {
+                        setShowAlert(false)
+                    }}
+                />
+        </ScrollView>
     )
 }
 
 export default Presensi
-
-const styles = StyleSheet.create({
-    card: {
-
-        width: '80%',
-        padding: 30,
-        alignItems: 'center',
-        borderRadius: 10,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.32,
-        shadowRadius: 5.46,
-
-        elevation: 9,
-    },
-    cekin: {
-        backgroundColor: '#FFD600',
-        paddingVertical: 10,
-        paddingHorizontal: 30,
-        borderRadius: 10,
-        marginVertical: 20
-    },
-    teksin: {
-        color: '#2D7CF3',
-        fontWeight: 'bold'
-    },
-    cekout: {
-        backgroundColor: '#E5E5E5',
-        paddingVertical: 10,
-        paddingHorizontal: 30,
-        borderRadius: 10,
-        marginBottom: 20
-    },
-    teksout: {
-        color: '#AAAAAA',
-        fontWeight: 'bold'
-    },
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#fff',
-    },
-    button: {
-        margin: 10,
-        paddingHorizontal: 10,
-        paddingVertical: 7,
-        borderRadius: 5,
-        backgroundColor: "#AEDEF4",
-    },
-    text: {
-        color: '#fff',
-        fontSize: 15
-    },
-    title2: {
-        fontSize: 16,
-        fontWeight: '700'
-    }
-});

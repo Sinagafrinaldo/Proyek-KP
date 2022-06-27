@@ -56,10 +56,10 @@ const RiwayatPresensi = () => {
                                 {email == item.email && (
                                     <><View style={styles.list2}></View><View style={styles.data}>
                                         <View style={{ flexDirection: 'row', justifyContent: 'space-between', }}>
-                                            <Text style={{ fontSize: 18, fontWeight: 'bold', paddingBottom: 7, color: 'grey' }}>Nama: {item.nama}</Text>
+                                            <Text style={{ fontSize: 18, fontWeight: 'bold', paddingBottom: 7, color: 'grey' }}>Nama : {item.nama}</Text>
                                             <Ionicons
                                                 style={styles.ikonLokasi}
-                                                name="bookmarks"
+                                                name="clipboard"
                                                 size={24}
                                                 color="#118eeb" />
                                         </View>
@@ -72,7 +72,7 @@ const RiwayatPresensi = () => {
                                             <Text style={{ fontSize: 16, color: 'grey', alignSelf: 'center' }}>Waktu: {item.waktu}</Text>
                                             <Ionicons
                                                 style={styles.ikonLokasi}
-                                                name="location"
+                                                name="time-outline"
                                                 size={24}
                                                 color="red" />
                                         </View>
