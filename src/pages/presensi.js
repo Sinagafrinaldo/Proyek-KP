@@ -98,42 +98,42 @@ const Presensi = ({ navigation }) => {
 
     return (
         <ScrollView>
-                {verif == true && (
-                    <View style={styles.card}>
-                        <Image
-                            style={styles.stretch}
-                            source={require("../../assets/vector.png")}
-                        />
-                        <Text style={{fontSize:34, fontWeight:'bold', color :'#118eeb', textAlign: 'center', }}>ABSENSI</Text>
-                        <Text style={{fontSize:18,fontWeight:'bold', color :'gray', marginBottom:40, textAlign: 'center', }}>ONLINE</Text>
-                        <Text style={{color :'gray', fontWeight: 'bold', textAlign: 'center'}}> User</Text>
-                        {pengguna.map((item, index) => (
+            {verif == true && (
+                <View style={styles.card}>
+                    <Image
+                        style={styles.stretch}
+                        source={require("../../assets/vector.png")}
+                    />
+                    <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#118eeb', textAlign: 'center', }}>ABSENSI</Text>
+                    <Text style={{ fontSize: 18, fontWeight: 'bold', color: 'gray', marginBottom: 40, textAlign: 'center', }}>ONLINE</Text>
+                    <Text style={{ color: 'gray', fontWeight: 'bold', textAlign: 'center' }}> User</Text>
+                    {pengguna.map((item, index) => (
 
-                            <View key={index} style={{}}>
-                                <View >
-                                    {item.email.toLowerCase() == email.toLowerCase() && (
-                                        <View>
-                                            <Text style={styles.title2}>{item.nama}</Text>
-                                            <Text style={styles.title3}>{item.nip}</Text>
-                                            {/* {check == false && ( */}
-                                            <TouchableOpacity style={styles.cekin}
-                                                onPress={() => {
+                        <View key={index} style={{}}>
+                            <View >
+                                {item.email.toLowerCase() == email.toLowerCase() && (
+                                    <View>
+                                        <Text style={styles.title2}>{item.nama}</Text>
+                                        <Text style={styles.title3}>{item.nip}</Text>
+                                        {/* {check == false && ( */}
+                                        <TouchableOpacity style={styles.cekin}
+                                            onPress={() => {
 
-                                                    // handleMasuk(item.nama, item.nip)
-                                                    // getInfo()
-                                                    navigation.navigate('PresensiKonfirmasi', {
-                                                        pengguna1: pengguna,
-                                                        presensi1: presensi,
-                                                        verif: true,
-                                                        email: email
-                                                    })
-                                                }}
-                                            >
+                                                // handleMasuk(item.nama, item.nip)
+                                                // getInfo()
+                                                navigation.navigate('PresensiKonfirmasi', {
+                                                    pengguna1: pengguna,
+                                                    presensi1: presensi,
+                                                    verif: true,
+                                                    email: email
+                                                })
+                                            }}
+                                        >
 
-                                                <Text style={styles.teksin}>Lakukan Presensi</Text>
-                                            </TouchableOpacity>
-                                            {/* )} */}
-                                            {/* {check == true && (
+                                            <Text style={styles.teksin}>Lakukan Presensi</Text>
+                                        </TouchableOpacity>
+                                        {/* )} */}
+                                        {/* {check == true && (
                                                 <TouchableOpacity style={styles.cekin}
                                                     onPress={() => {
 
@@ -145,42 +145,42 @@ const Presensi = ({ navigation }) => {
                                                     <Text style={styles.teksin}>Anda Sudah Presensi</Text>
                                                 </TouchableOpacity>
                                             )} */}
-                                        </View>
-                                    )}
+                                    </View>
+                                )}
 
-                                </View>
                             </View>
-                        ))}
-                    </View>
-                )}
+                        </View>
+                    ))}
+                </View>
+            )}
 
-                {verif == false && (
-                    <View style={{ backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-                        <Text>Maaf fitur ini hanya tersedia untuk user yang telah mendaftar..</Text>
-                    </View>
-                )}
+            {verif == false && (
+                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }}>
+                    <Text style={{ textAlign: 'center', marginTop: '50%' }}>Maaf fitur ini hanya tersedia untuk user yang telah mendaftar..</Text>
+                </View>
+            )}
 
-                {/* <Button title='Presensi Sekarang' onPress={() => setShowAlert(true)} /> */}
-                <AwesomeAlert
+            {/* <Button title='Presensi Sekarang' onPress={() => setShowAlert(true)} /> */}
+            <AwesomeAlert
 
-                    show={alerts}
-                    showProgress={false}
-                    title="Presensi"
-                    message="          Berhasil melakukan presensi!                "
-                    closeOnTouchOutside={false}
-                    closeOnHardwareBackPress={false}
-                    // showCancelButton={true}
-                    showConfirmButton={true}
-                    // cancelText="No, cancel"
-                    confirmText="  Ok  "
-                    confirmButtonColor="#DD6B55"
-                    onCancelPressed={() => {
-                        setShowAlert(false)
-                    }}
-                    onConfirmPressed={() => {
-                        setShowAlert(false)
-                    }}
-                />
+                show={alerts}
+                showProgress={false}
+                title="Presensi"
+                message="          Berhasil melakukan presensi!                "
+                closeOnTouchOutside={false}
+                closeOnHardwareBackPress={false}
+                // showCancelButton={true}
+                showConfirmButton={true}
+                // cancelText="No, cancel"
+                confirmText="  Ok  "
+                confirmButtonColor="#DD6B55"
+                onCancelPressed={() => {
+                    setShowAlert(false)
+                }}
+                onConfirmPressed={() => {
+                    setShowAlert(false)
+                }}
+            />
         </ScrollView>
     )
 }
