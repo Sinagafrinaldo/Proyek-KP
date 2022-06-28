@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
 
     },
     title2: {
-        fontSize: 24,
+        fontSize: 16,
         color: 'white',
         paddingLeft: 30,
         paddingRight: 30,
@@ -109,9 +109,10 @@ const styles = StyleSheet.create({
     },
     ikon1: {
         marginTop: 6,
-        paddingRight:10,
+        marginRight: 14,
     },
     ikon2: {
+        marginTop: 4,
 
     },
 
