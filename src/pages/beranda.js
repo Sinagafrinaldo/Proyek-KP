@@ -66,12 +66,20 @@ const Beranda1 = ({ navigation }) => {
               size={30}
               color="white"
             />
-            <Ionicons
-              style={styles.ikon2}
-              name="menu"
-              size={40}
-              color="white"
-            />
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('Profil', {
+                  pengguna1: pengguna
+                })
+              }}
+            >
+              <Ionicons
+                style={styles.ikon2}
+                name="person-circle"
+                size={34}
+                color="white"
+              />
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -265,12 +273,12 @@ const Beranda1 = ({ navigation }) => {
 
 
             </View>
-            
+
           </View>
         </View>
       </ScrollView>
 
-    </View>
+    </View >
   );
 };
 export default Beranda1;

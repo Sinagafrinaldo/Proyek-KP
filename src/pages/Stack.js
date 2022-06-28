@@ -11,6 +11,10 @@ import JadwalLiput from "./JadwalLiput";
 import Lainnya from "./Lainnya";
 import Pengingat from "./Pengingat";
 import TambahJadwal from "./tambahJadwal";
+import Profil from "./profil";
+import EditProfil from "./editProfil";
+
+
 const Stack = createStackNavigator();
 
 function Beranda() {
@@ -65,10 +69,45 @@ function Beranda() {
         name="Tambah Jadwal"
         component={TambahJadwal}
       />
+
       <Stack.Screen
         // options={{ headerShown: false }}
         name="Lainnya"
         component={Lainnya}
+      />
+      <Stack.Screen
+        // options={{ headerShown: false }}
+        options={{
+          headerStyle: {
+            backgroundColor: '#118eeb',
+            height: 90
+          },
+          headerTintColor: '#fff',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            fontWeight: '500',
+            justifyContent: 'center',
+          },
+        }}
+        name="Profil"
+        component={Profil}
+      />
+      <Stack.Screen
+        // options={{ headerShown: false }}
+        options={{
+          headerStyle: {
+            backgroundColor: '#118eeb',
+            height: 90
+          },
+          headerTintColor: '#fff',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            fontWeight: '500',
+            justifyContent: 'center',
+          },
+        }}
+        name="Edit Profil"
+        component={EditProfil}
       />
     </Stack.Navigator>
   );
