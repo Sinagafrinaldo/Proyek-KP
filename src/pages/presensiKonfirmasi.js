@@ -1,4 +1,4 @@
-import { View, Text, Button, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, Button, StyleSheet, TouchableOpacity, Image } from 'react-native'
 import React, { useState } from 'react'
 import AwesomeAlert from 'react-native-awesome-alerts';
 import {
@@ -14,6 +14,9 @@ import { firebaseConfig } from '../firebase/config';
 import { initializeApp } from 'firebase/app';
 import { db } from '../firebase/crudConf';
 import { useNavigation, useFocusEffect, NavigationContainer } from '@react-navigation/native';
+import Ionicons from "react-native-vector-icons/Ionicons";
+import { ScrollView } from 'react-native-gesture-handler';
+
 const PresensiKonfirmasi = ({ route, navigation }) => {
     const { pengguna1, presensi1, verif, email } = route.params;
     const [alerts, setShowAlert] = useState(false);
@@ -100,27 +103,27 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
     );
 
     return (
-        <View style={{ justifyContent: 'center', flex: 1, display: 'flex' }}>
-
+        <View style={{backgroundColor :'#F5FBFF', justifyContent:'center', flex:1, display:'flex'}}>
             {verif == true && (
-                <View style={{ backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+                <View>
 
                     {/* <Button title='Data Presensi' onPress={() => {
                         getInfo()
                         console.log(check)
                     }} /> */}
-                    <View style={styles.card}>
-                        <Text style={{ color: 'gray' }}>Haloo..</Text>
-
                         {pengguna1.map((item, index) => (
 
                             <View key={index} style={{}}>
-                                <View >
-                                    {item.email.toLowerCase() == email.toLowerCase() && (
-                                        <View>
-                                            <Text style={styles.title2}>Nama:  {item.nama}</Text>
-                                            <Text style={styles.title2}>NIP:  {item.nip}</Text>
-                                            {check == false && (
+                                {item.email.toLowerCase() == email.toLowerCase() && (
+                                    <View>
+                                        {/* <Text style={styles.title2}>Nama:  {item.nama}</Text>
+                                        <Text style={styles.title2}>NIP:  {item.nip}</Text> */}
+                                        {check == false && (
+                                                <View>
+                                                <Image
+                                                    style={styles.stretch}
+                                                    source={require("../../assets/vector.png")}
+                                                />
                                                 <TouchableOpacity style={styles.cekin}
                                                     onPress={() => {
 
@@ -132,31 +135,33 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
 
                                                     <Text style={styles.teksin}>PRESENSI SEKARANG-</Text>
                                                 </TouchableOpacity>
-                                            )}
-                                            {check == true && (
-                                                <TouchableOpacity style={styles.cekin}
-                                                    onPress={() => {
+                                            </View>
+                                        )}
+                                        {check == true && (
+                                            <View  style={styles.card}>
+                                                <Ionicons
+                                                    style={styles.ikon1}
+                                                    name="shield-checkmark-outline"
+                                                    size={140}
+                                                    color="#1FD851"
+                                                />
 
-                                                        // handleMasuk(item.nama, item.nip)
-                                                        getInfo()
-                                                    }}
-                                                >
+                                                <Text style={styles.title2}>{item.nama}</Text>
+                                                <Text style={styles.title3}>{item.nip}</Text>
+                                                {/* <Image
+                                                    style={styles.stretch}
+                                                    source={require("../../assets/vector.png")}
+                                                /> */}
+                                                
+                                                <Text style={styles.teksin}>Anda Sudah Presensi</Text>
 
-                                                    <Text style={styles.teksin}>Anda Sudah Presensi</Text>
-                                                </TouchableOpacity>
-                                            )}
-                                        </View>
-                                    )}
-
-                                </View>
+                                            </View>
+                                        )}
+                                    </View>
+                                )}
                             </View>
                         ))}
-
-
                     </View>
-
-                </View>
-
             )}
 
             {verif == false && (
@@ -187,7 +192,7 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
                     navigation.navigate('Presensi1')
                 }}
             />
-        </View >
+        </View>
     )
 }
 
@@ -195,21 +200,23 @@ export default PresensiKonfirmasi
 
 const styles = StyleSheet.create({
     card: {
-
-        width: '80%',
-        padding: 30,
-        alignItems: 'center',
+        paddingVertical:60,
+        backgroundColor: 'white',
+        width:'96%',
+        alignItems:'center',
+        alignSelf:'center',
         borderRadius: 10,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
-            height: 2,
+            height: 3,
         },
-        shadowOpacity: 0.32,
-        shadowRadius: 5.46,
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
 
-        elevation: 9,
+        elevation: 6,
     },
+
     cekin: {
         backgroundColor: '#FFD600',
         paddingVertical: 10,
@@ -219,7 +226,8 @@ const styles = StyleSheet.create({
     },
     teksin: {
         color: '#2D7CF3',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        fontSize:24,
     },
     cekout: {
         backgroundColor: '#E5E5E5',
@@ -250,7 +258,18 @@ const styles = StyleSheet.create({
         fontSize: 15
     },
     title2: {
-        fontSize: 16,
+        color : 'gray',
+        fontSize: 24,
+        textAlign: 'center',
         fontWeight: '700'
+    },
+    title3: {
+        color : 'gray',
+        fontSize: 14,
+        textAlign: 'center',
+        marginBottom:35
     }
+    // stretch :{
+    //     resizeMode: 'stretch',
+    // },
 });

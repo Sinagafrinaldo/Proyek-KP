@@ -44,7 +44,7 @@ const RiwayatPresensi = () => {
         }, [])
     );
     return (
-        <View style={{ display: 'flex', flex: 1, justifyContent: 'center' }}>
+        <View style={{ display: 'flex', flex: 1, justifyContent: 'center', backgroundColor:'white' }}>
             <View style={{ backgroundColor: 'white', minHeight: '100%' }}>
                 {/* <Text>riwayatPresensi</Text> */}
                 {verif == true && (
@@ -54,7 +54,8 @@ const RiwayatPresensi = () => {
                         renderItem={({ item }) => (
                             <View style={styles.list1}>
                                 {email == item.email && (
-                                    <><View style={styles.list2}></View><View style={styles.data}>
+                                    <>
+                                    <View style={styles.list2}></View><View style={styles.data}>
                                         <View style={{ flexDirection: 'row', justifyContent: 'space-between', }}>
                                             <Text style={{ fontSize: 18, fontWeight: 'bold', paddingBottom: 7, color: 'grey' }}>Nama : {item.nama}</Text>
                                             <Ionicons
@@ -77,7 +78,8 @@ const RiwayatPresensi = () => {
                                                 color="red" />
                                         </View>
 
-                                    </View></>
+                                    </View>
+                                    </>
                                 )}
                             </View>
                         )}
@@ -86,8 +88,8 @@ const RiwayatPresensi = () => {
                 )}
 
                 {verif == false && (
-                    <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
-                        <Text style={{ textAlign: 'center', }}>Maaf silahkan login terlebih dahulu untuk mengakses menu ini..</Text>
+                    <View style={{ backgroundColor: 'white', alignSelf:'center', justifyContent: 'center', alignItems: 'center', width:'96%',height: '100%' }}>
+                        <Text style={{ textAlign: 'center'}}>Maaf silahkan login terlebih dahulu untuk mengakses menu ini..</Text>
                     </View>
                 )}
             </View>
