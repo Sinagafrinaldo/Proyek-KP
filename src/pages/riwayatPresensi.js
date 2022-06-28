@@ -86,8 +86,8 @@ const RiwayatPresensi = () => {
                 )}
 
                 {verif == false && (
-                    <View>
-                        <Text>Maaf silahkan login terlebih dahulu untuk mengakses menu ini..</Text>
+                    <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
+                        <Text style={{ textAlign: 'center', }}>Maaf silahkan login terlebih dahulu untuk mengakses menu ini..</Text>
                     </View>
                 )}
             </View>
