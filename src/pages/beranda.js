@@ -265,9 +265,7 @@ const Beranda1 = ({ navigation }) => {
 
 
             </View>
-            <TouchableOpacity onPress={() => Linking.openURL('google.navigation:q=100+101')}>
-              <Text>Press me</Text>
-            </TouchableOpacity>
+            
           </View>
         </View>
       </ScrollView>
