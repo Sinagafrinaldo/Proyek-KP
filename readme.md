@@ -7,3 +7,6 @@ Proyek KP
  npm add @react-navigation/stack
  npm add @react-navigation/bottom-tabs
  npm install firebase
+npm i @react-native-picker/picker
+npm i expo-notifications
+npm i expo-constants
