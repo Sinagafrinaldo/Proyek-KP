@@ -56,10 +56,15 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         width: 260,
         padding: 10,
-        borderColor: 'gray'
+        borderColor: 'gray',
+        paddingLeft: 38,
 
     },
-
+    ikonMenu :{
+        position:'absolute',
+        bottom : 14,
+        paddingLeft: 10
+    },
     tombol: {
         backgroundColor: '#118eeb',
         marginTop: 20,

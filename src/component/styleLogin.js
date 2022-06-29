@@ -77,7 +77,8 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         width: 260,
         padding: 10,
-        borderColor: 'gray'
+        borderColor: 'gray',
+        paddingLeft: 38,
 
     },
     teksbatal: {
@@ -109,6 +110,11 @@ const styles = StyleSheet.create({
     teksdaftar: {
         color: '#118eeb',
         fontWeight: 'bold',
+    },
+    ikonMenu :{
+        position:'absolute',
+        bottom : 14,
+        paddingLeft: 10
     }
 })
 
