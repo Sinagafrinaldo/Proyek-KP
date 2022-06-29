@@ -27,11 +27,35 @@ function Beranda() {
       />
       <Stack.Screen
         // options={{ headerShown: false }}
+        options={{
+          headerStyle: {
+            backgroundColor: '#118eeb',
+            height: 90
+          },
+          headerTintColor: '#fff',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            fontWeight: '500',
+            justifyContent: 'center',
+          },
+        }}
         name="Catatan"
         component={Catatan}
       />
       <Stack.Screen
         // options={{ headerShown: false }}
+        options={{
+          headerStyle: {
+            backgroundColor: '#118eeb',
+            height: 90
+          },
+          headerTintColor: '#fff',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            fontWeight: '500',
+            justifyContent: 'center',
+          },
+        }}
         name="Pengingat"
         component={Pengingat}
       />
