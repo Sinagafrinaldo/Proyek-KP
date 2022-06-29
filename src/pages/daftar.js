@@ -107,48 +107,88 @@ const Daftar = ({ navigation }) => {
                     <View style={styles.card}>
                         <Text style={{marginBottom: 5}}>Nama</Text>
 
-                        <TextInput
-                            onChangeText={nama => setNama(nama)}
-                            value={nama}
-                            style={styles.boxnip}
-                            placeholder='Nama Lengkap ...'
-                        />
-
+                        <View style={{flexDirection:'row'}}>
+                            <Ionicons
+                                style={styles.ikonMenu}
+                                name="document-text"
+                                size={20}
+                                color="#ABB2B9"
+                            />
+                            <TextInput
+                                onChangeText={nama => setNama(nama)}
+                                value={nama}
+                                style={styles.boxnip}
+                                placeholder='Nama Lengkap ...'
+                            />
+                        </View>
+                        
                         <Text style={{ marginTop: 20, marginBottom: 5}}>NIP</Text>
 
-                        <TextInput
-                            onChangeText={nip => setNip(nip)}
-                            value={nip}
-                            style={styles.boxnip}
-                            placeholder='NIP...'
-                        />
+                        <View style={{flexDirection:'row'}}>
+                            <Ionicons
+                                style={styles.ikonMenu}
+                                name="document-text"
+                                size={20}
+                                color="#ABB2B9"
+                            />
+                            <TextInput
+                                onChangeText={nip => setNip(nip)}
+                                value={nip}
+                                style={styles.boxnip}
+                                placeholder='NIP...'
+                            />
+                        </View>
                         <Text style={{ marginTop: 20, marginBottom: 5}}>Email</Text>
 
-                        <TextInput
-                            onChangeText={email => onChangeEmail(email)}
-                            value={email}
-                            style={styles.boxnip}
-                            placeholder='Email...'
-                        />
-
+                        <View style={{flexDirection:'row'}}>
+                            <Ionicons
+                                style={styles.ikonMenu}
+                                name="mail"
+                                size={20}
+                                color="#ABB2B9"
+                            />
+                            <TextInput
+                                onChangeText={email => onChangeEmail(email)}
+                                value={email}
+                                style={styles.boxnip}
+                                placeholder='Email...'
+                            />
+                        </View>
                         <Text style={{ marginTop: 20, marginBottom: 5}}>Kata Sandi</Text>
-                        <TextInput
+                        <View style={{flexDirection:'row'}}>
+                            <Ionicons
+                                style={styles.ikonMenu}
+                                name="eye-off"
+                                size={20}
+                                color="#ABB2B9"
+                            />
+                            <TextInput
 
-                            onChangeText={password => onChangePassword(password)}
-                            value={password}
-                            style={styles.boxnip}
-                            placeholder='Kata Sandi...'
-                            secureTextEntry
-                        />
+                                onChangeText={password => onChangePassword(password)}
+                                value={password}
+                                style={styles.boxnip}
+                                placeholder='Kata Sandi...'
+                                secureTextEntry
+                            />
+                        </View>
                         <Text style={{ marginTop: 20, marginBottom: 5 }}>Konfirmasi Sandi</Text>
-                        <TextInput
+                        
+                        <View style={{flexDirection:'row'}}>
+                            <Ionicons
+                                style={styles.ikonMenu}
+                                name="eye-off"
+                                size={20}
+                                color="#ABB2B9"
+                            />
+                            <TextInput
 
-                            onChangeText={confPw => setConfPw(confPw)}
-                            value={confPw}
-                            style={styles.boxnip}
-                            placeholder='Konfirmasi Kata Sandi...'
-                            secureTextEntry
-                        />
+                                onChangeText={confPw => setConfPw(confPw)}
+                                value={confPw}
+                                style={styles.boxnip}
+                                placeholder='Konfirmasi Kata Sandi...'
+                                secureTextEntry
+                            />
+                        </View>
                         <TouchableOpacity style={styles.tombol} onPress={() => {
                             if (confPw != password) {
                                 alert('Maaf, konfirmasi sandi tidak sama dengan kata sandi.')

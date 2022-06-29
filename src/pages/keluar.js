@@ -119,22 +119,39 @@ const Keluar = () => {
                     <View style={styles.card}>
 
                         <Text style={{ marginBottom: 5 }}>Email</Text>
+                        
+                        <View style={{flexDirection:'row'}}>
+                            <Ionicons
+                                style={styles.ikonMenu}
+                                name="document-text"
+                                size={20}
+                                color="#ABB2B9"
+                            />
+                            <TextInput
+                                onChangeText={email => onChangeNip(email)}
+                                value={email}
+                                style={styles.boxnip}
+                                placeholder='Email...'
+                            />
+                        </View>
 
-                        <TextInput
-                            onChangeText={email => onChangeNip(email)}
-                            value={email}
-                            style={styles.boxnip}
-                            placeholder='Email...'
-                        />
                         <Text style={{ marginTop: 20, marginBottom: 5 }}>Kata Sandi</Text>
-                        <TextInput
 
-                            onChangeText={password => onChangePassword(password)}
-                            value={password}
-                            style={styles.boxnip}
-                            placeholder='Kata Sandi...'
-                            secureTextEntry
-                        />
+                        <View style={{flexDirection:'row'}}>
+                            <Ionicons
+                                style={styles.ikonMenu}
+                                name="eye-off"
+                                size={20}
+                                color="#ABB2B9"
+                            />
+                            <TextInput
+                                onChangeText={password => onChangePassword(password)}
+                                value={password}
+                                style={styles.boxnip}
+                                placeholder='Kata Sandi...'
+                                secureTextEntry
+                            />
+                        </View>
                         <TouchableOpacity style={styles.tombol} onPress={handleSignIn}>
                             <Text style={styles.tekslogin}>Login</Text>
                         </TouchableOpacity>
