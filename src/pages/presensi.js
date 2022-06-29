@@ -97,7 +97,7 @@ const Presensi = ({ navigation }) => {
     );
 
     return (
-        <ScrollView>
+        <View>
             {verif == true && (
                 <View style={styles.card}>
                     <Image
@@ -181,7 +181,7 @@ const Presensi = ({ navigation }) => {
                     setShowAlert(false)
                 }}
             />
-        </ScrollView>
+        </View>
     )
 }
 

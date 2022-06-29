@@ -124,12 +124,8 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
                                     {/* <Text style={styles.title2}>Nama:  {item.nama}</Text>
                                         <Text style={styles.title2}>NIP:  {item.nip}</Text> */}
                                     {check == false && (
-                                        <View>
-                                            <Image
-                                                style={styles.stretch}
-                                                source={require("../../assets/vector.png")}
-                                            />
-                                            <TouchableOpacity style={styles.cekin}
+                                        <View style={styles.card}>
+                                            <TouchableOpacity style={styles.cekin1}
                                                 onPress={() => {
 
                                                     handleMasuk(item.nama, item.nip)
@@ -137,8 +133,14 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
 
                                                 }}
                                             >
-
-                                                <Text style={styles.teksin}>PRESENSI SEKARANG-</Text>
+                                            <Ionicons
+                                                style={styles.ikon1}
+                                                name="book"
+                                                size={140}
+                                                color="#1FD851"
+                                            />
+                                                <Text style={{ fontSize: 18, fontWeight: 'bold', color: 'gray', marginBottom: 20, textAlign: 'center', }}>Klik Halaman Untuk</Text>
+                                                <Text style={styles.teksin}>ABSENSI</Text>
                                             </TouchableOpacity>
                                         </View>
                                     )}
@@ -151,14 +153,17 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
                                                 color="#1FD851"
                                             />
 
-                                            <Text style={styles.title2}>{item.nama}</Text>
-                                            <Text style={styles.title3}>{item.nip}</Text>
+                                            <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#118eeb', textAlign: 'center', }}>ABSENSI</Text>
+                                            <Text style={{ fontSize: 18, fontWeight: 'bold', color: 'gray', marginBottom: 30, textAlign: 'center', }}>ONLINE</Text>
+
                                             {/* <Image
                                                     style={styles.stretch}
                                                     source={require("../../assets/vector.png")}
                                                 /> */}
 
-                                            <Text style={styles.teksin}>Anda Sudah Presensi</Text>
+                                            <Text style={{ fontSize: 15, fontWeight: '700', color: 'gray', marginBottom: 10, textAlign: 'center', }}>Selamat</Text>
+                                            <Text style={styles.teksin}>Anda Sudah Melakukan</Text>
+                                            <Text style={styles.teksin}>Absensi Hari Ini</Text>
 
                                         </View>
                                     )}
@@ -205,11 +210,13 @@ export default PresensiKonfirmasi
 
 const styles = StyleSheet.create({
     card: {
-        paddingVertical: 60,
+        height:'99%',
+        marginTop:'1%',
         backgroundColor: 'white',
         width: '96%',
         alignItems: 'center',
         alignSelf: 'center',
+        justifyContent:'center',
         borderRadius: 10,
         shadowColor: "#000",
         shadowOffset: {
@@ -221,7 +228,9 @@ const styles = StyleSheet.create({
 
         elevation: 6,
     },
-
+    ikon1 :{
+        marginTop:-21,
+    },
     cekin: {
         backgroundColor: '#FFD600',
         paddingVertical: 10,
@@ -229,11 +238,23 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginVertical: 20
     },
+    cekin1: {
+        backgroundColor: '#FFD600',
+        padding:40,
+        borderRadius: 10,
+        marginVertical: 20,
+        alignItems:'center',
+        width:'100%',
+        height:'100%',
+        justifyContent:'center'
+    },
     teksin: {
         color: '#2D7CF3',
         fontWeight: 'bold',
         fontSize: 24,
+        textAlign:'center',
     },
+
     cekout: {
         backgroundColor: '#E5E5E5',
         paddingVertical: 10,
