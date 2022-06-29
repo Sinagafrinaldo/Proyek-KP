@@ -13,7 +13,7 @@ import Pengingat from "./Pengingat";
 import TambahJadwal from "./tambahJadwal";
 import Profil from "./profil";
 import EditProfil from "./editProfil";
-
+import TambahCatatan from "./tambahCatatan";
 
 const Stack = createStackNavigator();
 
@@ -74,6 +74,22 @@ function Beranda() {
         }}
         name="Jadwal Liput"
         component={JadwalLiput}
+      />
+      <Stack.Screen
+        // options={{ headerShown: false }}
+        options={{
+          headerStyle: {
+            backgroundColor: '#118eeb',
+            height: 90
+          },
+          headerTintColor: '#fff',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            fontWeight: '500',
+          },
+        }}
+        name="Tambah Catatan"
+        component={TambahCatatan}
       />
 
       <Stack.Screen
