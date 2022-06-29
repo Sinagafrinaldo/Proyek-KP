@@ -15,7 +15,7 @@ import DatePicker from 'react-native-modern-datepicker';
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { firebaseConfig } from '../firebase/config';
 import { initializeApp } from 'firebase/app';
-import styles from '../component/styleJadwalLiput';
+import styles from '../component/styleRiwayatPresensi';
 const RiwayatPresensi = () => {
     const [riwayat, setRiwayat] = useState([]);
     const presensiCollectionRef = collection(db, "presensi");
@@ -44,56 +44,59 @@ const RiwayatPresensi = () => {
         }, [])
     );
     return (
-        <View style={{ display: 'flex', flex: 1, justifyContent: 'center', backgroundColor:'white' }}>
-            <View style={{ backgroundColor: 'white', minHeight: '100%' }}>
+        <View style={{ display: 'flex', flex: 1, backgroundColor: 'white' }}>
+            <View>
                 {/* <Text>riwayatPresensi</Text> */}
                 {verif == true && (
                     <FlatList
                         contentContainerStyle={{ paddingBottom: 30 }}
                         data={riwayat}
                         renderItem={({ item }) => (
-                            <View style={styles.list1}>
+                            <View style={{}}>
+
                                 {email == item.email && (
-                                    <>
-                                    <View style={styles.list2}></View><View style={styles.data}>
-                                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', }}>
-                                            <Text style={{ fontSize: 18, fontWeight: 'bold', paddingBottom: 7, color: 'grey' }}>Nama : {item.nama}</Text>
-                                            <Ionicons
-                                                style={styles.ikonLokasi}
-                                                name="clipboard"
-                                                size={24}
-                                                color="#118eeb" />
+                                    <View style={styles.list1}>
+                                        <View style={styles.data}>
+                                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', }}>
+                                                <Text style={{ fontSize: 18, fontWeight: 'bold', paddingBottom: 7, color: 'grey' }}>Nama : {item.nama}</Text>
+                                                <Ionicons
+                                                    style={styles.ikonLokasi}
+                                                    name="clipboard"
+                                                    size={24}
+                                                    color="#118eeb" />
+                                            </View>
+
+                                            <Text style={{ paddingBottom: 12, color: 'grey' }}>Keterangan: {item.keterangan}</Text>
+                                            <Text style={{ textAlign: 'right', paddingBottom: 7, color: 'grey' }}>{item.tanggal}</Text>
+                                            <View style={{ width: '100%', height: 0.5, backgroundColor: '#D7DBDD' }}></View>
+
+                                            <View style={{ paddingTop: 7, flexDirection: 'row', justifyContent: 'space-between', }}>
+                                                <Text style={{ fontSize: 16, color: 'grey', alignSelf: 'center' }}>Waktu: {item.waktu}</Text>
+                                                <Ionicons
+                                                    style={styles.ikonLokasi}
+                                                    name="time-outline"
+                                                    size={24}
+                                                    color="red" />
+                                            </View>
+
                                         </View>
-
-                                        <Text style={{ paddingBottom: 12, color: 'grey' }}>Keterangan: {item.keterangan}</Text>
-                                        <Text style={{ textAlign: 'right', paddingBottom: 7, color: 'grey' }}>{item.tanggal}</Text>
-                                        <View style={{ width: '100%', height: 0.5, backgroundColor: '#D7DBDD' }}></View>
-
-                                        <View style={{ paddingTop: 7, flexDirection: 'row', justifyContent: 'space-between', }}>
-                                            <Text style={{ fontSize: 16, color: 'grey', alignSelf: 'center' }}>Waktu: {item.waktu}</Text>
-                                            <Ionicons
-                                                style={styles.ikonLokasi}
-                                                name="time-outline"
-                                                size={24}
-                                                color="red" />
-                                        </View>
-
                                     </View>
-                                    </>
+
                                 )}
                             </View>
+
                         )}
                         keyExtractor={(item, index) => index.toString()}
                     />
                 )}
 
                 {verif == false && (
-                    <View style={{ backgroundColor: 'white', alignSelf:'center', justifyContent: 'center', alignItems: 'center', width:'96%',height: '100%' }}>
-                        <Text style={{ textAlign: 'center'}}>Maaf silahkan login terlebih dahulu untuk mengakses menu ini..</Text>
+                    <View style={{ backgroundColor: 'white', alignSelf: 'center', justifyContent: 'center', alignItems: 'center', width: '96%', height: '100%' }}>
+                        <Text style={{ textAlign: 'center' }}>Maaf silahkan login terlebih dahulu untuk mengakses menu ini..</Text>
                     </View>
                 )}
             </View>
-        </View>
+        </View >
     )
 }
 
