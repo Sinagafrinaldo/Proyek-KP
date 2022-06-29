@@ -3,11 +3,14 @@ import React from 'react'
 
 const styles = StyleSheet.create({
     card: {
-        height: 580,
+        height: '99%',
+        marginTop:'1%',
         marginLeft: '2%',
         width: '96%',
+        borderRadius:10,
         alignItems: 'center',
         justifyContent: 'center',
+        justifyContent:'center',
         backgroundColor: 'white',
         shadowColor: "#000",
         shadowOffset: {
@@ -24,7 +27,8 @@ const styles = StyleSheet.create({
         resizeMode: 'stretch',
         // width:200,
         // height: 220
-        marginBottom: 10
+        marginBottom: 10,
+        marginTop: 10
     },
 
     cekin: {
