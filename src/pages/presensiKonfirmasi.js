@@ -31,7 +31,7 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
     const [nip, setNip] = useState('')
     const [presensi, setPresensi] = useState([])
     const [check, setCheck] = useState(false)
-
+    const [cp, setCp] = useState(false)
 
 
     const getUsers = async () => {
@@ -66,11 +66,16 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
                         let tanggal_verif = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
                         if (data.nip == item.nip && data.tanggal == tanggal_verif) {
                             setCheck(true)
+                            setCp(true)
                             console.log('done1')
 
                         } else {
-                            setCheck(false)
-                            console.log('belum')
+                            if (cp == true) {
+
+
+                                setCheck(false)
+                                console.log('belum')
+                            }
                         }
                     })
                 }
@@ -103,7 +108,7 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
     );
 
     return (
-        <View style={{backgroundColor :'#F5FBFF', justifyContent:'center', flex:1, display:'flex'}}>
+        <View style={{ backgroundColor: '#F5FBFF', justifyContent: 'center', flex: 1, display: 'flex' }}>
             {verif == true && (
                 <View>
 
@@ -111,57 +116,57 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
                         getInfo()
                         console.log(check)
                     }} /> */}
-                        {pengguna1.map((item, index) => (
+                    {pengguna1.map((item, index) => (
 
-                            <View key={index} style={{}}>
-                                {item.email.toLowerCase() == email.toLowerCase() && (
-                                    <View>
-                                        {/* <Text style={styles.title2}>Nama:  {item.nama}</Text>
+                        <View key={index} style={{}}>
+                            {item.email.toLowerCase() == email.toLowerCase() && (
+                                <View>
+                                    {/* <Text style={styles.title2}>Nama:  {item.nama}</Text>
                                         <Text style={styles.title2}>NIP:  {item.nip}</Text> */}
-                                        {check == false && (
-                                                <View>
-                                                <Image
-                                                    style={styles.stretch}
-                                                    source={require("../../assets/vector.png")}
-                                                />
-                                                <TouchableOpacity style={styles.cekin}
-                                                    onPress={() => {
+                                    {check == false && (
+                                        <View>
+                                            <Image
+                                                style={styles.stretch}
+                                                source={require("../../assets/vector.png")}
+                                            />
+                                            <TouchableOpacity style={styles.cekin}
+                                                onPress={() => {
 
-                                                        handleMasuk(item.nama, item.nip)
-                                                        getInfo()
+                                                    handleMasuk(item.nama, item.nip)
+                                                    getInfo()
 
-                                                    }}
-                                                >
+                                                }}
+                                            >
 
-                                                    <Text style={styles.teksin}>PRESENSI SEKARANG-</Text>
-                                                </TouchableOpacity>
-                                            </View>
-                                        )}
-                                        {check == true && (
-                                            <View  style={styles.card}>
-                                                <Ionicons
-                                                    style={styles.ikon1}
-                                                    name="shield-checkmark-outline"
-                                                    size={140}
-                                                    color="#1FD851"
-                                                />
+                                                <Text style={styles.teksin}>PRESENSI SEKARANG-</Text>
+                                            </TouchableOpacity>
+                                        </View>
+                                    )}
+                                    {check == true && (
+                                        <View style={styles.card}>
+                                            <Ionicons
+                                                style={styles.ikon1}
+                                                name="shield-checkmark-outline"
+                                                size={140}
+                                                color="#1FD851"
+                                            />
 
-                                                <Text style={styles.title2}>{item.nama}</Text>
-                                                <Text style={styles.title3}>{item.nip}</Text>
-                                                {/* <Image
+                                            <Text style={styles.title2}>{item.nama}</Text>
+                                            <Text style={styles.title3}>{item.nip}</Text>
+                                            {/* <Image
                                                     style={styles.stretch}
                                                     source={require("../../assets/vector.png")}
                                                 /> */}
-                                                
-                                                <Text style={styles.teksin}>Anda Sudah Presensi</Text>
 
-                                            </View>
-                                        )}
-                                    </View>
-                                )}
-                            </View>
-                        ))}
-                    </View>
+                                            <Text style={styles.teksin}>Anda Sudah Presensi</Text>
+
+                                        </View>
+                                    )}
+                                </View>
+                            )}
+                        </View>
+                    ))}
+                </View>
             )}
 
             {verif == false && (
@@ -200,11 +205,11 @@ export default PresensiKonfirmasi
 
 const styles = StyleSheet.create({
     card: {
-        paddingVertical:60,
+        paddingVertical: 60,
         backgroundColor: 'white',
-        width:'96%',
-        alignItems:'center',
-        alignSelf:'center',
+        width: '96%',
+        alignItems: 'center',
+        alignSelf: 'center',
         borderRadius: 10,
         shadowColor: "#000",
         shadowOffset: {
@@ -227,7 +232,7 @@ const styles = StyleSheet.create({
     teksin: {
         color: '#2D7CF3',
         fontWeight: 'bold',
-        fontSize:24,
+        fontSize: 24,
     },
     cekout: {
         backgroundColor: '#E5E5E5',
@@ -258,16 +263,16 @@ const styles = StyleSheet.create({
         fontSize: 15
     },
     title2: {
-        color : 'gray',
+        color: 'gray',
         fontSize: 24,
         textAlign: 'center',
         fontWeight: '700'
     },
     title3: {
-        color : 'gray',
+        color: 'gray',
         fontSize: 14,
         textAlign: 'center',
-        marginBottom:35
+        marginBottom: 35
     }
     // stretch :{
     //     resizeMode: 'stretch',

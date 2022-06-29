@@ -3,28 +3,28 @@ import React from 'react'
 
 const styles = StyleSheet.create({
     card: {
-        height:580,
-        marginLeft:'2%',
-        width:'96%',
+        height: 580,
+        marginLeft: '2%',
+        width: '96%',
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: 'white',
         shadowColor: "#000",
-shadowOffset: {
-	width: 0,
-	height: 2,
-},
-shadowOpacity: 0.25,
-shadowRadius: 3.84,
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
 
-elevation: 5,
+        elevation: 5,
     },
 
-    stretch :{
+    stretch: {
         resizeMode: 'stretch',
         // width:200,
         // height: 220
-        marginBottom:10
+        marginBottom: 10
     },
 
     cekin: {
@@ -37,7 +37,8 @@ elevation: 5,
     teksin: {
         color: '#061882',
         fontWeight: 'bold',
-        fontSize:16
+        fontSize: 16,
+        textAlign: 'center'
     },
     cekout: {
         backgroundColor: '#E5E5E5',
@@ -68,16 +69,16 @@ elevation: 5,
         fontSize: 15
     },
     title2: {
-        color : 'gray',
+        color: 'gray',
         fontSize: 24,
         textAlign: 'center',
         fontWeight: '700'
     },
     title3: {
-        color : 'gray',
+        color: 'gray',
         fontSize: 14,
         textAlign: 'center',
-        marginBottom:35
+        marginBottom: 35
     }
 })
 
