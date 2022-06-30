@@ -17,7 +17,8 @@ import { firebaseConfig } from '../firebase/config';
 import { initializeApp } from 'firebase/app';
 import { db } from '../firebase/crudConf';
 import React, { useState, useEffect } from "react";
-import { useFocusEffect, } from '@react-navigation/native';
+import { useFocusEffect, getFocusedRouteNameFromRoute } from '@react-navigation/native';
+
 // Screens
 import Beranda from './Stack';
 import Jadwal from './jadwal';
@@ -30,7 +31,7 @@ const homeName = "Beranda";
 const presensiName = "Presensi";
 const jadwalName = "Jadwal";
 const pengaturanName = "Pengaturan";
-// var keluarName = "Masuk"
+// const keluarName = "Masuk"
 
 const Tab = createBottomTabNavigator();
 
@@ -66,7 +67,6 @@ function MainContainer() {
         return unsubscribe
 
     }, [])
-
     return (
         <NavigationContainer>
             <Tab.Navigator
@@ -88,17 +88,33 @@ function MainContainer() {
                         fontFamily: 'poppins'
 
                     },
-                    tabBarStyle: [
-                        {
+
+                    tabBarStyle: ((route) => {
+                        const routeName = getFocusedRouteNameFromRoute(route) ?? ""
+                        console.log(routeName)
+                        if (routeName === 'Pengingat') {
+                            return { display: "none" }
+                        }else if (routeName === 'Jadwal Liput') {
+                            return { display: "none" }
+                        }
+                        return {
                             backgroundColor: '#118eeb',
                             display: "flex",
                             height: 70,
+                        }
+                        }
+                        )(route),
+                    // tabBarStyle: [
+                    //     {
+                    //         backgroundColor: '#118eeb',
+                    //         display: "flex",
+                    //         height: 70,
 
 
-                        },
-                        null
-                    ]
-                    ,
+                    //     },
+                    //     null
+                    // ]
+                    // ,
 
 
                     tabBarIcon: ({ focused, color, size }) => {
@@ -155,7 +171,7 @@ function MainContainer() {
                         headerTitle: 'Pengaturan',
                         headerTitleAlign: 'center',
                         headerStyle: {
-                            backgroundColor: '#024d88'
+                            backgroundColor: '#118eeb'
                         },
                         headerTintColor: 'white',
                         headerTitleStyle: {
@@ -164,6 +180,7 @@ function MainContainer() {
                     }} />
                 <Tab.Screen name={keluarName} component={Keluar}
                     options={{
+                        tabBarStyle: { display: "none" },
                         headerShown: false
                     }} />
             </Tab.Navigator>
