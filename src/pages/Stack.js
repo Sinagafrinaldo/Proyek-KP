@@ -14,6 +14,7 @@ import TambahJadwal from "./tambahJadwal";
 import Profil from "./profil";
 import EditProfil from "./editProfil";
 import TambahCatatan from "./tambahCatatan";
+import DetailCatatan from "./detailCatatan";
 
 const Stack = createStackNavigator();
 
@@ -42,6 +43,24 @@ function Beranda() {
         }}
         name="Catatan"
         component={Catatan}
+      />
+      <Stack.Screen
+        // options={{ headerShown: false }}
+        options={{
+          headerStyle: {
+            backgroundColor: '#118eeb',
+            height: 90
+          },
+          headerTintColor: '#fff',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            // fontWeight: '500',
+            fontFamily: 'poppinssemibold',
+            justifyContent: 'center',
+          },
+        }}
+        name="Detail Catatan"
+        component={DetailCatatan}
       />
       <Stack.Screen
         // options={{ headerShown: false }}

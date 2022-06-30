@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView, FlatList, Modal, Alert } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView, FlatList, Modal, Alert, Button } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import CryptoES from "crypto-es";
 import {
@@ -23,18 +23,36 @@ const Catatan = ({ navigation }) => {
     const [email, setEmail] = useState('')
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
+    const [verif, setVerif] = useState(false)
+
     const getCatatan = async () => {
         const data = await getDocs(catatanCollectionRef);
+        // console.log(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
         setCatatan(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
 
-    const dekripsi = (teks) => {
+    const dekripsi = (teks, teks1) => {
         var C = require("crypto-js");
 
         var Decrypted = C.AES.decrypt(teks, "your password");
         var result = Decrypted.toString(C.enc.Utf8);
 
-        return result
+        var Decrypted1 = C.AES.decrypt(teks1, "your password");
+        var result1 = Decrypted1.toString(C.enc.Utf8);
+        // console.log(result)
+        return (
+            <TouchableOpacity style={styles.card} onPress={() => {
+                navigation.navigate('Detail Catatan', {
+                    judul: result,
+                    isi: result1
+                })
+            }}>
+                <Text style={{ fontFamily: 'poppinssemibold' }}>  {result}</Text>
+                <Text style={{ fontFamily: 'poppins' }} >  {((result1).length > 20) ?
+                    (((result1).substring(0, 80 - 3)) + '...') :
+                    result1}</Text>
+            </TouchableOpacity>
+        )
     }
     useFocusEffect(
         React.useCallback(() => {
@@ -42,6 +60,9 @@ const Catatan = ({ navigation }) => {
                 if (user != null) {
                     getCatatan()
                     setEmail(user.email)
+                    setVerif(true)
+                } else {
+                    setVerif(false)
                 }
             })
 
@@ -50,37 +71,54 @@ const Catatan = ({ navigation }) => {
     );
 
     return (
-        <View style={{ flex: 1 }}>
-            <View>
-                <FlatList
-                    contentContainerStyle={{ paddingBottom: 30 }}
-                    data={catatan}
-                    renderItem={({ item, index }) => (
-                        <View>
-                            {item.email == email && (
-                                <View style={styles.card}>
-                                    {/* <Text style={{ fontFamily: 'poppinssemibold' }}>{item.judul}</Text> */}
-                                    <Text> {() => { dekripsi(item.judul) }}</Text>
-                                    {/* <Text style={{ fontFamily: 'poppins' }}>{item.isi}</Text> */}
+        <View >
+            {verif == true && (
+                <View>
+                    <View>
+
+
+
+                        <FlatList
+                            contentContainerStyle={{ paddingBottom: 30 }}
+                            data={catatan}
+                            renderItem={({ item, index }) => (
+                                <View>
+                                    {item.email == email && (
+                                        dekripsi(item.judul, item.isi)
+                                        // <View style={styles.card}>
+                                        //     {/* <Text style={{ fontFamily: 'poppinssemibold' }}>{item.judul}</Text> */}
+                                        //     {/* <Text> {() => { dekripsi(item.judul) }}</Text> */}
+                                        //     {/* <Text style={{ fontFamily: 'poppins' }}>{item.isi}</Text> */}
+                                        //     <Button title='Press' onPress={() => { dekripsi(item.judul) }} />
+
+
+                                        // </View>
+                                    )}
                                 </View>
                             )}
-                        </View>
-                    )}
-                    keyExtractor={(item, index) => index.toString()}
-                />
+                            keyExtractor={(item, index) => index.toString()}
+                        />
 
-            </View>
-            <TouchableOpacity
-                onPress={() => { navigation.navigate('Tambah Catatan') }}
-                style={styles.wrapikon}>
-                <Ionicons
-                    style={styles.ikon2}
-                    name="add"
-                    size={34}
-                    color="white"
-                />
-            </TouchableOpacity>
 
+                    </View>
+                    <TouchableOpacity
+                        onPress={() => { navigation.navigate('Tambah Catatan') }}
+                        style={styles.wrapikon}>
+                        <Ionicons
+                            style={styles.ikon2}
+                            name="add"
+                            size={34}
+                            color="white"
+                        />
+                    </TouchableOpacity>
+                </View>
+            )}
+
+            {verif == false && (
+                <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                    <Text>Silahkan Login untuk mempergunakan fitur ini.</Text>
+                </View>
+            )}
         </View>
     )
 }
