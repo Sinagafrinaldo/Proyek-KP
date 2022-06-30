@@ -60,9 +60,9 @@ const styles = StyleSheet.create({
         paddingLeft: 38,
 
     },
-    ikonMenu :{
-        position:'absolute',
-        bottom : 14,
+    ikonMenu: {
+        position: 'absolute',
+        bottom: 14,
         paddingLeft: 10
     },
     tombol: {
@@ -75,8 +75,9 @@ const styles = StyleSheet.create({
     tekslogin: {
         color: 'white',
         fontSize: 20,
-        fontWeight : 'bold'
-,    },
+        fontWeight: 'bold'
+        ,
+    },
     teksdaftar: {
         color: '#1F76C6',
         fontWeight: 'bold',

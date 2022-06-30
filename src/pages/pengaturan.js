@@ -3,58 +3,58 @@ import React from 'react'
 import styles from "../component/stylePengaturan";
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 
-const Pengaturan = ({navigation}) => {
+const Pengaturan = ({ navigation }) => {
     return (
-        <View style={styles.container}>  
-            
-            <TouchableOpacity 
+        <View style={styles.container}>
+
+            <TouchableOpacity
                 onPress={() => {
                     navigation.navigate("Bantuan");
                 }}>
                 <View style={styles.text}>
-                    <Text style={{color:'gray'}}>Bantuan</Text>
+                    <Text style={{ color: 'gray', fontFamily: 'poppins' }}>Bantuan</Text>
                 </View>
             </TouchableOpacity>
-            <View style={{width: '100%', height: 0.5, backgroundColor: '#D7DBDD' }}></View>
+            <View style={{ width: '100%', height: 0.5, backgroundColor: '#D7DBDD' }}></View>
 
-            <TouchableOpacity 
+            <TouchableOpacity
                 onPress={() => {
                     navigation.navigate("Tentang");
                 }}>
                 <View style={styles.text}>
-                    <Text style={{color:'gray'}}>Tentang Aplikasi</Text>
+                    <Text style={{ color: 'gray', fontFamily: 'poppins' }}>Tentang Aplikasi</Text>
                 </View>
             </TouchableOpacity>
-            <View style={{width: '100%', height: 0.5, backgroundColor: '#D7DBDD' }}></View>
+            <View style={{ width: '100%', height: 0.5, backgroundColor: '#D7DBDD' }}></View>
 
-            <TouchableOpacity 
+            <TouchableOpacity
                 onPress={() => {
                     navigation.navigate("Tentang");
                 }}>
                 <View style={styles.text}>
-                    <Text style={{color:'gray'}}>Privasi dan Keamanan</Text>
+                    <Text style={{ color: 'gray', fontFamily: 'poppins' }}>Privasi dan Keamanan</Text>
                 </View>
             </TouchableOpacity>
-            
-            <View style={{width: '100%', height: 0.5, backgroundColor: '#D7DBDD' }}></View>
-            
-            <TouchableOpacity 
-            onPress={() => {
-                navigation.navigate("Kontak");
-            }}>
+
+            <View style={{ width: '100%', height: 0.5, backgroundColor: '#D7DBDD' }}></View>
+
+            <TouchableOpacity
+                onPress={() => {
+                    navigation.navigate("Kontak");
+                }}>
                 <View style={styles.text}>
-                    <Text style={{color:'gray'}}>Kontak</Text>
+                    <Text style={{ color: 'gray', fontFamily: 'poppins' }}>Kontak</Text>
                 </View>
             </TouchableOpacity>
-            <View style={{width: '100%', height: 0.5, backgroundColor: '#D7DBDD' }}></View>
-            
+            <View style={{ width: '100%', height: 0.5, backgroundColor: '#D7DBDD' }}></View>
+
             <TouchableOpacity onPress={() => Linking.openURL('google.navigation:q=kominfo+bandar+lampung')}>
-            <View style={styles.text}>
-                <Text style={{color:'gray'}}>Lokasi</Text>
-            </View> 
+                <View style={styles.text}>
+                    <Text style={{ color: 'gray', fontFamily: 'poppins' }}>Lokasi</Text>
+                </View>
             </TouchableOpacity>
-            <View style={{width: '100%', height: 0.5, backgroundColor: '#D7DBDD' }}></View>
-              
+            <View style={{ width: '100%', height: 0.5, backgroundColor: '#D7DBDD' }}></View>
+
         </View>
     )
 }

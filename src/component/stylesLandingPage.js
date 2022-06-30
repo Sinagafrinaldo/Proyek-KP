@@ -81,17 +81,24 @@ const styles = StyleSheet.create({
 
     },
     title: {
-        fontSize: 26,
+        fontSize: 24,
         color: 'white',
-        fontWeight: 'bold',
+        // fontWeight: 'bold',
+        fontFamily: 'poppinssemibold'
 
     },
+    subtitle: {
+        color: 'white',
+        fontFamily: 'poppinssemibold',
+        fontSize: 12,
+        marginTop: -10
+    },
     title2: {
-        fontSize: 16,
+        fontSize: 14,
         color: 'white',
         paddingLeft: 30,
         paddingRight: 30,
-        fontWeight: 'bold',
+        fontFamily: 'poppinssemibold'
     },
 
     title3: {
@@ -99,7 +106,8 @@ const styles = StyleSheet.create({
         color: 'white',
         paddingLeft: 30,
         paddingRight: 30,
-        fontWeight: 'bold',
+        // fontWeight: 'bold',
+        fontFamily: 'poppinsbold'
     },
 
 
@@ -129,9 +137,11 @@ const styles = StyleSheet.create({
     },
     fontBlack: {
         textAlign: "center",
-        fontWeight: "700",
+        // fontWeight: "700",
+        fontSize: 12,
         color: 'gray',
         padding: 5,
+        fontFamily: 'poppinssemibold'
     },
 })
 

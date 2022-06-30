@@ -104,9 +104,9 @@ const Presensi = ({ navigation }) => {
                         style={styles.stretch}
                         source={require("../../assets/vector.png")}
                     />
-                    <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#118eeb', textAlign: 'center', }}>ABSENSI</Text>
-                    <Text style={{ fontSize: 18, fontWeight: 'bold', color: 'gray', marginBottom: 40, textAlign: 'center', }}>ONLINE</Text>
-                    <Text style={{ color: 'gray', fontWeight: 'bold', textAlign: 'center' }}> User</Text>
+                    <Text style={{ fontSize: 34, fontFamily: 'poppinssemibold', color: '#118eeb', textAlign: 'center', }}>ABSENSI</Text>
+                    <Text style={{ fontSize: 18, fontFamily: 'poppins', color: 'gray', marginBottom: 40, textAlign: 'center', }}>ONLINE</Text>
+                    <Text style={{ color: 'gray', fontFamily: 'poppinssemibold', textAlign: 'center', }}> User</Text>
                     {pengguna.map((item, index) => (
 
                         <View key={index} style={{}}>
@@ -156,7 +156,7 @@ const Presensi = ({ navigation }) => {
 
             {verif == false && (
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }}>
-                    <Text style={{ textAlign: 'center', marginTop: '50%' }}>Maaf fitur ini hanya tersedia untuk user yang telah mendaftar..</Text>
+                    <Text style={{ textAlign: 'center', marginTop: '50%', fontFamily: 'poppins' }}>Maaf fitur ini hanya tersedia untuk user yang telah mendaftar..</Text>
                 </View>
             )}
 

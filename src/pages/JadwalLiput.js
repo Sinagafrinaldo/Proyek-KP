@@ -93,7 +93,7 @@ const JadwalLiput = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <View style={styles.container2}>
-                <Text style={{ alignSelf: 'center', fontWeight: 'bold', marginTop: 10 }}>Pilih Berdasarkan Tanggal</Text>
+                <Text style={{ alignSelf: 'center', marginTop: 10, fontFamily: 'poppinssemibold' }}>Pilih Berdasarkan Tanggal</Text>
 
 
                 <View style={styles.cari}>
@@ -107,12 +107,13 @@ const JadwalLiput = ({ navigation }) => {
                             }
                             style={styles.box_tanggal}
                         >
-                            <Text>{selectedDate}</Text>
+                            <Text style={{ fontFamily: 'poppinssemibold' }}>{selectedDate}</Text>
                         </TouchableOpacity>
                     </View>
 
                     <Modal
                         animationType={'fade'}
+
                         // onBackButtonPress={() => { }}
                         transparent={true}
                         backdropOpacity={0.3}
@@ -156,7 +157,7 @@ const JadwalLiput = ({ navigation }) => {
                         }}
                         style={styles.button}
                     >
-                        <Text style={{ width: 50, textAlign: 'center', fontWeight: '700', color: 'white' }}>Semua</Text>
+                        <Text style={{ textAlign: 'center', fontFamily: 'poppins', color: 'white' }}>Semua</Text>
                     </TouchableOpacity>
 
                 </View>
@@ -170,7 +171,7 @@ const JadwalLiput = ({ navigation }) => {
                                 <View style={styles.list2}></View>
                                 <View style={styles.data}>
                                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', }}>
-                                        <Text style={{ fontSize: 18, fontWeight: 'bold', paddingBottom: 7, color: 'grey' }}>Peliput : {item.nama}</Text>
+                                        <Text style={{ fontSize: 16, fontFamily: 'poppinssemibold', paddingBottom: 7, color: 'grey' }}>Peliput : {item.nama}</Text>
                                         <Ionicons
                                             style={styles.ikonLokasi}
                                             name="bookmarks"
@@ -179,12 +180,12 @@ const JadwalLiput = ({ navigation }) => {
                                         />
                                     </View>
 
-                                    <Text style={{ paddingBottom: 12, color: 'grey' }}>Keterangan : {item.keterangan}</Text>
-                                    <Text style={{ textAlign: 'right', paddingBottom: 7, color: 'grey' }}>{item.tanggal}</Text>
+                                    <Text style={{ paddingBottom: 12, color: 'grey', fontFamily: 'poppins' }}>Keterangan : {item.keterangan}</Text>
+                                    <Text style={{ textAlign: 'right', paddingBottom: 7, color: 'grey', fontFamily: 'poppins' }}>{item.tanggal}</Text>
                                     <View style={{ width: '100%', height: 0.5, backgroundColor: '#D7DBDD' }}></View>
 
                                     <View style={{ paddingTop: 7, flexDirection: 'row', justifyContent: 'space-between', }}>
-                                        <Text style={{ fontSize: 16, color: 'grey', alignSelf: 'center' }}>Lokasi : {item.lokasi}</Text>
+                                        <Text style={{ fontSize: 16, color: 'grey', alignSelf: 'center', fontFamily: 'poppins' }}>Lokasi : {item.lokasi}</Text>
                                         <Ionicons
                                             style={styles.ikonLokasi}
                                             name="location"
@@ -201,7 +202,7 @@ const JadwalLiput = ({ navigation }) => {
                                         >
 
 
-                                            <Text style={{ color: 'white' }}>Hapus Jadwal</Text>
+                                            <Text style={{ color: 'white', textAlign: 'center', fontFamily: 'poppins' }}>Hapus Jadwal</Text>
                                         </TouchableOpacity>
                                     )}
                                 </View>
@@ -224,7 +225,7 @@ const JadwalLiput = ({ navigation }) => {
                                             <View style={styles.list2}></View>
                                             <View style={styles.data}>
                                                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', }}>
-                                                    <Text style={{ fontSize: 18, fontWeight: 'bold', paddingBottom: 7, color: 'grey' }}>Peliput : {item.nama}</Text>
+                                                    <Text style={{ fontSize: 16, paddingBottom: 7, color: 'grey', fontFamily: 'poppinssemibold' }}>Peliput : {item.nama}</Text>
                                                     <Ionicons
                                                         style={styles.ikonLokasi}
                                                         name="bookmarks"
@@ -233,12 +234,12 @@ const JadwalLiput = ({ navigation }) => {
                                                     />
                                                 </View>
 
-                                                <Text style={{ paddingBottom: 12, color: 'grey' }}>Keterangan : {item.keterangan}</Text>
-                                                <Text style={{ textAlign: 'right', paddingBottom: 7, color: 'grey' }}>{item.tanggal}</Text>
+                                                <Text style={{ paddingBottom: 12, color: 'grey', fontFamily: 'poppins' }}>Keterangan : {item.keterangan}</Text>
+                                                <Text style={{ fontFamily: 'poppins', textAlign: 'right', paddingBottom: 7, color: 'grey' }}>{item.tanggal}</Text>
                                                 <View style={{ width: '100%', height: 0.5, backgroundColor: '#D7DBDD' }}></View>
 
                                                 <View style={{ paddingTop: 7, flexDirection: 'row', justifyContent: 'space-between', }}>
-                                                    <Text style={{ fontSize: 16, color: 'grey', alignSelf: 'center' }}>Lokasi : {item.lokasi}</Text>
+                                                    <Text style={{ fontSize: 16, color: 'grey', alignSelf: 'center', fontFamily: 'poppins' }}>Lokasi : {item.lokasi}</Text>
                                                     <Ionicons
                                                         style={styles.ikonLokasi}
                                                         name="location"
@@ -255,7 +256,7 @@ const JadwalLiput = ({ navigation }) => {
                                                     >
 
 
-                                                        <Text style={{ color: 'white' }}>Hapus Jadwal</Text>
+                                                        <Text style={{ color: 'white', fontFamily: 'poppins', textAlign: 'center' }}>Hapus Jadwal</Text>
                                                     </TouchableOpacity>
                                                 )}
                                             </View>
@@ -277,9 +278,9 @@ const JadwalLiput = ({ navigation }) => {
                     >
                         <Ionicons
 
-                            name="add-circle"
-                            size={60}
-                            color="#1F76C6"
+                            name="add"
+                            size={50}
+                            color="white"
                         />
                     </TouchableOpacity>
                 )}

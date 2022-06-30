@@ -93,7 +93,8 @@ const Profil = ({ route, navigation }) => {
                                                         nama: item.nama,
                                                         nip: item.nip,
                                                         id: item.id,
-                                                        email: item.email
+                                                        email: item.email,
+                                                        inisial: item.nama.match(/(\b\S)?/g).join("").match(/(^\S|\S$)?/g).join("").toUpperCase()
 
                                                     })
                                                     console.log(item.id)
@@ -142,12 +143,14 @@ const styles = StyleSheet.create({
         marginVertical: 10
     },
     title: {
-        color: '#949494'
+        color: '#949494',
+        fontFamily: 'poppins'
     },
     subtitle: {
         color: '#4c4c4c',
         fontSize: 16,
-        fontWeight: '500'
+        // fontWeight: '500'
+        fontFamily: 'poppinssemibold'
     },
     btn: {
         backgroundColor: 'black',
@@ -161,7 +164,8 @@ const styles = StyleSheet.create({
     teksin: {
         color: 'white',
         textAlign: 'center',
-        fontSize: 16
+        fontSize: 16,
+        fontFamily: 'poppins'
     },
     content: {
         // marginHorizontal: 5,
@@ -184,6 +188,7 @@ const styles = StyleSheet.create({
     teksProfile: {
         color: 'white',
         fontSize: 24,
-        fontWeight: '700'
+        // fontWeight: '700'
+        fontFamily: 'poppinsbold'
     }
 })

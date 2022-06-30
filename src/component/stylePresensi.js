@@ -4,13 +4,13 @@ import React from 'react'
 const styles = StyleSheet.create({
     card: {
         height: '99%',
-        marginTop:'1%',
+        marginTop: '1%',
         marginLeft: '2%',
         width: '96%',
-        borderRadius:10,
+        borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center',
-        justifyContent:'center',
+        justifyContent: 'center',
         backgroundColor: 'white',
         shadowColor: "#000",
         shadowOffset: {
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     },
     teksin: {
         color: '#061882',
-        fontWeight: 'bold',
+        fontFamily: 'poppinsmedium',
         fontSize: 16,
         textAlign: 'center'
     },
@@ -76,13 +76,14 @@ const styles = StyleSheet.create({
         color: 'gray',
         fontSize: 24,
         textAlign: 'center',
-        fontWeight: '700'
+        fontFamily: 'poppinssemibold'
     },
     title3: {
         color: 'gray',
         fontSize: 14,
         textAlign: 'center',
-        marginBottom: 35
+        marginBottom: 35,
+        fontFamily: 'poppins'
     }
 })
 

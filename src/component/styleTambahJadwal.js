@@ -5,17 +5,27 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: '#F5FBFF',
     },
-
-   bg :{
+    teks: {
+        fontFamily: 'poppins'
+    },
+    teks1: {
+        fontFamily: 'poppins',
+        marginBottom: 5
+    },
+    teks2: {
+        fontFamily: 'poppins',
+        marginTop: 10
+    },
+    bg: {
         backgroundColor: '#118eeb',
-        height:300,
+        height: 300,
         borderBottomEndRadius: 20,
         borderBottomStartRadius: 20,
-   },
+    },
 
     card: {
-        marginTop:-230,
-        marginBottom:70,
+        marginTop: -230,
+        marginBottom: 70,
         paddingTop: 30,
         paddingBottom: 30,
         backgroundColor: 'white',
@@ -44,9 +54,10 @@ const styles = StyleSheet.create({
         marginTop: 8,
         marginBottom: 15,
         padding: 8,
-        height:45,
-        borderRadius:8,
-        borderColor: 'gray'
+        height: 45,
+        borderRadius: 8,
+        borderColor: 'gray',
+        fontFamily: 'poppins'
     },
 
     button: {
@@ -54,17 +65,18 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         alignItems: 'center',
         padding: 10,
-        height:45,
-        marginTop:10,
+        height: 45,
+        marginTop: 10,
         marginBottom: 8,
 
     },
     box_tanggal: {
-        height:45,
+        height: 45,
         padding: 10,
         borderWidth: 1,
         borderRadius: 7,
-        borderColor: 'gray'
+        borderColor: 'gray',
+        fontFamily: 'poppins'
     }
 })
 

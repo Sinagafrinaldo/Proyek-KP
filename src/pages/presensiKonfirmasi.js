@@ -133,13 +133,13 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
 
                                                 }}
                                             >
-                                            <Ionicons
-                                                style={styles.ikon1}
-                                                name="book"
-                                                size={140}
-                                                color="#1FD851"
-                                            />
-                                                <Text style={{ fontSize: 18, fontWeight: 'bold', color: 'gray', marginBottom: 20, textAlign: 'center', }}>Klik Halaman Untuk</Text>
+                                                <Ionicons
+                                                    style={styles.ikon1}
+                                                    name="book"
+                                                    size={140}
+                                                    color="#1FD851"
+                                                />
+                                                <Text style={{ fontSize: 18, fontFamily: 'poppinssemibold', color: 'gray', marginBottom: 20, textAlign: 'center', }}>Klik Halaman Untuk</Text>
                                                 <Text style={styles.teksin}>ABSENSI</Text>
                                             </TouchableOpacity>
                                         </View>
@@ -153,15 +153,15 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
                                                 color="#1FD851"
                                             />
 
-                                            <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#118eeb', textAlign: 'center', }}>ABSENSI</Text>
-                                            <Text style={{ fontSize: 18, fontWeight: 'bold', color: 'gray', marginBottom: 30, textAlign: 'center', }}>ONLINE</Text>
+                                            <Text style={{ fontSize: 34, fontFamily: 'poppinssemibold', color: '#118eeb', textAlign: 'center', }}>ABSENSI</Text>
+                                            <Text style={{ fontSize: 18, fontFamily: 'poppins', color: 'gray', marginBottom: 30, textAlign: 'center', }}>ONLINE</Text>
 
                                             {/* <Image
                                                     style={styles.stretch}
                                                     source={require("../../assets/vector.png")}
                                                 /> */}
 
-                                            <Text style={{ fontSize: 15, fontWeight: '700', color: 'gray', marginBottom: 10, textAlign: 'center', }}>Selamat</Text>
+                                            <Text style={{ fontSize: 15, fontFamily: 'poppinssemibold', color: 'gray', marginBottom: 10, textAlign: 'center', }}>Selamat</Text>
                                             <Text style={styles.teksin}>Anda Sudah Melakukan</Text>
                                             <Text style={styles.teksin}>Absensi Hari Ini</Text>
 
@@ -176,7 +176,7 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
 
             {verif == false && (
                 <View style={{ backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-                    <Text>Maaf fitur ini hanya tersedia untuk user yang telah mendaftar..</Text>
+                    <Text style={{ fontFamily: 'poppins' }}>Maaf fitur ini hanya tersedia untuk user yang telah mendaftar..</Text>
                 </View>
             )}
 
@@ -210,13 +210,13 @@ export default PresensiKonfirmasi
 
 const styles = StyleSheet.create({
     card: {
-        height:'99%',
-        marginTop:'1%',
+        height: '99%',
+        marginTop: '1%',
         backgroundColor: 'white',
         width: '96%',
         alignItems: 'center',
         alignSelf: 'center',
-        justifyContent:'center',
+        justifyContent: 'center',
         borderRadius: 10,
         shadowColor: "#000",
         shadowOffset: {
@@ -228,8 +228,8 @@ const styles = StyleSheet.create({
 
         elevation: 6,
     },
-    ikon1 :{
-        marginTop:-21,
+    ikon1: {
+        marginTop: -21,
     },
     cekin: {
         backgroundColor: '#FFD600',
@@ -240,19 +240,19 @@ const styles = StyleSheet.create({
     },
     cekin1: {
         backgroundColor: '#FFD600',
-        padding:40,
+        padding: 40,
         borderRadius: 10,
         marginVertical: 20,
-        alignItems:'center',
-        width:'100%',
-        height:'100%',
-        justifyContent:'center'
+        alignItems: 'center',
+        width: '100%',
+        height: '100%',
+        justifyContent: 'center'
     },
     teksin: {
         color: '#2D7CF3',
-        fontWeight: 'bold',
+        fontFamily: 'poppinssemibold',
         fontSize: 24,
-        textAlign:'center',
+        textAlign: 'center',
     },
 
     cekout: {

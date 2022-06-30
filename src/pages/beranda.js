@@ -58,7 +58,10 @@ const Beranda1 = ({ navigation }) => {
     <View style={styles.container}>
       <View style={styles.wrap1}>
         <View style={styles.baris}>
-          <Text style={styles.title}>BalamApp</Text>
+          <View>
+            <Text style={styles.title}>KominfoApp</Text>
+            <Text style={styles.subtitle}>Bandar Lampung</Text>
+          </View>
           <View style={styles.wrapikon}>
             <Ionicons
               style={styles.ikon1}
@@ -125,11 +128,11 @@ const Beranda1 = ({ navigation }) => {
             <Text
               style={{
                 fontSize: 16,
-                fontWeight: "bold",
                 marginLeft: 20,
                 marginVertical: 8,
                 marginTop: 15,
                 color: 'gray',
+                fontFamily: 'poppinsbold'
               }}
             >
               Main Menu

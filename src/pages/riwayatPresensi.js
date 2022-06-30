@@ -58,7 +58,7 @@ const RiwayatPresensi = () => {
                                     <View style={styles.list1}>
                                         <View style={styles.data}>
                                             <View style={{ flexDirection: 'row', justifyContent: 'space-between', }}>
-                                                <Text style={{ fontSize: 18, fontWeight: 'bold', paddingBottom: 7, color: 'grey' }}>Nama : {item.nama}</Text>
+                                                <Text style={{ fontSize: 18, fontFamily: 'poppinssemibold', paddingBottom: 7, color: 'grey' }}>Nama : {item.nama}</Text>
                                                 <Ionicons
                                                     style={styles.ikonLokasi}
                                                     name="clipboard"
@@ -66,12 +66,12 @@ const RiwayatPresensi = () => {
                                                     color="#118eeb" />
                                             </View>
 
-                                            <Text style={{ paddingBottom: 12, color: 'grey' }}>Keterangan: {item.keterangan}</Text>
-                                            <Text style={{ textAlign: 'right', paddingBottom: 7, color: 'grey' }}>{item.tanggal}</Text>
+                                            <Text style={{ paddingBottom: 12, color: 'grey', fontFamily: 'poppins' }}>Keterangan: {item.keterangan}</Text>
+                                            <Text style={{ textAlign: 'right', paddingBottom: 7, color: 'grey', fontFamily: 'poppins' }}>{item.tanggal}</Text>
                                             <View style={{ width: '100%', height: 0.5, backgroundColor: '#D7DBDD' }}></View>
 
                                             <View style={{ paddingTop: 7, flexDirection: 'row', justifyContent: 'space-between', }}>
-                                                <Text style={{ fontSize: 16, color: 'grey', alignSelf: 'center' }}>Waktu: {item.waktu}</Text>
+                                                <Text style={{ fontSize: 16, color: 'grey', alignSelf: 'center', fontFamily: 'poppins' }}>Waktu: {item.waktu}</Text>
                                                 <Ionicons
                                                     style={styles.ikonLokasi}
                                                     name="time-outline"
@@ -92,7 +92,7 @@ const RiwayatPresensi = () => {
 
                 {verif == false && (
                     <View style={{ backgroundColor: 'white', alignSelf: 'center', justifyContent: 'center', alignItems: 'center', width: '96%', height: '100%' }}>
-                        <Text style={{ textAlign: 'center' }}>Maaf silahkan login terlebih dahulu untuk mengakses menu ini..</Text>
+                        <Text style={{ textAlign: 'center', fontFamily: 'poppins' }}>Maaf silahkan login terlebih dahulu untuk mengakses menu ini..</Text>
                     </View>
                 )}
             </View>

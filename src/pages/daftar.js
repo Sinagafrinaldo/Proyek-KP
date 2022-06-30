@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, Image, ScrollView, TextInput, TouchableOpacity, Alert, RefreshControl } from 'react-native'
-import React, {useCallback} from 'react'
+import React, { useCallback } from 'react'
 import styles from '../component/styleDaftar'
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { firebaseConfig } from '../firebase/config';
@@ -18,7 +18,7 @@ import {
 
 const wait = (timeout) => {
     return new Promise(resolve => setTimeout(resolve, timeout));
-  }
+}
 
 const Daftar = ({ navigation }) => {
     // const navigation = useNavigation();
@@ -78,16 +78,16 @@ const Daftar = ({ navigation }) => {
         onChangePassword();
         setConfPw();
         wait(1000).then(() => setRefreshing(false));
-      }, []);
+    }, []);
 
     return (
         <ScrollView
-        refreshControl={
-        <RefreshControl
-            refreshing={refreshing}
-            onRefresh={onRefresh}
-            />
-          }>
+            refreshControl={
+                <RefreshControl
+                    refreshing={refreshing}
+                    onRefresh={onRefresh}
+                />
+            }>
             <View style={styles.container}>
                 <View>
 
@@ -105,9 +105,9 @@ const Daftar = ({ navigation }) => {
                         />
                     </TouchableOpacity>
                     <View style={styles.card}>
-                        <Text style={{marginBottom: 5}}>Nama</Text>
+                        <Text style={{ marginBottom: 5 }}>Nama</Text>
 
-                        <View style={{flexDirection:'row'}}>
+                        <View style={{ flexDirection: 'row' }}>
                             <Ionicons
                                 style={styles.ikonMenu}
                                 name="document-text"
@@ -121,10 +121,10 @@ const Daftar = ({ navigation }) => {
                                 placeholder='Nama Lengkap ...'
                             />
                         </View>
-                        
-                        <Text style={{ marginTop: 20, marginBottom: 5}}>NIP</Text>
 
-                        <View style={{flexDirection:'row'}}>
+                        <Text style={{ marginTop: 20, marginBottom: 5 }}>NIP</Text>
+
+                        <View style={{ flexDirection: 'row' }}>
                             <Ionicons
                                 style={styles.ikonMenu}
                                 name="document-text"
@@ -138,9 +138,9 @@ const Daftar = ({ navigation }) => {
                                 placeholder='NIP...'
                             />
                         </View>
-                        <Text style={{ marginTop: 20, marginBottom: 5}}>Email</Text>
+                        <Text style={{ marginTop: 20, marginBottom: 5 }}>Email</Text>
 
-                        <View style={{flexDirection:'row'}}>
+                        <View style={{ flexDirection: 'row' }}>
                             <Ionicons
                                 style={styles.ikonMenu}
                                 name="mail"
@@ -154,8 +154,8 @@ const Daftar = ({ navigation }) => {
                                 placeholder='Email...'
                             />
                         </View>
-                        <Text style={{ marginTop: 20, marginBottom: 5}}>Kata Sandi</Text>
-                        <View style={{flexDirection:'row'}}>
+                        <Text style={{ marginTop: 20, marginBottom: 5 }}>Kata Sandi</Text>
+                        <View style={{ flexDirection: 'row' }}>
                             <Ionicons
                                 style={styles.ikonMenu}
                                 name="eye-off"
@@ -172,8 +172,8 @@ const Daftar = ({ navigation }) => {
                             />
                         </View>
                         <Text style={{ marginTop: 20, marginBottom: 5 }}>Konfirmasi Sandi</Text>
-                        
-                        <View style={{flexDirection:'row'}}>
+
+                        <View style={{ flexDirection: 'row' }}>
                             <Ionicons
                                 style={styles.ikonMenu}
                                 name="eye-off"

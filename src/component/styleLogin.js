@@ -111,9 +111,9 @@ const styles = StyleSheet.create({
         color: '#118eeb',
         fontWeight: 'bold',
     },
-    ikonMenu :{
-        position:'absolute',
-        bottom : 14,
+    ikonMenu: {
+        position: 'absolute',
+        bottom: 14,
         paddingLeft: 10
     }
 })

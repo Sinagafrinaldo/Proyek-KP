@@ -44,27 +44,27 @@ const TambahJadwal = ({ navigation }) => {
                 <Text style={{ color: '#1F76C6' }}>-</Text>
             </View>
             <View style={styles.card}>
-                <View style={styles.card2}>
-                    <Text>Nama Peliput</Text>
+                <View>
+                    <Text style={styles.teks}>Nama Peliput</Text>
                     <TextInput
                         style={styles.input}
                         onChangeText={setNewName}
                         value={newName}
                         placeholder='Nama...'
                     />
-                    <Text>Lokasi</Text>
+                    <Text style={styles.teks}>Lokasi</Text>
                     <TextInput
                         style={styles.input}
                         onChangeText={setNewLokasi}
                         value={newLokasi}
                         placeholder='Lokasi...'
                     />
-                    <Text style={{ marginBottom: 8 }}>Tanggal</Text>
+                    <Text style={styles.teks1}>Tanggal</Text>
                     <TouchableOpacity
                         onPress={() => setOpen(true)}
                         style={styles.box_tanggal}
                     >
-                        <Text>{selectedDate}</Text>
+                        <Text style={{ fontFamily: 'poppins' }}>{selectedDate}</Text>
                     </TouchableOpacity>
                     <Modal
                         animationType={'fade'}
@@ -101,7 +101,7 @@ const TambahJadwal = ({ navigation }) => {
                         />
                     </Modal>
 
-                    <Text style={{ marginTop: 15 }}>Keterangan</Text>
+                    <Text style={styles.teks2}>Keterangan</Text>
                     <TextInput
                         style={styles.input}
                         onChangeText={setNewKeterangan}
@@ -117,7 +117,7 @@ const TambahJadwal = ({ navigation }) => {
                         }
                         }
                     >
-                        <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold' }}>Tambah Jadwal</Text>
+                        <Text style={{ color: 'white', fontSize: 16, fontFamily: 'poppinssemibold' }}>Tambah Jadwal</Text>
                     </TouchableOpacity>
                 </View>
             </View>

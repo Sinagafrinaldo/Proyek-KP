@@ -6,8 +6,16 @@ import RiwayatPresensi from './riwayatPresensi';
 export default function TopPresensi() {
     return (
         <Tab.Navigator>
-            <Tab.Screen name="Menu Presensi" component={StackPresensi} />
-            <Tab.Screen name="Riwayat Presensi" component={RiwayatPresensi} />
+            <Tab.Screen name="Menu Presensi" component={StackPresensi} options={{
+                tabBarLabelStyle: {
+                    fontFamily: 'poppinssemibold'
+                }
+            }} />
+            <Tab.Screen name="Riwayat Presensi" component={RiwayatPresensi} options={{
+                tabBarLabelStyle: {
+                    fontFamily: 'poppinssemibold'
+                }
+            }} />
         </Tab.Navigator>
     );
 }

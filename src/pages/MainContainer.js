@@ -40,6 +40,7 @@ function MainContainer() {
                         paddingBottom: 5,
                         fontSize: 12,
                         paddingTop: -30,
+                        fontFamily: 'poppins'
 
                     },
                     tabBarStyle: [
@@ -47,6 +48,7 @@ function MainContainer() {
                             backgroundColor: '#118eeb',
                             display: "flex",
                             height: 70,
+
 
                         },
                         null
@@ -94,8 +96,12 @@ function MainContainer() {
                         headerTitleAlign: 'center',
                         headerStyle: {
                             backgroundColor: '#024d88',
+
                         },
-                        headerTintColor: 'white'
+                        headerTintColor: 'white',
+                        headerTitleStyle: {
+                            fontFamily: 'poppinssemibold'
+                        }
 
                     }} />
 
@@ -106,7 +112,10 @@ function MainContainer() {
                         headerStyle: {
                             backgroundColor: '#024d88'
                         },
-                        headerTintColor: 'white'
+                        headerTintColor: 'white',
+                        headerTitleStyle: {
+                            fontFamily: 'poppinssemibold'
+                        }
                     }} />
                 <Tab.Screen name={keluarName} component={Keluar}
                     options={{

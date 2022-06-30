@@ -11,11 +11,14 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         height: '100%',
     },
-    
+
     ikonAdd: {
         position: 'absolute',
         bottom: 30,
-        right: 40
+        right: 40,
+        backgroundColor: '#118eeb',
+        borderRadius: 100,
+        // borderWidth: 1
     },
     input: {
         borderWidth: 1,
@@ -27,7 +30,7 @@ const styles = StyleSheet.create({
         padding: 10,
         borderWidth: 1,
         borderRadius: 7,
-        borderColor:'grey',
+        borderColor: 'grey',
     },
     button: {
         backgroundColor: '#118eeb',
@@ -37,12 +40,12 @@ const styles = StyleSheet.create({
         padding: 10
     },
 
-    list1 :{
+    list1: {
         backgroundColor: 'white',
         flexDirection: 'row',
-        padding:15,
-        margin:10,
-        borderRadius:8,
+        padding: 15,
+        margin: 10,
+        borderRadius: 8,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -54,28 +57,28 @@ const styles = StyleSheet.create({
         elevation: 6,
     },
 
-    list2 :{
+    list2: {
         backgroundColor: '#118eeb',
-        height:26,
-        width :5,
+        height: 26,
+        width: 5,
     },
 
-    data :{
+    data: {
         paddingLeft: 8,
         width: '98%',
     },
 
-    btnHapus :{
-        backgroundColor: 'brown', 
-        padding: 10, 
+    btnHapus: {
+        backgroundColor: 'brown',
+        padding: 10,
         marginTop: 10,
-        borderRadius:8,
+        borderRadius: 8,
     },
 
-    cari :{
+    cari: {
         flexDirection: 'row',
         display: 'flex',
-        alignSelf:'center',
+        alignSelf: 'center',
 
     }
 })

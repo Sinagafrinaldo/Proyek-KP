@@ -35,7 +35,8 @@ function Beranda() {
           headerTintColor: '#fff',
           headerTitleAlign: 'center',
           headerTitleStyle: {
-            fontWeight: '500',
+            // fontWeight: '500',
+            fontFamily: 'poppinssemibold',
             justifyContent: 'center',
           },
         }}
@@ -52,7 +53,8 @@ function Beranda() {
           headerTintColor: '#fff',
           headerTitleAlign: 'center',
           headerTitleStyle: {
-            fontWeight: '500',
+            // fontWeight: '500',
+            fontFamily: 'poppinssemibold',
             justifyContent: 'center',
           },
         }}
@@ -69,7 +71,9 @@ function Beranda() {
           headerTintColor: '#fff',
           headerTitleAlign: 'center',
           headerTitleStyle: {
-            fontWeight: '500',
+            // fontWeight: '500',
+            fontFamily: 'poppinssemibold',
+            justifyContent: 'center',
           },
         }}
         name="Jadwal Liput"
@@ -85,7 +89,9 @@ function Beranda() {
           headerTintColor: '#fff',
           headerTitleAlign: 'center',
           headerTitleStyle: {
-            fontWeight: '500',
+            // fontWeight: '500',
+            fontFamily: 'poppinssemibold',
+            justifyContent: 'center',
           },
         }}
         name="Tambah Catatan"
@@ -102,7 +108,8 @@ function Beranda() {
           headerTintColor: '#fff',
           headerTitleAlign: 'center',
           headerTitleStyle: {
-            fontWeight: '500',
+            // fontWeight: '500',
+            fontFamily: 'poppinssemibold',
             justifyContent: 'center',
           },
         }}
@@ -125,7 +132,8 @@ function Beranda() {
           headerTintColor: '#fff',
           headerTitleAlign: 'center',
           headerTitleStyle: {
-            fontWeight: '500',
+            // fontWeight: '500',
+            fontFamily: 'poppinssemibold',
             justifyContent: 'center',
           },
         }}
@@ -142,7 +150,8 @@ function Beranda() {
           headerTintColor: '#fff',
           headerTitleAlign: 'center',
           headerTitleStyle: {
-            fontWeight: '500',
+            // fontWeight: '500',
+            fontFamily: 'poppinssemibold',
             justifyContent: 'center',
           },
         }}

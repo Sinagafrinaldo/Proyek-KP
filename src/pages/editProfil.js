@@ -13,7 +13,7 @@ import { firebaseConfig } from '../firebase/config';
 import { initializeApp } from 'firebase/app';
 import { db } from '../firebase/crudConf';
 const EditProfil = ({ route, navigation }) => {
-    const { nama, nip, id, email } = route.params;
+    const { nama, nip, id, email, inisial } = route.params;
     // console.log(id, "sadsd")
     const [nama1, setNama1] = useState(nama)
     const [nip1, setNip1] = useState(nip)
@@ -37,7 +37,7 @@ const EditProfil = ({ route, navigation }) => {
                 style={{ backgroundColor: '#66baff', height: 90 }}
             ></View>
             <View style={styles.symbol}>
-                <Text style={styles.teksProfile}>LS</Text>
+                <Text style={styles.teksProfile}>{inisial}</Text>
             </View>
 
             <Text style={styles.teksin}>Edit Profil</Text>
@@ -95,22 +95,26 @@ const styles = StyleSheet.create({
     teksup: {
         color: 'white',
         fontSize: 16,
-        fontWeight: '500'
+        // fontWeight: '500'
+        fontFamily: 'poppinssemibold'
     },
     title: {
         color: '#949494',
-        marginVertical: 5
+        marginVertical: 5,
+        fontFamily: 'poppins'
     },
     subtitle: {
         color: '#4c4c4c',
         fontSize: 16,
-        fontWeight: '500'
+        // fontWeight: '500'
+        fontFamily: 'poppins'
     },
     teksin: {
         marginTop: 10,
         color: 'gray',
         textAlign: 'center',
-        fontSize: 16
+        fontSize: 16,
+        fontFamily: 'poppins'
     },
     content: {
         // marginHorizontal: 5,
@@ -142,12 +146,14 @@ const styles = StyleSheet.create({
     teksProfile: {
         color: 'white',
         fontSize: 24,
-        fontWeight: '700'
+        // fontWeight: '700'
+        fontFamily: 'poppinsbold'
     },
     boxnama: {
         borderWidth: 1,
         borderRadius: 10,
         padding: 10,
-        borderColor: 'gray'
+        borderColor: 'gray',
+        fontFamily: 'poppins'
     }
 })

@@ -119,8 +119,8 @@ const Keluar = () => {
                     <View style={styles.card}>
 
                         <Text style={{ marginBottom: 5 }}>Email</Text>
-                        
-                        <View style={{flexDirection:'row'}}>
+
+                        <View style={{ flexDirection: 'row' }}>
                             <Ionicons
                                 style={styles.ikonMenu}
                                 name="document-text"
@@ -137,7 +137,7 @@ const Keluar = () => {
 
                         <Text style={{ marginTop: 20, marginBottom: 5 }}>Kata Sandi</Text>
 
-                        <View style={{flexDirection:'row'}}>
+                        <View style={{ flexDirection: 'row' }}>
                             <Ionicons
                                 style={styles.ikonMenu}
                                 name="eye-off"
