@@ -110,22 +110,28 @@ const Keluar = () => {
                     onRefresh={onRefresh}
                 />
             }
-            style={{ backgroundColor: 'white', }}>
+            style={{ backgroundColor: 'white', height:1000, }}>
             {status == false && (
                 <View style={styles.container}>
                     <View style={styles.wrap1}>
-                        <Text style={styles.login}>Selamat Datang di Menu Login</Text>
+                        <Text style={styles.login}>Selamat Datang</Text>
+
+                        <Image
+                            style={styles.stretch}
+                            source={require("../../assets/login.png")}
+                        />
                     </View>
                     <View style={styles.card}>
-
-                        <Text style={{ marginBottom: 5 }}>Email</Text>
+                        <Text style={{marginBottom:5,alignSelf:'center', color: '#118eeb',fontWeight:'bold', fontSize:18}}>LOGIN</Text>
+                        <View style={{ width: '70%', height: 1.5, alignSelf:'center', backgroundColor: '#D7DBDD' }}></View>
+                        <Text style={{ color:'gray' ,marginTop: 20, marginBottom: 5 }}>Email</Text>
 
                         <View style={{ flexDirection: 'row' }}>
                             <Ionicons
                                 style={styles.ikonMenu}
-                                name="document-text"
+                                name="mail"
                                 size={20}
-                                color="#ABB2B9"
+                                color="#D7DBDD"
                             />
                             <TextInput
                                 onChangeText={email => onChangeNip(email)}
@@ -135,14 +141,14 @@ const Keluar = () => {
                             />
                         </View>
 
-                        <Text style={{ marginTop: 20, marginBottom: 5 }}>Kata Sandi</Text>
+                        <Text style={{ color:'gray',marginTop: 20, marginBottom: 5 }}>Kata Sandi</Text>
 
                         <View style={{ flexDirection: 'row' }}>
                             <Ionicons
                                 style={styles.ikonMenu}
                                 name="eye-off"
                                 size={20}
-                                color="#ABB2B9"
+                                color="#D7DBDD"
                             />
                             <TextInput
                                 onChangeText={password => onChangePassword(password)}

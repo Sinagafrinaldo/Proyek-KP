@@ -66,7 +66,7 @@ const Beranda1 = ({ navigation }) => {
             <Ionicons
               style={styles.ikon1}
               name="notifications"
-              size={30}
+              size={26}
               color="white"
             />
             <TouchableOpacity
@@ -79,7 +79,7 @@ const Beranda1 = ({ navigation }) => {
               <Ionicons
                 style={styles.ikon2}
                 name="person-circle"
-                size={34}
+                size={30}
                 color="white"
               />
             </TouchableOpacity>

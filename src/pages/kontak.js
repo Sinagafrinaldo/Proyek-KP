@@ -1,6 +1,5 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import { createStackNavigator } from '@react-navigation/stack';
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 

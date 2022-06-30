@@ -93,7 +93,12 @@ const Daftar = ({ navigation }) => {
 
                     <View style={styles.wrap1}>
 
-                        <Text style={styles.login}>Selamat Datang di Menu Daftar</Text>
+                        <Text style={styles.login}>Selamat Datang</Text>
+
+                        <Image
+                            style={styles.stretch}
+                            source={require("../../assets/daftar.png")}
+                        />
                     </View>
                     <TouchableOpacity style={styles.back}
                         onPress={() => { navigation.goBack() }}>
@@ -105,12 +110,14 @@ const Daftar = ({ navigation }) => {
                         />
                     </TouchableOpacity>
                     <View style={styles.card}>
-                        <Text style={{ marginBottom: 5 }}>Nama</Text>
+                        <Text style={{marginBottom:5,alignSelf:'center', color: '#118eeb',fontWeight:'bold', fontSize:18}}>DAFTAR</Text>
+                        <View style={{ width: '70%', height: 1.5, alignSelf:'center', backgroundColor: '#D7DBDD' }}></View>
+                        <Text style={{ color:'gray', marginTop: 20, marginBottom: 5 }}>Nama</Text>
 
                         <View style={{ flexDirection: 'row' }}>
                             <Ionicons
                                 style={styles.ikonMenu}
-                                name="document-text"
+                                name="person"
                                 size={20}
                                 color="#ABB2B9"
                             />
@@ -122,7 +129,7 @@ const Daftar = ({ navigation }) => {
                             />
                         </View>
 
-                        <Text style={{ marginTop: 20, marginBottom: 5 }}>NIP</Text>
+                        <Text style={{ color:'gray', marginTop: 20, marginBottom: 5 }}>NIP</Text>
 
                         <View style={{ flexDirection: 'row' }}>
                             <Ionicons
@@ -138,7 +145,7 @@ const Daftar = ({ navigation }) => {
                                 placeholder='NIP...'
                             />
                         </View>
-                        <Text style={{ marginTop: 20, marginBottom: 5 }}>Email</Text>
+                        <Text style={{ color:'gray', marginTop: 20, marginBottom: 5 }}>Email</Text>
 
                         <View style={{ flexDirection: 'row' }}>
                             <Ionicons
@@ -154,7 +161,7 @@ const Daftar = ({ navigation }) => {
                                 placeholder='Email...'
                             />
                         </View>
-                        <Text style={{ marginTop: 20, marginBottom: 5 }}>Kata Sandi</Text>
+                        <Text style={{ color:'gray', marginTop: 20, marginBottom: 5 }}>Kata Sandi</Text>
                         <View style={{ flexDirection: 'row' }}>
                             <Ionicons
                                 style={styles.ikonMenu}
@@ -171,7 +178,7 @@ const Daftar = ({ navigation }) => {
                                 secureTextEntry
                             />
                         </View>
-                        <Text style={{ marginTop: 20, marginBottom: 5 }}>Konfirmasi Sandi</Text>
+                        <Text style={{ color:'gray', marginTop: 20, marginBottom: 5 }}>Konfirmasi Sandi</Text>
 
                         <View style={{ flexDirection: 'row' }}>
                             <Ionicons
