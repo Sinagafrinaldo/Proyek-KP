@@ -1,9 +1,23 @@
-import * as React from 'react';
+// import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { StatusBar } from 'expo-status-bar';
+import {
+    collection,
+    getDocs,
+    addDoc,
+    updateDoc,
+    deleteDoc,
+    doc,
+} from "firebase/firestore"
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { firebaseConfig } from '../firebase/config';
+import { initializeApp } from 'firebase/app';
+import { db } from '../firebase/crudConf';
+import React, { useState, useEffect } from "react";
+import { useFocusEffect, } from '@react-navigation/native';
 // Screens
 import Beranda from './Stack';
 import Jadwal from './jadwal';
@@ -16,12 +30,43 @@ const homeName = "Beranda";
 const presensiName = "Presensi";
 const jadwalName = "Jadwal";
 const pengaturanName = "Pengaturan";
-const keluarName = "Masuk"
+// var keluarName = "Masuk"
 
 const Tab = createBottomTabNavigator();
 
 
 function MainContainer() {
+    const [keluarName, setkeluarName] = useState('Masuk')
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    // useFocusEffect(
+    //     React.useCallback(() => {
+
+    //         const unsubscribe = auth.onAuthStateChanged(user => {
+    //             if (user != null) {
+    //                 setkeluarName('Keluar')
+    //             } else {
+    //                 setkeluarName('Masuk')
+    //             }
+    //         })
+
+    //         return unsubscribe
+    //     }, [])
+    // );
+    useEffect(() => {
+
+        const unsubscribe = auth.onAuthStateChanged(user => {
+            if (user != null) {
+                setkeluarName('Keluar')
+            } else {
+                setkeluarName('Masuk')
+            }
+        })
+
+        return unsubscribe
+
+    }, [])
+
     return (
         <NavigationContainer>
             <Tab.Navigator
