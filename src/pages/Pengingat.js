@@ -2,7 +2,7 @@ import Constants from 'expo-constants';
 import * as Notifications from 'expo-notifications';
 import React, { useState, useEffect, useRef } from 'react';
 import { Picker } from '@react-native-picker/picker';
-import { Text, Alert, View, Button, Platform, ScrollView, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, Alert, View, Image, Button, Platform, ScrollView, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 
 
 
@@ -53,92 +53,97 @@ export default function Pengingat() {
 
     return (
 
-        <ScrollView>
-            <View style={styles.wrapper}>
-                <Text style={styles.judul_besar}>Pengingat App</Text>
-            </View>
+        <ScrollView style={{backgroundColor:'white'}}>
             <View style={styles.content}>
-
-                <View style={styles.head}>
-                    <Text style={styles.teks_judul}>Judul pengingat:{judul} </Text>
-                    <Text style={styles.teks_isi}>Isi pengingat: {isi}</Text>
+                <View style={styles.data}>
+                    <View style={styles.head}>   
+                        <Text style={styles.teks_judul}>Judul pengingat :</Text>
+                        <Text style={{marginTop:3}}>{judul} </Text>
+                        <Text style={styles.teks_isi}>Isi pengingat :</Text>
+                        <Text style={{marginTop:3}}>{isi}</Text>
+                    </View>
+                    <Image
+                        style={styles.stretch}
+                        source={require("../../assets/pengingat.png")}
+                    />      
                 </View>
 
+                <View style={{padding:6}}>
+                    <Text>Judul Notifikasi</Text>
+                    <TextInput
+                        style={styles.box_input}
+                        placeholder="Masukkan judul notifikasi"
+                        onChangeText={newJudul => setJudul(newJudul)}
+                        defaultValue={judul}
+                    />
+                    <Text>Isi Notifikasi</Text>
+                    <TextInput
+                        style={styles.box_input}
+                        placeholder="Isi notifikasi..."
+                        onChangeText={newIsi => setIsi(newIsi)}
+                        defaultValue={isi}
+                    />
+                    <Text>Lama Waktu Notifikasi (Jam, Menit, Detik)</Text>
+                    <View style={styles.waktu}>
 
-                <Text>Judul Notifikasi</Text>
-                <TextInput
-                    style={styles.box_input}
-                    placeholder="Masukkan judul notifikasi"
-                    onChangeText={newJudul => setJudul(newJudul)}
-                    defaultValue={judul}
-                />
-                <Text>Isi Notifikasi</Text>
-                <TextInput
-                    style={styles.box_input}
-                    placeholder="Isi notifikasi..."
-                    onChangeText={newIsi => setIsi(newIsi)}
-                    defaultValue={isi}
-                />
-                <Text>Lama Waktu Notifikasi (Jam, Menit, Detik)</Text>
-                <View style={styles.waktu}>
-
-                    <Picker
-                        selectedValue={jam}
-                        style={styles.box_opsi}
-                        onValueChange={(jam) => {
-                            setJam(jam);
-                        }}
-                    >
-                        {
-                            listjam.map((p) => (
-                                <Picker.Item key={p} label={p} value={p} />
-                            ))
-                        }
-                    </Picker>
-                    <Picker
-                        selectedValue={menit}
-                        style={styles.box_opsi}
-                        onValueChange={(menit) => {
-                            setMenit(menit);
-                        }}
-                    >
-                        {
-                            listmenit.map((p) => (
-                                <Picker.Item key={p} label={p} value={p} />
-                            ))
-                        }
-                    </Picker>
-                    <Picker
-                        selectedValue={detik}
-                        style={styles.box_opsi}
-                        onValueChange={(detik) => {
-                            setDetik(detik);
-                        }}
-                    >
-                        {
-                            listdetik.map((p) => (
-                                <Picker.Item key={p} label={p} value={p} />
-                            ))
-                        }
-                    </Picker>
-
-                </View>
-                <TouchableOpacity style={styles.tombol}
-                    onPress={
-
-                        async () => {
-                            if (judul == '' || isi == '') {
-                                alert("Silahkan isi judul dan isi")
-                            } else {
-
-
-                                Alert.alert("Sukses", "Pengingat muncul dalam " + jam + " jam, " + menit + " menit, " + detik + " detik.")
-                                await schedulePushNotification(judul, isi, jam, menit, detik);
+                        <Picker
+                            selectedValue={jam}
+                            style={styles.box_opsi}
+                            onValueChange={(jam) => {
+                                setJam(jam);
+                            }}
+                        >
+                            {
+                                listjam.map((p) => (
+                                    <Picker.Item key={p} label={p} value={p} />
+                                ))
                             }
-                        }
-                    }>
-                    <Text style={styles.teks}>Buat Notifikasi</Text>
-                </TouchableOpacity>
+                        </Picker>
+                        <Picker
+                            selectedValue={menit}
+                            style={styles.box_opsi}
+                            onValueChange={(menit) => {
+                                setMenit(menit);
+                            }}
+                        >
+                            {
+                                listmenit.map((p) => (
+                                    <Picker.Item key={p} label={p} value={p} />
+                                ))
+                            }
+                        </Picker>
+                        <Picker
+                            selectedValue={detik}
+                            style={styles.box_opsi}
+                            onValueChange={(detik) => {
+                                setDetik(detik);
+                            }}
+                        >
+                            {
+                                listdetik.map((p) => (
+                                    <Picker.Item key={p} label={p} value={p} />
+                                ))
+                            }
+                        </Picker>
+
+                    </View>
+                    <TouchableOpacity style={styles.tombol}
+                        onPress={
+
+                            async () => {
+                                if (judul == '' || isi == '') {
+                                    alert("Silahkan isi judul dan isi")
+                                } else {
+
+
+                                    Alert.alert("Sukses", "Pengingat muncul dalam " + jam + " jam, " + menit + " menit, " + detik + " detik.")
+                                    await schedulePushNotification(judul, isi, jam, menit, detik);
+                                }
+                            }
+                        }>
+                        <Text style={styles.teks}>Buat Notifikasi</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         </ScrollView>
 
@@ -194,6 +199,16 @@ async function registerForPushNotificationsAsync() {
 }
 
 const styles = StyleSheet.create({
+    content: {
+        backgroundColor: 'white',
+        borderColor: 'black',
+        flex: 1,
+        height:'100%',
+        marginBottom: 3,
+        paddingHorizontal: 10,
+        marginTop:-25,
+    },
+    
     box_input: {
         borderBottomWidth: 1,
         padding: 10,
@@ -206,6 +221,41 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
 
     },
+    data :{
+        flexDirection:'row',
+    },
+
+    head: {
+        backgroundColor: '#007874',
+        width: 280,
+        height:140,
+        padding: 12,
+        borderBottomLeftRadius: 10,
+        borderTopStartRadius: 10,
+        borderBottomRightRadius: 10,
+        marginTop: 90,
+        marginLeft:6,
+        justifyContent:'center'
+    },
+
+    stretch: {
+        alignSelf:'center',
+        resizeMode: 'stretch',
+        width: 330,
+        height:260,
+        marginLeft:-237,
+    },
+
+    teks_isi: {
+        color: 'white',
+        fontSize: 18,
+        marginTop:15,
+    },
+    teks_judul: {
+        color: 'white',
+        fontSize: 18
+    },
+    
     box_opsi: {
         borderWidth: 1,
         marginVertical: 5,
@@ -226,41 +276,9 @@ const styles = StyleSheet.create({
         fontWeight: '700',
         textAlign: 'center'
     },
-    head: {
-        backgroundColor: '#007874',
-        width: '100%',
-        padding: 10,
-        borderRadius: 10,
-    },
-    teks_isi: {
-        color: 'white',
-        fontSize: 20
-    },
-    teks_judul: {
-        color: 'white',
-        marginBottom: 20,
-        fontSize: 20
-    },
-    content: {
-        backgroundColor: 'white',
-        borderColor: 'black',
-        flex: 1,
-        marginTop: -190,
-        marginBottom: 3,
-        paddingHorizontal: 30,
-        width: '94%',
-        paddingVertical: 20,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 3,
-        },
-        shadowOpacity: 0.27,
-        shadowRadius: 4.65,
-        elevation: 4,
-        borderRadius: 9,
-        alignSelf: 'center'
-    },
+   
+  
+
     wrapper: {
         backgroundColor: '#0041a3',
         marginTop: '10%',
@@ -273,5 +291,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         marginTop: 20,
         fontWeight: 'bold'
-    }
+    },
+
+   
 });
