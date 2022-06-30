@@ -26,20 +26,27 @@ const styles = StyleSheet.create({
     container: {
         display: 'flex',
         flex: 1,
-        backgroundColor: '#F5FBFF',
     },
 
     wrap1: {
         backgroundColor: '#118eeb',
         borderBottomEndRadius: 20,
         borderBottomStartRadius: 20,
-        height: 350,
         justifyContent: 'center',
 
     },
 
+    stretch: {
+        alignSelf:'center',
+        resizeMode: 'stretch',
+        width: 330,
+        height:260,
+
+    },
+    
     login: {
-        marginTop: -80,
+        paddingTop:50,
+        paddingBottom:20,
         textAlign: 'center',
         color: 'white',
         fontSize: 28,
@@ -53,14 +60,14 @@ const styles = StyleSheet.create({
         top: 50
     },
     card: {
-        marginTop: -150,
-        marginBottom: 130,
-        paddingTop: 30,
+        marginBottom:10,
+        marginTop: -60,
+        paddingTop: 25,
         paddingBottom: 30,
         backgroundColor: 'white',
         padding: 20,
         borderRadius: 8,
-        width: 300,
+        width: '94%',
         alignSelf: 'center',
         shadowColor: "#000",
         shadowOffset: {
@@ -75,9 +82,9 @@ const styles = StyleSheet.create({
     boxnip: {
         borderWidth: 1,
         borderRadius: 10,
-        width: 260,
+        width: '100%',
         padding: 10,
-        borderColor: 'gray',
+        borderColor: '#D7DBDD',
         paddingLeft: 38,
 
     },
@@ -88,20 +95,15 @@ const styles = StyleSheet.create({
         marginHorizontal: 25
     },
     tombol: {
-        backgroundColor: '#246bfd',
+        backgroundColor: '#118eeb',
         marginTop: 20,
         padding: 10,
         alignItems: 'center',
         borderRadius: 10
     },
-    tombol2: {
-        backgroundColor: '#e9f0ff',
-        marginTop: 20,
-        padding: 10,
-        alignItems: 'center',
-        borderRadius: 10
-    },
+
     tekslogin: {
+        padding:6,
         color: 'white',
         fontSize: 16,
         fontWeight: '700',

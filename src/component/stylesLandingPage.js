@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     ikon1: {
-        marginTop: 6,
+        marginTop: 7,
         marginRight: 14,
     },
     ikon2: {

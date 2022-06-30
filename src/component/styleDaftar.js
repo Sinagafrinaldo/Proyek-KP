@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     container: {
         display: 'flex',
         flex: 1,
-        backgroundColor: '#F5FBFF',
+        backgroundColor: 'white',
     },
 
     wrap1: {
@@ -18,28 +18,38 @@ const styles = StyleSheet.create({
     },
 
     login: {
-        marginTop: -200,
         textAlign: 'center',
+        paddingBottom:20,
         color: 'white',
         fontSize: 28,
         fontWeight: '700',
         width: '80%',
         marginLeft: '10%',
     },
+
+    stretch: {
+        alignSelf:'center',
+        resizeMode: 'stretch',
+        width: 330,
+        height:260,
+
+    },
+
     back: {
         position: 'absolute',
         left: 30,
         top: 50
     },
+    
     card: {
-        marginTop: -270,
-        marginBottom: 130,
-        paddingTop: 30,
+        marginTop: -175,
+        marginBottom: 10,
+        paddingTop: 25,
         paddingBottom: 30,
         backgroundColor: 'white',
         padding: 20,
         borderRadius: 8,
-        width: 300,
+        width: '94%',
         alignSelf: 'center',
         shadowColor: "#000",
         shadowOffset: {
@@ -54,9 +64,9 @@ const styles = StyleSheet.create({
     boxnip: {
         borderWidth: 1,
         borderRadius: 10,
-        width: 260,
+        width: '100%',
         padding: 10,
-        borderColor: 'gray',
+        borderColor: '#D7DBDD',
         paddingLeft: 38,
 
     },
@@ -73,8 +83,9 @@ const styles = StyleSheet.create({
         borderRadius: 10
     },
     tekslogin: {
+        padding:6,
         color: 'white',
-        fontSize: 20,
+        fontSize: 16,
         fontWeight: 'bold'
         ,
     },
