@@ -16,6 +16,7 @@ import { db } from '../firebase/crudConf';
 import { useNavigation, useFocusEffect, NavigationContainer } from '@react-navigation/native';
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { ScrollView } from 'react-native-gesture-handler';
+import styles from "../component/stylepresensiKonfirmasi";
 
 const PresensiKonfirmasi = ({ route, navigation }) => {
     const { pengguna1, presensi1, verif, email } = route.params;
@@ -108,7 +109,7 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
     );
 
     return (
-        <View style={{ backgroundColor: '#F5FBFF', justifyContent: 'center', flex: 1, display: 'flex' }}>
+        <ScrollView contentContainerStyle={{backgroundColor:'white', flexGrow: 1}}>
             {verif == true && (
                 <View>
 
@@ -146,22 +147,24 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
                                     )}
                                     {check == true && (
                                         <View style={styles.card}>
-                                            <Ionicons
+                                            {/* <Ionicons
                                                 style={styles.ikon1}
                                                 name="shield-checkmark-outline"
                                                 size={140}
                                                 color="#1FD851"
+                                            /> */}
+                                        
+                                        <Image
+                                                style={styles.stretch}
+                                                source={require("../../assets/absensi.png")}
                                             />
 
                                             <Text style={{ fontSize: 34, fontFamily: 'poppinssemibold', color: '#118eeb', textAlign: 'center', }}>ABSENSI</Text>
                                             <Text style={{ fontSize: 18, fontFamily: 'poppins', color: 'gray', marginBottom: 30, textAlign: 'center', }}>ONLINE</Text>
 
-                                            {/* <Image
-                                                    style={styles.stretch}
-                                                    source={require("../../assets/vector.png")}
-                                                /> */}
+                                            
 
-                                            <Text style={{ fontSize: 15, fontFamily: 'poppinssemibold', color: 'gray', marginBottom: 10, textAlign: 'center', }}>Selamat</Text>
+                                            <Text style={{ fontSize: 15, fontFamily: 'poppinssemibold', color: 'gray', marginBottom: 8, textAlign: 'center', }}>Selamat</Text>
                                             <Text style={styles.teksin}>Anda Sudah Melakukan</Text>
                                             <Text style={styles.teksin}>Absensi Hari Ini</Text>
 
@@ -202,100 +205,8 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
                     navigation.navigate('Presensi1')
                 }}
             />
-        </View>
+        </ScrollView>
     )
 }
 
 export default PresensiKonfirmasi
-
-const styles = StyleSheet.create({
-    card: {
-        height: '99%',
-        marginTop: '1%',
-        backgroundColor: 'white',
-        width: '96%',
-        alignItems: 'center',
-        alignSelf: 'center',
-        justifyContent: 'center',
-        borderRadius: 10,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 3,
-        },
-        shadowOpacity: 0.27,
-        shadowRadius: 4.65,
-
-        elevation: 6,
-    },
-    ikon1: {
-        marginTop: -21,
-    },
-    cekin: {
-        backgroundColor: '#FFD600',
-        paddingVertical: 10,
-        paddingHorizontal: 30,
-        borderRadius: 10,
-        marginVertical: 20
-    },
-    cekin1: {
-        backgroundColor: '#FFD600',
-        padding: 40,
-        borderRadius: 10,
-        marginVertical: 20,
-        alignItems: 'center',
-        width: '100%',
-        height: '100%',
-        justifyContent: 'center'
-    },
-    teksin: {
-        color: '#2D7CF3',
-        fontFamily: 'poppinssemibold',
-        fontSize: 24,
-        textAlign: 'center',
-    },
-
-    cekout: {
-        backgroundColor: '#E5E5E5',
-        paddingVertical: 10,
-        paddingHorizontal: 30,
-        borderRadius: 10,
-        marginBottom: 20
-    },
-    teksout: {
-        color: '#AAAAAA',
-        fontWeight: 'bold'
-    },
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#fff',
-    },
-    button: {
-        margin: 10,
-        paddingHorizontal: 10,
-        paddingVertical: 7,
-        borderRadius: 5,
-        backgroundColor: "#AEDEF4",
-    },
-    text: {
-        color: '#fff',
-        fontSize: 15
-    },
-    title2: {
-        color: 'gray',
-        fontSize: 24,
-        textAlign: 'center',
-        fontWeight: '700'
-    },
-    title3: {
-        color: 'gray',
-        fontSize: 14,
-        textAlign: 'center',
-        marginBottom: 35
-    }
-    // stretch :{
-    //     resizeMode: 'stretch',
-    // },
-});
