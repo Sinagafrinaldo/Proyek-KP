@@ -30,8 +30,31 @@ const Catatan = ({ navigation }) => {
         // console.log(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
         setCatatan(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
-
-    const dekripsi = (teks, teks1) => {
+    const deleteCatatan = async (id) => {
+        const userCatatan = doc(db, "catatan", id);
+        await deleteDoc(userCatatan);
+        getCatatan();
+    };
+    const showConfirmDialog = (value) => {
+        console.log(value)
+        return Alert.alert(
+            "Hapus ?",
+            "Apakah anda yakin ingin menghapus ?",
+            [
+                {
+                    text: "Ya",
+                    onPress: () => {
+                        deleteCatatan(value)
+                    },
+                },
+                {
+                    text: "Tidak",
+                },
+            ]
+        );
+        // deleteUser(value)
+    };
+    const dekripsi = (teks, teks1, id) => {
         var C = require("crypto-js");
 
         var Decrypted = C.AES.decrypt(teks, "your password");
@@ -41,17 +64,35 @@ const Catatan = ({ navigation }) => {
         var result1 = Decrypted1.toString(C.enc.Utf8);
         // console.log(result)
         return (
-            <TouchableOpacity style={styles.card} onPress={() => {
-                navigation.navigate('Detail Catatan', {
-                    judul: result,
-                    isi: result1
-                })
-            }}>
-                <Text style={{ fontFamily: 'poppinssemibold' }}>  {result}</Text>
-                <Text style={{ fontFamily: 'poppins' }} >  {((result1).length > 20) ?
-                    (((result1).substring(0, 80 - 3)) + '...') :
-                    result1}</Text>
-            </TouchableOpacity>
+            <View>
+                <TouchableOpacity style={styles.card} onPress={() => {
+                    navigation.navigate('Detail Catatan', {
+                        judul: result,
+                        isi: result1
+                    })
+                }}>
+                    <Text style={{ fontFamily: 'poppinssemibold' }}>  {result}</Text>
+                    <Text style={{ fontFamily: 'poppins' }} >  {((result1).length > 20) ?
+                        (((result1).substring(0, 80 - 3)) + '...') :
+                        result1}</Text>
+                    <TouchableOpacity
+                        // style={styles.btnHapus}
+                        onPress={() => {
+                            showConfirmDialog(id);
+                        }}
+                    >
+                        <Ionicons
+                            // style={styles.ikon2}
+                            name="trash"
+                            size={34}
+                            color="red"
+                        />
+
+
+                    </TouchableOpacity>
+                </TouchableOpacity>
+
+            </View>
         )
     }
     useFocusEffect(
@@ -84,7 +125,7 @@ const Catatan = ({ navigation }) => {
                             renderItem={({ item, index }) => (
                                 <View>
                                     {item.email == email && (
-                                        dekripsi(item.judul, item.isi)
+                                        dekripsi(item.judul, item.isi, item.id)
                                         // <View style={styles.card}>
                                         //     {/* <Text style={{ fontFamily: 'poppinssemibold' }}>{item.judul}</Text> */}
                                         //     {/* <Text> {() => { dekripsi(item.judul) }}</Text> */}
