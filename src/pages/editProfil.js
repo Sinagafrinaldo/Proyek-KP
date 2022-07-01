@@ -1,5 +1,5 @@
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView } from 'react-native'
-import React, { useState } from 'react'
+import { View, Image, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, TouchableHighlight } from 'react-native'
+import React, { useState, useEffect } from 'react'
 import {
     collection,
     getDocs,
@@ -10,11 +10,17 @@ import {
 } from "firebase/firestore"
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { firebaseConfig } from '../firebase/config';
-import { initializeApp } from 'firebase/app';
+import * as ImagePicker from 'expo-image-picker';
 import { db } from '../firebase/crudConf';
+import { useFocusEffect } from '@react-navigation/native';
+import { initializeApp } from 'firebase/app'; //validate yourself
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'; //access the storage database
+initializeApp(firebaseConfig);
 const EditProfil = ({ route, navigation }) => {
     const { nama, nip, id, email, inisial } = route.params;
     // console.log(id, "sadsd")
+    // const [imageUrl, setImageUrl] = useState(undefined);
+    const [url, setUrl] = useState();
     const [nama1, setNama1] = useState(nama)
     const [nip1, setNip1] = useState(nip)
     const updateUser = async (id) => {
@@ -24,6 +30,52 @@ const EditProfil = ({ route, navigation }) => {
         // getUsers();
     };
 
+    useEffect(() => {
+
+        (async () => {
+            if (Platform.OS !== 'web') {
+                const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+                if (status !== 'granted') {
+                    alert('Sorry, we need camera roll permissions to make this work!');
+                }
+            }
+        })();
+
+    }, []);
+
+    useFocusEffect(
+        React.useCallback(() => {
+            const func = async () => {
+                const storage = getStorage();
+                const reference = ref(storage, '/' + email.toLowerCase());
+                await getDownloadURL(reference).then((x) => {
+                    setUrl(x);
+                })
+            }
+
+            if (url == undefined) { func() };
+        }, [])
+    );
+
+    const pickImage = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: true,
+            aspect: [3, 3],
+            quality: 1,
+        });
+
+        if (!result.cancelled) {
+            const storage = getStorage(); //the storage itself
+            const refe = ref(storage, email.toLowerCase()); //how the image will be addressed inside the storage
+
+            //convert image to array of bytes
+            const img = await fetch(result.uri);
+            const bytes = await img.blob();
+
+            await uploadBytes(refe, bytes); //upload images
+        }
+    };
     // const deleteUser = async (id) => {
     //     const userDoc = doc(db, "jadwal", id);
     //     await deleteDoc(userDoc);
@@ -36,9 +88,12 @@ const EditProfil = ({ route, navigation }) => {
             <View
                 style={{ backgroundColor: '#66baff', height: 90 }}
             ></View>
-            <View style={styles.symbol}>
-                <Text style={styles.teksProfile}>{inisial}</Text>
-            </View>
+            <TouchableHighlight style={styles.symbol} onPress={pickImage}>
+
+                {/* <Text style={styles.teksProfile}>{inisial}</Text> */}
+                <Image style={{ height: 100, borderRadius: 100, width: 100 }} source={{ uri: url }} />
+
+            </TouchableHighlight>
 
             <Text style={styles.teksin}>Edit Profil</Text>
 
@@ -141,7 +196,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: -50,
-        padding: 10
+
     },
     teksProfile: {
         color: 'white',

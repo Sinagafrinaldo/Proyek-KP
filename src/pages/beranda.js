@@ -24,23 +24,37 @@ import React, { useState } from "react";
 import { useNavigation, useFocusEffect, NavigationContainer } from '@react-navigation/native';
 import styles from "../component/stylesLandingPage";
 import Ionicons from "react-native-vector-icons/Ionicons";
-
-
+import styles2 from "../component/styleJadwalLiput2";
 
 const Beranda1 = ({ navigation }) => {
   const [status, setStatus] = useState(false)
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const usersCollectionRef = collection(db, "pengguna");
+  const jadwalCollectionRef = collection(db, "jadwal");
   const [email, setEmail] = useState('')
   const [pengguna, setPengguna] = useState([])
+  const [jadwal, setJadwal] = useState([])
+  const [date, setSelectedDate] = useState('')
+  const getJadwal = async () => {
+    const data = await getDocs(jadwalCollectionRef);
+    setJadwal(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  };
   const getUsers = async () => {
     const data = await getDocs(usersCollectionRef);
     setPengguna(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };
   useFocusEffect(
     React.useCallback(() => {
-
+      getJadwal()
+      let today = new Date();
+      if (today.getMonth() < 10) {
+        let date = today.getFullYear() + '/0' + (today.getMonth() + 1) + '/' + today.getDate();
+        setSelectedDate(date);
+      } else {
+        setSelectedDate(date);
+        let date = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
+      }
       const unsubscribe = auth.onAuthStateChanged(user => {
         if (user != null) {
           setEmail(user.email)
@@ -53,7 +67,7 @@ const Beranda1 = ({ navigation }) => {
       return unsubscribe
     }, [])
   );
-  // console.log(pengguna)
+  // console.log(jadwal)
   return (
     <View style={styles.container}>
       <View style={styles.wrap1}>
@@ -142,7 +156,7 @@ const Beranda1 = ({ navigation }) => {
               style={{
                 display: "flex",
                 flexDirection: "row",
-                justifyContent: "center",
+                // justifyContent: "center",
               }}
             >
 
@@ -211,48 +225,11 @@ const Beranda1 = ({ navigation }) => {
                 display: "flex",
                 flexDirection: "row",
                 marginTop: 30,
-                justifyContent: "center",
+                // justifyContent: "center",
               }}
             >
-              <View>
-                <TouchableOpacity
-                  onPress={() => {
-                    navigation.navigate("Jadwal Liput");
-                  }}
-                >
-                  <View style={styles.bgmenu}>
-                    <Ionicons
-                      style={styles.ikonMenu}
-                      name="calendar"
-                      size={34}
-                      color="white"
-                    />
-                  </View>
-                  <Text style={styles.fontBlack}>
-                    Jadwal Liput
-                  </Text>
-                </TouchableOpacity>
-              </View>
 
-              <View>
-                <TouchableOpacity
-                  onPress={() => {
-                    navigation.navigate("Catatan");
-                  }}
-                >
-                  <View style={styles.bgmenu}>
-                    <Ionicons
-                      style={styles.ikonMenu}
-                      name="newspaper"
-                      size={34}
-                      color="white"
-                    />
-                  </View>
-                  <Text style={styles.fontBlack}>
-                    Catatan
-                  </Text>
-                </TouchableOpacity>
-              </View>
+
 
               <View style={{ marginBottom: 20 }}>
                 <TouchableOpacity
@@ -275,10 +252,73 @@ const Beranda1 = ({ navigation }) => {
               </View>
 
 
+
+
+
+
+
             </View>
 
           </View>
+
+          <Text
+            style={{
+              fontSize: 16,
+              marginLeft: 20,
+              marginVertical: 4,
+              marginTop: 15,
+              color: 'gray',
+              fontFamily: 'poppinsbold'
+            }}
+          >
+            Jadwal Liput Hari Ini
+          </Text>
+          <FlatList
+            nestedScrollEnabled
+            horizontal
+            contentContainerStyle={{ paddingBottom: 30 }}
+            data={jadwal}
+            renderItem={({ item, index }) => (
+              <View>
+                {item.tanggal == date && (
+                  <View style={styles2.list1}>
+
+                    <View style={styles2.data}>
+                      <View style={{ flexDirection: 'row', justifyContent: 'space-between', }}>
+                        <Text style={{ fontSize: 16, fontFamily: 'poppinssemibold', paddingBottom: 7, color: 'grey' }}>Peliput : {item.nama}</Text>
+                        <Ionicons
+                          style={styles2.ikonLokasi}
+                          name="bookmarks"
+                          size={24}
+                          color="#118eeb"
+                        />
+                      </View>
+
+                      <Text style={{ paddingBottom: 12, color: 'grey', fontFamily: 'poppins' }}>Keterangan : {item.keterangan}</Text>
+                      <Text style={{ textAlign: 'right', paddingBottom: 7, color: 'grey', fontFamily: 'poppins' }}>{item.tanggal}</Text>
+                      <View style={{ width: '100%', height: 0.5, backgroundColor: '#D7DBDD' }}></View>
+
+                      <View style={{ paddingTop: 7, flexDirection: 'row', justifyContent: 'space-between', }}>
+                        <Text style={{ fontSize: 16, color: 'grey', alignSelf: 'center', fontFamily: 'poppins' }}>Lokasi : {item.lokasi}</Text>
+                        <Ionicons
+                          style={styles2.ikonLokasi}
+                          name="location"
+                          size={24}
+                          color="red"
+                        />
+                      </View>
+
+                    </View>
+                  </View>
+                )}
+              </View>
+            )}
+            keyExtractor={(item, index) => index.toString()}
+          />
         </View>
+
+
+
       </ScrollView>
 
     </View >

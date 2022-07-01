@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet, Image, ScrollView, TextInput, TouchableOpacity, Alert, RefreshControl } from 'react-native'
 import React, { useEffect, useState, useCallback } from 'react'
 import styles from '../component/styleLogin'
+import styles2 from '../component/styleLogout'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
@@ -110,7 +111,7 @@ const Keluar = () => {
                     onRefresh={onRefresh}
                 />
             }
-            style={{ backgroundColor: 'white', height:1000, }}>
+            style={{ backgroundColor: 'white', height: 1000, }}>
             {status == false && (
                 <View style={styles.container}>
                     <View style={styles.wrap1}>
@@ -122,9 +123,9 @@ const Keluar = () => {
                         />
                     </View>
                     <View style={styles.card}>
-                        <Text style={{marginBottom:5,alignSelf:'center', color: '#118eeb',fontWeight:'bold', fontSize:18}}>LOGIN</Text>
-                        <View style={{ width: '70%', height: 1.5, alignSelf:'center', backgroundColor: '#D7DBDD' }}></View>
-                        <Text style={{ color:'gray' ,marginTop: 20, marginBottom: 5 }}>Email</Text>
+                        <Text style={{ marginBottom: 5, alignSelf: 'center', color: '#118eeb', fontWeight: 'bold', fontSize: 18 }}>LOGIN</Text>
+                        <View style={{ width: '70%', height: 1.5, alignSelf: 'center', backgroundColor: '#D7DBDD' }}></View>
+                        <Text style={{ color: 'gray', marginTop: 20, marginBottom: 5 }}>Email</Text>
 
                         <View style={{ flexDirection: 'row' }}>
                             <Ionicons
@@ -141,7 +142,7 @@ const Keluar = () => {
                             />
                         </View>
 
-                        <Text style={{ color:'gray',marginTop: 20, marginBottom: 5 }}>Kata Sandi</Text>
+                        <Text style={{ color: 'gray', marginTop: 20, marginBottom: 5 }}>Kata Sandi</Text>
 
                         <View style={{ flexDirection: 'row' }}>
                             <Ionicons
@@ -181,25 +182,25 @@ const Keluar = () => {
             {status == true && (
                 <View>
                     <View style={{ justifyContent: 'center', padding: 40, }}>
-                        <View style={styles.cardlog}>
+                        <View style={styles2.cardlog}>
                             <Text style={{ textAlign: 'center', color: '#f75555', fontSize: 18 }}>Logout</Text>
                             <View style={{ borderBottomWidth: 1, borderColor: '#e0e0e0', marginVertical: 10 }}></View>
-                            <Text style={styles.textout}>Apakah anda yakin ingin keluar?</Text>
+                            <Text style={styles2.textout}>Apakah anda yakin ingin keluar?</Text>
                             <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
-                                <TouchableOpacity style={styles.tombol2} onPress={() => {
+                                <TouchableOpacity style={styles2.tombol2} onPress={() => {
 
 
                                     navigation.navigate('Beranda')
                                 }}>
-                                    <Text style={styles.teksbatal}>Batal</Text>
+                                    <Text style={styles2.teksbatal}>Batal</Text>
                                 </TouchableOpacity>
-                                <TouchableOpacity style={styles.tombol} onPress={() => {
+                                <TouchableOpacity style={styles2.tombol} onPress={() => {
 
 
                                     signOutUser()
                                     setStatus(false)
                                 }}>
-                                    <Text style={styles.tekslogin}>Logout</Text>
+                                    <Text style={styles2.tekslogin}>Logout</Text>
                                 </TouchableOpacity>
                             </View>
                         </View>

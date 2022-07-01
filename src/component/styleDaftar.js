@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 
     login: {
         textAlign: 'center',
-        paddingBottom:20,
+        paddingBottom: 20,
         color: 'white',
         fontSize: 28,
         fontWeight: '700',
@@ -28,10 +28,10 @@ const styles = StyleSheet.create({
     },
 
     stretch: {
-        alignSelf:'center',
+        alignSelf: 'center',
         resizeMode: 'stretch',
         width: 330,
-        height:260,
+        height: 260,
 
     },
 
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
         left: 30,
         top: 50
     },
-    
+
     card: {
         marginTop: -175,
         marginBottom: 10,
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
         borderRadius: 10
     },
     tekslogin: {
-        padding:6,
+        padding: 6,
         color: 'white',
         fontSize: 16,
         fontWeight: 'bold'

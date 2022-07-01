@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     },
 
     pageScroll: {
-        height: 1000,
+        // height: 1000,
     },
 
     infoProfil: {

@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native'
+import { View, Image, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native'
 import React, { useState } from 'react'
 import {
     collection,
@@ -13,8 +13,10 @@ import { firebaseConfig } from '../firebase/config';
 import { initializeApp } from 'firebase/app';
 import { db } from '../firebase/crudConf';
 import { useNavigation, useFocusEffect, NavigationContainer } from '@react-navigation/native';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 const Profil = ({ route, navigation }) => {
     const app = initializeApp(firebaseConfig);
+    const [url, setUrl] = useState();
     const auth = getAuth(app);
     const usersCollectionRef = collection(db, "pengguna");
     const [email, setEmail] = useState('')
@@ -42,6 +44,9 @@ const Profil = ({ route, navigation }) => {
     useFocusEffect(
         React.useCallback(() => {
 
+
+
+
             const unsubscribe = auth.onAuthStateChanged(user => {
                 // getPresensi()
                 if (user != null) {
@@ -51,6 +56,16 @@ const Profil = ({ route, navigation }) => {
                     setEmail(user.email)
                     getUsers();
 
+
+                    const func = async () => {
+                        const storage = getStorage();
+                        const reference = ref(storage, '/' + user.email.toLocaleLowerCase());
+                        await getDownloadURL(reference).then((x) => {
+                            setUrl(x);
+                        })
+                    }
+
+                    if (url == undefined) { func() };
 
                 } else {
                     setVerif(false)
@@ -85,7 +100,7 @@ const Profil = ({ route, navigation }) => {
                                         </View>
                                         <View style={{ padding: 30, paddingTop: 0 }}>
                                             <View style={styles.symbol}>
-                                                <Text style={styles.teksProfile}>{item.nama.match(/(\b\S)?/g).join("").match(/(^\S|\S$)?/g).join("").toUpperCase()}</Text>
+                                                <Image style={{ height: 100, borderRadius: 100, width: 100 }} source={{ uri: url }} />
                                             </View>
                                             <View style={styles.wrapitem}>
                                                 <TouchableOpacity style={styles.btn} onPress={() => {
@@ -183,7 +198,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: -50,
-        padding: 10,
+
     },
     teksProfile: {
         color: 'white',
