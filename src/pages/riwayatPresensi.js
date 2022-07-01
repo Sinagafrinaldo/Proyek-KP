@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView, FlatList, Modal, Alert } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput, ScrollView, FlatList, Modal, Alert } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import {
     collection,
@@ -91,8 +91,12 @@ const RiwayatPresensi = () => {
                 )}
 
                 {verif == false && (
-                    <View style={{ backgroundColor: 'white', alignSelf: 'center', justifyContent: 'center', alignItems: 'center', width: '96%', height: '100%' }}>
-                        <Text style={{ textAlign: 'center', fontFamily: 'poppins' }}>Maaf silahkan login terlebih dahulu untuk mengakses menu ini..</Text>
+                    <View style={{justifyContent:'center', alignItems:'center', height:'100%'}}>
+                        <Image
+                            style={styles.notUser}
+                            source={require("../../assets/not-user.png")}
+                        />
+                            <Text style={{ color :'gray', textAlign: 'center', fontFamily: 'poppins' }}>Maaf silahkan login terlebih dahulu untuk mengakses menu ini..</Text>
                     </View>
                 )}
             </View>
