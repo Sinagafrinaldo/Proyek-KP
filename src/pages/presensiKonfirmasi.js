@@ -125,23 +125,22 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
                                     {/* <Text style={styles.title2}>Nama:  {item.nama}</Text>
                                         <Text style={styles.title2}>NIP:  {item.nip}</Text> */}
                                     {check == false && (
-                                        <View style={styles.card}>
-                                            <TouchableOpacity style={styles.cekin1}
-                                                onPress={() => {
+                                        <View style={styles.card}>                
+                                            <Image
+                                                style={styles.stretch2}
+                                                source={require("../../assets/konfirmasi-absensi.png")}
+                                            />
+                                                <Text style={{ fontSize: 18, fontFamily: 'poppinssemibold', color: 'gray', textAlign: 'center', }}>Lakukan Absensi</Text>
+                                                <Text style={{ fontSize: 18, fontFamily: 'poppinssemibold', color: 'gray', marginBottom: 20, textAlign: 'center', }}>Sekarang</Text>
+                                                <TouchableOpacity style={styles.cekin1}
+                                                    onPress={() => {
 
-                                                    handleMasuk(item.nama, item.nip)
-                                                    getInfo()
+                                                        handleMasuk(item.nama, item.nip)
+                                                        getInfo()
 
-                                                }}
-                                            >
-                                                <Ionicons
-                                                    style={styles.ikon1}
-                                                    name="book"
-                                                    size={140}
-                                                    color="#1FD851"
-                                                />
-                                                <Text style={{ fontSize: 18, fontFamily: 'poppinssemibold', color: 'gray', marginBottom: 20, textAlign: 'center', }}>Klik Halaman Untuk</Text>
-                                                <Text style={styles.teksin}>ABSENSI</Text>
+                                                    }}
+                                                    >  
+                                                <Text style={styles.teksin2}>ABSENSI</Text>
                                             </TouchableOpacity>
                                         </View>
                                     )}
@@ -154,7 +153,7 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
                                                 color="#1FD851"
                                             /> */}
                                         
-                                        <Image
+                                            <Image
                                                 style={styles.stretch}
                                                 source={require("../../assets/absensi.png")}
                                             />

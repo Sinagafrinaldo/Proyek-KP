@@ -58,7 +58,7 @@ const RiwayatPresensi = () => {
                                     <View style={styles.list1}>
                                         <View style={styles.data}>
                                             <View style={{ flexDirection: 'row', justifyContent: 'space-between', }}>
-                                                <Text style={{ fontSize: 18, fontFamily: 'poppinssemibold', paddingBottom: 7, color: 'grey' }}>Nama : {item.nama}</Text>
+                                                <Text style={{ fontSize: 18, fontFamily: 'poppinssemibold', paddingBottom: 7, color: 'grey', width:'90%'}}>Nama : {item.nama}</Text>
                                                 <Ionicons
                                                     style={styles.ikonLokasi}
                                                     name="clipboard"
@@ -91,12 +91,12 @@ const RiwayatPresensi = () => {
                 )}
 
                 {verif == false && (
-                    <View style={{justifyContent:'center', alignItems:'center', height:'100%'}}>
+                    <View style={{padding:10, justifyContent:'center', alignItems:'center', height:'100%'}}>
                         <Image
                             style={styles.notUser}
                             source={require("../../assets/not-user.png")}
                         />
-                            <Text style={{ color :'gray', textAlign: 'center', fontFamily: 'poppins' }}>Maaf silahkan login terlebih dahulu untuk mengakses menu ini..</Text>
+                            <Text style={{ color :'gray', textAlign: 'center', fontFamily: 'poppins' }}>Maaf fitur ini hanya tersedia untuk user yang telah mendaftar..</Text>
                     </View>
                 )}
             </View>

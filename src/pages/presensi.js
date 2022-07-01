@@ -97,7 +97,7 @@ const Presensi = ({ navigation }) => {
     );
 
     return (
-        <View>
+        <ScrollView  contentContainerStyle={{backgroundColor:'white', flexGrow: 1}}>
             {verif == true && (
                 <View style={styles.card}>
                     <Image
@@ -105,7 +105,7 @@ const Presensi = ({ navigation }) => {
                         source={require("../../assets/vector.png")}
                     />
                     <Text style={{ fontSize: 34, fontFamily: 'poppinssemibold', color: '#118eeb', textAlign: 'center', }}>ABSENSI</Text>
-                    <Text style={{ fontSize: 18, fontFamily: 'poppins', color: 'gray', marginBottom: 40, textAlign: 'center', }}>ONLINE</Text>
+                    <Text style={{ fontSize: 18, fontFamily: 'poppins', color: 'gray', marginBottom: 30, textAlign: 'center', }}>ONLINE</Text>
                     <Text style={{ color: 'gray', fontFamily: 'poppinssemibold', textAlign: 'center', }}> User</Text>
                     {pengguna.map((item, index) => (
 
@@ -155,8 +155,14 @@ const Presensi = ({ navigation }) => {
             )}
 
             {verif == false && (
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }}>
-                    <Text style={{ textAlign: 'center', marginTop: '50%', fontFamily: 'poppins' }}>Maaf fitur ini hanya tersedia untuk user yang telah mendaftar..</Text>
+                <View style={{ padding:10, flex: 1, justifyContent: 'center', alignItems: 'center', }}>
+
+                    <Image
+                        style={styles.notUser}
+                        source={require("../../assets/not-user.png")}
+                    />
+
+                    <Text style={{ textAlign: 'center', color :'gray',fontFamily: 'poppins' }}>Maaf fitur ini hanya tersedia untuk user yang telah mendaftar..</Text>
                 </View>
             )}
 
@@ -181,7 +187,7 @@ const Presensi = ({ navigation }) => {
                     setShowAlert(false)
                 }}
             />
-        </View>
+        </ScrollView>
     )
 }
 
