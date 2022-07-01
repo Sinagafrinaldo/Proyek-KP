@@ -44,8 +44,15 @@ const styles = StyleSheet.create({
 
     },
     
+    
+    back: {
+        position: 'absolute',
+        left: 30,
+        top: 50
+    },
+
     login: {
-        paddingTop:50,
+        paddingTop:95,
         paddingBottom:20,
         textAlign: 'center',
         color: 'white',
