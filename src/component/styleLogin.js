@@ -40,8 +40,7 @@ const styles = StyleSheet.create({
         alignSelf:'center',
         resizeMode: 'stretch',
         width: 330,
-        height:260,
-
+        height:250,
     },
     
     
