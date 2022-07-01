@@ -25,25 +25,44 @@ const styles = StyleSheet.create({
 
     stretch: {
         resizeMode: 'stretch',
-        width: 250,
+        width: 230,
         height:260,
     },
 
+    stretch2: {
+        resizeMode: 'stretch',
+        width: 350,
+        height:260,
+    },
     cekin1: {
-        backgroundColor: '#FFD600',
-        padding: 40,
+        backgroundColor: '#F9A826',
         borderRadius: 10,
-        marginVertical: 20,
         alignItems: 'center',
         width: '100%',
-        height: '100%',
-        justifyContent: 'center'
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
+
+elevation: 2,
     },
     teksin: {
         color: '#2D7CF3',
         fontFamily: 'poppinssemibold',
         fontSize: 24,
         textAlign: 'center',
+    },
+
+    teksin2: {
+        color: 'white',
+        fontWeight:'bold',
+        fontFamily: 'poppinssemibold',
+        fontSize: 18,
+        textAlign: 'center',
+        padding:12,
     },
 
     cekout: {

@@ -3,32 +3,18 @@ import React from 'react'
 
 const styles = StyleSheet.create({
     card: {
-        height: '99%',
-        marginTop: '1%',
-        marginLeft: '2%',
-        width: '96%',
-        borderRadius: 10,
+        padding:20,
+        width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
         justifyContent: 'center',
         backgroundColor: 'white',
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-
-        elevation: 5,
     },
 
     stretch: {
         resizeMode: 'stretch',
-        // width:200,
-        // height: 220
-        marginBottom: 10,
-        marginTop: 10
+        width: 300,
+        height:260,
     },
 
     cekin: {
@@ -84,7 +70,15 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginBottom: 35,
         fontFamily: 'poppins'
-    }
+    },
+
+    notUser :{
+        resizeMode: 'stretch',
+        width:260,
+        height: 245
+        // marginBottom: 10,
+        // marginTop: 10
+    },
 })
 
 export default styles
