@@ -156,7 +156,7 @@ function MainContainer() {
                         headerTitle: 'Presensi',
                         headerTitleAlign: 'center',
                         headerStyle: {
-                            backgroundColor: '#024d88',
+                            backgroundColor: '#118eeb',
 
                         },
                         headerTintColor: 'white',
