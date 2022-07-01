@@ -77,7 +77,15 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignSelf: 'center',
 
-    }
+    }, 
+
+    notUser :{
+        resizeMode: 'stretch',
+        width:260,
+        height: 245
+        // marginBottom: 10,
+        // marginTop: 10
+    },
 })
 
 export default styles
