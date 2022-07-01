@@ -122,6 +122,17 @@ const Keluar = () => {
                             source={require("../../assets/login.png")}
                         />
                     </View>
+
+                    <TouchableOpacity style={styles.back}
+                        onPress={() => { navigation.goBack() }}>
+                        <Ionicons
+
+                            name="arrow-back"
+                            size={34}
+                            color="white"
+                        />
+                    </TouchableOpacity>
+                    
                     <View style={styles.card}>
                         <Text style={{ marginBottom: 5, alignSelf: 'center', color: '#118eeb', fontWeight: 'bold', fontSize: 18 }}>LOGIN</Text>
                         <View style={{ width: '70%', height: 1.5, alignSelf: 'center', backgroundColor: '#D7DBDD' }}></View>
