@@ -43,14 +43,15 @@ const Keluar = () => {
     //         })
     //         .catch(error => alert(error.message))
     // }
-    // const signOutUser = async () => {
-    //     try {
-    //         await auth.signOut();
+    
+    const signOutUser = async () => {
+        try {
+            await auth.signOut();
 
-    //     } catch (e) {
-    //         console.log(e);
-    //     }
-    // }
+        } catch (e) {
+            console.log(e);
+        }
+    }
 
     const handleSignIn = () => {
         signInWithEmailAndPassword(auth, email, password)
