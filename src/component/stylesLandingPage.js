@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     container: {
         display: 'flex',
         flex: 1,
-        backgroundColor: '#F5FBFF'
+        backgroundColor: '#edf2f5'
     },
 
     wrap1: {
@@ -65,12 +65,12 @@ const styles = StyleSheet.create({
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
-            height: 2,
+            height: 1,
         },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
 
-        elevation: 5,
+        elevation: 2,
     },
 
     baris: {
@@ -142,6 +142,18 @@ const styles = StyleSheet.create({
         color: 'gray',
         padding: 5,
         fontFamily: 'poppinssemibold'
+    },
+
+    cardJadwal :{
+        backgroundColor: 'white', shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.18,
+        shadowRadius: 1.00,
+        
+        elevation: 1,
     },
 })
 
