@@ -2,33 +2,12 @@ import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 
 const styles = StyleSheet.create({
-    cardlog: {
-        padding: 20,
-        borderWidth: 3,
-        borderRadius: 4,
-        marginTop: '80%',
-        borderColor: 'pink',
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 1.84,
-
-        elevation: 2,
-    },
-    textout: {
-        color: '#434343',
-        textAlign: 'center',
-        fontSize: 18
-    },
     container: {
         display: 'flex',
         flex: 1,
     },
 
-    wrap1: {
+    header: {
         backgroundColor: '#118eeb',
         borderBottomEndRadius: 20,
         borderBottomStartRadius: 20,
@@ -36,21 +15,7 @@ const styles = StyleSheet.create({
 
     },
 
-    stretch: {
-        alignSelf:'center',
-        resizeMode: 'stretch',
-        width: 330,
-        height:250,
-    },
-    
-    
-    back: {
-        position: 'absolute',
-        left: 30,
-        top: 50
-    },
-
-    login: {
+    title: {
         paddingTop:95,
         paddingBottom:20,
         textAlign: 'center',
@@ -60,12 +25,21 @@ const styles = StyleSheet.create({
         width: '80%',
         marginLeft: '10%',
     },
+
+    stretch: {
+        alignSelf:'center',
+        resizeMode: 'stretch',
+        width: 330,
+        height:250,
+    },
+
     back: {
         position: 'absolute',
         left: 30,
         top: 50
     },
-    card: {
+
+    card_login: {
         marginBottom:10,
         marginTop: -60,
         paddingTop: 25,
@@ -85,7 +59,41 @@ const styles = StyleSheet.create({
 
         elevation: 5,
     },
-    boxnip: {
+
+    title_login :{
+        marginBottom: 5, 
+        alignSelf: 'center', 
+        color: '#118eeb', 
+        fontWeight: 'bold', 
+        fontSize: 18
+    },
+
+    line : { 
+        width: '70%', 
+        height: 1.5, 
+        alignSelf: 'center', 
+        backgroundColor: '#D7DBDD' 
+    },
+
+    title_email :{
+        color: 'gray', 
+        marginTop: 20, 
+        marginBottom: 5
+    },
+
+    title_password :{
+        color: 'gray', 
+        marginTop: 20, 
+        marginBottom: 5 
+    },
+
+    icon_box: {
+        position: 'absolute',
+        bottom: 14,
+        paddingLeft: 10
+    },
+
+    box_input: {
         borderWidth: 1,
         borderRadius: 10,
         width: '100%',
@@ -94,36 +102,32 @@ const styles = StyleSheet.create({
         paddingLeft: 38,
 
     },
-    teksbatal: {
-        color: '#2f72fd',
-        fontSize: 16,
-        fontWeight: '700',
-        marginHorizontal: 25
-    },
-    tombol: {
+
+    touch: {
         backgroundColor: '#118eeb',
         marginTop: 20,
-        padding: 10,
         alignItems: 'center',
         borderRadius: 10
     },
-
-    tekslogin: {
-        padding:6,
+    
+    text_login: {
+        padding:16,
         color: 'white',
         fontSize: 16,
         fontWeight: '700',
         marginHorizontal: 20
     },
-    teksdaftar: {
+
+    registration :{
+        display: 'flex', 
+        flexDirection: 'row', 
+        marginTop: 20
+    },
+     
+    text_registration: {
         color: '#118eeb',
         fontWeight: 'bold',
     },
-    ikonMenu: {
-        position: 'absolute',
-        bottom: 14,
-        paddingLeft: 10
-    }
 })
 
 export default styles
