@@ -70,15 +70,15 @@ const Beranda1 = ({ navigation }) => {
   // console.log(jadwal)
   return (
     <View style={styles.container}>
-      <View style={styles.wrap1}>
-        <View style={styles.baris}>
+      <View style={styles.navbar}>
+        <View style={styles.style_navbar}>
           <View>
-            <Text style={styles.title}>KominfoApp</Text>
-            <Text style={styles.subtitle}>Bandar Lampung</Text>
+            <Text style={styles.title_app}>KominfoApp</Text>
+            <Text style={styles.subtitle_app}>Bandar Lampung</Text>
           </View>
-          <View style={styles.wrapikon}>
+          <View style={styles.style_icon_nav}>
             <Ionicons
-              style={styles.ikon1}
+              style={styles.icon_notification}
               name="notifications"
               size={26}
               color="white"
@@ -91,7 +91,7 @@ const Beranda1 = ({ navigation }) => {
               }}
             >
               <Ionicons
-                style={styles.ikon2}
+                style={styles.icon_person}
                 name="person-circle"
                 size={30}
                 color="white"
@@ -101,33 +101,30 @@ const Beranda1 = ({ navigation }) => {
         </View>
       </View>
 
-      <View style={{ height: 0.5, backgroundColor: '#D7DBDD' }}></View>
-      <ScrollView>
-        <View style={styles.pageScroll}>
+      <View style={styles.line_nav}></View>
+      
+      <ScrollView contentContainerStyle={{flexGrow: 1}}>
+        <View style={styles.background_page}>
+          <Text style={{ color: '#1F76C6' }}>-</Text>
+        </View>
 
-          <View style={{
-            backgroundColor: '#118eeb', height: 350, borderBottomEndRadius: 10,
-            borderBottomStartRadius: 10,
-          }}>
-            <Text style={{ color: '#1F76C6' }}>-</Text>
-          </View>
-
-          <View style={styles.infoProfil}>
-            <Image
-              style={styles.stretch}
-              source={require("../../assets/siger.png")}
-            />
-            <View style={styles.wrap2}>
-              <View style={styles.dummy}></View>
-              <View style={styles.namaProfil}>
-                <Text style={styles.title3}>Selamat Datang</Text>
+        <View style={styles.info_profil}>
+          <Image
+            style={styles.stretch}
+            source={require("../../assets/siger.png")}
+          />
+          <View style={styles.background_profil}>
+            <View style={{flexDirection:'row', alignItems:'center'}}>
+              <View style={styles.image_profil}></View>
+              <View>
+                <Text style={styles.text_welcome}>Selamat Datang</Text>
 
                 {pengguna.map((item, index) => (
 
                   <View key={index} style={{}}>
                     <View >
                       {item.email.toLowerCase() == email.toLowerCase() && (
-                        <Text style={styles.title2}> {item.nama}</Text>
+                        <Text style={styles.name}> {item.nama}</Text>
                       )}
 
                     </View>
@@ -137,185 +134,147 @@ const Beranda1 = ({ navigation }) => {
               </View>
             </View>
           </View>
-
-          <View style={styles.mainMenu}>
-            <Text
-              style={{
-                fontSize: 16,
-                marginLeft: 20,
-                marginVertical: 8,
-                marginTop: 15,
-                color: 'gray',
-                fontFamily: 'poppinsbold'
-              }}
-            >
-              Main Menu
-            </Text>
-
-            <View
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                // justifyContent: "center",
-              }}
-            >
-
-              <View>
-                <TouchableOpacity
-                  onPress={() => {
-                    navigation.navigate("Jadwal Liput");
-                  }}>
-                  <View style={styles.bgmenu}>
-                    <Ionicons
-                      style={styles.ikonMenu}
-                      name="calendar"
-                      size={34}
-                      color="white"
-                    />
-                  </View>
-                  <Text style={styles.fontBlack}>
-                    Jadwal Liput
-                  </Text>
-                </TouchableOpacity>
-              </View>
-
-              <View>
-                <TouchableOpacity
-                  onPress={() => {
-                    navigation.navigate("Catatan");
-                  }}
-                >
-                  <View style={styles.bgmenu}>
-                    <Ionicons
-                      style={styles.ikonMenu}
-                      name="newspaper"
-                      size={34}
-                      color="white"
-                    />
-                  </View>
-                </TouchableOpacity>
-                <Text style={styles.fontBlack}>
-                  Catatan
-                </Text>
-              </View>
-
-              <View>
-                <TouchableOpacity
-                  onPress={() => {
-                    navigation.navigate("Pengingat");
-                  }}
-                >
-                  <View style={styles.bgmenu}>
-                    <Ionicons
-                      style={styles.ikonMenu}
-                      name="megaphone"
-                      size={34}
-                      color="white"
-                    />
-                  </View>
-                  <Text style={styles.fontBlack}>
-                    Pengingat
-                  </Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-
-            <View
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                marginTop: 30,
-                // justifyContent: "center",
-              }}
-            >
-
-
-
-              <View style={{ marginBottom: 20 }}>
-                <TouchableOpacity
-                  onPress={() => {
-                    navigation.navigate("Lainnya");
-                  }}>
-                  <View style={styles.bgmenu}>
-
-                    <Ionicons
-                      style={styles.ikonMenu}
-                      name="grid"
-                      size={34}
-                      color="white"
-                    />
-                  </View>
-                  <Text style={styles.fontBlack}>
-                    Lainnya
-                  </Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
-
-          <View style={{ paddingVertical:15,}}>
-            <Text
-              style={{
-                fontSize: 16,
-                padding:10,
-                marginVertical: 4,
-                color: 'gray',
-                fontFamily: 'poppinsbold'
-              }}
-            >
-              Jadwal Liput Hari Ini
-            </Text>
-            <View style={styles.cardJadwal}>
-              <FlatList
-                showsVerticalScrollIndicator={false}
-                showsHorizontalScrollIndicator={false}
-                nestedScrollEnabled
-                horizontal
-                contentContainerStyle={{ paddingVertical:20, }}
-                data={jadwal}
-                renderItem={({ item, index }) => (
-                  <View>
-                    {item.tanggal == date && (
-                      <View style={styles2.list1}>
-
-                        <View style={styles2.data}>
-                          <View style={{ flexDirection: 'row', justifyContent: 'space-between', }}>
-                            <Text style={{ fontSize: 16, fontFamily: 'poppinssemibold', paddingBottom: 7, color: 'grey' }}>Peliput : {item.nama}</Text>
-                            <Ionicons
-                              style={styles2.ikonLokasi}
-                              name="bookmarks"
-                              size={24}
-                              color="#118eeb"
-                            />
-                          </View>
-
-                          <Text style={{ paddingBottom: 12, color: 'grey', fontFamily: 'poppins' }}>Keterangan : {item.keterangan}</Text>
-                          <Text style={{ textAlign: 'right', paddingBottom: 7, color: 'grey', fontFamily: 'poppins' }}>{item.tanggal}</Text>
-                          <View style={{ width: '100%', height: 0.5, backgroundColor: '#D7DBDD' }}></View>
-
-                          <View style={{ paddingTop: 7, flexDirection: 'row', justifyContent: 'space-between', }}>
-                            <Text style={{ fontSize: 16, color: 'grey', alignSelf: 'center', fontFamily: 'poppins' }}>Lokasi : {item.lokasi}</Text>
-                            <Ionicons
-                              style={styles2.ikonLokasi}
-                              name="location"
-                              size={24}
-                              color="red"
-                            />
-                          </View>
-
-                        </View>
-                      </View>
-                    )}
-                  </View>
-                )}
-                keyExtractor={(item, index) => index.toString()}
-              />
-            </View>
-          </View>
-        
         </View>
-      </ScrollView>
 
+        <View style={styles.card}>
+          <Text style={styles.title_card}>Main Menu</Text>
+          <View style={styles.list_card}>
+            <View>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("Jadwal Liput");
+                }}>
+                <View style={styles.bg_menu}>
+                  <Ionicons
+                    style={styles.icon_menu}
+                    name="calendar"
+                    size={34}
+                    color="white"
+                  />
+                </View>
+                <Text style={styles.font_menu}>
+                  Jadwal Liput
+                </Text>
+              </TouchableOpacity>
+            </View>
+
+            <View>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("Catatan");
+                }}
+              >
+                <View style={styles.bg_menu}>
+                  <Ionicons
+                    style={styles.icon_menu}
+                    name="newspaper"
+                    size={34}
+                    color="white"
+                  />
+                </View>
+              </TouchableOpacity>
+              <Text style={styles.font_menu}>
+                Catatan
+              </Text>
+            </View>
+
+           
+          </View>
+
+          <View style={styles.list_card}>
+
+            <View>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("Pengingat");
+                }}
+              >
+                <View style={styles.bg_menu}>
+                  <Ionicons
+                    style={styles.icon_menu}
+                    name="megaphone"
+                    size={34}
+                    color="white"
+                  />
+                </View>
+                <Text style={styles.font_menu}>
+                  Pengingat
+                </Text>
+              </TouchableOpacity>
+            </View>
+
+            <View style={{ marginBottom: 20 }}>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("Lainnya");
+                }}>
+                <View style={styles.bg_menu}>
+
+                  <Ionicons
+                    style={styles.icon_menu}
+                    name="grid"
+                    size={34}
+                    color="white"
+                  />
+                </View>
+                <Text style={styles.font_menu}>
+                  Lainnya
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+
+        <View style={styles.flatlist_timetable}>
+          <Text style={styles.text_timetable}>Jadwal Liput Hari Ini</Text>
+          
+          <View style={styles.card_timetable}>
+            <FlatList
+              showsVerticalScrollIndicator={false}
+              showsHorizontalScrollIndicator={false}
+              nestedScrollEnabled
+              horizontal
+              contentContainerStyle={{ paddingVertical:20, }}
+              data={jadwal}
+              renderItem={({ item, index }) => (
+                <View>
+                  {item.tanggal == date && (
+                    <View style={styles.list_data}>
+
+                      <View style={styles.data}>
+                        <View style={styles.style_position_icon_cover_name}>
+                          <Text style={styles.cover_name}>Peliput : {item.nama}</Text>
+                          <Ionicons
+                            name="bookmarks"
+                            size={24}
+                            color="#118eeb"
+                          />
+                        </View>
+
+                        <Text style={styles.desc}>Keterangan : {item.keterangan}</Text>
+                        <Text style={styles.date}>{item.tanggal}</Text>
+                        <View style={styles.line_nav}></View>
+
+                        <View style={styles.style_position_icon_loc}>
+                          <Text style={styles.loc}>Lokasi : {item.lokasi}</Text>
+                          <Ionicons
+                            name="location"
+                            size={24}
+                            color="red"
+                          />
+                        </View>
+
+                      </View>
+                    </View>
+                  )}
+                </View>
+              )}
+              keyExtractor={(item, index) => index.toString()}
+            />
+          </View>
+        </View>
+        
+      </ScrollView>
     </View >
   );
 };
