@@ -8,18 +8,61 @@ const styles = StyleSheet.create({
         backgroundColor: '#edf2f5'
     },
 
-    wrap1: {
+    navbar: {
         backgroundColor: '#118eeb',
         padding: 13,
         paddingTop: 20,
+    },
+
+    style_navbar: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 15,
 
     },
 
-    pageScroll: {
-        // height: 1000,
+    title_app: {
+        fontSize: 24,
+        color: 'white',
+        // fontWeight: 'bold',
+        fontFamily: 'poppinssemibold'
+
+    },
+    subtitle_app: {
+        color: 'white',
+        fontFamily: 'poppinssemibold',
+        fontSize: 12,
+        marginTop: -10
     },
 
-    infoProfil: {
+    style_icon_nav: {
+        display: 'flex',
+        flexDirection: 'row'
+    },
+
+    icon_notification: {
+        marginTop: 7,
+        marginRight: 14,
+    },
+
+    icon_person: {
+        marginTop: 4,
+    },
+
+    line_nav :{
+        height: 0.5, 
+        backgroundColor: '#D7DBDD',
+    },
+    
+    background_page :{
+        backgroundColor: '#118eeb', 
+        height: 350, 
+        borderBottomEndRadius: 10,
+        borderBottomStartRadius: 10,
+    },
+
+    info_profil: {
         marginTop: -330,
         alignSelf: 'center',
         opacity: 1,
@@ -31,19 +74,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 
-    dummy: {
-        height: 80,
-        width: 80,
-        borderRadius: 40,
-        backgroundColor: 'white',
-        marginLeft: 15,
-    },
-
-    wrap2: {
-        flexDirection: 'row',
-        marginTop: -128,
-    },
-
     stretch: {
         marginTop: -48,
         resizeMode: 'stretch',
@@ -51,12 +81,37 @@ const styles = StyleSheet.create({
         opacity: 0.6,
     },
 
-
-    namaProfil: {
-        marginTop: 5,
+    text_welcome: {
+        fontSize: 24,
+        color: 'white',
+        paddingLeft: 25,
+        paddingRight: 30,
+        // fontWeight: 'bold',
+        fontFamily: 'poppinsbold'
     },
 
-    mainMenu: {
+    background_profil: {
+        flexDirection: 'row',
+        marginTop: -128,
+    },
+
+    image_profil: {
+        height: 80,
+        width: 80,
+        borderRadius: 40,
+        backgroundColor: 'white',
+        marginLeft: 20,
+    },
+
+    name: {
+        fontSize: 14,
+        color: 'white',
+        paddingLeft: 24,
+        paddingRight: 30,
+        fontFamily: 'poppinssemibold'
+    },
+
+    card: {
         alignSelf: 'center',
         borderRadius: 10,
         width: '95%',
@@ -73,58 +128,23 @@ const styles = StyleSheet.create({
         elevation: 2,
     },
 
-    baris: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+    title_card :{
+        fontSize: 16,
+        marginLeft: 20,
+        marginVertical: 8,
         marginTop: 15,
-
-    },
-    title: {
-        fontSize: 24,
-        color: 'white',
-        // fontWeight: 'bold',
-        fontFamily: 'poppinssemibold'
-
-    },
-    subtitle: {
-        color: 'white',
-        fontFamily: 'poppinssemibold',
-        fontSize: 12,
-        marginTop: -10
-    },
-    title2: {
-        fontSize: 14,
-        color: 'white',
-        paddingLeft: 30,
-        paddingRight: 30,
-        fontFamily: 'poppinssemibold'
-    },
-
-    title3: {
-        fontSize: 24,
-        color: 'white',
-        paddingLeft: 30,
-        paddingRight: 30,
-        // fontWeight: 'bold',
+        color: 'gray',
         fontFamily: 'poppinsbold'
     },
 
-
-    wrapikon: {
-        display: 'flex',
-        flexDirection: 'row'
-    },
-    ikon1: {
-        marginTop: 7,
-        marginRight: 14,
-    },
-    ikon2: {
-        marginTop: 4,
-
+    list_card: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+        paddingVertical:10,
     },
 
-    bgmenu: {
+    bg_menu: {
         backgroundColor: '#118eeb',
         height: 60,
         width: 60,
@@ -132,10 +152,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 10
     },
-    ikonMenu: {
+
+    icon_menu: {
         alignSelf: 'center'
     },
-    fontBlack: {
+
+    font_menu: {
         textAlign: "center",
         // fontWeight: "700",
         fontSize: 12,
@@ -144,7 +166,19 @@ const styles = StyleSheet.create({
         fontFamily: 'poppinssemibold'
     },
 
-    cardJadwal :{
+    flatlist_timetable :{
+        paddingVertical:15,
+    },
+
+    text_timetable :{
+        fontSize: 16,
+        padding:10,
+        marginVertical: 4,
+        color: 'gray',
+        fontFamily: 'poppinsbold'
+    },
+
+    card_timetable :{
         backgroundColor: 'white', shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -154,6 +188,69 @@ const styles = StyleSheet.create({
         shadowRadius: 1.00,
         
         elevation: 1,
+    },
+    
+    // Styling Data Jadwal
+    list_data: {
+        backgroundColor: 'white',
+        flexDirection: 'row',
+        width: 330,
+        padding: 15,
+        margin: 10,
+        borderRadius: 8,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
+
+        elevation: 2,
+    },
+
+    data: {
+        paddingLeft: 8,
+        width: '98%',
+    },
+
+    style_position_icon_cover_name :{
+        flexDirection: 'row', 
+        justifyContent: 
+        'space-between',
+    },
+
+    cover_name :{
+        fontSize: 16, 
+        fontFamily: 'poppinssemibold', 
+        paddingBottom: 7, 
+        color: 'grey'
+    },
+
+    desc :{
+        paddingBottom: 12, 
+        color: 'grey', 
+        fontFamily: 'poppins'
+    },
+
+    date :{
+        textAlign: 'right', 
+        paddingBottom: 7, 
+        color: 'grey', 
+        fontFamily: 'poppins',
+    },
+
+    style_position_icon_loc :{
+        paddingTop: 7, 
+        flexDirection: 'row', 
+        justifyContent: 'space-between',
+    },
+
+    loc :{
+        fontSize: 16, 
+        color: 'grey', 
+        alignSelf: 'center', 
+        fontFamily: 'poppins'
     },
 })
 
