@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView, FlatList, Modal, Alert, Button } from 'react-native'
+import { StyleSheet, Text, Image, View, TouchableOpacity, TextInput, ScrollView, FlatList, Modal, Alert, Button } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import CryptoES from "crypto-es";
 import {
@@ -112,13 +112,10 @@ const Catatan = ({ navigation }) => {
     );
 
     return (
-        <View >
+        <View  style={styles.container}>
             {verif == true && (
                 <View>
                     <View>
-
-
-
                         <FlatList
                             contentContainerStyle={{ paddingBottom: 30 }}
                             data={catatan}
@@ -156,9 +153,15 @@ const Catatan = ({ navigation }) => {
             )}
 
             {verif == false && (
-                <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                    <Text>Silahkan Login untuk mempergunakan fitur ini.</Text>
-                </View>
+              <View style={{padding:10, display:'flex', flex:1, alignSelf:'center', justifyContent:'center', alignItems:'center'}}>
+
+                <Image
+                    style={styles.notUser}
+                    source={require("../../assets/not-user.png")}
+                />
+
+                <Text style={{ textAlign: 'center', color :'gray',fontFamily: 'poppins' }}>Maaf fitur ini hanya tersedia untuk user yang telah mendaftar..</Text>
+            </View>
             )}
         </View>
     )
@@ -167,6 +170,11 @@ const Catatan = ({ navigation }) => {
 export default Catatan
 
 const styles = StyleSheet.create({
+    container : {
+      backgroundColor: 'white',
+      height:'100%',
+    },
+
     ikon2: {
 
 
@@ -193,5 +201,13 @@ const styles = StyleSheet.create({
         shadowRadius: 3.84,
 
         elevation: 5,
-    }
+    },
+
+    notUser :{
+        resizeMode: 'stretch',
+        width:260,
+        height: 245
+        // marginBottom: 10,
+        // marginTop: 10
+    },
 })

@@ -155,7 +155,7 @@ const Presensi = ({ navigation }) => {
             )}
 
             {verif == false && (
-                <View style={{ padding:10, flex: 1, justifyContent: 'center', alignItems: 'center', }}>
+                <View style={{ padding:10, flex:1, display:'flex', flex:1, justifyContent: 'center', alignItems: 'center', }}>
 
                     <Image
                         style={styles.notUser}

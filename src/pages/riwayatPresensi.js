@@ -43,63 +43,64 @@ const RiwayatPresensi = () => {
 
         }, [])
     );
+    
     return (
-        <View style={{ display: 'flex', flex: 1, backgroundColor: 'white' }}>
-            <View>
-                {/* <Text>riwayatPresensi</Text> */}
-                {verif == true && (
-                    <FlatList
-                        contentContainerStyle={{ paddingBottom: 30 }}
-                        data={riwayat}
-                        renderItem={({ item }) => (
-                            <View style={{}}>
+        <View style={{backgroundColor: 'white', height:'100%'}}>
+            {/* <Text>riwayatPresensi</Text> */}
+            {verif == true && (
+                <FlatList
+                    contentContainerStyle={{ paddingBottom: 30 }}
+                    data={riwayat}
+                    renderItem={({ item }) => (
+                        <View style={{}}>
 
-                                {email == item.email && (
-                                    <View style={styles.list1}>
-                                        <View style={styles.data}>
-                                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', }}>
-                                                <Text style={{ fontSize: 18, fontFamily: 'poppinssemibold', paddingBottom: 7, color: 'grey', width:'90%'}}>Nama : {item.nama}</Text>
-                                                <Ionicons
-                                                    style={styles.ikonLokasi}
-                                                    name="clipboard"
-                                                    size={24}
-                                                    color="#118eeb" />
-                                            </View>
-
-                                            <Text style={{ paddingBottom: 12, color: 'grey', fontFamily: 'poppins' }}>Keterangan: {item.keterangan}</Text>
-                                            <Text style={{ textAlign: 'right', paddingBottom: 7, color: 'grey', fontFamily: 'poppins' }}>{item.tanggal}</Text>
-                                            <View style={{ width: '100%', height: 0.5, backgroundColor: '#D7DBDD' }}></View>
-
-                                            <View style={{ paddingTop: 7, flexDirection: 'row', justifyContent: 'space-between', }}>
-                                                <Text style={{ fontSize: 16, color: 'grey', alignSelf: 'center', fontFamily: 'poppins' }}>Waktu: {item.waktu}</Text>
-                                                <Ionicons
-                                                    style={styles.ikonLokasi}
-                                                    name="time-outline"
-                                                    size={24}
-                                                    color="red" />
-                                            </View>
-
+                            {email == item.email && (
+                                <View style={styles.list1}>
+                                    <View style={styles.data}>
+                                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', }}>
+                                            <Text style={{ fontSize: 18, fontFamily: 'poppinssemibold', paddingBottom: 7, color: 'grey', width:'90%'}}>Nama : {item.nama}</Text>
+                                            <Ionicons
+                                                style={styles.ikonLokasi}
+                                                name="clipboard"
+                                                size={24}
+                                                color="#118eeb" />
                                         </View>
+
+                                        <Text style={{ paddingBottom: 12, color: 'grey', fontFamily: 'poppins' }}>Keterangan: {item.keterangan}</Text>
+                                        <Text style={{ textAlign: 'right', paddingBottom: 7, color: 'grey', fontFamily: 'poppins' }}>{item.tanggal}</Text>
+                                        <View style={{ width: '100%', height: 0.5, backgroundColor: '#D7DBDD' }}></View>
+
+                                        <View style={{ paddingTop: 7, flexDirection: 'row', justifyContent: 'space-between', }}>
+                                            <Text style={{ fontSize: 16, color: 'grey', alignSelf: 'center', fontFamily: 'poppins' }}>Waktu: {item.waktu}</Text>
+                                            <Ionicons
+                                                style={styles.ikonLokasi}
+                                                name="time-outline"
+                                                size={24}
+                                                color="red" />
+                                        </View>
+
                                     </View>
+                                </View>
 
-                                )}
-                            </View>
+                            )}
+                        </View>
 
-                        )}
-                        keyExtractor={(item, index) => index.toString()}
+                    )}
+                    keyExtractor={(item, index) => index.toString()}
+                />
+            )}
+
+            {verif == false && (
+                    <View style={{padding:10, display:'flex', flex:1, alignSelf:'center', justifyContent:'center', alignItems:'center'}}>
+
+                    <Image
+                        style={styles.notUser}
+                        source={require("../../assets/not-user.png")}
                     />
-                )}
-
-                {verif == false && (
-                    <View style={{padding:10, justifyContent:'center', alignItems:'center', height:'100%'}}>
-                        <Image
-                            style={styles.notUser}
-                            source={require("../../assets/not-user.png")}
-                        />
-                            <Text style={{ color :'gray', textAlign: 'center', fontFamily: 'poppins' }}>Maaf fitur ini hanya tersedia untuk user yang telah mendaftar..</Text>
-                    </View>
-                )}
-            </View>
+    
+                    <Text style={{ textAlign: 'center', color :'gray',fontFamily: 'poppins' }}>Maaf fitur ini hanya tersedia untuk user yang telah mendaftar..</Text>
+                </View>
+            )}
         </View >
     )
 }

@@ -250,75 +250,70 @@ const Beranda1 = ({ navigation }) => {
                   </Text>
                 </TouchableOpacity>
               </View>
-
-
-
-
-
-
-
             </View>
-
           </View>
 
-          <Text
-            style={{
-              fontSize: 16,
-              marginLeft: 20,
-              marginVertical: 4,
-              marginTop: 15,
-              color: 'gray',
-              fontFamily: 'poppinsbold'
-            }}
-          >
-            Jadwal Liput Hari Ini
-          </Text>
-          <FlatList
-            nestedScrollEnabled
-            horizontal
-            contentContainerStyle={{ paddingBottom: 30 }}
-            data={jadwal}
-            renderItem={({ item, index }) => (
-              <View>
-                {item.tanggal == date && (
-                  <View style={styles2.list1}>
+          <View style={{ paddingVertical:15,}}>
+            <Text
+              style={{
+                fontSize: 16,
+                padding:10,
+                marginVertical: 4,
+                color: 'gray',
+                fontFamily: 'poppinsbold'
+              }}
+            >
+              Jadwal Liput Hari Ini
+            </Text>
+            <View style={styles.cardJadwal}>
+              <FlatList
+                showsVerticalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}
+                nestedScrollEnabled
+                horizontal
+                contentContainerStyle={{ paddingVertical:20, }}
+                data={jadwal}
+                renderItem={({ item, index }) => (
+                  <View>
+                    {item.tanggal == date && (
+                      <View style={styles2.list1}>
 
-                    <View style={styles2.data}>
-                      <View style={{ flexDirection: 'row', justifyContent: 'space-between', }}>
-                        <Text style={{ fontSize: 16, fontFamily: 'poppinssemibold', paddingBottom: 7, color: 'grey' }}>Peliput : {item.nama}</Text>
-                        <Ionicons
-                          style={styles2.ikonLokasi}
-                          name="bookmarks"
-                          size={24}
-                          color="#118eeb"
-                        />
+                        <View style={styles2.data}>
+                          <View style={{ flexDirection: 'row', justifyContent: 'space-between', }}>
+                            <Text style={{ fontSize: 16, fontFamily: 'poppinssemibold', paddingBottom: 7, color: 'grey' }}>Peliput : {item.nama}</Text>
+                            <Ionicons
+                              style={styles2.ikonLokasi}
+                              name="bookmarks"
+                              size={24}
+                              color="#118eeb"
+                            />
+                          </View>
+
+                          <Text style={{ paddingBottom: 12, color: 'grey', fontFamily: 'poppins' }}>Keterangan : {item.keterangan}</Text>
+                          <Text style={{ textAlign: 'right', paddingBottom: 7, color: 'grey', fontFamily: 'poppins' }}>{item.tanggal}</Text>
+                          <View style={{ width: '100%', height: 0.5, backgroundColor: '#D7DBDD' }}></View>
+
+                          <View style={{ paddingTop: 7, flexDirection: 'row', justifyContent: 'space-between', }}>
+                            <Text style={{ fontSize: 16, color: 'grey', alignSelf: 'center', fontFamily: 'poppins' }}>Lokasi : {item.lokasi}</Text>
+                            <Ionicons
+                              style={styles2.ikonLokasi}
+                              name="location"
+                              size={24}
+                              color="red"
+                            />
+                          </View>
+
+                        </View>
                       </View>
-
-                      <Text style={{ paddingBottom: 12, color: 'grey', fontFamily: 'poppins' }}>Keterangan : {item.keterangan}</Text>
-                      <Text style={{ textAlign: 'right', paddingBottom: 7, color: 'grey', fontFamily: 'poppins' }}>{item.tanggal}</Text>
-                      <View style={{ width: '100%', height: 0.5, backgroundColor: '#D7DBDD' }}></View>
-
-                      <View style={{ paddingTop: 7, flexDirection: 'row', justifyContent: 'space-between', }}>
-                        <Text style={{ fontSize: 16, color: 'grey', alignSelf: 'center', fontFamily: 'poppins' }}>Lokasi : {item.lokasi}</Text>
-                        <Ionicons
-                          style={styles2.ikonLokasi}
-                          name="location"
-                          size={24}
-                          color="red"
-                        />
-                      </View>
-
-                    </View>
+                    )}
                   </View>
                 )}
-              </View>
-            )}
-            keyExtractor={(item, index) => index.toString()}
-          />
+                keyExtractor={(item, index) => index.toString()}
+              />
+            </View>
+          </View>
+        
         </View>
-
-
-
       </ScrollView>
 
     </View >
