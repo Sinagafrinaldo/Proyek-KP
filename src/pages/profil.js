@@ -60,9 +60,12 @@ const Profil = ({ route, navigation }) => {
                     const func = async () => {
                         const storage = getStorage();
                         const reference = ref(storage, '/' + user.email.toLocaleLowerCase());
+
                         await getDownloadURL(reference).then((x) => {
+                            console.log(x)
                             setUrl(x);
                         })
+
                     }
 
                     if (url == undefined) { func() };
@@ -77,6 +80,7 @@ const Profil = ({ route, navigation }) => {
             return unsubscribe
         }, [])
     );
+
     // console.log(nama)
     return (
         <View style={{ flex: 1, display: 'flex', backgroundColor: 'white' }}>
@@ -100,7 +104,22 @@ const Profil = ({ route, navigation }) => {
                                         </View>
                                         <View style={{ padding: 30, paddingTop: 0 }}>
                                             <View style={styles.symbol}>
-                                                <Image style={{ height: 100, borderRadius: 100, width: 100 }} source={{ uri: url }} />
+                                                {url != undefined && (
+
+
+                                                    <TouchableOpacity onPress={() => {
+                                                        navigation.navigate('Tampil Foto', {
+                                                            url: url
+                                                        })
+                                                    }}>
+                                                        <Image style={{ height: 100, borderRadius: 100, width: 100 }} source={{ uri: url }} />
+                                                    </TouchableOpacity>
+                                                )}
+                                                {url == undefined && (
+
+
+                                                    <View></View>
+                                                )}
                                             </View>
                                             <View style={styles.wrapitem}>
                                                 <TouchableOpacity style={styles.btn} onPress={() => {

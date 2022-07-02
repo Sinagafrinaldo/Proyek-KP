@@ -1,4 +1,4 @@
-import { View, Image, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, TouchableHighlight } from 'react-native'
+import { Alert, View, Image, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, TouchableHighlight } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import {
     collection,
@@ -8,13 +8,14 @@ import {
     deleteDoc,
     doc,
 } from "firebase/firestore"
+import Ionicons from "react-native-vector-icons/Ionicons";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { firebaseConfig } from '../firebase/config';
 import * as ImagePicker from 'expo-image-picker';
 import { db } from '../firebase/crudConf';
 import { useFocusEffect } from '@react-navigation/native';
 import { initializeApp } from 'firebase/app'; //validate yourself
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'; //access the storage database
+import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage'; //access the storage database
 initializeApp(firebaseConfig);
 const EditProfil = ({ route, navigation }) => {
     const { nama, nip, id, email, inisial } = route.params;
@@ -29,6 +30,34 @@ const EditProfil = ({ route, navigation }) => {
         await updateDoc(userDoc, newFields);
         // getUsers();
     };
+    const deleteFromFirebase = (email) => {
+        const storage = getStorage();
+        const reference = ref(storage, '/' + email.toLowerCase());
+        deleteObject(reference)
+        navigation.navigate('Profil')
+    };
+    const removeImage = (img) => { // delete an image selected by the user
+        Alert.alert(
+            "Hapus Foto",
+            "Apakah anda yakin ingin menghapus foto profil?",
+            [
+                {
+                    text: "Batal",
+                    style: "cancel",
+                },
+                {
+                    text: "Ya",
+                    onPress: () => {
+                        deleteFromFirebase(email)
+                    },
+                },
+            ],
+            { cancelable: false }
+        )
+    }
+
+
+
 
     useEffect(() => {
 
@@ -74,6 +103,8 @@ const EditProfil = ({ route, navigation }) => {
             const bytes = await img.blob();
 
             await uploadBytes(refe, bytes); //upload images
+            alert('Berhasil memperbarui foto profil.')
+            navigation.navigate('Profil')
         }
     };
     // const deleteUser = async (id) => {
@@ -94,7 +125,19 @@ const EditProfil = ({ route, navigation }) => {
                 <Image style={{ height: 100, borderRadius: 100, width: 100 }} source={{ uri: url }} />
 
             </TouchableHighlight>
-
+            <View style={{ backgroundColor: 'black', alignSelf: 'center', marginTop: -20, padding: 4, borderRadius: 5 }}>
+                <Text style={{ color: 'white' }}>Ganti Foto</Text>
+            </View>
+            <TouchableOpacity
+                onPress={() => { removeImage() }}
+                style={{ alignSelf: 'center', marginRight: 130, marginTop: -30 }}>
+                <Ionicons
+                    // style={styles.ikon2}
+                    name="trash"
+                    size={30}
+                    color="red"
+                />
+            </TouchableOpacity>
             <Text style={styles.teksin}>Edit Profil</Text>
 
             <View style={styles.content}>

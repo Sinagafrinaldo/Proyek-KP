@@ -16,6 +16,7 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore"
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { firebaseConfig } from '../firebase/config';
 import { initializeApp } from 'firebase/app';
@@ -36,6 +37,7 @@ const Beranda1 = ({ navigation }) => {
   const [pengguna, setPengguna] = useState([])
   const [jadwal, setJadwal] = useState([])
   const [date, setSelectedDate] = useState('')
+  const [url, setUrl] = useState();
   const getJadwal = async () => {
     const data = await getDocs(jadwalCollectionRef);
     setJadwal(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
@@ -59,8 +61,18 @@ const Beranda1 = ({ navigation }) => {
         if (user != null) {
           setEmail(user.email)
           getUsers();
-        } else {
+          const func = async () => {
+            const storage = getStorage();
+            const reference = ref(storage, '/' + user.email.toLocaleLowerCase());
+            await getDownloadURL(reference).then((x) => {
+              setUrl(x);
+            })
+          }
+
+          if (url == undefined) { func() };
+        } else if (user == null) {
           setPengguna([])
+          setUrl(undefined)
         }
       })
 
@@ -102,39 +114,82 @@ const Beranda1 = ({ navigation }) => {
       </View>
 
       <View style={styles.line_nav}></View>
-      
-      <ScrollView contentContainerStyle={{flexGrow: 1}}>
+
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={styles.background_page}>
           <Text style={{ color: '#1F76C6' }}>-</Text>
         </View>
+        {url == undefined && (
 
-        <View style={styles.info_profil}>
-          <Image
-            style={styles.stretch}
-            source={require("../../assets/siger.png")}
-          />
-          <View style={styles.background_profil}>
-            <View style={{flexDirection:'row', alignItems:'center'}}>
-              <View style={styles.image_profil}></View>
-              <View>
-                <Text style={styles.text_welcome}>Selamat Datang</Text>
 
-                {pengguna.map((item, index) => (
+          <View style={styles.info_profil}>
+            <Image
+              style={styles.stretch}
+              source={require("../../assets/siger.png")}
+            />
+            <View style={styles.background_profil}>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <View style={styles.image_profil}></View>
+                <View>
+                  <Text style={styles.text_welcome}>Selamat Datang</Text>
 
-                  <View key={index} style={{}}>
-                    <View >
-                      {item.email.toLowerCase() == email.toLowerCase() && (
-                        <Text style={styles.name}> {item.nama}</Text>
-                      )}
+                  {pengguna.map((item, index) => (
 
+                    <View key={index} style={{}}>
+                      <View >
+                        {item.email.toLowerCase() == email.toLowerCase() && (
+                          <Text style={styles.name}> {item.nama}</Text>
+                        )}
+
+                      </View>
                     </View>
-                  </View>
-                ))}
+                  ))}
 
+                </View>
               </View>
             </View>
           </View>
-        </View>
+        )}
+        {url != undefined && (
+
+
+          <View style={styles.info_profil}>
+            <Image
+              style={styles.stretch}
+              source={require("../../assets/siger.png")}
+            />
+            <View style={styles.background_profil}>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                {/* <View style={styles.image_profil}></View> */}
+                <View style={styles.symbol}>
+                  <TouchableOpacity onPress={() => {
+                    navigation.navigate('Tampil Foto', {
+                      url: url
+                    })
+                  }}>
+                    <Image style={{ height: 80, borderRadius: 100, width: 80, marginLeft: 20 }} source={{ uri: url }} />
+                  </TouchableOpacity>
+                </View>
+                <View>
+                  <Text style={styles.text_welcome}>Selamat Datang</Text>
+
+                  {pengguna.map((item, index) => (
+
+                    <View key={index} style={{}}>
+                      <View >
+                        {item.email.toLowerCase() == email.toLowerCase() && (
+                          <Text style={styles.name}> {item.nama}</Text>
+                        )}
+
+                      </View>
+                    </View>
+                  ))}
+
+                </View>
+              </View>
+            </View>
+          </View>
+        )}
 
         <View style={styles.card}>
           <Text style={styles.title_card}>Main Menu</Text>
@@ -178,7 +233,7 @@ const Beranda1 = ({ navigation }) => {
               </Text>
             </View>
 
-           
+
           </View>
 
           <View style={styles.list_card}>
@@ -227,14 +282,14 @@ const Beranda1 = ({ navigation }) => {
 
         <View style={styles.flatlist_timetable}>
           <Text style={styles.text_timetable}>Jadwal Liput Hari Ini</Text>
-          
+
           <View style={styles.card_timetable}>
             <FlatList
               showsVerticalScrollIndicator={false}
               showsHorizontalScrollIndicator={false}
               nestedScrollEnabled
               horizontal
-              contentContainerStyle={{ paddingVertical:20, }}
+              contentContainerStyle={{ paddingVertical: 20, }}
               data={jadwal}
               renderItem={({ item, index }) => (
                 <View>
@@ -273,7 +328,7 @@ const Beranda1 = ({ navigation }) => {
             />
           </View>
         </View>
-        
+
       </ScrollView>
     </View >
   );

@@ -15,6 +15,7 @@ import Profil from "./profil";
 import EditProfil from "./editProfil";
 import TambahCatatan from "./tambahCatatan";
 import DetailCatatan from "./detailCatatan";
+import TampilFoto from "./tampilFoto";
 
 const Stack = createStackNavigator();
 
@@ -43,6 +44,25 @@ function Beranda() {
         }}
         name="Catatan"
         component={Catatan}
+      />
+      <Stack.Screen
+        // options={{ headerShown: false }}
+        options={{
+          title: 'Foto Profil',
+          headerStyle: {
+            backgroundColor: '#118eeb',
+            height: 90
+          },
+          headerTintColor: '#fff',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            // fontWeight: '500',
+            fontFamily: 'poppinssemibold',
+            justifyContent: 'center',
+          },
+        }}
+        name="Tampil Foto"
+        component={TampilFoto}
       />
       <Stack.Screen
         // options={{ headerShown: false }}

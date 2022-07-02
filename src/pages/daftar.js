@@ -110,9 +110,9 @@ const Daftar = ({ navigation }) => {
                         />
                     </TouchableOpacity>
                     <View style={styles.card}>
-                        <Text style={{marginBottom:5,alignSelf:'center', color: '#118eeb',fontWeight:'bold', fontSize:18}}>DAFTAR</Text>
-                        <View style={{ width: '70%', height: 1.5, alignSelf:'center', backgroundColor: '#D7DBDD' }}></View>
-                        <Text style={{ color:'gray', marginTop: 20, marginBottom: 5 }}>Nama</Text>
+                        <Text style={{ marginBottom: 5, alignSelf: 'center', color: '#118eeb', fontWeight: 'bold', fontSize: 18 }}>DAFTAR</Text>
+                        <View style={{ width: '70%', height: 1.5, alignSelf: 'center', backgroundColor: '#D7DBDD' }}></View>
+                        <Text style={{ color: 'gray', marginTop: 20, marginBottom: 5 }}>Nama</Text>
 
                         <View style={{ flexDirection: 'row' }}>
                             <Ionicons
@@ -129,7 +129,7 @@ const Daftar = ({ navigation }) => {
                             />
                         </View>
 
-                        <Text style={{ color:'gray', marginTop: 20, marginBottom: 5 }}>NIP</Text>
+                        <Text style={{ color: 'gray', marginTop: 20, marginBottom: 5 }}>NIP</Text>
 
                         <View style={{ flexDirection: 'row' }}>
                             <Ionicons
@@ -145,7 +145,7 @@ const Daftar = ({ navigation }) => {
                                 placeholder='NIP...'
                             />
                         </View>
-                        <Text style={{ color:'gray', marginTop: 20, marginBottom: 5 }}>Email</Text>
+                        <Text style={{ color: 'gray', marginTop: 20, marginBottom: 5 }}>Email</Text>
 
                         <View style={{ flexDirection: 'row' }}>
                             <Ionicons
@@ -161,7 +161,7 @@ const Daftar = ({ navigation }) => {
                                 placeholder='Email...'
                             />
                         </View>
-                        <Text style={{ color:'gray', marginTop: 20, marginBottom: 5 }}>Kata Sandi</Text>
+                        <Text style={{ color: 'gray', marginTop: 20, marginBottom: 5 }}>Kata Sandi</Text>
                         <View style={{ flexDirection: 'row' }}>
                             <Ionicons
                                 style={styles.ikonMenu}
@@ -178,7 +178,7 @@ const Daftar = ({ navigation }) => {
                                 secureTextEntry
                             />
                         </View>
-                        <Text style={{ color:'gray', marginTop: 20, marginBottom: 5 }}>Konfirmasi Sandi</Text>
+                        <Text style={{ color: 'gray', marginTop: 20, marginBottom: 5 }}>Konfirmasi Sandi</Text>
 
                         <View style={{ flexDirection: 'row' }}>
                             <Ionicons
@@ -199,6 +199,8 @@ const Daftar = ({ navigation }) => {
                         <TouchableOpacity style={styles.tombol} onPress={() => {
                             if (confPw != password) {
                                 alert('Maaf, konfirmasi sandi tidak sama dengan kata sandi.')
+                            } else if (nama == '' || email == '' || nip == '') {
+                                alert('Silahkan mengisi semua kolom pendaftaran.')
                             } else {
                                 handleSignUp()
                                 createUser()
