@@ -111,7 +111,7 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
     return (
         <ScrollView contentContainerStyle={{backgroundColor:'white', flexGrow: 1}}>
             {verif == true && (
-                <View>
+                <View style={styles.container}>
 
                     {/* <Button title='Data Presensi' onPress={() => {
                         getInfo()
@@ -119,54 +119,45 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
                     }} /> */}
                     {pengguna1.map((item, index) => (
 
-                        <View key={index} style={{}}>
+                        <View key={index}>
                             {item.email.toLowerCase() == email.toLowerCase() && (
                                 <View>
                                     {/* <Text style={styles.title2}>Nama:  {item.nama}</Text>
                                         <Text style={styles.title2}>NIP:  {item.nip}</Text> */}
-                                    {check == false && (
-                                        <View style={styles.card}>                
+                                    {check == true && (
+                                        <View >                
                                             <Image
-                                                style={styles.stretch2}
+                                                style={styles.image_confirm_absent}
                                                 source={require("../../assets/konfirmasi-absensi.png")}
                                             />
-                                                <Text style={{ fontSize: 18, fontFamily: 'poppinssemibold', color: 'gray', textAlign: 'center', }}>Lakukan Absensi</Text>
-                                                <Text style={{ fontSize: 18, fontFamily: 'poppinssemibold', color: 'gray', marginBottom: 20, textAlign: 'center', }}>Sekarang</Text>
-                                                <TouchableOpacity style={styles.cekin1}
-                                                    onPress={() => {
+                                            <Text style={styles.text_confirm_absent}>Lakukan Absensi</Text>
+                                            <Text style={styles.text_now}>Sekarang</Text>
+                                            <TouchableOpacity style={styles.touch_absent}
+                                                onPress={() => {
 
-                                                        handleMasuk(item.nama, item.nip)
-                                                        getInfo()
+                                                    handleMasuk(item.nama, item.nip)
+                                                    getInfo()
 
-                                                    }}
-                                                    >  
-                                                <Text style={styles.teksin2}>ABSENSI</Text>
+                                                }}
+                                                >  
+                                                <Text style={styles.text_absent}>ABSENSI</Text>
                                             </TouchableOpacity>
                                         </View>
-                                    )}
-                                    {check == true && (
-                                        <View style={styles.card}>
-                                            {/* <Ionicons
-                                                style={styles.ikon1}
-                                                name="shield-checkmark-outline"
-                                                size={140}
-                                                color="#1FD851"
-                                            /> */}
-                                        
+                                    )}    
+
+                                    {check == false && (
+                                        <View>
                                             <Image
-                                                style={styles.stretch}
+                                                style={styles.image_absent}
                                                 source={require("../../assets/absensi.png")}
                                             />
 
-                                            <Text style={{ fontSize: 34, fontFamily: 'poppinssemibold', color: '#118eeb', textAlign: 'center', }}>ABSENSI</Text>
-                                            <Text style={{ fontSize: 18, fontFamily: 'poppins', color: 'gray', marginBottom: 30, textAlign: 'center', }}>ONLINE</Text>
+                                            <Text style={styles.text_absent_info}>ABSENSI</Text>
+                                            <Text style={styles.text_online_info}>ONLINE</Text>
 
-                                            
-
-                                            <Text style={{ fontSize: 15, fontFamily: 'poppinssemibold', color: 'gray', marginBottom: 8, textAlign: 'center', }}>Selamat</Text>
-                                            <Text style={styles.teksin}>Anda Sudah Melakukan</Text>
-                                            <Text style={styles.teksin}>Absensi Hari Ini</Text>
-
+                                            <Text style={styles.text_welcome}>Selamat</Text>
+                                            <Text style={styles.text_absent_done}>Anda Sudah Melakukan</Text>
+                                            <Text style={styles.text_absent_done}>Absensi Hari Ini</Text>
                                         </View>
                                     )}
                                 </View>
@@ -177,8 +168,14 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
             )}
 
             {verif == false && (
-                <View style={{ backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-                    <Text style={{ fontFamily: 'poppins' }}>Maaf fitur ini hanya tersedia untuk user yang telah mendaftar..</Text>
+                <View style={styles.container_verif_false}>
+
+                    <Image
+                        style={styles.image_not_verif}
+                        source={require("../../assets/not-user.png")}
+                    />
+
+                    <Text style={styles.text_not_verif}>Maaf fitur ini hanya tersedia untuk user yang telah mendaftar..</Text>
                 </View>
             )}
 
