@@ -117,19 +117,22 @@ const Beranda1 = ({ navigation }) => {
 
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={styles.background_page}>
-          <Text style={{ color: '#1F76C6' }}>-</Text>
+        <Image
+              style={styles.background}
+              source={require("../../assets/background.png")}
+            />
         </View>
         {url == undefined && (
 
 
-          <View style={styles.info_profil}>
+          <View style={styles.info_profile}>
             <Image
               style={styles.stretch}
               source={require("../../assets/siger.png")}
             />
-            <View style={styles.background_profil}>
+            <View style={styles.background_profile}>
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <View style={styles.image_profil}></View>
+                <View style={styles.wrap_image_profile}></View>
                 <View>
                   <Text style={styles.text_welcome}>Selamat Datang</Text>
 
@@ -153,12 +156,12 @@ const Beranda1 = ({ navigation }) => {
         {url != undefined && (
 
 
-          <View style={styles.info_profil}>
+          <View style={styles.info_profile}>
             <Image
               style={styles.stretch}
               source={require("../../assets/siger.png")}
             />
-            <View style={styles.background_profil}>
+            <View style={styles.background_profile}>
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 {/* <View style={styles.image_profil}></View> */}
                 <View style={styles.symbol}>
@@ -167,7 +170,7 @@ const Beranda1 = ({ navigation }) => {
                       url: url
                     })
                   }}>
-                    <Image style={{ height: 80, borderRadius: 100, width: 80, marginLeft: 20 }} source={{ uri: url }} />
+                    <Image style={styles.image_profile} source={{ uri: url }} />
                   </TouchableOpacity>
                 </View>
                 <View>
@@ -191,8 +194,10 @@ const Beranda1 = ({ navigation }) => {
           </View>
         )}
 
+        <Text style={styles.title_card}>Main Menu</Text>
+
         <View style={styles.card}>
-          <Text style={styles.title_card}>Main Menu</Text>
+          
           <View style={styles.list_card}>
             <View>
               <TouchableOpacity
@@ -234,10 +239,6 @@ const Beranda1 = ({ navigation }) => {
             </View>
 
 
-          </View>
-
-          <View style={styles.list_card}>
-
             <View>
               <TouchableOpacity
                 onPress={() => {
@@ -257,6 +258,12 @@ const Beranda1 = ({ navigation }) => {
                 </Text>
               </TouchableOpacity>
             </View>
+            
+          </View>
+
+          {/* <View style={styles.list_card}>
+
+           
 
             <View style={{ marginBottom: 20 }}>
               <TouchableOpacity
@@ -277,7 +284,8 @@ const Beranda1 = ({ navigation }) => {
                 </Text>
               </TouchableOpacity>
             </View>
-          </View>
+          </View> */}
+
         </View>
 
         <View style={styles.flatlist_timetable}>
@@ -289,10 +297,10 @@ const Beranda1 = ({ navigation }) => {
               showsHorizontalScrollIndicator={false}
               nestedScrollEnabled
               horizontal
-              contentContainerStyle={{ paddingVertical: 20, }}
+              // contentContainerStyle={{ paddingVertical: 20, }}
               data={jadwal}
               renderItem={({ item, index }) => (
-                <View>
+                <View style={{alignSelf:'center'}}>
                   {item.tanggal == date && (
                     <View style={styles.list_data}>
 
