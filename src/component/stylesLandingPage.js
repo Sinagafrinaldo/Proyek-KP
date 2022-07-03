@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     style_navbar: {
         display: 'flex',
         flexDirection: 'row',
+        alignItems:'center',
         justifyContent: 'space-between',
         marginTop: 15,
 
@@ -50,20 +51,26 @@ const styles = StyleSheet.create({
         marginTop: 4,
     },
 
-    line_nav: {
-        height: 0.5,
+    line_nav :{
+        height: 0.5, 
         backgroundColor: '#D7DBDD',
     },
+    
+    // background_page :{
+    //     height: 240, 
+    //     borderBottomEndRadius: 10,
+    //     borderBottomStartRadius: 10,
+    // },
 
-    background_page: {
-        backgroundColor: '#118eeb',
-        height: 350,
-        borderBottomEndRadius: 10,
-        borderBottomStartRadius: 10,
+    background: {
+        alignSelf:'center',
+        resizeMode: 'stretch',
+        width: '110%',
+        height:350,
     },
 
-    info_profil: {
-        marginTop: -330,
+    info_profile: {
+        marginTop: -315,
         alignSelf: 'center',
         opacity: 1,
         backgroundColor: 'rgba(13,53,89, 0.5)',
@@ -90,12 +97,19 @@ const styles = StyleSheet.create({
         fontFamily: 'poppinsbold'
     },
 
-    background_profil: {
+    background_profile: {
         flexDirection: 'row',
         marginTop: -128,
     },
 
-    image_profil: {
+    image_profile :{
+        height: 80, 
+        borderRadius: 100, 
+        width: 80, 
+        marginLeft: 20
+    },
+
+    wrap_image_profile: {
         height: 80,
         width: 80,
         borderRadius: 40,
@@ -114,8 +128,9 @@ const styles = StyleSheet.create({
     card: {
         alignSelf: 'center',
         borderRadius: 10,
-        width: '95%',
-        marginTop: 30,
+        width: '90%',
+        marginTop: 5,
+        padding:5,
         backgroundColor: 'white',
         shadowColor: "#000",
         shadowOffset: {
@@ -128,12 +143,12 @@ const styles = StyleSheet.create({
         elevation: 2,
     },
 
-    title_card: {
+    title_card :{
         fontSize: 16,
-        marginLeft: 20,
+        marginLeft: 18,
         marginVertical: 8,
-        marginTop: 15,
-        color: 'gray',
+        marginTop: 25,
+        color: 'white',
         fontFamily: 'poppinsbold'
     },
 
@@ -141,14 +156,14 @@ const styles = StyleSheet.create({
         display: "flex",
         flexDirection: "row",
         justifyContent: "center",
-        paddingVertical: 10,
+        paddingVertical:10,
     },
 
     bg_menu: {
         backgroundColor: '#118eeb',
         height: 60,
         width: 60,
-        marginHorizontal: 30,
+        marginHorizontal: 20,
         justifyContent: 'center',
         borderRadius: 10
     },
@@ -166,30 +181,33 @@ const styles = StyleSheet.create({
         fontFamily: 'poppinssemibold'
     },
 
-    flatlist_timetable: {
-        paddingVertical: 15,
+    flatlist_timetable :{
+        paddingVertical:30,
+        paddingBottom:50,
     },
 
-    text_timetable: {
+    text_timetable :{
         fontSize: 16,
-        padding: 10,
-        marginVertical: 4,
+        marginLeft: 18,
+        marginBottom:15,
         color: 'gray',
         fontFamily: 'poppinsbold'
     },
 
-    card_timetable: {
-        backgroundColor: 'white', shadowColor: "#000",
+    card_timetable :{
+        backgroundColor: 'white',
+        height:220, 
+        shadowColor: "#000",
         shadowOffset: {
             width: 0,
             height: 1,
         },
         shadowOpacity: 0.18,
         shadowRadius: 1.00,
-
+        
         elevation: 1,
     },
-
+    
     // Styling Data Jadwal
     list_data: {
         backgroundColor: 'white',
@@ -214,42 +232,42 @@ const styles = StyleSheet.create({
         width: '98%',
     },
 
-    style_position_icon_cover_name: {
-        flexDirection: 'row',
-        justifyContent:
-            'space-between',
+    style_position_icon_cover_name :{
+        flexDirection: 'row', 
+        justifyContent: 
+        'space-between',
     },
 
-    cover_name: {
-        fontSize: 16,
-        fontFamily: 'poppinssemibold',
-        paddingBottom: 7,
+    cover_name :{
+        fontSize: 16, 
+        fontFamily: 'poppinssemibold', 
+        paddingBottom: 7, 
         color: 'grey'
     },
 
-    desc: {
-        paddingBottom: 12,
-        color: 'grey',
+    desc :{
+        paddingBottom: 12, 
+        color: 'grey', 
         fontFamily: 'poppins'
     },
 
-    date: {
-        textAlign: 'right',
-        paddingBottom: 7,
-        color: 'grey',
+    date :{
+        textAlign: 'right', 
+        paddingBottom: 7, 
+        color: 'grey', 
         fontFamily: 'poppins',
     },
 
-    style_position_icon_loc: {
-        paddingTop: 7,
-        flexDirection: 'row',
+    style_position_icon_loc :{
+        paddingTop: 7, 
+        flexDirection: 'row', 
         justifyContent: 'space-between',
     },
 
-    loc: {
-        fontSize: 16,
-        color: 'grey',
-        alignSelf: 'center',
+    loc :{
+        fontSize: 16, 
+        color: 'grey', 
+        alignSelf: 'center', 
         fontFamily: 'poppins'
     },
 })
