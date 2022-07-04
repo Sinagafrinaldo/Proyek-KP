@@ -3,15 +3,90 @@ import React from 'react'
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#F5FBFF',
-        height: '100%'
+        backgroundColor: 'white', 
+        height:'100%'
     },
 
-    container2: {
+    card_absent: {
         backgroundColor: 'white',
-        height: '100%',
+        flexDirection: 'row',
+        padding: 15,
+        margin: 10,
+        borderRadius: 8,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
+
+        elevation: 6,
     },
 
+    data_absent: {
+        paddingLeft: 8,
+        width: '98%',
+    },
+
+    position_name : {
+        flexDirection: 'row', 
+        justifyContent: 'space-between',
+    },
+
+    text_name : {
+        fontSize: 18, 
+        fontFamily: 'poppinssemibold', 
+        paddingBottom: 7, 
+        color: 'grey', 
+        width:'90%'
+    },
+
+    text_description :{
+        paddingBottom: 12, 
+        color: 'grey', 
+        fontFamily: 'poppins'
+    },
+
+    date :{
+        textAlign: 'right', 
+        paddingBottom: 7, 
+        color: 'grey', 
+        fontFamily: 'poppins'
+    },
+
+    time :{
+        fontSize: 16, 
+        color: 'grey', 
+        alignSelf: 'center', 
+        fontFamily: 'poppins'
+    },
+
+    container_verif_false :{
+        padding:10, 
+        flex:1, 
+        display:'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center',
+    },
+
+    image_not_verif :{
+        resizeMode: 'stretch',
+        width:260,
+        height: 245
+    },
+
+    text_not_verif :{
+        textAlign: 'center', 
+        color :'gray',
+        fontFamily: 'poppins'
+    },
+
+
+
+
+
+  
     ikonAdd: {
         position: 'absolute',
         bottom: 30,
@@ -37,22 +112,7 @@ const styles = StyleSheet.create({
         padding: 10
     },
 
-    list1: {
-        backgroundColor: 'white',
-        flexDirection: 'row',
-        padding: 15,
-        margin: 10,
-        borderRadius: 8,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 3,
-        },
-        shadowOpacity: 0.27,
-        shadowRadius: 4.65,
-
-        elevation: 6,
-    },
+   
 
     list2: {
         backgroundColor: '#118eeb',
@@ -60,10 +120,7 @@ const styles = StyleSheet.create({
         width: 5,
     },
 
-    data: {
-        paddingLeft: 8,
-        width: '98%',
-    },
+    
 
     btnHapus: {
         backgroundColor: 'brown',
