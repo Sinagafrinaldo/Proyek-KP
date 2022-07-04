@@ -79,9 +79,12 @@ const Presensi = ({ navigation }) => {
             const unsubscribe = auth.onAuthStateChanged(user => {
                 getPresensi()
                 if (user != null) {
-                    if (user.email != 'admin@gmail.com') {
+                    if (user.email.toLocaleLowerCase() != 'admin@gmail.com') {
                         setVerif(true)
                     }
+                    //                     else if (user.email.toLocaleLowerCase() == 'admin@gmail.com'){
+                    // set
+                    //                     }
                     setEmail(user.email)
                     getUsers();
                     getInfo()
@@ -97,26 +100,26 @@ const Presensi = ({ navigation }) => {
     );
 
     return (
-        <ScrollView  contentContainerStyle={{backgroundColor:'white', flexGrow: 1}}>
+        <ScrollView contentContainerStyle={{ backgroundColor: 'white', flexGrow: 1 }}>
             {verif == true && (
-                <View style={styles.container}>
+                <View style={styles.card}>
                     <Image
                         style={styles.stretch}
                         source={require("../../assets/vector.png")}
                     />
-                    <Text style={styles.text_absent}>ABSENSI</Text>
-                    <Text style={styles.text_online}>ONLINE</Text>
-                    <Text style={styles.text_users}> User</Text>
-                    
+                    <Text style={{ fontSize: 34, fontFamily: 'poppinssemibold', color: '#118eeb', textAlign: 'center', }}>ABSENSI</Text>
+                    <Text style={{ fontSize: 18, fontFamily: 'poppins', color: 'gray', marginBottom: 30, textAlign: 'center', }}>ONLINE</Text>
+                    <Text style={{ color: 'gray', fontFamily: 'poppinssemibold', textAlign: 'center', }}> User</Text>
                     {pengguna.map((item, index) => (
-                        <View key={index}>
+
+                        <View key={index} style={{}}>
                             <View >
                                 {item.email.toLowerCase() == email.toLowerCase() && (
                                     <View>
-                                        <Text style={styles.name}>{item.nama}</Text>
-                                        <Text style={styles.nip}>{item.nip}</Text>
+                                        <Text style={styles.title2}>{item.nama}</Text>
+                                        <Text style={styles.title3}>{item.nip}</Text>
                                         {/* {check == false && ( */}
-                                        <TouchableOpacity style={styles.button_absent}
+                                        <TouchableOpacity style={styles.cekin}
                                             onPress={() => {
 
                                                 // handleMasuk(item.nama, item.nip)
@@ -130,7 +133,7 @@ const Presensi = ({ navigation }) => {
                                             }}
                                         >
 
-                                            <Text style={styles.button_text_absent}>Lakukan Presensi</Text>
+                                            <Text style={styles.teksin}>Lakukan Presensi</Text>
                                         </TouchableOpacity>
                                         {/* )} */}
                                         {/* {check == true && (
@@ -155,14 +158,14 @@ const Presensi = ({ navigation }) => {
             )}
 
             {verif == false && (
-                <View style={styles.container_verif_false}>
+                <View style={{ padding: 10, flex: 1, display: 'flex', flex: 1, justifyContent: 'center', alignItems: 'center', }}>
 
                     <Image
-                        style={styles.image_not_verif}
+                        style={styles.notUser}
                         source={require("../../assets/not-user.png")}
                     />
 
-                    <Text style={styles.text_not_verif}>Maaf fitur ini hanya tersedia untuk user yang telah mendaftar..</Text>
+                    <Text style={{ textAlign: 'center', color: 'gray', fontFamily: 'poppins' }}>Maaf fitur ini hanya tersedia bagi yang terdaftar sebagai pengguna biasa..</Text>
                 </View>
             )}
 

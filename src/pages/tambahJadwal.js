@@ -31,9 +31,20 @@ const TambahJadwal = ({ navigation }) => {
         if (today.getMonth() < 10) {
             let date = today.getFullYear() + '/0' + (today.getMonth() + 1) + '/' + today.getDate();
             setSelectedDate(date);
+            if (today.getDay() < 10) {
+                let date = today.getFullYear() + '/0' + (today.getMonth() + 1) + '/0' + today.getDate();
+                setSelectedDate(date);
+            }
         } else {
-            setSelectedDate(date);
-            let date = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
+            if (today.getDay() < 10) {
+                let date = today.getFullYear() + '/' + (today.getMonth() + 1) + '/0' + today.getDate();
+                setSelectedDate(date);
+            } else {
+
+
+                let date = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
+                setSelectedDate(date);
+            }
         }
 
     }, []);

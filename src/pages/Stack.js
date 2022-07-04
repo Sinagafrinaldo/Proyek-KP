@@ -16,6 +16,11 @@ import EditProfil from "./editProfil";
 import TambahCatatan from "./tambahCatatan";
 import DetailCatatan from "./detailCatatan";
 import TampilFoto from "./tampilFoto";
+import DataPengguna from "./DataPengguna";
+import DataPresensi from "./DataPresensi";
+import DetailPengguna from "./DetailPengguna";
+import EditPengguna from "./EditPengguna";
+
 
 const Stack = createStackNavigator();
 
@@ -44,6 +49,78 @@ function Beranda() {
         }}
         name="Catatan"
         component={Catatan}
+      />
+      <Stack.Screen
+        // options={{ headerShown: false }}
+        options={{
+          headerStyle: {
+            backgroundColor: '#118eeb',
+            height: 90
+          },
+          headerTintColor: '#fff',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            // fontWeight: '500',
+            fontFamily: 'poppinssemibold',
+            justifyContent: 'center',
+          },
+        }}
+        name="Data Pengguna"
+        component={DataPengguna}
+      />
+      <Stack.Screen
+        // options={{ headerShown: false }}
+        options={{
+          headerStyle: {
+            backgroundColor: '#118eeb',
+            height: 90
+          },
+          headerTintColor: '#fff',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            // fontWeight: '500',
+            fontFamily: 'poppinssemibold',
+            justifyContent: 'center',
+          },
+        }}
+        name="Edit Pengguna"
+        component={EditPengguna}
+      />
+      <Stack.Screen
+        // options={{ headerShown: false }}
+        options={{
+          headerStyle: {
+            backgroundColor: '#118eeb',
+            height: 90
+          },
+          headerTintColor: '#fff',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            // fontWeight: '500',
+            fontFamily: 'poppinssemibold',
+            justifyContent: 'center',
+          },
+        }}
+        name="Detail Pengguna"
+        component={DetailPengguna}
+      />
+      <Stack.Screen
+        // options={{ headerShown: false }}
+        options={{
+          headerStyle: {
+            backgroundColor: '#118eeb',
+            height: 90
+          },
+          headerTintColor: '#fff',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            // fontWeight: '500',
+            fontFamily: 'poppinssemibold',
+            justifyContent: 'center',
+          },
+        }}
+        name="Data Presensi"
+        component={DataPresensi}
       />
       <Stack.Screen
         // options={{ headerShown: false }}
