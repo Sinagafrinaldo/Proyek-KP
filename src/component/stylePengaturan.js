@@ -7,21 +7,17 @@ const styles = StyleSheet.create({
         height: '100%'
     },
 
-    card :{
-        backgroundColor: 'white',
-        padding:0,
-        margin:8,
-        borderRadius:8,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 3,
-        },
-        shadowOpacity: 0.27,
-        shadowRadius: 4.65,
+    card_text : {
+        padding: 18,
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent: 'space-between',
+    },
 
-        elevation: 6,
-    }, 
+    text :{
+        color: 'gray', 
+        fontFamily: 'poppins'
+    },
 
     line :{
         width: '100%', 
@@ -29,12 +25,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#D7DBDD'
     },
 
-    text : {
-        padding: 18,
-        flexDirection:'row',
-        alignItems:'center',
-        justifyContent: 'space-between',
-    },
+    
 })
 
 export default styles
