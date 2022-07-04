@@ -7,13 +7,12 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 const Pengaturan = ({ navigation }) => {
     return (
         <View style={styles.container}>
-
             <TouchableOpacity
                 onPress={() => {
                     navigation.navigate("Bantuan");
                 }}>
-                <View style={styles.text}>
-                    <Text style={{ color: 'gray', fontFamily: 'poppins' }}>Bantuan</Text>
+                <View style={styles.card_text}>
+                    <Text style={styles.text}>Bantuan</Text>
                     <Ionicons
                       name="chevron-forward-outline"
                       size={22}
@@ -27,8 +26,8 @@ const Pengaturan = ({ navigation }) => {
                 onPress={() => {
                     navigation.navigate("Tentang");
                 }}>
-                <View style={styles.text}>
-                    <Text style={{ color: 'gray', fontFamily: 'poppins' }}>Tentang Aplikasi</Text>
+                <View style={styles.card_text}>
+                    <Text style={styles.text}>Tentang Aplikasi</Text>
                     <Ionicons
                       name="chevron-forward-outline"
                       size={22}
@@ -42,8 +41,8 @@ const Pengaturan = ({ navigation }) => {
                 onPress={() => {
                     navigation.navigate("Privasi");
                 }}>
-                <View style={styles.text}>
-                    <Text style={{ color: 'gray', fontFamily: 'poppins' }}>Privasi dan Keamanan</Text>
+                <View style={styles.card_text}>
+                    <Text style={styles.text}>Privasi dan Keamanan</Text>
                     <Ionicons
                       name="chevron-forward-outline"
                       size={22}
@@ -58,8 +57,8 @@ const Pengaturan = ({ navigation }) => {
                 onPress={() => {
                     navigation.navigate("Kontak");
                 }}>
-                <View style={styles.text}>
-                    <Text style={{ color: 'gray', fontFamily: 'poppins' }}>Kontak</Text>
+                <View style={styles.card_text}>
+                    <Text style={styles.text}>Kontak</Text>
                     <Ionicons
                       name="chevron-forward-outline"
                       size={22}
@@ -70,8 +69,8 @@ const Pengaturan = ({ navigation }) => {
             <View style={styles.line}></View>
 
             <TouchableOpacity onPress={() => Linking.openURL('google.navigation:q=kominfo+bandar+lampung')}>
-                <View style={styles.text}>
-                    <Text style={{ color: 'gray', fontFamily: 'poppins' }}>Lokasi</Text>
+                <View style={styles.card_text}>
+                    <Text style={styles.text}>Lokasi</Text>
                     <Ionicons
                       name="chevron-forward-outline"
                       size={22}
