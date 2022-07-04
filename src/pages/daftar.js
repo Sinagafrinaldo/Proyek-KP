@@ -103,19 +103,17 @@ const Daftar = ({ navigation }) => {
                     refreshing={refreshing}
                     onRefresh={onRefresh}
                 />
-            }>
+            } contentContainerStyle={{ backgroundColor: 'white', flexGrow: 1 }}>
             <View style={styles.container}>
                 <View>
-
-                    <View style={styles.wrap1}>
-
-                        <Text style={styles.login}>Selamat Datang</Text>
-
+                    <View style={styles.header}>
+                        <Text style={styles.title}>Selamat Datang</Text>
                         <Image
                             style={styles.stretch}
                             source={require("../../assets/daftar.png")}
                         />
                     </View>
+
                     <TouchableOpacity style={styles.back}
                         onPress={() => { navigation.goBack() }}>
                         <Ionicons
@@ -125,14 +123,15 @@ const Daftar = ({ navigation }) => {
                             color="white"
                         />
                     </TouchableOpacity>
-                    <View style={styles.card}>
-                        <Text style={{ marginBottom: 5, alignSelf: 'center', color: '#118eeb', fontWeight: 'bold', fontSize: 18 }}>DAFTAR</Text>
-                        <View style={{ width: '70%', height: 1.5, alignSelf: 'center', backgroundColor: '#D7DBDD' }}></View>
-                        <Text style={{ color: 'gray', marginTop: 20, marginBottom: 5 }}>Nama</Text>
 
+                    <View style={styles.card_registration}>
+                        <Text style={styles.title_registration}>DAFTAR</Text>
+                        <View style={styles.line}></View>
+                        
+                        <Text style={styles.title_box}>Nama</Text>
                         <View style={{ flexDirection: 'row' }}>
                             <Ionicons
-                                style={styles.ikonMenu}
+                                style={styles.icon_box}
                                 name="person"
                                 size={20}
                                 color="#ABB2B9"
@@ -140,16 +139,15 @@ const Daftar = ({ navigation }) => {
                             <TextInput
                                 onChangeText={nama => setNama(nama)}
                                 value={nama}
-                                style={styles.boxnip}
+                                style={styles.box_input}
                                 placeholder='Nama Lengkap ...'
                             />
                         </View>
 
-                        <Text style={{ color: 'gray', marginTop: 20, marginBottom: 5 }}>NIP</Text>
-
+                        <Text style={styles.title_box}>NIP</Text>
                         <View style={{ flexDirection: 'row' }}>
                             <Ionicons
-                                style={styles.ikonMenu}
+                                style={styles.icon_box}
                                 name="document-text"
                                 size={20}
                                 color="#ABB2B9"
@@ -157,15 +155,15 @@ const Daftar = ({ navigation }) => {
                             <TextInput
                                 onChangeText={nip => setNip(nip)}
                                 value={nip}
-                                style={styles.boxnip}
+                                style={styles.box_input}
                                 placeholder='NIP...'
                             />
                         </View>
-                        <Text style={{ color: 'gray', marginTop: 20, marginBottom: 5 }}>Email</Text>
 
+                        <Text style={styles.title_box}>Email</Text>
                         <View style={{ flexDirection: 'row' }}>
                             <Ionicons
-                                style={styles.ikonMenu}
+                                style={styles.icon_box}
                                 name="mail"
                                 size={20}
                                 color="#ABB2B9"
@@ -173,38 +171,34 @@ const Daftar = ({ navigation }) => {
                             <TextInput
                                 onChangeText={email => onChangeEmail(email)}
                                 value={email}
-                                style={styles.boxnip}
+                                style={styles.box_input}
                                 placeholder='Email...'
                             />
                         </View>
-                        <Text style={{ color: 'gray', marginTop: 20, marginBottom: 5 }}>ASN/Non-ASN</Text>
-                        <View style={{ ...styles.boxnip, paddingVertical: -15, }}>
-                            <Picker
 
+                        <Text style={styles.title_box}>ASN/Non-ASN</Text>
+                        <View style={{...styles.select_box}}>
+                            <Picker
                                 placeholder="Pilih Pengguna"
                                 selectedValue={asn}
                                 // style={styles2.box_opsi}
-                                style={{ marginLeft: -30, color: 'gray' }}
+                                style={{ marginLeft: -30, marginTop:-3, color :'gray'}}
                                 onValueChange={(asn) => {
                                     setAsn(asn);
                                 }}
                             >
                                 <Picker.Item label='ASN' value='ASN' />
                                 <Picker.Item label='Non-ASN' value='Non-ASN' />
-
-
-
                             </Picker>
                         </View>
 
-                        <Text style={{ color: 'gray', marginTop: 20, marginBottom: 5 }}>Golongan</Text>
-                        <View style={{ ...styles.boxnip, paddingVertical: -15, }}>
+                        <Text style={styles.title_box}>Golongan</Text>
+                        <View style={{...styles.select_box}}>
                             <Picker
-
                                 placeholder="Pilih Pengguna"
                                 selectedValue={golongan}
                                 // style={styles2.box_opsi}
-                                style={{ marginLeft: -30, color: 'gray' }}
+                                style={{ marginLeft: -30, marginTop:-3, color :'gray'}}
                                 onValueChange={(golongan) => {
                                     setGolongan(golongan);
                                 }}
@@ -214,36 +208,32 @@ const Daftar = ({ navigation }) => {
                                 <Picker.Item label='II' value='II' />
                                 <Picker.Item label='III' value='III' />
                                 <Picker.Item label='IV' value='IV' />
-
-
-
                             </Picker>
                         </View>
 
 
 
-                        <Text style={{ color: 'gray', marginTop: 20, marginBottom: 5 }}>Kata Sandi</Text>
+                        <Text style={styles.title_box}>Kata Sandi</Text>
                         <View style={{ flexDirection: 'row' }}>
                             <Ionicons
-                                style={styles.ikonMenu}
+                                style={styles.icon_box}
                                 name="eye-off"
                                 size={20}
                                 color="#ABB2B9"
                             />
                             <TextInput
-
                                 onChangeText={password => onChangePassword(password)}
                                 value={password}
-                                style={styles.boxnip}
+                                style={styles.box_input}
                                 placeholder='Kata Sandi...'
                                 secureTextEntry
                             />
                         </View>
-                        <Text style={{ color: 'gray', marginTop: 20, marginBottom: 5 }}>Konfirmasi Sandi</Text>
 
+                        <Text style={styles.title_box}>Konfirmasi Sandi</Text>
                         <View style={{ flexDirection: 'row' }}>
                             <Ionicons
-                                style={styles.ikonMenu}
+                                style={styles.icon_box}
                                 name="eye-off"
                                 size={20}
                                 color="#ABB2B9"
@@ -252,24 +242,23 @@ const Daftar = ({ navigation }) => {
 
                                 onChangeText={confPw => setConfPw(confPw)}
                                 value={confPw}
-                                style={styles.boxnip}
+                                style={styles.box_input}
                                 placeholder='Konfirmasi Kata Sandi...'
                                 secureTextEntry
                             />
                         </View>
-                        <TouchableOpacity style={styles.tombol} onPress={() => {
+
+                        <TouchableOpacity style={styles.touch} onPress={() => {
                             if (confPw != password) {
                                 alert('Maaf, konfirmasi sandi tidak sama dengan kata sandi.')
                             } else if (nama == '' || email == '' || nip == '' || asn == '', golongan == '') {
                                 alert('Silahkan mengisi semua kolom pendaftaran.')
                             } else {
                                 handleSignUp()
-
-
                             }
                         }
                         }>
-                            <Text style={styles.tekslogin}>Daftar</Text>
+                            <Text style={styles.teks_registration}>Daftar</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
