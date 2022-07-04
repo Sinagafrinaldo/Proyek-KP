@@ -2,8 +2,10 @@ import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 
 const styles = StyleSheet.create({
-    card: {
-        padding:20,
+    container: {
+        flex:1, 
+        display:'flex', 
+        backgroundColor:'white',
         width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
@@ -17,54 +19,35 @@ const styles = StyleSheet.create({
         height:260,
     },
 
-    cekin: {
-        backgroundColor: '#FFD600',
-        paddingVertical: 10,
-        paddingHorizontal: 30,
-        borderRadius: 10,
-        marginVertical: 20
+    text_absent:{
+        fontSize: 34, 
+        fontFamily: 'poppinssemibold', 
+        color: '#118eeb', 
+        textAlign: 'center',
     },
-    teksin: {
-        color: '#061882',
-        fontFamily: 'poppinsmedium',
-        fontSize: 16,
-        textAlign: 'center'
+
+    text_online :{
+        fontSize: 18, 
+        fontFamily: 'poppins', 
+        color: 'gray', 
+        marginBottom: 30, 
+        textAlign: 'center',
     },
-    cekout: {
-        backgroundColor: '#E5E5E5',
-        paddingVertical: 10,
-        paddingHorizontal: 30,
-        borderRadius: 10,
-        marginBottom: 20
+
+    text_users : {
+        color: 'gray', 
+        fontFamily: 'poppinssemibold', 
+        textAlign: 'center',
     },
-    teksout: {
-        color: '#AAAAAA',
-        fontWeight: 'bold'
-    },
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#fff',
-    },
-    button: {
-        margin: 10,
-        paddingHorizontal: 10,
-        paddingVertical: 7,
-        borderRadius: 5,
-        backgroundColor: "#AEDEF4",
-    },
-    text: {
-        color: '#fff',
-        fontSize: 15
-    },
-    title2: {
+
+    name: {
         color: 'gray',
         fontSize: 24,
         textAlign: 'center',
         fontFamily: 'poppinssemibold'
     },
-    title3: {
+
+    nip: {
         color: 'gray',
         fontSize: 14,
         textAlign: 'center',
@@ -72,12 +55,48 @@ const styles = StyleSheet.create({
         fontFamily: 'poppins'
     },
 
-    notUser :{
+    button_absent: {
+        backgroundColor: '#F9A826',
+        borderRadius: 10,
+        shadowColor: "#000",
+        marginBottom:30,
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
+
+        elevation: 2,
+    },
+
+    button_text_absent: {
+        color: 'white',
+        fontFamily: 'poppinsmedium',
+        fontWeight:'bold',
+        padding : 16, 
+        fontSize: 16,
+        textAlign: 'center'
+    },
+
+    container_verif_false :{
+        padding:10, 
+        flex:1, 
+        display:'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center',
+    },
+
+    image_not_verif :{
         resizeMode: 'stretch',
         width:260,
         height: 245
-        // marginBottom: 10,
-        // marginTop: 10
+    },
+
+    text_not_verif :{
+        textAlign: 'center', 
+        color :'gray',
+        fontFamily: 'poppins'
     },
 })
 
