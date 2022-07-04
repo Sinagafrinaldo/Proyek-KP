@@ -137,7 +137,7 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
     return (
         <ScrollView contentContainerStyle={{ backgroundColor: 'white', flexGrow: 1 }}>
             {(verif == true && ori == true) && (
-                <View>
+                <View style={styles.container}>
 
                     {/* <Button title='Data Presensi' onPress={() => {
                         getInfo()
@@ -151,14 +151,14 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
                                     {/* <Text style={styles.title2}>Nama:  {item.nama}</Text>
                                         <Text style={styles.title2}>NIP:  {item.nip}</Text> */}
                                     {check == false && (
-                                        <View style={styles.card}>
+                                        <View>
                                             <Image
-                                                style={styles.stretch2}
+                                                style={styles.image_confirm_absent}
                                                 source={require("../../assets/konfirmasi-absensi.png")}
                                             />
-                                            <Text style={{ fontSize: 18, fontFamily: 'poppinssemibold', color: 'gray', textAlign: 'center', }}>Lakukan Absensi</Text>
-                                            <Text style={{ fontSize: 18, fontFamily: 'poppinssemibold', color: 'gray', marginBottom: 20, textAlign: 'center', }}>Sekarang</Text>
-                                            <TouchableOpacity style={styles.cekin1}
+                                            <Text style={styles.text_confirm_absent}>Lakukan Absensi</Text>
+                                            <Text style={styles.text_now}>Sekarang</Text>
+                                            <TouchableOpacity style={styles.touch_absent}
                                                 onPress={() => {
 
                                                     handleMasuk(item.nama, item.nip)
@@ -166,12 +166,12 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
 
                                                 }}
                                             >
-                                                <Text style={styles.teksin2}>ABSENSI</Text>
+                                                <Text style={styles.text_absent}>ABSENSI</Text>
                                             </TouchableOpacity>
                                         </View>
                                     )}
                                     {check == true && (
-                                        <View style={styles.card}>
+                                        <View>
                                             {/* <Ionicons
                                                 style={styles.ikon1}
                                                 name="shield-checkmark-outline"
@@ -180,18 +180,18 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
                                             /> */}
 
                                             <Image
-                                                style={styles.stretch}
+                                                style={styles.image_absent}
                                                 source={require("../../assets/absensi.png")}
                                             />
 
-                                            <Text style={{ fontSize: 34, fontFamily: 'poppinssemibold', color: '#118eeb', textAlign: 'center', }}>ABSENSI</Text>
-                                            <Text style={{ fontSize: 18, fontFamily: 'poppins', color: 'gray', marginBottom: 30, textAlign: 'center', }}>ONLINE</Text>
+                                            <Text style={styles.text_absent_info}>ABSENSI</Text>
+                                            <Text style={styles.text_online_info}>ONLINE</Text>
 
 
 
-                                            <Text style={{ fontSize: 15, fontFamily: 'poppinssemibold', color: 'gray', marginBottom: 8, textAlign: 'center', }}>Selamat</Text>
-                                            <Text style={styles.teksin}>Anda Sudah Melakukan</Text>
-                                            <Text style={styles.teksin}>Absensi Hari Ini</Text>
+                                            <Text style={styles.text_welcome}>Selamat</Text>
+                                            <Text style={styles.text_absent_done}>Anda Sudah Melakukan</Text>
+                                            <Text style={styles.text_absent_done}>Absensi Hari Ini</Text>
 
                                         </View>
                                     )}
@@ -208,9 +208,15 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
                 </View>
             )}
             {verif == false && (
-                <View style={{ backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-                    <Text style={{ fontFamily: 'poppins' }}>Maaf fitur ini hanya tersedia untuk user yang telah mendaftar..</Text>
-                </View>
+                <View style={styles.container_verif_false}>
+
+                    <Image
+                        style={styles.image_not_verif}
+                        source={require("../../assets/not-user.png")}
+                    />
+
+                    <Text style={styles.text_not_verif}>Maaf fitur ini hanya tersedia untuk user yang telah mendaftar..</Text>
+             </View>
             )}
 
             {/* <Button title='Presensi Sekarang' onPress={() => setShowAlert(true)} /> */}
