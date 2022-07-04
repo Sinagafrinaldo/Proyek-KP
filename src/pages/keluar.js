@@ -4,7 +4,7 @@ import styles from '../component/styleLogin'
 import styles2 from '../component/styleLogout'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth';
 import { firebaseConfig } from '../firebase/config';
 import { initializeApp } from 'firebase/app';
 // import * as firebase from 'firebase';
@@ -22,6 +22,14 @@ const Keluar = () => {
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const [status, setStatus] = useState(false)
+    const forgotPassword = (Email) => {
+        sendPasswordResetEmail(auth, Email)
+            .then(function (user) {
+                // alert('Please check your email...')
+            }).catch(function (e) {
+                console.log(e)
+            })
+    }
     useFocusEffect(
         React.useCallback(() => {
             const unsubscribe = auth.onAuthStateChanged(user => {
@@ -34,16 +42,7 @@ const Keluar = () => {
         }, [])
     );
 
-    // const handleSignUp = () => {
-    //     createUserWithEmailAndPassword(auth, email, password)
-    //         .then((userCredential) => {
-    //             const user = userCredential.user;
-    //             // console.log('Registered with:', user.email);
-    //             alert("Selamat akun anda telah terdaftar!")
-    //         })
-    //         .catch(error => alert(error.message))
-    // }
-    
+
     const signOutUser = async () => {
         try {
             await auth.signOut();
@@ -79,24 +78,10 @@ const Keluar = () => {
                 }
             })
     }
-    // const showConfirmDialog = () => {
-    //     return Alert.alert(
-    //         "Keluar?",
-    //         "Apakah anda yakin ingin keluar dari aplikasi?",
-    //         [
-    //             {
-    //                 text: "Ya",
-    //                 onPress: () => {
-    //                     signOutUser()
-    //                     setStatus(false)
-    //                 },
-    //             },
-    //             {
-    //                 text: "Tidak",
-    //             },
-    //         ]
-    //     );
-    // };
+    function validateEmail(email) {
+        const regexp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return regexp.test(email);
+    }
 
     const onRefresh = useCallback(() => {
         setRefreshing(true);
@@ -113,8 +98,8 @@ const Keluar = () => {
                     onRefresh={onRefresh}
                 />
             }
-            contentContainerStyle={{backgroundColor:'white', flexGrow: 1}}>
-            
+            contentContainerStyle={{ backgroundColor: 'white', flexGrow: 1 }}>
+
             {status == false && (
                 <View style={styles.container}>
                     <View style={styles.header}>
@@ -135,11 +120,11 @@ const Keluar = () => {
                             color="white"
                         />
                     </TouchableOpacity>
-                    
+
                     <View style={styles.card_login}>
-                        <Text style={styles.title_login }>LOGIN</Text>
+                        <Text style={styles.title_login}>LOGIN</Text>
                         <View style={styles.line}></View>
-                        
+
                         <Text style={styles.title_email}>Email</Text>
                         <View style={{ flexDirection: 'row' }}>
                             <Ionicons
@@ -186,7 +171,25 @@ const Keluar = () => {
                                     <Text style={styles.text_registration}>  Daftar</Text>
                                 </TouchableOpacity>
                             </View>
+
                         </View>
+                        <Text></Text>
+                        <TouchableOpacity
+                            style={{ alignItems: 'center' }}
+                            onPress={() => {
+
+                                if (validateEmail(email) == true) {
+                                    forgotPassword(email)
+                                    alert("Silahkan cek email anda untuk reset kata sandi. Email bisa muncul di bagian Spam Email anda.")
+                                } else {
+                                    alert("Maaf silahkan isi kolom email anda dengan benar.")
+                                }
+                                // if(email)
+
+                            }}>
+
+                            <Text style={styles.text_registration}>Atur ulang kata sandi.</Text>
+                        </TouchableOpacity>
 
                     </View>
                 </View>

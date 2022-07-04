@@ -112,56 +112,56 @@ const Catatan = ({ navigation }) => {
     );
 
     return (
-        <View  style={styles.container}>
+        <View style={styles.container}>
             {verif == true && (
-                <View>
+                <>
                     <View>
-                        <FlatList
-                            contentContainerStyle={{ paddingBottom: 30 }}
-                            data={catatan}
-                            renderItem={({ item, index }) => (
-                                <View>
-                                    {item.email == email && (
-                                        dekripsi(item.judul, item.isi, item.id)
-                                        // <View style={styles.card}>
-                                        //     {/* <Text style={{ fontFamily: 'poppinssemibold' }}>{item.judul}</Text> */}
-                                        //     {/* <Text> {() => { dekripsi(item.judul) }}</Text> */}
-                                        //     {/* <Text style={{ fontFamily: 'poppins' }}>{item.isi}</Text> */}
-                                        //     <Button title='Press' onPress={() => { dekripsi(item.judul) }} />
+                        <View>
+                            <FlatList
+                                contentContainerStyle={{ paddingBottom: 30 }}
+                                data={catatan}
+                                renderItem={({ item, index }) => (
+                                    <View>
+                                        {item.email == email && (
+                                            dekripsi(item.judul, item.isi, item.id)
+                                            // <View style={styles.card}>
+                                            //     {/* <Text style={{ fontFamily: 'poppinssemibold' }}>{item.judul}</Text> */}
+                                            //     {/* <Text> {() => { dekripsi(item.judul) }}</Text> */}
+                                            //     {/* <Text style={{ fontFamily: 'poppins' }}>{item.isi}</Text> */}
+                                            //     <Button title='Press' onPress={() => { dekripsi(item.judul) }} />
+                                            // </View>
+                                        )}
+                                    </View>
+                                )}
+                                keyExtractor={(item, index) => index.toString()} />
 
 
-                                        // </View>
-                                    )}
-                                </View>
-                            )}
-                            keyExtractor={(item, index) => index.toString()}
-                        />
+                        </View>
 
+                    </View><TouchableOpacity
+                        onPress={() => { navigation.navigate('Tambah Catatan'); }}
+                        style={styles.wrapikon}
+                    >
 
-                    </View>
-                    <TouchableOpacity
-                        onPress={() => { navigation.navigate('Tambah Catatan') }}
-                        style={styles.wrapikon}>
                         <Ionicons
                             style={styles.ikon2}
                             name="add"
                             size={34}
-                            color="white"
-                        />
+                            color="white" />
                     </TouchableOpacity>
-                </View>
+                </>
             )}
 
             {verif == false && (
-              <View style={{padding:10, display:'flex', flex:1, alignSelf:'center', justifyContent:'center', alignItems:'center'}}>
+                <View style={{ padding: 10, display: 'flex', flex: 1, alignSelf: 'center', justifyContent: 'center', alignItems: 'center' }}>
 
-                <Image
-                    style={styles.notUser}
-                    source={require("../../assets/not-user.png")}
-                />
+                    <Image
+                        style={styles.notUser}
+                        source={require("../../assets/not-user.png")}
+                    />
 
-                <Text style={{ textAlign: 'center', color :'gray',fontFamily: 'poppins' }}>Maaf fitur ini hanya tersedia untuk user yang telah mendaftar..</Text>
-            </View>
+                    <Text style={{ textAlign: 'center', color: 'gray', fontFamily: 'poppins' }}>Maaf fitur ini hanya tersedia untuk user yang telah mendaftar..</Text>
+                </View>
             )}
         </View>
     )
@@ -170,9 +170,9 @@ const Catatan = ({ navigation }) => {
 export default Catatan
 
 const styles = StyleSheet.create({
-    container : {
-      backgroundColor: 'white',
-      height:'100%',
+    container: {
+        backgroundColor: 'white',
+        height: '100%',
     },
 
     ikon2: {
@@ -203,9 +203,9 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
 
-    notUser :{
+    notUser: {
         resizeMode: 'stretch',
-        width:260,
+        width: 260,
         height: 245
         // marginBottom: 10,
         // marginTop: 10

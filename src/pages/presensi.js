@@ -151,7 +151,8 @@ const Presensi = ({ navigation }) => {
                                                     presensi1: presensi,
                                                     verif: true,
                                                     email: email,
-                                                    idhp: item.idhp
+                                                    idhp: item.idhp,
+                                                    id: item.id
                                                 })
                                             }}
                                         >

@@ -18,9 +18,10 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { ScrollView } from 'react-native-gesture-handler';
 import * as Device from 'expo-device';
 import styles from "../component/stylepresensiKonfirmasi";
+import * as Network from 'expo-network';
 
 const PresensiKonfirmasi = ({ route, navigation }) => {
-    const { pengguna1, presensi1, verif, email, idhp } = route.params;
+    const { pengguna1, presensi1, verif, email, idhp, id } = route.params;
     const [alerts, setShowAlert] = useState(false);
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
@@ -36,12 +37,24 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
     const [cp, setCp] = useState(false)
     const [idhp2, setIdhp2] = useState(idhp)
     const [ori, setOri] = useState(false)
+    const [ip, setIp] = useState('')
 
     const getUsers = async () => {
         const data = await getDocs(usersCollectionRef);
         setPengguna(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
 
     };
+    const ipAlert = async () => {
+        const ipAdd = await Network.getIpAddressAsync()
+        // alert(ip);
+        console.log(ipAdd)
+        setIp(ipAdd)
+        if (ipAdd != '192.168.232.2') {
+            alert('Maaf, anda hanya dapat melakukan absensi dengan terkoneksi ke jaringan WiFi Kantor kominfo.')
+            navigation.navigate('Presensi1')
+        }
+    };
+
     const getPresensi = async () => {
         const data = await getDocs(presensiCollectionRef);
         setPresensi(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
@@ -85,11 +98,28 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
             }
         })
     }
+    const resetLogin = async (id) => {
+        const deviceId = Device.osBuildId;
+        const userDoc = doc(db, "pengguna", id);
+        const newFields = { idhp: deviceId };
+        try {
+            await updateDoc(userDoc, newFields);
+            // alert('Berhasil melakukan reset device absensi.')
+        } catch (e) {
+            alert(e)
+        }
+        // getUsers();
+
+    };
     const getId = () => {
         const deviceId = Device.osBuildId;
         // setIdhp2(deviceId)
         if (deviceId == idhp) {
             setOri(true)
+        } else if (idhp == '') {
+            setOri(true)
+            resetLogin(id)
+
         } else {
             setOri(false)
         }
@@ -98,6 +128,9 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
         React.useCallback(() => {
             getId()
             getInfo()
+            ipAlert()
+            // const ipAdds = await Network.getIpAddressAsync()
+            // console.log(ipAdds)
         }, [])
     );
     // console.log('status', ori)

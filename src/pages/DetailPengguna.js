@@ -32,6 +32,19 @@ const DetailPengguna = ({ route, navigation }) => {
     const auth = getAuth(app);
     const [url, setUrl] = useState()
     const [usid, setUsid] = useState()
+
+    const resetLogin = async (id) => {
+        const userDoc = doc(db, "pengguna", id);
+        const newFields = { nama: nama, email: email, nip: nip, asn: asn, golongan: golongan, idhp: '' };
+        try {
+            await updateDoc(userDoc, newFields);
+            alert('Berhasil melakukan reset device absensi.')
+        } catch (e) {
+            alert(e)
+        }
+        // getUsers();
+
+    };
     useFocusEffect(
         React.useCallback(() => {
             const func = async () => {
@@ -82,6 +95,9 @@ const DetailPengguna = ({ route, navigation }) => {
                     <Text style={{ color: 'white', textAlign: 'center' }}>Hapus</Text>
                 </TouchableOpacity> */}
             </View>
+            <TouchableOpacity onPress={() => { resetLogin(id) }}>
+                <Text style={{ color: 'blue' }}>Reset Device Absensi</Text>
+            </TouchableOpacity>
             <View style={{ padding: 20, margin: 10, }}>
                 {url != undefined && (
 
