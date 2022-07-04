@@ -45,7 +45,7 @@ const RiwayatPresensi = () => {
     );
     
     return (
-        <View style={{backgroundColor: 'white', height:'100%'}}>
+        <View style={styles.container}>
             {/* <Text>riwayatPresensi</Text> */}
             {verif == true && (
                 <FlatList
@@ -55,25 +55,25 @@ const RiwayatPresensi = () => {
                         <View style={{}}>
 
                             {email == item.email && (
-                                <View style={styles.list1}>
-                                    <View style={styles.data}>
-                                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', }}>
-                                            <Text style={{ fontSize: 18, fontFamily: 'poppinssemibold', paddingBottom: 7, color: 'grey', width:'90%'}}>Nama : {item.nama}</Text>
+                                <View style={styles.card_absent}>
+                                    <View style={styles.data_absent}>
+                                        <View style={styles.position_name}>
+                                            <Text style={styles.text_name}>Nama : {item.nama}</Text>
                                             <Ionicons
-                                                style={styles.ikonLokasi}
+                                                // style={styles.ikonLokasi}
                                                 name="clipboard"
                                                 size={24}
                                                 color="#118eeb" />
                                         </View>
 
-                                        <Text style={{ paddingBottom: 12, color: 'grey', fontFamily: 'poppins' }}>Keterangan: {item.keterangan}</Text>
-                                        <Text style={{ textAlign: 'right', paddingBottom: 7, color: 'grey', fontFamily: 'poppins' }}>{item.tanggal}</Text>
+                                        <Text style={styles.text_description}>Keterangan: {item.keterangan}</Text>
+                                        <Text style={styles.date}>{item.tanggal}</Text>
                                         <View style={{ width: '100%', height: 0.5, backgroundColor: '#D7DBDD' }}></View>
 
                                         <View style={{ paddingTop: 7, flexDirection: 'row', justifyContent: 'space-between', }}>
-                                            <Text style={{ fontSize: 16, color: 'grey', alignSelf: 'center', fontFamily: 'poppins' }}>Waktu: {item.waktu}</Text>
+                                            <Text style={styles.time}>Waktu: {item.waktu}</Text>
                                             <Ionicons
-                                                style={styles.ikonLokasi}
+                                                // style={styles.ikonLokasi}
                                                 name="time-outline"
                                                 size={24}
                                                 color="red" />
@@ -91,14 +91,14 @@ const RiwayatPresensi = () => {
             )}
 
             {verif == false && (
-                    <View style={{padding:10, display:'flex', flex:1, alignSelf:'center', justifyContent:'center', alignItems:'center'}}>
+               <View style={styles.container_verif_false}>
 
                     <Image
-                        style={styles.notUser}
+                        style={styles.image_not_verif}
                         source={require("../../assets/not-user.png")}
                     />
-    
-                    <Text style={{ textAlign: 'center', color :'gray',fontFamily: 'poppins' }}>Maaf fitur ini hanya tersedia untuk user yang telah mendaftar..</Text>
+
+                    <Text style={styles.text_not_verif}>Maaf fitur ini hanya tersedia bagi yang terdaftar sebagai pengguna biasa..</Text>
                 </View>
             )}
         </View >
