@@ -15,18 +15,21 @@ import * as ImagePicker from 'expo-image-picker';
 import { db } from '../firebase/crudConf';
 import { useFocusEffect } from '@react-navigation/native';
 import { initializeApp } from 'firebase/app'; //validate yourself
+import { Picker } from "@react-native-picker/picker";
 import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage'; //access the storage database
 initializeApp(firebaseConfig);
 const EditProfil = ({ route, navigation }) => {
-    const { nama, nip, id, email, inisial } = route.params;
+    const { nama, nip, id, email, inisial, asn, golongan } = route.params;
     // console.log(id, "sadsd")
     // const [imageUrl, setImageUrl] = useState(undefined);
     const [url, setUrl] = useState();
     const [nama1, setNama1] = useState(nama)
     const [nip1, setNip1] = useState(nip)
+    const [asn1, setAsn1] = useState(asn)
+    const [golongan1, setGolongan1] = useState(golongan)
     const updateUser = async (id) => {
         const userDoc = doc(db, "pengguna", id);
-        const newFields = { nama: nama1, email: email, nip: nip1 };
+        const newFields = { nama: nama1, email: email, nip: nip1, asn: asn1, golongan: golongan1 };
         await updateDoc(userDoc, newFields);
         // getUsers();
     };
@@ -160,16 +163,52 @@ const EditProfil = ({ route, navigation }) => {
                         placeholder='NIP...'
                     />
                 </View>
-                {/* <View style={styles.wrapitem}>
-                    <Text style={styles.title}>Email</Text>
-                    <TextInput
-                        onChangeText={email => setEmail(email)}
-                        value={email}
-                        style={styles.boxnama}
-                        placeholder='Email ...'
-                    />
-                </View> */}
 
+                <View style={styles.wrapitem}>
+                    <Text style={{ color: 'gray', marginTop: 20, marginBottom: 5 }}>ASN/Non-ASN</Text>
+                    <View style={{ ...styles.boxnip, paddingVertical: -15, }}>
+                        <Picker
+
+                            placeholder="Pilih Pengguna"
+                            selectedValue={asn1}
+                            // style={styles2.box_opsi}
+                            style={{ marginLeft: -30, color: 'gray' }}
+                            onValueChange={(asn1) => {
+                                setAsn1(asn1);
+                            }}
+                        >
+                            <Picker.Item label='ASN' value='ASN' />
+                            <Picker.Item label='Non-ASN' value='Non-ASN' />
+
+
+
+                        </Picker>
+                    </View>
+                </View>
+                <View style={styles.wrapitem}>
+                    <Text style={{ color: 'gray', marginTop: 20, marginBottom: 5 }}>Golongan</Text>
+                    <View style={{ ...styles.boxnip, paddingVertical: -15, }}>
+                        <Picker
+
+                            placeholder="Pilih Pengguna"
+                            selectedValue={golongan1}
+                            // style={styles2.box_opsi}
+                            style={{ marginLeft: -30, color: 'gray' }}
+                            onValueChange={(golongan1) => {
+                                setGolongan1(golongan1);
+                            }}
+                        >
+                            <Picker.Item label='-' value='-' />
+                            <Picker.Item label='I' value='I' />
+                            <Picker.Item label='II' value='II' />
+                            <Picker.Item label='III' value='III' />
+                            <Picker.Item label='IV' value='IV' />
+
+
+
+                        </Picker>
+                    </View>
+                </View>
                 <TouchableOpacity style={styles.btn} onPress={() => {
                     updateUser(id)
                     // console.log(id)

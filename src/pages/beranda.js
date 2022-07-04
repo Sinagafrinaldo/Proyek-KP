@@ -8,6 +8,7 @@ import {
     FlatList,
     Linking
 } from "react-native";
+
 import {
     collection,
     getDocs,
@@ -26,7 +27,8 @@ import { useNavigation, useFocusEffect, NavigationContainer } from '@react-navig
 import styles from "../component/stylesLandingPage";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import styles2 from "../component/styleJadwalLiput2";
-
+// import DeviceInfo from 'react-native-device-info';
+import * as Device from 'expo-device';
 const Beranda1 = ({ navigation }) => {
     const [status, setStatus] = useState(false)
     const app = initializeApp(firebaseConfig);
@@ -39,6 +41,7 @@ const Beranda1 = ({ navigation }) => {
     const [date, setSelectedDate] = useState('')
     const [url, setUrl] = useState();
     const [admin, setAdmin] = useState(false)
+    const [idhp, setIdhp] = useState('')
     const getJadwal = async () => {
         const data = await getDocs(jadwalCollectionRef);
         setJadwal(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
@@ -47,9 +50,18 @@ const Beranda1 = ({ navigation }) => {
         const data = await getDocs(usersCollectionRef);
         setPengguna(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
+    const getId = () => {
+
+        const deviceId = Device.osBuildId;
+
+        setIdhp(deviceId)
+
+
+    }
     useFocusEffect(
         React.useCallback(() => {
             getJadwal()
+            getId()
             let today = new Date();
             if (today.getMonth() < 10) {
                 let date = today.getFullYear() + '/0' + (today.getMonth() + 1) + '/' + today.getDate();
@@ -130,7 +142,7 @@ const Beranda1 = ({ navigation }) => {
                     </View>
                 </View>
             </View>
-
+            {/* <Text>{idhp}</Text> */}
             <View style={styles.line_nav}></View>
 
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}>

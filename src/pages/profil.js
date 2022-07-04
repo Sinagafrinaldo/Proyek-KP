@@ -128,7 +128,9 @@ const Profil = ({ route, navigation }) => {
                                                         nip: item.nip,
                                                         id: item.id,
                                                         email: item.email,
-                                                        inisial: item.nama.match(/(\b\S)?/g).join("").match(/(^\S|\S$)?/g).join("").toUpperCase()
+                                                        inisial: item.nama.match(/(\b\S)?/g).join("").match(/(^\S|\S$)?/g).join("").toUpperCase(),
+                                                        asn: item.asn,
+                                                        golongan: item.golongan
 
                                                     })
                                                     console.log(item.id)
@@ -144,10 +146,20 @@ const Profil = ({ route, navigation }) => {
 
 
 
-                                            </View><View style={styles.wrapitem}>
+                                            </View>
+                                            <View style={styles.wrapitem}>
                                                 <Text style={styles.title}>NIP</Text>
                                                 <Text style={styles.subtitle}>{item.nip}</Text>
-                                            </View><View style={styles.wrapitem}>
+                                            </View>
+                                            <View style={styles.wrapitem}>
+                                                <Text style={styles.title}>ASN/Non-ASN</Text>
+                                                <Text style={styles.subtitle}>{item.asn}</Text>
+                                            </View>
+                                            <View style={styles.wrapitem}>
+                                                <Text style={styles.title}>Golongan</Text>
+                                                <Text style={styles.subtitle}>{item.golongan}</Text>
+                                            </View>
+                                            <View style={styles.wrapitem}>
                                                 <Text style={styles.title}>Email</Text>
                                                 <Text style={styles.subtitle}>{email}</Text>
                                             </View></View></>

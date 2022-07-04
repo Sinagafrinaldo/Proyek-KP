@@ -54,7 +54,9 @@ const DataPengguna = ({ navigation, route }) => {
                                         nama: item.nama,
                                         email: item.email,
                                         nip: item.nip,
-                                        id: item.id
+                                        id: item.id,
+                                        asn: item.asn,
+                                        golongan: item.golongan
                                     })
                                 }}
                                 style={{ padding: 20, margin: 4, borderWidth: 1 }}>

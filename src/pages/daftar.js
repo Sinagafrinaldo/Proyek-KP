@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, Image, ScrollView, TextInput, TouchableOpacity, Alert, RefreshControl } from 'react-native'
-import React, { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 import styles from '../component/styleDaftar'
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { firebaseConfig } from '../firebase/config';
@@ -7,6 +7,7 @@ import { initializeApp } from 'firebase/app';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { db } from '../firebase/crudConf';
+import * as Device from 'expo-device';
 import {
     collection,
     getDocs,
@@ -15,6 +16,8 @@ import {
     deleteDoc,
     doc,
 } from "firebase/firestore"
+import { Picker } from "@react-native-picker/picker";
+
 
 const wait = (timeout) => {
     return new Promise(resolve => setTimeout(resolve, timeout));
@@ -32,14 +35,26 @@ const Daftar = ({ navigation }) => {
     const [nip, setNip] = React.useState('');
     const [confPw, setConfPw] = React.useState('');
     const [refreshing, setRefreshing] = React.useState(false);
-
+    const [idhp, setIdhp] = useState('')
+    const [asn, setAsn] = useState('ASN')
+    const [golongan, setGolongan] = useState('')
     const createUser = async () => {
-        await addDoc(usersCollectionRef, { nama: nama, nip: nip, email: email });
+        await addDoc(usersCollectionRef, { nama: nama, nip: nip, email: email, idhp: idhp, asn: asn, golongan: golongan });
     };
+
+    const getId = () => {
+
+        const deviceId = Device.osBuildId;
+
+        setIdhp(deviceId)
+
+
+    }
 
     const handleSignUp = () => {
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
+                createUser()
                 const user = userCredential.user;
                 console.log('Registered with:', user.email);
                 alert("Selamat akun anda telah terdaftar.")
@@ -60,6 +75,7 @@ const Daftar = ({ navigation }) => {
 
     useFocusEffect(
         React.useCallback(() => {
+            getId()
             const unsubscribe = auth.onAuthStateChanged(user => {
                 if (user) {
                     setStatus(true)
@@ -161,6 +177,51 @@ const Daftar = ({ navigation }) => {
                                 placeholder='Email...'
                             />
                         </View>
+                        <Text style={{ color: 'gray', marginTop: 20, marginBottom: 5 }}>ASN/Non-ASN</Text>
+                        <View style={{ ...styles.boxnip, paddingVertical: -15, }}>
+                            <Picker
+
+                                placeholder="Pilih Pengguna"
+                                selectedValue={asn}
+                                // style={styles2.box_opsi}
+                                style={{ marginLeft: -30, color: 'gray' }}
+                                onValueChange={(asn) => {
+                                    setAsn(asn);
+                                }}
+                            >
+                                <Picker.Item label='ASN' value='ASN' />
+                                <Picker.Item label='Non-ASN' value='Non-ASN' />
+
+
+
+                            </Picker>
+                        </View>
+
+                        <Text style={{ color: 'gray', marginTop: 20, marginBottom: 5 }}>Golongan</Text>
+                        <View style={{ ...styles.boxnip, paddingVertical: -15, }}>
+                            <Picker
+
+                                placeholder="Pilih Pengguna"
+                                selectedValue={golongan}
+                                // style={styles2.box_opsi}
+                                style={{ marginLeft: -30, color: 'gray' }}
+                                onValueChange={(golongan) => {
+                                    setGolongan(golongan);
+                                }}
+                            >
+                                <Picker.Item label='-' value='-' />
+                                <Picker.Item label='I' value='I' />
+                                <Picker.Item label='II' value='II' />
+                                <Picker.Item label='III' value='III' />
+                                <Picker.Item label='IV' value='IV' />
+
+
+
+                            </Picker>
+                        </View>
+
+
+
                         <Text style={{ color: 'gray', marginTop: 20, marginBottom: 5 }}>Kata Sandi</Text>
                         <View style={{ flexDirection: 'row' }}>
                             <Ionicons
@@ -199,11 +260,11 @@ const Daftar = ({ navigation }) => {
                         <TouchableOpacity style={styles.tombol} onPress={() => {
                             if (confPw != password) {
                                 alert('Maaf, konfirmasi sandi tidak sama dengan kata sandi.')
-                            } else if (nama == '' || email == '' || nip == '') {
+                            } else if (nama == '' || email == '' || nip == '' || asn == '', golongan == '') {
                                 alert('Silahkan mengisi semua kolom pendaftaran.')
                             } else {
                                 handleSignUp()
-                                createUser()
+
 
                             }
                         }

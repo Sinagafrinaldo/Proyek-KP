@@ -16,6 +16,12 @@ import { initializeApp } from 'firebase/app';
 import { db } from '../firebase/crudConf';
 import { useNavigation, useFocusEffect, NavigationContainer } from '@react-navigation/native';
 import { ScrollView } from 'react-native-gesture-handler';
+
+
+import * as Device from 'expo-device';
+
+
+
 const Presensi = ({ navigation }) => {
     const [alerts, setShowAlert] = useState(false);
     const app = initializeApp(firebaseConfig);
@@ -29,9 +35,12 @@ const Presensi = ({ navigation }) => {
     const [nip, setNip] = useState('')
     const [presensi, setPresensi] = useState([])
     const [check, setCheck] = useState(false)
-
-
-
+    const [idhp, setIdhp] = useState('')
+    const [ori, setOri] = useState(false)
+    const getId = () => {
+        const deviceId = Device.osBuildId;
+        setIdhp(deviceId)
+    }
     const getUsers = async () => {
         const data = await getDocs(usersCollectionRef);
         setPengguna(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
@@ -53,21 +62,26 @@ const Presensi = ({ navigation }) => {
     const getInfo = () => {
         // console.log(pengguna)
         pengguna.map((item, index) => {
+
             if (item.email.toLowerCase() == email.toLowerCase()) {
+
                 if (presensi.length < 1) {
                     setCheck(false)
                 } else {
                     presensi.map((data, index) => {
                         let today = new Date()
                         let tanggal_verif = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
-                        if (data.nip == item.nip && data.tanggal == tanggal_verif) {
-                            setCheck(true)
-                            console.log('done1')
+                        if (data.nip == item.nip) {
 
+                            if (data.tanggal == tanggal_verif) {
+                                setCheck(true)
+                                console.log('done1')
+                            }
                         } else {
                             setCheck(false)
                             console.log('belum')
                         }
+
                     })
                 }
             }
@@ -77,6 +91,7 @@ const Presensi = ({ navigation }) => {
         React.useCallback(() => {
 
             const unsubscribe = auth.onAuthStateChanged(user => {
+                getId()
                 getPresensi()
                 if (user != null) {
                     if (user.email.toLocaleLowerCase() != 'admin@gmail.com') {
@@ -99,8 +114,15 @@ const Presensi = ({ navigation }) => {
         }, [])
     );
 
+    console.log(ori)
+
     return (
         <ScrollView contentContainerStyle={{ backgroundColor: 'white', flexGrow: 1 }}>
+            {/* {ori == false && (
+                <View>
+                    <Text>Maaf anda harus login menggunakan hp yang digunakan saat mendaftar..</Text>
+                </View>
+            )} */}
             {verif == true && (
                 <View style={styles.card}>
                     <Image
@@ -128,7 +150,8 @@ const Presensi = ({ navigation }) => {
                                                     pengguna1: pengguna,
                                                     presensi1: presensi,
                                                     verif: true,
-                                                    email: email
+                                                    email: email,
+                                                    idhp: item.idhp
                                                 })
                                             }}
                                         >
@@ -168,6 +191,7 @@ const Presensi = ({ navigation }) => {
                     <Text style={{ textAlign: 'center', color: 'gray', fontFamily: 'poppins' }}>Maaf fitur ini hanya tersedia bagi yang terdaftar sebagai pengguna biasa..</Text>
                 </View>
             )}
+
 
             {/* <Button title='Presensi Sekarang' onPress={() => setShowAlert(true)} /> */}
             <AwesomeAlert

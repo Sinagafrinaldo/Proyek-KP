@@ -27,7 +27,7 @@ import { useNavigation, useFocusEffect, NavigationContainer } from '@react-navig
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 const DetailPengguna = ({ route, navigation }) => {
-    const { nama, email, nip, id } = route.params
+    const { nama, email, nip, id, asn, golongan } = route.params
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const [url, setUrl] = useState()
@@ -68,7 +68,9 @@ const DetailPengguna = ({ route, navigation }) => {
                             nama: nama,
                             nip: nip,
                             email: email,
-                            id: id
+                            id: id,
+                            asn: asn,
+                            golongan: golongan
 
                         })
                     }}
@@ -89,6 +91,8 @@ const DetailPengguna = ({ route, navigation }) => {
                 <Text>Nama: {nama}</Text>
                 <Text>NIP: {nip}</Text>
                 <Text>Email: {email}</Text>
+                <Text>ASN: {asn}</Text>
+                <Text>Golongan: {golongan}</Text>
             </View>
         </View>
     )

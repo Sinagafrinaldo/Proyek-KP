@@ -16,10 +16,11 @@ import { db } from '../firebase/crudConf';
 import { useNavigation, useFocusEffect, NavigationContainer } from '@react-navigation/native';
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { ScrollView } from 'react-native-gesture-handler';
+import * as Device from 'expo-device';
 import styles from "../component/stylepresensiKonfirmasi";
 
 const PresensiKonfirmasi = ({ route, navigation }) => {
-    const { pengguna1, presensi1, verif, email } = route.params;
+    const { pengguna1, presensi1, verif, email, idhp } = route.params;
     const [alerts, setShowAlert] = useState(false);
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
@@ -33,7 +34,8 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
     const [presensi, setPresensi] = useState([])
     const [check, setCheck] = useState(false)
     const [cp, setCp] = useState(false)
-
+    const [idhp2, setIdhp2] = useState(idhp)
+    const [ori, setOri] = useState(false)
 
     const getUsers = async () => {
         const data = await getDocs(usersCollectionRef);
@@ -83,34 +85,25 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
             }
         })
     }
+    const getId = () => {
+        const deviceId = Device.osBuildId;
+        // setIdhp2(deviceId)
+        if (deviceId == idhp) {
+            setOri(true)
+        } else {
+            setOri(false)
+        }
+    }
     useFocusEffect(
         React.useCallback(() => {
-
-
-            // const unsubscribe = auth.onAuthStateChanged(user => {
-            //     getPresensi()
-            //     if (user != null) {
-            //         if (user.email != 'admin@gmail.com') {
-            //             // setVerif(true)
-            //         }
-            //         setEmail(user.email)
-            //         getUsers();
-
-
-            //     } else {
-            //         // setVerif(false)
-            //         setPengguna([])
-            //     }
-            // })
-
-            // unsubscribe()
+            getId()
             getInfo()
         }, [])
     );
-
+    // console.log('status', ori)
     return (
-        <ScrollView contentContainerStyle={{backgroundColor:'white', flexGrow: 1}}>
-            {verif == true && (
+        <ScrollView contentContainerStyle={{ backgroundColor: 'white', flexGrow: 1 }}>
+            {(verif == true && ori == true) && (
                 <View>
 
                     {/* <Button title='Data Presensi' onPress={() => {
@@ -125,21 +118,21 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
                                     {/* <Text style={styles.title2}>Nama:  {item.nama}</Text>
                                         <Text style={styles.title2}>NIP:  {item.nip}</Text> */}
                                     {check == false && (
-                                        <View style={styles.card}>                
+                                        <View style={styles.card}>
                                             <Image
                                                 style={styles.stretch2}
                                                 source={require("../../assets/konfirmasi-absensi.png")}
                                             />
-                                                <Text style={{ fontSize: 18, fontFamily: 'poppinssemibold', color: 'gray', textAlign: 'center', }}>Lakukan Absensi</Text>
-                                                <Text style={{ fontSize: 18, fontFamily: 'poppinssemibold', color: 'gray', marginBottom: 20, textAlign: 'center', }}>Sekarang</Text>
-                                                <TouchableOpacity style={styles.cekin1}
-                                                    onPress={() => {
+                                            <Text style={{ fontSize: 18, fontFamily: 'poppinssemibold', color: 'gray', textAlign: 'center', }}>Lakukan Absensi</Text>
+                                            <Text style={{ fontSize: 18, fontFamily: 'poppinssemibold', color: 'gray', marginBottom: 20, textAlign: 'center', }}>Sekarang</Text>
+                                            <TouchableOpacity style={styles.cekin1}
+                                                onPress={() => {
 
-                                                        handleMasuk(item.nama, item.nip)
-                                                        getInfo()
+                                                    handleMasuk(item.nama, item.nip)
+                                                    getInfo()
 
-                                                    }}
-                                                    >  
+                                                }}
+                                            >
                                                 <Text style={styles.teksin2}>ABSENSI</Text>
                                             </TouchableOpacity>
                                         </View>
@@ -152,7 +145,7 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
                                                 size={140}
                                                 color="#1FD851"
                                             /> */}
-                                        
+
                                             <Image
                                                 style={styles.stretch}
                                                 source={require("../../assets/absensi.png")}
@@ -161,7 +154,7 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
                                             <Text style={{ fontSize: 34, fontFamily: 'poppinssemibold', color: '#118eeb', textAlign: 'center', }}>ABSENSI</Text>
                                             <Text style={{ fontSize: 18, fontFamily: 'poppins', color: 'gray', marginBottom: 30, textAlign: 'center', }}>ONLINE</Text>
 
-                                            
+
 
                                             <Text style={{ fontSize: 15, fontFamily: 'poppinssemibold', color: 'gray', marginBottom: 8, textAlign: 'center', }}>Selamat</Text>
                                             <Text style={styles.teksin}>Anda Sudah Melakukan</Text>
@@ -176,6 +169,11 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
                 </View>
             )}
 
+            {(verif == true && ori == false) && (
+                <View>
+                    <Text>Maaf presensi hanya bisa dilakukan dengan ponsel yang di daftarkan di awal..</Text>
+                </View>
+            )}
             {verif == false && (
                 <View style={{ backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
                     <Text style={{ fontFamily: 'poppins' }}>Maaf fitur ini hanya tersedia untuk user yang telah mendaftar..</Text>
