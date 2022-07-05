@@ -26,9 +26,9 @@ import React, { useState } from "react";
 import { useNavigation, useFocusEffect, NavigationContainer } from '@react-navigation/native';
 import styles from "../component/stylesLandingPage";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import styles2 from "../component/styleJadwalLiput2";
 // import DeviceInfo from 'react-native-device-info';
 import * as Device from 'expo-device';
+
 const Beranda1 = ({ navigation }) => {
     const [status, setStatus] = useState(false)
     const app = initializeApp(firebaseConfig);
