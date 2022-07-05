@@ -1,4 +1,4 @@
-import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image } from 'react-native'
 import React, { useState } from 'react'
 import {
     collection,
@@ -14,6 +14,8 @@ import { initializeApp } from 'firebase/app';
 import { db } from '../firebase/crudConf';
 import CryptoES from "crypto-es";
 import { useNavigation, useFocusEffect, NavigationContainer } from '@react-navigation/native';
+import styles from "../component/styleTambahCatatan";
+import { ScrollView } from 'react-native-gesture-handler';
 
 const TambahCatatan = ({ navigation }) => {
     const [judul, setJudul] = useState('')
@@ -53,26 +55,37 @@ const TambahCatatan = ({ navigation }) => {
         }, [])
     );
     return (
-        <View style={{ justifyContent: 'center', flex: 1 }}>
-            <View style={{ backgroundColor: 'white', padding: 20 }}>
-                <Text style={{ fontFamily: 'poppins' }}>Judul</Text>
-                <TextInput
-                    style={styles.input}
-                    onChangeText={setJudul}
-                    value={judul}
-                    placeholder='Judul...'
-                />
-                <Text style={{ fontFamily: 'poppins' }}>Isi Catatan</Text>
-                <TextInput
-                    style={styles.input}
-                    multiline={true}
-                    numberOfLines={4}
-                    onChangeText={setIsi}
-                    value={isi}
-                    placeholder='Isi catatan...'
-                />
+        <ScrollView contentContainerStyle={{ backgroundColor: 'white', flexGrow: 1 }}>
+            <View style={styles.container}>
 
-                <TouchableOpacity style={styles.btntambah}
+                <Image
+                    style={styles.stretch}
+                    source={require("../../assets/add_notes.png")}
+                />  
+
+                <View>
+                    <Text style={{ fontFamily: 'poppinssemibold', color:'gray' }}>Judul</Text>
+                    <TextInput
+                        style={styles.box_input}
+                        onChangeText={setJudul}
+                        value={judul}
+                        placeholder='Judul...'
+                    />
+                </View>
+
+                <View style= {{marginTop: 20,}}>
+                    <Text style={{ fontFamily: 'poppinssemibold', color:'gray' }}>Isi Catatan</Text>
+                    <TextInput
+                        style={styles.box_input}
+                        multiline={true}
+                        numberOfLines={4}
+                        onChangeText={setIsi}
+                        value={isi}
+                        placeholder='Isi catatan...'
+                    />
+                </View>
+
+                <TouchableOpacity style={styles.touch}
                     onPress={() => {
                         if (judul != '' && isi != '') {
 
@@ -84,34 +97,11 @@ const TambahCatatan = ({ navigation }) => {
                         }
                     }}
                 >
-                    <Text style={styles.tekstambah}>Tambah</Text>
+                    <Text style={styles.text_add}>Tambah</Text>
                 </TouchableOpacity>
             </View>
-        </View>
+        </ScrollView>
     )
 }
 
 export default TambahCatatan
-
-const styles = StyleSheet.create({
-    input: {
-        marginVertical: 5,
-        padding: 10,
-        borderWidth: 1,
-        borderRadius: 10,
-        fontFamily: 'poppins'
-    },
-    btntambah: {
-        backgroundColor: 'black',
-        padding: 20,
-        borderRadius: 10,
-        marginVertical: 20
-
-    },
-    tekstambah: {
-        color: 'white',
-        textAlign: 'center',
-        fontSize: 16,
-        fontFamily: 'poppinssemibold'
-    }
-})

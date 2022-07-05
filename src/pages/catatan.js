@@ -16,6 +16,7 @@ import DatePicker from 'react-native-modern-datepicker';
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { firebaseConfig } from '../firebase/config';
 import { initializeApp } from 'firebase/app';
+import styles from "../component/styleCatatan";
 
 const Catatan = ({ navigation }) => {
     const [catatan, setCatatan] = useState([]);
@@ -65,31 +66,35 @@ const Catatan = ({ navigation }) => {
         // console.log(result)
         return (
             <View>
-                <TouchableOpacity style={styles.card} onPress={() => {
+                <TouchableOpacity style={styles.card_notepad} onPress={() => {
                     navigation.navigate('Detail Catatan', {
                         judul: result,
                         isi: result1
                     })
                 }}>
-                    <Text style={{ fontFamily: 'poppinssemibold' }}>  {result}</Text>
-                    <Text style={{ fontFamily: 'poppins' }} >  {((result1).length > 20) ?
-                        (((result1).substring(0, 80 - 3)) + '...') :
-                        result1}</Text>
-                    <TouchableOpacity
-                        // style={styles.btnHapus}
-                        onPress={() => {
-                            showConfirmDialog(id);
-                        }}
-                    >
-                        <Ionicons
-                            // style={styles.ikon2}
-                            name="trash"
-                            size={34}
-                            color="red"
-                        />
-
-
-                    </TouchableOpacity>
+                    <View style={styles.style_notepad}>
+                        <View style={styles.notepad}>
+                            <Text style={{fontFamily: 'poppinssemibold' }}>{result}</Text>
+                            <Text style={{fontFamily: 'poppins' }} >{((result1).length > 20) ?
+                                (((result1).substring(0, 80 - 3)) + '...') :
+                                result1}
+                            </Text>
+                        </View>
+                        <View style={styles.line}></View>
+                        <TouchableOpacity
+                            style={styles.touch_delete}
+                            onPress={() => {
+                                showConfirmDialog(id);
+                            }}
+                        >
+                            <Ionicons
+                                // style={styles.ikon2}
+                                name="trash"
+                                size={28}
+                                color="red"
+                            />
+                        </TouchableOpacity>
+                    </View>
                 </TouchableOpacity>
 
             </View>
@@ -140,11 +145,10 @@ const Catatan = ({ navigation }) => {
 
                     </View><TouchableOpacity
                         onPress={() => { navigation.navigate('Tambah Catatan'); }}
-                        style={styles.wrapikon}
+                        style={styles.icon_create_note}
                     >
 
                         <Ionicons
-                            style={styles.ikon2}
                             name="add"
                             size={34}
                             color="white" />
@@ -153,14 +157,12 @@ const Catatan = ({ navigation }) => {
             )}
 
             {verif == false && (
-                <View style={{ padding: 10, display: 'flex', flex: 1, alignSelf: 'center', justifyContent: 'center', alignItems: 'center' }}>
-
+                <View style={styles.container_verif_false}>
                     <Image
-                        style={styles.notUser}
+                        style={styles.image_not_verif}
                         source={require("../../assets/not-user.png")}
                     />
-
-                    <Text style={{ textAlign: 'center', color: 'gray', fontFamily: 'poppins' }}>Maaf fitur ini hanya tersedia untuk user yang telah mendaftar..</Text>
+                    <Text style={styles.text_not_verif}>Maaf fitur ini hanya tersedia bagi yang terdaftar sebagai pengguna biasa..</Text>
                 </View>
             )}
         </View>
@@ -168,46 +170,3 @@ const Catatan = ({ navigation }) => {
 }
 
 export default Catatan
-
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: 'white',
-        height: '100%',
-    },
-
-    ikon2: {
-
-
-    },
-    wrapikon: {
-        position: 'absolute',
-        bottom: 40,
-        right: 40,
-        backgroundColor: 'brown',
-        borderRadius: 90,
-        padding: 10
-    },
-    card: {
-        backgroundColor: 'white',
-        padding: 20,
-        margin: 10,
-        borderRadius: 10,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-
-        elevation: 5,
-    },
-
-    notUser: {
-        resizeMode: 'stretch',
-        width: 260,
-        height: 245
-        // marginBottom: 10,
-        // marginTop: 10
-    },
-})
