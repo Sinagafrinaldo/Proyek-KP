@@ -73,21 +73,19 @@ export default function Pengingat() {
                     onRefresh={onRefresh}
                 />
             }
-            style={{backgroundColor:'white'}}
+            contentContainerStyle={{ backgroundColor: 'white', flexGrow: 1 }}
             >
             
-            <View style={styles.content}>
+            <View style={styles.container}>
             <Image
                 style={styles.background}
                 source={require("../../assets/background.png")}
             /> 
-                <View style={styles.data}>
-                    
-               
-                    <View style={styles.head}>   
-                        <Text style={styles.teks_judul}>Judul pengingat ?</Text>
+                <View style={styles.card_info_data}>
+                    <View style={styles.data}>   
+                        <Text style={styles.title}>Judul pengingat ?</Text>
                         <Text style={{color :'white',marginTop:3}}>{judul} </Text>
-                        <Text style={styles.teks_isi}>Isi pengingat ?</Text>
+                        <Text style={styles.description}>Isi pengingat ?</Text>
                         <Text style={{color :'white',marginTop:3}}>{isi}</Text>
                     </View>
                     <Image
@@ -98,10 +96,10 @@ export default function Pengingat() {
 
                 <View style={{padding:8}}>
 
-                    <Text style={{paddingVertical:10, fontSize:18, fontWeight:'bold', color:'gray'}}>DESKRIPSI</Text>
+                    <Text style={styles.text_description}>DESKRIPSI</Text>
                     
                     {/* <Text>Judul Notifikasi</Text> */}
-                    <View style={styles.card}>
+                    <View style={styles.card_info}>
                         <View style={styles.info}>
                             <TextInput
                                 style={styles.box_input}
@@ -117,11 +115,11 @@ export default function Pengingat() {
                                 defaultValue={isi}
                             />
                             <Text style={{marginTop:15,marginBottom:5, color:'gray'}}>Lama Waktu Notifikasi (Jam, Menit, Detik)</Text>
-                            <View style={styles.waktu}>
+                            <View style={styles.time}>
 
                                 <Picker
                                     selectedValue={jam}
-                                    style={styles.box_opsi}
+                                    style={styles.box_option}
                                     onValueChange={(jam) => {
                                         setJam(jam);
                                     }}
@@ -134,7 +132,7 @@ export default function Pengingat() {
                                 </Picker>
                                 <Picker
                                     selectedValue={menit}
-                                    style={styles.box_opsi}
+                                    style={styles.box_option}
                                     onValueChange={(menit) => {
                                         setMenit(menit);
                                     }}
@@ -147,7 +145,7 @@ export default function Pengingat() {
                                 </Picker>
                                 <Picker
                                     selectedValue={detik}
-                                    style={styles.box_opsi}
+                                    style={styles.box_option}
                                     onValueChange={(detik) => {
                                         setDetik(detik);
                                     }}
@@ -160,7 +158,7 @@ export default function Pengingat() {
                                 </Picker>
 
                             </View>
-                            <TouchableOpacity style={styles.tombol}
+                            <TouchableOpacity style={styles.touch}
                                 onPress={
 
                                     async () => {
@@ -174,7 +172,7 @@ export default function Pengingat() {
                                         }
                                     }
                                 }>
-                                <Text style={styles.teks}>Buat Notifikasi</Text>
+                                <Text style={styles.text_notification}>Buat Notifikasi</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
