@@ -1,6 +1,7 @@
 // import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-
+import { View, Image, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native'
+// import React, { useState } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { StatusBar } from 'expo-status-bar';
@@ -68,8 +69,9 @@ function MainContainer() {
 
     }, [])
     return (
-        <NavigationContainer>
+        <NavigationContainer >
             <Tab.Navigator
+
                 initialRouteName={homeName}
                 screenOptions={({ route }) => ({
                     tabBarHideOnKeyboard: true,
@@ -78,14 +80,18 @@ function MainContainer() {
                         height: 70,
                         backgroundColor: '#118eeb',
 
+
                     },
-                    tabBarActiveTintColor: "yellow",
-                    tabBarInactiveTintColor: "white",
+                    tabBarActiveTintColor: "#449adb",
+                    tabBarInactiveTintColor: "gray",
+                    // tabBarActiveBackgroundColor: 'red',
+
                     tabBarLabelStyle: {
                         paddingBottom: 5,
                         fontSize: 12,
                         paddingTop: -30,
-                        fontFamily: 'poppins'
+                        fontFamily: 'poppins',
+
 
                     },
 
@@ -94,16 +100,20 @@ function MainContainer() {
                         console.log(routeName)
                         if (routeName === 'Pengingat') {
                             return { display: "none" }
-                        }else if (routeName === 'Jadwal Liput') {
+                        } else if (routeName === 'Jadwal Liput') {
                             return { display: "none" }
                         }
                         return {
-                            backgroundColor: '#118eeb',
+                            backgroundColor: 'white',
                             display: "flex",
                             height: 70,
+                            borderRadius: 20,
+                            margin: 10,
+                            // borderTopEndRadius: 40,
+                            // borderTopStartRadius: 40
                         }
-                        }
-                        )(route),
+                    }
+                    )(route),
                     // tabBarStyle: [
                     //     {
                     //         backgroundColor: '#118eeb',
@@ -133,7 +143,9 @@ function MainContainer() {
                             iconName = focused ? 'exit' : 'exit-outline'
                         }
 
-                        return <Ionicons name={iconName} size={size} color={color} />
+                        return <View>
+                            <Ionicons name={iconName} size={size} color={color} />
+                        </View>
                     }
                 })}
 
@@ -176,7 +188,7 @@ function MainContainer() {
                         headerTintColor: 'white',
                         headerTitleStyle: {
                             fontFamily: 'poppinssemibold'
-                        }
+                        },
                     }} />
                 <Tab.Screen name={keluarName} component={Keluar}
                     options={{
