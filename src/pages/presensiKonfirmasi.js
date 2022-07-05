@@ -49,7 +49,7 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
         // alert(ip);
         console.log(ipAdd)
         setIp(ipAdd)
-        if (ipAdd != '192.168.232.2') {
+        if (ipAdd != '10.10.0.218') {
             alert('Maaf, anda hanya dapat melakukan absensi dengan terkoneksi ke jaringan WiFi Kantor kominfo.')
             navigation.navigate('Presensi1')
         }
@@ -203,10 +203,17 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
             )}
 
             {(verif == true && ori == false) && (
-                <View>
-                    <Text>Maaf presensi hanya bisa dilakukan dengan ponsel yang di daftarkan di awal..</Text>
+                <View style={styles.container_verif_false}>
+
+                    <Image
+                        style={styles.image_not_verif}
+                        source={require("../../assets/not-user.png")}
+                    />
+
+                    <Text style={styles.text_not_verif}>Maaf presensi hanya bisa dilakukan dengan ponsel yang di daftarkan di awal..</Text>
                 </View>
             )}
+
             {verif == false && (
                 <View style={styles.container_verif_false}>
 
@@ -216,7 +223,7 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
                     />
 
                     <Text style={styles.text_not_verif}>Maaf fitur ini hanya tersedia untuk user yang telah mendaftar..</Text>
-             </View>
+                </View>
             )}
 
             {/* <Button title='Presensi Sekarang' onPress={() => setShowAlert(true)} /> */}
