@@ -2,7 +2,7 @@ import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 
 const styles = StyleSheet.create({
-    content: {
+    container: {
         backgroundColor: 'white',
         borderColor: 'black',
         flex: 1,
@@ -12,35 +12,31 @@ const styles = StyleSheet.create({
         marginTop:-25,
     },
     
-    box_input: {
-        borderBottomWidth: 1,
-        padding: 10,
-        marginVertical: 3,
-        width: '100%',
-        borderColor: 'gray',
+    background: {
+        alignSelf:'center',
+        resizeMode: 'stretch',
+        width: '110%',
+        height:260,
     },
-    waktu: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
 
-    },
-    data :{
+    card_info_data :{
         flexDirection:'row',
+        alignSelf:'center',
+        alignItems :'center'
     },
 
-    head: {
+    data: {
         backgroundColor: '#007874',
         width: 280,
         height:140,
         padding: 12,
-        paddingLeft: 15,
+        paddingLeft: 20,
         borderBottomLeftRadius: 10,
         borderTopStartRadius: 10,
         borderBottomRightRadius: 10,
-        marginTop: 90,
-        marginLeft:6,
+        marginLeft:37,
         justifyContent:'center',
-        marginTop:-170,
+        marginTop:-198,
         shadowColor: "#007874",
         shadowOffset: {
             width: 0,
@@ -52,7 +48,36 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
 
-    card :{
+    title: {
+        color: 'white',
+        fontSize: 18,
+        fontWeight:'bold'
+    },
+
+    description: {
+        color: 'white',
+        fontSize: 18,
+        marginTop:15,
+        fontWeight:'bold'
+    },
+
+    stretch: {
+        alignSelf:'center',
+        resizeMode: 'stretch',
+        width: 330,
+        height:260,
+        marginLeft:-237,
+        marginTop:-260,
+    },
+  
+    text_description :{
+        paddingVertical:10, 
+        fontSize:18, 
+        fontWeight:'bold', 
+        color:'gray'
+    },
+
+    card_info :{
         borderRadius:5,
         backgroundColor:'white',
         shadowColor: "#000",
@@ -73,69 +98,50 @@ const styles = StyleSheet.create({
         paddingBottom:15,
     },
 
-    stretch: {
-        alignSelf:'center',
-        resizeMode: 'stretch',
-        width: 330,
-        height:260,
-        marginLeft:-237,
-        marginTop:-260,
+    box_input: {
+        borderBottomWidth: 1,
+        padding: 10,
+        marginVertical: 3,
+        width: '100%',
+        borderColor: 'gray',
     },
 
-    background: {
-        alignSelf:'center',
-        resizeMode: 'stretch',
-        width: '110%',
-        height:260,
-    },
-
-    teks_isi: {
-        color: 'white',
-        fontSize: 18,
-        marginTop:15,
-        fontWeight:'bold'
-
-    },
-    teks_judul: {
-        color: 'white',
-        fontSize: 18,
-        fontWeight:'bold'
+    time: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
     },
     
-    box_opsi: {
+    box_option: {
         borderWidth: 1,
         marginVertical: 5,
         width: 90,
         backgroundColor: '#d1d1d1',
         marginHorizontal: 2,
     },
-    tombol: {
+
+    touch: {
         marginVertical:15,
-        padding: 10,
         backgroundColor: 'purple',
         borderRadius: 5,
+        backgroundColor: '#F9A826',
+        shadowColor: "#000",
+        marginBottom:30,
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
 
+        elevation: 2,
     },
-    teks: {
+
+    text_notification: {
         color: 'white',
         fontSize: 16,
-        padding:6,
+        padding:16,
         fontWeight: 'bold',
         textAlign: 'center'
-    },
-
-    wrapper: {
-        backgroundColor: '#0041a3',
-        marginTop: '10%',
-        height: 300
-
-    },
-    judul_besar: {
-        color: 'white',
-        textAlign: 'center',
-        fontSize: 30,
-        marginTop: 20,
-        fontWeight: 'bold'
     },
 })
 
