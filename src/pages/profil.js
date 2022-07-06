@@ -14,6 +14,8 @@ import { initializeApp } from 'firebase/app';
 import { db } from '../firebase/crudConf';
 import { useNavigation, useFocusEffect, NavigationContainer } from '@react-navigation/native';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import styles from "../component/styleProfile";
+
 const Profil = ({ route, navigation }) => {
     const app = initializeApp(firebaseConfig);
     const [url, setUrl] = useState();
@@ -83,24 +85,15 @@ const Profil = ({ route, navigation }) => {
 
     // console.log(nama)
     return (
-        <View style={{ flex: 1, display: 'flex', backgroundColor: 'white' }}>
-            {/* {() => {
-                getInfo()
-            }} */}
+        <View style={styles.container}>
             {verif == true && (
                 <>
-
                     <ScrollView style={styles.content}>
                         {pengguna.map((item, index) => (
-
                             <View key={index} style={{}}>
                                 {item.email.toLowerCase() == email.toLowerCase() && (
-
                                     <>
-                                        <View
-                                            style={{ backgroundColor: '#66baff', height: 90, }}
-                                        >
-
+                                        <View style={styles.background}>
                                         </View>
                                         <View style={{ padding: 30, paddingTop: 0 }}>
                                             <View style={styles.symbol}>
@@ -112,7 +105,7 @@ const Profil = ({ route, navigation }) => {
                                                             url: url
                                                         })
                                                     }}>
-                                                        <Image style={{ height: 100, borderRadius: 100, width: 100 }} source={{ uri: url }} />
+                                                        <Image style={styles.image} source={{ uri: url }} />
                                                     </TouchableOpacity>
                                                 )}
                                                 {url == undefined && (
@@ -122,7 +115,7 @@ const Profil = ({ route, navigation }) => {
                                                 )}
                                             </View>
                                             <View style={styles.wrapitem}>
-                                                <TouchableOpacity style={styles.btn} onPress={() => {
+                                                <TouchableOpacity style={styles.touch} onPress={() => {
                                                     navigation.navigate('Edit Profil', {
                                                         nama: item.nama,
                                                         nip: item.nip,
@@ -135,10 +128,10 @@ const Profil = ({ route, navigation }) => {
                                                     })
                                                     console.log(item.id)
                                                 }}>
-                                                    <Text style={styles.teksin}>Edit Profil</Text>
+                                                    <Text style={styles.text_edit}>Edit Profil</Text>
                                                 </TouchableOpacity>
 
-                                                <View style={{ borderBottomWidth: 1, borderColor: 'black', marginVertical: 10, borderColor: 'gray' }}>
+                                                <View style={styles.line}>
 
                                                 </View>
                                                 <Text style={styles.title}>Nama</Text>
@@ -147,19 +140,19 @@ const Profil = ({ route, navigation }) => {
 
 
                                             </View>
-                                            <View style={styles.wrapitem}>
+                                            <View style={styles.wrap_item}>
                                                 <Text style={styles.title}>NIP</Text>
                                                 <Text style={styles.subtitle}>{item.nip}</Text>
                                             </View>
-                                            <View style={styles.wrapitem}>
+                                            <View style={styles.wrap_item}>
                                                 <Text style={styles.title}>ASN/Non-ASN</Text>
                                                 <Text style={styles.subtitle}>{item.asn}</Text>
                                             </View>
-                                            <View style={styles.wrapitem}>
+                                            <View style={styles.wrap_item}>
                                                 <Text style={styles.title}>Golongan</Text>
                                                 <Text style={styles.subtitle}>{item.golongan}</Text>
                                             </View>
-                                            <View style={styles.wrapitem}>
+                                            <View style={styles.wrap_item}>
                                                 <Text style={styles.title}>Email</Text>
                                                 <Text style={styles.subtitle}>{email}</Text>
                                             </View></View></>
@@ -170,10 +163,12 @@ const Profil = ({ route, navigation }) => {
                     </ScrollView></>
             )}
             {verif == false && (
-                <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
-                    <View >
-                        <Text style={{ textAlign: 'center' }}>Maaf silahkan login terlebih dahulu untuk mengakses menu ini..</Text>
-                    </View>
+                <View style={styles.container_verif_false}>
+                    <Image
+                        style={styles.image_not_verif}
+                        source={require("../../assets/not-user.png")}
+                    />
+                    <Text style={styles.text_not_verif}>Maaf fitur ini hanya tersedia bagi yang terdaftar sebagai pengguna biasa..</Text>
                 </View>
             )}
 
@@ -183,58 +178,3 @@ const Profil = ({ route, navigation }) => {
 }
 
 export default Profil
-
-const styles = StyleSheet.create({
-    wrapitem: {
-        marginVertical: 10
-    },
-    title: {
-        color: '#949494',
-        fontFamily: 'poppins'
-    },
-    subtitle: {
-        color: '#4c4c4c',
-        fontSize: 16,
-        // fontWeight: '500'
-        fontFamily: 'poppinssemibold'
-    },
-    btn: {
-        backgroundColor: 'black',
-        width: 120,
-        alignSelf: 'center',
-        marginVertical: 10,
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        borderRadius: 10
-    },
-    teksin: {
-        color: 'white',
-        textAlign: 'center',
-        fontSize: 16,
-        fontFamily: 'poppins'
-    },
-    content: {
-        // marginHorizontal: 5,
-        backgroundColor: 'white',
-        minHeight: '100%',
-        // padding: 30,
-        // paddingTop: 0
-    },
-    symbol: {
-        minHeight: 100,
-        minWidth: 100,
-        borderRadius: 100,
-        backgroundColor: '#171F1D',
-        alignSelf: 'center',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: -50,
-
-    },
-    teksProfile: {
-        color: 'white',
-        fontSize: 24,
-        // fontWeight: '700'
-        fontFamily: 'poppinsbold'
-    }
-})
