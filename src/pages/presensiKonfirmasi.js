@@ -19,6 +19,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import * as Device from 'expo-device';
 import styles from "../component/stylepresensiKonfirmasi";
 import * as Network from 'expo-network';
+import publicIP from 'react-native-public-ip';
 
 const PresensiKonfirmasi = ({ route, navigation }) => {
     const { pengguna1, presensi1, verif, email, idhp, id } = route.params;
@@ -44,15 +45,27 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
         setPengguna(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
 
     };
-    const ipAlert = async () => {
-        const ipAdd = await Network.getIpAddressAsync()
-        // alert(ip);
-        console.log(ipAdd)
-        setIp(ipAdd)
-        if (ipAdd != '10.10.0.218') {
-            alert('Maaf, anda hanya dapat melakukan absensi dengan terkoneksi ke jaringan WiFi Kantor kominfo.')
-            navigation.navigate('Presensi1')
-        }
+    const ipAlert = () => {
+        // const ipAdd = await Network.getIpAddressAsync()
+        // // alert(ip);
+        // console.log(ipAdd)
+
+        publicIP()
+            .then(ipadds => {
+                setIp(ipadds)
+                console.log('sss', ip)
+                if (ipadds != '103.81.64.58') {
+                    alert('Maaf, anda hanya dapat melakukan absensi dengan terkoneksi ke jaringan WiFi Kantor kominfo.')
+                    navigation.navigate('Presensi1')
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                // 'Unable to get IP address.'
+            });
+
+
+
     };
 
     const getPresensi = async () => {
@@ -129,6 +142,7 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
             getId()
             getInfo()
             ipAlert()
+
             // const ipAdds = await Network.getIpAddressAsync()
             // console.log(ipAdds)
         }, [])
