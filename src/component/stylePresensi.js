@@ -3,9 +3,9 @@ import React from 'react'
 
 const styles = StyleSheet.create({
     container: {
-        flex:1, 
-        display:'flex', 
-        backgroundColor:'white',
+        flex: 1,
+        display: 'flex',
+        backgroundColor: 'white',
         width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
@@ -16,28 +16,30 @@ const styles = StyleSheet.create({
     stretch: {
         resizeMode: 'stretch',
         width: 300,
-        height:260,
+        height: 260,
+        marginTop: -20
     },
 
-    text_absent:{
-        fontSize: 34, 
-        fontFamily: 'poppinssemibold', 
-        color: '#118eeb', 
+    text_absent: {
+        fontSize: 34,
+        fontFamily: 'poppinssemibold',
+        color: '#118eeb',
         textAlign: 'center',
     },
 
-    text_online :{
-        fontSize: 18, 
-        fontFamily: 'poppins', 
-        color: 'gray', 
-        marginBottom: 30, 
+    text_online: {
+        fontSize: 18,
+        fontFamily: 'poppins',
+        color: 'gray',
+        marginBottom: 30,
         textAlign: 'center',
     },
 
-    text_users : {
-        color: 'gray', 
-        fontFamily: 'poppinssemibold', 
+    text_users: {
+        color: 'gray',
+        fontFamily: 'poppinssemibold',
         textAlign: 'center',
+        marginTop: -20
     },
 
     name: {
@@ -59,7 +61,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#F9A826',
         borderRadius: 10,
         shadowColor: "#000",
-        marginBottom:30,
+        marginBottom: 30,
         shadowOffset: {
             width: 0,
             height: 1,
@@ -73,29 +75,29 @@ const styles = StyleSheet.create({
     button_text_absent: {
         color: 'white',
         fontFamily: 'poppinsmedium',
-        fontWeight:'bold',
-        padding : 16, 
+        fontWeight: 'bold',
+        padding: 16,
         fontSize: 16,
         textAlign: 'center'
     },
 
-    container_verif_false :{
-        padding:10, 
-        flex:1, 
-        display:'flex', 
-        justifyContent: 'center', 
+    container_verif_false: {
+        padding: 10,
+        flex: 1,
+        display: 'flex',
+        justifyContent: 'center',
         alignItems: 'center',
     },
 
-    image_not_verif :{
+    image_not_verif: {
         resizeMode: 'stretch',
-        width:260,
+        width: 260,
         height: 245
     },
 
-    text_not_verif :{
-        textAlign: 'center', 
-        color :'gray',
+    text_not_verif: {
+        textAlign: 'center',
+        color: 'gray',
         fontFamily: 'poppins'
     },
 })
