@@ -24,6 +24,7 @@ import { db } from '../firebase/crudConf';
 import React, { useState } from "react";
 import { useNavigation, useFocusEffect, NavigationContainer } from '@react-navigation/native';
 import Ionicons from "react-native-vector-icons/Ionicons";
+import styles from "../component/styleDataPengguna";
 
 const DataPengguna = ({ navigation, route }) => {
     const app = initializeApp(firebaseConfig);
@@ -40,15 +41,36 @@ const DataPengguna = ({ navigation, route }) => {
         }, [])
     );
     return (
-        <View>
-            <Text>DataPengguna</Text>
+        <View style={styles.container}>
+            {/* <Text style={styles.text_user}>Data Pengguna</Text>
+            <View style={styles.line}></View> */}
             <View>
                 <FlatList
-                    contentContainerStyle={{ paddingBottom: 30 }}
+                    contentContainerStyle={{}}                  
                     data={pengguna}
                     renderItem={({ item, index }) => (
-                        <View>
+                        <View style={styles.card}>           
+
+                            <View style={styles.position}>
+                                <View style={styles.number}>
+                                    <Text style={{fontWeight:'bold', color:'white'}}>{index + 1}</Text>
+                                </View>
+
+                                <Ionicons
+                                    // style={styles.ikonLokasi}
+                                    name="folder"
+                                    size={26}
+                                    color="#ebcc6f" />
+
+                            </View>
+
+                            <View style={styles.position_data}>
+                                <Text style={styles.text_name}>{item.nama}</Text>
+                                <Text style={styles.nip}>{item.nip}</Text> 
+                            </View>
+
                             <TouchableOpacity
+                            style={styles.touch}  
                                 onPress={() => {
                                     navigation.navigate('Detail Pengguna', {
                                         nama: item.nama,
@@ -59,9 +81,8 @@ const DataPengguna = ({ navigation, route }) => {
                                         golongan: item.golongan
                                     })
                                 }}
-                                style={{ padding: 20, margin: 4, borderWidth: 1 }}>
-                                <Text>{index + 1}. {item.nama}</Text>
-                                <Text>{item.nip}</Text>
+                            >
+                             <Text style={styles.text_detail}> Detail</Text>  
                             </TouchableOpacity>
                         </View>
                     )}
