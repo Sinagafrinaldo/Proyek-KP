@@ -72,9 +72,55 @@ const DetailPengguna = ({ route, navigation }) => {
 
 
     return (
-        <View>
-            <Text>DetailPengguna</Text>
-            <View style={{ flexDirection: 'row', display: 'flex', justifyContent: 'space-around' }}>
+        <ScrollView contentContainerStyle={{ backgroundColor: 'white', flexGrow: 1 }}>
+            <View style={styles.container}>
+                <View style={styles.image}>
+                    {url != undefined && (
+                        <Image style={{ height: 180, width: 180 }} source={{ uri: url }} />
+                    )}
+                </View>
+
+                <View style={styles.position_touch}>
+                
+                    <TouchableOpacity onPress={() => { resetLogin(id) }}>
+                        <Text style={styles.touch_reset}>Reset Device Absensi</Text>
+                    </TouchableOpacity>
+
+
+                        {/* <TouchableOpacity
+                            onPress={() => { showConfirmDialog(id) }} style={{ width: 70, backgroundColor: 'red', padding: 10, borderRadius: 10 }}>
+                            <Text style={{ color: 'white', textAlign: 'center' }}>Hapus</Text>
+                        </TouchableOpacity> */}
+                </View>
+                
+                <View style={styles.data_user}>
+                    <View style={{paddingBottom:12}}>
+                        <Text style={styles.text}>Nama :</Text>
+                        <Text style={styles.text_data}>{nama}</Text>
+                    </View>
+                    
+                    <View style={{paddingBottom:12}}>
+                        <Text style={styles.text}>NIP :</Text>
+                        <Text style={styles.text_data}>{nip}</Text>
+                    </View>
+                    
+                    <View style={{paddingBottom:12}}>
+                        <Text style={styles.text}>Email :</Text>
+                        <Text style={styles.text_data}>{email}</Text>
+                    </View>
+                  
+                    <View style={{paddingBottom:12}}>
+                        <Text style={styles.text}>ASN :</Text>
+                        <Text style={styles.text_data}>{asn}</Text>
+                    </View>
+
+                    <View style={{paddingBottom:12}}>
+                        <Text style={styles.text}>Golongan :</Text>
+                        <Text style={styles.text_data}>{golongan}</Text>
+                    </View>
+                </View>
+
+                
                 <TouchableOpacity
                     onPress={() => {
                         navigation.navigate('Edit Pengguna', {
@@ -87,31 +133,75 @@ const DetailPengguna = ({ route, navigation }) => {
 
                         })
                     }}
-                    style={{ width: 70, backgroundColor: 'black', padding: 10, borderRadius: 10 }}>
-                    <Text style={{ color: 'white', textAlign: 'center' }}>Edit</Text>
+                    style={styles.touch_edit}>
+                    <Text style={styles.text_edit}>Edit</Text>
                 </TouchableOpacity>
-                {/* <TouchableOpacity
-                    onPress={() => { showConfirmDialog(id) }} style={{ width: 70, backgroundColor: 'red', padding: 10, borderRadius: 10 }}>
-                    <Text style={{ color: 'white', textAlign: 'center' }}>Hapus</Text>
-                </TouchableOpacity> */}
-            </View>
-            <TouchableOpacity onPress={() => { resetLogin(id) }}>
-                <Text style={{ color: 'blue' }}>Reset Device Absensi</Text>
-            </TouchableOpacity>
-            <View style={{ padding: 20, margin: 10, }}>
-                {url != undefined && (
+                    
 
-
-                    <Image style={{ height: 100, width: 100 }} source={{ uri: url }} />
-                )}
-                <Text>Nama: {nama}</Text>
-                <Text>NIP: {nip}</Text>
-                <Text>Email: {email}</Text>
-                <Text>ASN: {asn}</Text>
-                <Text>Golongan: {golongan}</Text>
             </View>
-        </View>
+        </ScrollView>
     )
 }
 
 export default DetailPengguna
+
+const styles = StyleSheet.create({
+    container : {
+        backgroundColor:'white',
+        flex:1,
+        display : 'flex',
+        width:'100%',
+        height:'100%',
+        padding:10,
+        paddingVertical:40,
+    },
+
+    image :{
+        alignItems:'center'
+    },
+
+    position_touch : {
+        alignItems:'center',
+    },
+
+    touch_reset :{
+        color: 'blue',
+        padding:15,
+    },
+
+    touch_edit :{
+        width:'90%',
+        marginTop: 25,
+        alignSelf:'center',
+        backgroundColor: '#F9A826', 
+        borderRadius: 10,
+    },
+
+    text_edit:{
+        padding:14,
+        color:'white',
+        fontFamily:'poppinssemibold',
+        textAlign:'center',
+    },
+
+    data_user :{
+        paddingLeft :15,
+    },
+
+    text :{
+        fontSize:12,
+        fontFamily :'poppinssemibold',
+        fontWeight : 'bold',
+        paddingLeft:3,
+        color:'gray',
+
+    },
+
+    text_data :{
+        fontSize:18,
+        fontFamily :'poppinssemibold',
+        fontWeight : 'bold',
+        paddingLeft:3,
+        color:'gray',
+    },
+})

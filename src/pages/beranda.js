@@ -306,7 +306,7 @@ const Beranda1 = ({ navigation }) => {
 
                                         <Ionicons
                                             style={styles.icon_menu}
-                                            name="grid"
+                                            name="people"
                                             size={34}
                                             color="white"
                                         />
@@ -327,7 +327,7 @@ const Beranda1 = ({ navigation }) => {
 
                                         <Ionicons
                                             style={styles.icon_menu}
-                                            name="grid"
+                                            name="receipt"
                                             size={34}
                                             color="white"
                                         />
