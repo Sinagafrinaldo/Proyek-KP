@@ -10,7 +10,7 @@ import Kontak from "./kontak";
 import Bantuan from "./bantuan";
 import Tentang from "./tentang";
 import Privasi from "./privasi";
-
+import ResetIp from "./ResetIp";
 const StackPengaturan = createStackNavigator();
 
 function Pengaturan() {
@@ -21,17 +21,22 @@ function Pengaturan() {
         name="Pengaturan1"
         component={Pengaturan1}
       />
-       <StackPengaturan.Screen
+      <StackPengaturan.Screen
         options={{ headerShown: false }}
         name="Bantuan"
         component={Bantuan}
       />
-       <StackPengaturan.Screen
+      <StackPengaturan.Screen
+        options={{ headerShown: false }}
+        name="Reset IP"
+        component={ResetIp}
+      />
+      <StackPengaturan.Screen
         options={{ headerShown: false }}
         name="Tentang"
         component={Tentang}
       />
-       <StackPengaturan.Screen
+      <StackPengaturan.Screen
         options={{ headerShown: false }}
         name="Privasi"
         component={Privasi}

@@ -1,10 +1,31 @@
 import { View, Text, TouchableOpacity, Linking } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from "../component/stylePengaturan";
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import Ionicons from "react-native-vector-icons/Ionicons";
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { firebaseConfig } from '../firebase/config';
+import { initializeApp } from 'firebase/app';
 
 const Pengaturan = ({ navigation }) => {
+    const [status, setStatus] = useState(false)
+
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    useFocusEffect(
+        React.useCallback(() => {
+            const unsubscribe = auth.onAuthStateChanged(user => {
+                if (user != null && user.email == 'admin@gmail.com') {
+                    setStatus(true)
+                } else {
+                    setStatus(false)
+                }
+            })
+
+            return unsubscribe
+        }, [])
+    );
     return (
         <View style={styles.container}>
             <TouchableOpacity
@@ -14,9 +35,9 @@ const Pengaturan = ({ navigation }) => {
                 <View style={styles.card_text}>
                     <Text style={styles.text}>Bantuan</Text>
                     <Ionicons
-                      name="chevron-forward-outline"
-                      size={22}
-                      color="gray"
+                        name="chevron-forward-outline"
+                        size={22}
+                        color="gray"
                     />
                 </View>
             </TouchableOpacity>
@@ -29,9 +50,9 @@ const Pengaturan = ({ navigation }) => {
                 <View style={styles.card_text}>
                     <Text style={styles.text}>Tentang Aplikasi</Text>
                     <Ionicons
-                      name="chevron-forward-outline"
-                      size={22}
-                      color="gray"
+                        name="chevron-forward-outline"
+                        size={22}
+                        color="gray"
                     />
                 </View>
             </TouchableOpacity>
@@ -44,9 +65,9 @@ const Pengaturan = ({ navigation }) => {
                 <View style={styles.card_text}>
                     <Text style={styles.text}>Privasi dan Keamanan</Text>
                     <Ionicons
-                      name="chevron-forward-outline"
-                      size={22}
-                      color="gray"
+                        name="chevron-forward-outline"
+                        size={22}
+                        color="gray"
                     />
                 </View>
             </TouchableOpacity>
@@ -60,9 +81,9 @@ const Pengaturan = ({ navigation }) => {
                 <View style={styles.card_text}>
                     <Text style={styles.text}>Kontak</Text>
                     <Ionicons
-                      name="chevron-forward-outline"
-                      size={22}
-                      color="gray"
+                        name="chevron-forward-outline"
+                        size={22}
+                        color="gray"
                     />
                 </View>
             </TouchableOpacity>
@@ -72,13 +93,29 @@ const Pengaturan = ({ navigation }) => {
                 <View style={styles.card_text}>
                     <Text style={styles.text}>Lokasi</Text>
                     <Ionicons
-                      name="chevron-forward-outline"
-                      size={22}
-                      color="gray"
+                        name="chevron-forward-outline"
+                        size={22}
+                        color="gray"
                     />
                 </View>
             </TouchableOpacity>
             <View style={styles.line}></View>
+            {status == true && (
+
+
+                <><TouchableOpacity
+                    onPress={() => {
+                        navigation.navigate("Reset IP");
+                    }}>
+                    <View style={styles.card_text}>
+                        <Text style={styles.text}>Reset IP Kominfo</Text>
+                        <Ionicons
+                            name="chevron-forward-outline"
+                            size={22}
+                            color="gray" />
+                    </View>
+                </TouchableOpacity><View style={styles.line}></View></>
+            )}
 
         </View>
     )
