@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     line :{
         borderBottomWidth: 1, 
         borderColor: 'black', 
-        marginVertical: 10, 
+        marginBottom: 10, 
         borderColor: 'gray'
     },
 
