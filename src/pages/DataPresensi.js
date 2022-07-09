@@ -25,7 +25,7 @@ import { db } from '../firebase/crudConf';
 import React, { useState } from "react";
 import { useNavigation, useFocusEffect, NavigationContainer } from '@react-navigation/native';
 import Ionicons from "react-native-vector-icons/Ionicons";
-import styles from '../component/styleRiwayatPresensi';
+import styles from '../component/styleDataPresensi';
 import { Picker } from "@react-native-picker/picker";
 
 const DataPresensi = ({ route, navigation }) => {
@@ -65,59 +65,55 @@ const DataPresensi = ({ route, navigation }) => {
             return unsubscribe
         }, [])
     );
+
     return (
-        <View>
+        <View style={styles.container}>
             {admin == true && (
-
                 <View>
-                    <Text>DataPresensi</Text>
-                    <Picker
-                        placeholder="Pilih Pengguna"
-                        selectedValue={nip}
-                        style={styles2.box_opsi}
-                        onValueChange={(nip) => {
-                            setNip(nip);
-                        }}
-                    >
-                        <Picker.Item label='--Semua--' value='' />
+                    <View style={{...styles.select_box}}>
+                        <Picker
+                            placeholder="Pilih Pengguna"
+                            selectedValue={nip}
+                            style={{ marginLeft: -30, marginTop:-3, color :'gray'}}
+                            onValueChange={(nip) => {
+                                setNip(nip);
+                            }}
+                        >
+                            <Picker.Item label='--Semua--' value='' />
 
-                        {
-                            pengguna.map((item, index) => (
-                                <Picker.Item key={index} label={item.nama} value={item.nip} />
-                            ))
-                        }
+                            {
+                                pengguna.map((item, index) => (
+                                    <Picker.Item key={index} label={item.nama} value={item.nip} />
+                                ))
+                            }
 
-                    </Picker>
+                        </Picker>
+                    </View>
                     <View>
                         <FlatList
                             // contentContainerStyle={{ paddingBottom: 30 }}
                             data={presensi}
-                            contentContainerStyle={{ paddingBottom: 200 }}
+                             contentContainerStyle={{ paddingBottom: 30 }}
                             renderItem={({ item }) => (
                                 <View style={{}}>
-
                                     {nip == '' && (
-
-
-                                        <View style={styles.list1}>
-                                            <View style={styles.data}>
-                                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', }}>
-                                                    <Text style={{ fontSize: 18, fontFamily: 'poppinssemibold', paddingBottom: 7, color: 'grey', width: '90%' }}>Nama : {item.nama}</Text>
+                                        <View style={styles.card_absent}>
+                                            <View style={styles.data_absent}>
+                                                <View style={styles.position_name}>
+                                                    <Text style={styles.text_name}>Nama : {item.nama}</Text>
                                                     <Ionicons
-                                                        style={styles.ikonLokasi}
                                                         name="clipboard"
                                                         size={24}
                                                         color="#118eeb" />
                                                 </View>
 
-                                                <Text style={{ paddingBottom: 12, color: 'grey', fontFamily: 'poppins' }}>Keterangan: {item.keterangan}</Text>
-                                                <Text style={{ textAlign: 'right', paddingBottom: 7, color: 'grey', fontFamily: 'poppins' }}>{item.tanggal}</Text>
+                                                <Text style={styles.text_description}>Keterangan: {item.keterangan}</Text>
+                                                <Text style={styles.date}>{item.tanggal}</Text>
                                                 <View style={{ width: '100%', height: 0.5, backgroundColor: '#D7DBDD' }}></View>
 
                                                 <View style={{ paddingTop: 7, flexDirection: 'row', justifyContent: 'space-between', }}>
-                                                    <Text style={{ fontSize: 16, color: 'grey', alignSelf: 'center', fontFamily: 'poppins' }}>Waktu: {item.waktu}</Text>
+                                                    <Text style={styles.time}>Waktu: {item.waktu}</Text>
                                                     <Ionicons
-                                                        style={styles.ikonLokasi}
                                                         name="time-outline"
                                                         size={24}
                                                         color="red" />
@@ -128,27 +124,23 @@ const DataPresensi = ({ route, navigation }) => {
                                     )}
 
                                     {nip == item.nip && (
-
-
-                                        <View style={styles.list1}>
-                                            <View style={styles.data}>
-                                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', }}>
-                                                    <Text style={{ fontSize: 18, fontFamily: 'poppinssemibold', paddingBottom: 7, color: 'grey', width: '90%' }}>Nama : {item.nama}</Text>
+                                        <View style={styles.card_absent}>
+                                            <View style={styles.data_absent}>
+                                                <View style={styles.position_name}>
+                                                    <Text style={styles.text_name}>Nama : {item.nama}</Text>
                                                     <Ionicons
-                                                        style={styles.ikonLokasi}
                                                         name="clipboard"
                                                         size={24}
                                                         color="#118eeb" />
                                                 </View>
 
-                                                <Text style={{ paddingBottom: 12, color: 'grey', fontFamily: 'poppins' }}>Keterangan: {item.keterangan}</Text>
-                                                <Text style={{ textAlign: 'right', paddingBottom: 7, color: 'grey', fontFamily: 'poppins' }}>{item.tanggal}</Text>
+                                                <Text style={styles.text_description}>Keterangan: {item.keterangan}</Text>
+                                                <Text style={styles.date}>{item.tanggal}</Text>
                                                 <View style={{ width: '100%', height: 0.5, backgroundColor: '#D7DBDD' }}></View>
 
                                                 <View style={{ paddingTop: 7, flexDirection: 'row', justifyContent: 'space-between', }}>
-                                                    <Text style={{ fontSize: 16, color: 'grey', alignSelf: 'center', fontFamily: 'poppins' }}>Waktu: {item.waktu}</Text>
+                                                    <Text style={styles.time}>Waktu: {item.waktu}</Text>
                                                     <Ionicons
-                                                        style={styles.ikonLokasi}
                                                         name="time-outline"
                                                         size={24}
                                                         color="red" />
@@ -172,9 +164,3 @@ const DataPresensi = ({ route, navigation }) => {
 }
 
 export default DataPresensi
-
-const styles2 = StyleSheet.create({
-    box_opsi: {
-        borderWidth: 1
-    }
-})
