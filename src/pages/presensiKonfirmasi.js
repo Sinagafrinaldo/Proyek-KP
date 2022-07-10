@@ -42,6 +42,7 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
     const [ip, setIp] = useState('')
     const [ipsekarang, setIpsekarang] = useState([])
     const [ipfix, setIpfix] = useState('')
+    const [valid, setValid] = useState(false)
     const getUsers = async () => {
         const data = await getDocs(usersCollectionRef);
         setPengguna(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
@@ -54,8 +55,11 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
                 setIp(ipadds)
                 console.log('sss1', ipterdaftar)
                 if (ipadds != ipterdaftar) {
+                    setValid(false)
                     alert('Maaf, anda hanya dapat melakukan absensi dengan terkoneksi ke jaringan WiFi Kantor kominfo.')
                     navigation.navigate('Presensi1')
+                } else if (ipadds == ipterdaftar) {
+                    setValid(true)
                 }
             })
             .catch(error => {
@@ -66,13 +70,7 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
 
 
     };
-    // const ipAlert = () => {
-    //     console.log('sss', ipfix)
-    //     if (ipadds != ipfix) {
-    //         alert('Maaf, anda hanya dapat melakukan absensi dengan terkoneksi ke jaringan WiFi Kantor kominfo.')
-    //         navigation.navigate('Presensi1')
-    //     }
-    // };
+
     const getIpkominfo = async () => {
         const data = await getDocs(ipCollectionRef);
         setIpsekarang(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
@@ -166,7 +164,7 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
     console.log('status', ipfix)
     return (
         <ScrollView contentContainerStyle={{ backgroundColor: 'white', flexGrow: 1 }}>
-            {(verif == true && ori == true) && (
+            {(verif == true && ori == true && valid == true) && (
                 <View style={styles.container}>
 
                     {/* <Button title='Data Presensi' onPress={() => {

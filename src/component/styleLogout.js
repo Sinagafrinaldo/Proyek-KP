@@ -2,8 +2,8 @@ import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 
 const styles2 = StyleSheet.create({
-    container : {
-        justifyContent: 'center', 
+    container: {
+        justifyContent: 'center',
         padding: 40,
     },
 
@@ -24,29 +24,31 @@ const styles2 = StyleSheet.create({
         elevation: 2,
     },
 
-    title_logout :{
-        textAlign: 'center', 
-        color: '#f75555', 
-        fontSize: 18
+    title_logout: {
+        textAlign: 'center',
+        color: '#f75555',
+        fontSize: 18,
+        fontFamily: 'poppinssemibold'
     },
 
-   line :{
-    borderBottomWidth: 1, 
-    borderColor: '#e0e0e0', 
-    marginVertical: 10
-   },
+    line: {
+        borderBottomWidth: 1,
+        borderColor: '#e0e0e0',
+        marginVertical: 10
+    },
 
     text_out: {
         color: '#434343',
         textAlign: 'center',
-        fontSize: 18
+        fontSize: 18,
+        fontFamily: 'poppins'
     },
 
-    style_touch :{
-        display: 'flex', 
-        flexDirection: 'row', 
-        justifyContent: 
-        'space-around'
+    style_touch: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent:
+            'space-around'
     },
 
     touch_cancel: {
@@ -64,18 +66,18 @@ const styles2 = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 10
     },
-    
+
     text_logout: {
         color: 'white',
         fontSize: 16,
-        fontWeight: '700',
-        marginHorizontal: 20
+        marginHorizontal: 20,
+        fontFamily: 'poppinssemibold'
     },
 
     text_cancel: {
         color: '#2f72fd',
         fontSize: 16,
-        fontWeight: '700',
+        fontFamily: 'poppinssemibold',
         marginHorizontal: 25
     },
 })

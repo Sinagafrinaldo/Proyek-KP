@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         paddingBottom: 20,
         color: 'white',
         fontSize: 28,
-        fontWeight: '700',
+        fontFamily: 'poppinssemibold',
         width: '80%',
         marginLeft: '10%',
     },
@@ -62,25 +62,26 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
 
-    title_registration :{
-        marginBottom: 5, 
-        alignSelf: 'center', 
-        color: '#118eeb', 
-        fontWeight: 'bold', 
+    title_registration: {
+        marginBottom: 5,
+        alignSelf: 'center',
+        color: '#118eeb',
+        fontFamily: 'poppinssemibold',
         fontSize: 18
     },
 
-    line : { 
-        width: '70%', 
-        height: 1.5, 
-        alignSelf: 'center', 
-        backgroundColor: '#D7DBDD' 
+    line: {
+        width: '70%',
+        height: 1.5,
+        alignSelf: 'center',
+        backgroundColor: '#D7DBDD'
     },
 
-    title_box :{
-        color: 'gray', 
-        marginTop: 20, 
-        marginBottom: 5
+    title_box: {
+        color: 'gray',
+        marginTop: 20,
+        marginBottom: 5,
+        fontFamily: 'poppins',
     },
 
     icon_box: {
@@ -96,19 +97,19 @@ const styles = StyleSheet.create({
         padding: 10,
         borderColor: '#D7DBDD',
         paddingLeft: 38,
-
+        fontFamily: 'poppins',
     },
 
-    select_box : {
+    select_box: {
         borderWidth: 1,
         borderRadius: 10,
-        height:51,
+        height: 51,
         width: '100%',
         borderColor: '#D7DBDD',
         paddingLeft: 38,
     },
-   
-    touch : {
+
+    touch: {
         backgroundColor: '#118eeb',
         marginTop: 35,
         padding: 10,
@@ -120,7 +121,7 @@ const styles = StyleSheet.create({
         padding: 6,
         color: 'white',
         fontSize: 16,
-        fontWeight: 'bold',
+        fontFamily: 'poppinssemibold',
     },
 })
 

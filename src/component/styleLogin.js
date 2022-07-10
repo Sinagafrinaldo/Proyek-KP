@@ -16,21 +16,21 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        paddingTop:95,
-        paddingBottom:20,
+        paddingTop: 95,
+        paddingBottom: 20,
         textAlign: 'center',
         color: 'white',
         fontSize: 28,
-        fontWeight: '700',
+        fontFamily: 'poppinssemibold',
         width: '80%',
         marginLeft: '10%',
     },
 
     stretch: {
-        alignSelf:'center',
+        alignSelf: 'center',
         resizeMode: 'stretch',
         width: 330,
-        height:250,
+        height: 250,
     },
 
     back: {
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     },
 
     card_login: {
-        marginBottom:10,
+        marginBottom: 10,
         marginTop: -60,
         paddingTop: 25,
         paddingBottom: 30,
@@ -60,31 +60,33 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
 
-    title_login :{
-        marginBottom: 5, 
-        alignSelf: 'center', 
-        color: '#118eeb', 
-        fontWeight: 'bold', 
+    title_login: {
+        marginBottom: 5,
+        alignSelf: 'center',
+        color: '#118eeb',
+        fontFamily: 'poppinssemibold',
         fontSize: 18
     },
 
-    line : { 
-        width: '70%', 
-        height: 1.5, 
-        alignSelf: 'center', 
-        backgroundColor: '#D7DBDD' 
+    line: {
+        width: '70%',
+        height: 1.5,
+        alignSelf: 'center',
+        backgroundColor: '#D7DBDD'
     },
 
-    title_email :{
-        color: 'gray', 
-        marginTop: 20, 
-        marginBottom: 5
+    title_email: {
+        color: 'gray',
+        marginTop: 20,
+        marginBottom: 5,
+        fontFamily: 'poppins'
     },
 
-    title_password :{
-        color: 'gray', 
-        marginTop: 20, 
-        marginBottom: 5 
+    title_password: {
+        color: 'gray',
+        marginTop: 20,
+        marginBottom: 5,
+        fontFamily: 'poppins'
     },
 
     icon_box: {
@@ -100,6 +102,7 @@ const styles = StyleSheet.create({
         padding: 10,
         borderColor: '#D7DBDD',
         paddingLeft: 38,
+        fontFamily: 'poppins'
 
     },
 
@@ -109,24 +112,24 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 10
     },
-    
+
     text_login: {
-        padding:16,
+        padding: 16,
         color: 'white',
         fontSize: 16,
-        fontWeight: '700',
+        fontFamily: 'poppinssemibold',
         marginHorizontal: 20
     },
 
-    registration :{
-        display: 'flex', 
-        flexDirection: 'row', 
+    registration: {
+        display: 'flex',
+        flexDirection: 'row',
         marginTop: 20
     },
-     
+
     text_registration: {
         color: '#118eeb',
-        fontWeight: 'bold',
+        fontFamily: 'poppinssemibold'
     },
 })
 

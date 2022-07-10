@@ -119,12 +119,7 @@ const Beranda1 = ({ navigation }) => {
                         <Text style={styles.subtitle_app}>Bandar Lampung</Text>
                     </View>
                     <View style={styles.style_icon_nav}>
-                        <Ionicons
-                            style={styles.icon_notification}
-                            name="notifications"
-                            size={26}
-                            color="white"
-                        />
+
                         <TouchableOpacity
                             onPress={() => {
                                 navigation.navigate('Profil', {

@@ -34,6 +34,8 @@ const ResetIp = ({ navigation, route }) => {
     const [ipsekarang, setIpsekarang] = useState([])
     const [newIp, setNewIp] = useState('')
     const [isModalVisible, setIsModalVisible] = useState(false)
+    const [ipfix, setIpfix] = useState('')
+
 
     const handleModal = () => setIsModalVisible(() => !isModalVisible);
 
@@ -55,7 +57,7 @@ const ResetIp = ({ navigation, route }) => {
     }
     const updateIp = async (id) => {
         const ipDoc = doc(db, "ipkominfo", id);
-        const newFields = { ip: newIp, last_update: new Date() };
+        const newFields = { ip: ipfix, last_update: new Date() };
         try {
             await updateDoc(ipDoc, newFields);
             alert('Berhasil memperbarui IP address.')
@@ -68,6 +70,11 @@ const ResetIp = ({ navigation, route }) => {
     const getIpkominfo = async () => {
         const data = await getDocs(ipCollectionRef);
         setIpsekarang(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        let ipNow = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+        ipNow.map((item, index) => (
+            setIpfix(item.ip)
+            // ipAlert(item.ip)
+        ))
     };
     useFocusEffect(
         React.useCallback(() => {
@@ -77,34 +84,35 @@ const ResetIp = ({ navigation, route }) => {
 
         }, [])
     );
+    // console.log(ipfix)
     return (
-        <View>
-            <View>
-                <Text>ResetIp</Text>
+        <View style={{ backgroundColor: 'white', marginHorizontal: 8, padding: 20, minHeight: '100%' }}>
+            <View >
+                <Text style={{ color: 'gray', fontSize: 24, fontFamily: 'poppinsbold', alignSelf: 'center', marginBottom: 10 }}>Reset IP Kominfo</Text>
                 <FlatList
                     contentContainerStyle={{ paddingBottom: 30 }}
                     data={ipsekarang}
                     renderItem={({ item }) => (
-                        <View style={{ justifyContent: 'center', flex: 1 }}>
-                            <Text>IP address wifi kominfo saat ini: {item.ip}</Text>
+                        <View style={{ justifyContent: 'center', flex: 1, }}>
+                            <Text style={styles.teksbiasa}>IP address wifi kominfo saat ini:{'\n'} {item.ip}</Text>
                             <TouchableOpacity
                                 onPress={() => { handleModal() }}
-                                style={{ backgroundColor: 'black', padding: 10, borderRadius: 10 }}>
-                                <Text style={{ color: 'white' }}>Edit IP</Text>
+                                style={styles.touch}>
+                                <Text style={styles.text_edit}>Edit IP</Text>
                             </TouchableOpacity>
                             <Modal
-                                style={{ flex: 1, backgroundColor: 'white', padding: 20 }}
+                                style={{ flex: 1, backgroundColor: 'white', padding: 20, marginVertical: '40%', borderRadius: 10 }}
                                 isVisible={isModalVisible}>
-                                <View >
-                                    <Text>Edit IP address WIFI Kominfo</Text>
+                                <ScrollView >
+                                    <Text style={styles.title}>Edit IP address WIFI Kominfo</Text>
                                     <Text></Text>
-                                    <Text>Untuk memastikan ip address yang dimasukkan sesuai dengan IP kominfo saat ini, pastikan anda terhubung dengan WIFI Kominfo terlebih dahulu. </Text>
+                                    <Text style={styles.teksbiasa}>Untuk memastikan ip address yang dimasukkan sesuai dengan IP kominfo saat ini, pastikan anda terhubung dengan WIFI Kominfo terlebih dahulu. </Text>
 
-                                    <Text>Berikut adalah IP address wifi yang terhubung saat ini: {ipadd}</Text>
+                                    <Text style={styles.teksbiasa}>Berikut adalah IP address wifi yang terhubung saat ini: {ipadd}</Text>
 
                                     <TextInput
-                                        onChangeText={newIp => setNewIp(newIp)}
-                                        value={newIp}
+                                        onChangeText={ipfix => setIpfix(ipfix)}
+                                        value={ipfix}
                                         // style={styles.box_input}
                                         style={{
                                             borderWidth: 1,
@@ -113,7 +121,8 @@ const ResetIp = ({ navigation, route }) => {
                                             padding: 10,
                                             borderColor: '#D7DBDD',
                                             paddingLeft: 38,
-                                            marginVertical: 10
+                                            marginVertical: 10,
+                                            fontFamily: 'poppins',
                                         }}
                                         placeholder='IP address baru..'
                                     />
@@ -121,16 +130,18 @@ const ResetIp = ({ navigation, route }) => {
                                         onPress={() => {
                                             updateIp(item.id)
                                             handleModal()
+                                            navigation.navigate('Pengaturan1')
                                         }}
-                                        style={{ padding: 5, backgroundColor: 'brown' }}>
-                                        <Text style={{ color: 'white', textAlign: 'center' }}>Update</Text>
+                                        style={styles.touch}>
+                                        <Text style={styles.text_edit}>Update</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity
                                         onPress={() => { handleModal() }}
-                                        style={{ marginTop: 20, padding: 5, backgroundColor: 'black' }}>
-                                        <Text style={{ color: 'white', textAlign: 'center' }}>Kembali</Text>
+                                        style={{ ...styles.touch, backgroundColor: 'brown' }}
+                                    >
+                                        <Text style={styles.text_edit}>Kembali</Text>
                                     </TouchableOpacity>
-                                </View>
+                                </ScrollView>
                             </Modal>
                         </View>
                     )}
@@ -143,3 +154,47 @@ const ResetIp = ({ navigation, route }) => {
 
 
 export default ResetIp
+
+const styles = StyleSheet.create({
+    textLink: {
+        fontFamily: 'poppins',
+        fontSize: 14,
+        color: '#24A0ED',
+    },
+    title: {
+        fontFamily: 'poppinssemibold',
+        textAlign: 'center',
+        color: 'gray',
+        fontSize: 16
+    },
+    teksbiasa: {
+        fontFamily: 'poppins',
+        textAlign: 'justify'
+    },
+    touch: {
+        backgroundColor: '#F9A826',
+        marginTop: 10,
+        padding: 10,
+        width: '40%',
+        alignSelf: 'center',
+
+        alignItems: 'center',
+        borderRadius: 10,
+        shadowColor: "#000",
+        marginBottom: 30,
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
+
+        elevation: 2,
+    },
+    text_edit: {
+        color: 'white',
+        textAlign: 'center',
+        fontSize: 16,
+        fontFamily: 'poppinssemibold'
+    },
+})

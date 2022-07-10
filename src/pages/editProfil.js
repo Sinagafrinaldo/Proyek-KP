@@ -133,7 +133,7 @@ const EditProfil = ({ route, navigation }) => {
 
             </TouchableHighlight>
             <View style={styles.edit_image}>
-                <Text style={{ color: 'white' }}>Ganti Foto</Text>
+                <Text style={{ color: 'white', fontFamily: 'poppins', fontSize: 12 }}>Ganti Foto</Text>
             </View>
             <TouchableOpacity
                 onPress={() => { removeImage() }}
@@ -154,7 +154,7 @@ const EditProfil = ({ route, navigation }) => {
                     <TextInput
                         onChangeText={nama1 => setNama1(nama1)}
                         value={nama1}
-                        style={styles.box_input}
+                        style={{ ...styles.box_input, fontFamily: 'poppins' }}
                         placeholder='Nama Lengkap ...'
                     />
                 </View>
@@ -163,20 +163,20 @@ const EditProfil = ({ route, navigation }) => {
                     <TextInput
                         onChangeText={nip1 => setNip1(nip1)}
                         value={nip1}
-                        style={styles.box_input}
+                        style={{ ...styles.box_input, fontFamily: 'poppins' }}
                         placeholder='NIP...'
                     />
                 </View>
 
                 <View style={styles.wrap_item}>
                     <Text style={styles.title}>ASN/Non-ASN</Text>
-                    <View style={{...styles.select_box}}>
+                    <View style={{ ...styles.select_box }}>
                         <Picker
 
                             placeholder="Pilih Pengguna"
                             selectedValue={asn1}
                             // style={styles2.box_opsi}
-                            style={{ marginLeft: -30, marginTop:-3, color :'gray'}}
+                            style={{ marginLeft: -30, marginTop: -3, color: 'gray' }}
                             onValueChange={(asn1) => {
                                 setAsn1(asn1);
                             }}
@@ -191,13 +191,13 @@ const EditProfil = ({ route, navigation }) => {
                 </View>
                 <View style={styles.wrap_item}>
                     <Text style={styles.title}>Golongan</Text>
-                    <View style={{...styles.select_box}}>
+                    <View style={{ ...styles.select_box }}>
                         <Picker
 
                             placeholder="Pilih Pengguna"
                             selectedValue={golongan1}
                             // style={styles2.box_opsi}
-                            style={{ marginLeft: -30, marginTop:-3, color :'gray'}}
+                            style={{ marginLeft: -30, marginTop: -3, color: 'gray' }}
                             onValueChange={(golongan1) => {
                                 setGolongan1(golongan1);
                             }}

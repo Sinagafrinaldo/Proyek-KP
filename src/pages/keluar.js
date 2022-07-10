@@ -7,14 +7,15 @@ import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { createUserWithEmailAndPassword, getAuth, sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth';
 import { firebaseConfig } from '../firebase/config';
 import { initializeApp } from 'firebase/app';
+import Modal from "react-native-modal";
 // import * as firebase from 'firebase';
 
 const wait = (timeout) => {
     return new Promise(resolve => setTimeout(resolve, timeout));
 }
 
-const Keluar = () => {
-    const navigation = useNavigation()
+const Keluar = ({ navigation }) => {
+    // const navigation = useNavigation()
     const [email, onChangeNip] = React.useState('');
     const [password, onChangePassword] = React.useState('');
     const [refreshing, setRefreshing] = React.useState(false);
@@ -22,6 +23,8 @@ const Keluar = () => {
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const [status, setStatus] = useState(false)
+    const [modal1, setModal1] = useState(false)
+    const handleModal1 = () => setModal1(() => !modal1);
     const forgotPassword = (Email) => {
         sendPasswordResetEmail(auth, Email)
             .then(function (user) {
@@ -35,6 +38,10 @@ const Keluar = () => {
             const unsubscribe = auth.onAuthStateChanged(user => {
                 if (user) {
                     setStatus(true)
+                    setModal1(true)
+                } else {
+                    setStatus(false)
+                    setModal1(false)
                 }
             })
 
@@ -162,7 +169,7 @@ const Keluar = () => {
                             <Text style={styles.text_login}>Login</Text>
                         </TouchableOpacity>
                         <View style={styles.registration}>
-                            <Text>Belum punya akun?</Text>
+                            <Text style={{ fontFamily: 'poppins' }}>Belum punya akun?</Text>
                             <View>
                                 <TouchableOpacity
                                     onPress={() => {
@@ -196,7 +203,48 @@ const Keluar = () => {
 
             )}
 
-            {status == true && (
+            <Modal
+                onBackButtonPress={() => {
+                    handleModal1()
+                    navigation.goBack()
+                }
+                }
+
+                style={{ flex: 1, backgroundColor: 'white', padding: 20, borderRadius: 10, marginVertical: '70%' }}
+                onBackdropPress={() => {
+                    handleModal1()
+                    navigation.goBack()
+                }
+                }
+                isVisible={modal1}
+            >
+
+                <View>
+                    <Text style={styles2.title_logout}>Logout</Text>
+                    <View style={styles2.line}></View>
+                    <Text style={styles2.text_out}>Apakah anda yakin ingin keluar?</Text>
+                    <View style={styles2.style_touch}>
+                        <TouchableOpacity style={styles2.touch_cancel} onPress={() => {
+
+                            handleModal1()
+                            navigation.goBack()
+                        }}>
+                            <Text style={styles2.text_cancel}>Batal</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles2.touch_logout} onPress={() => {
+
+
+                            signOutUser()
+                            setStatus(false)
+                        }}>
+                            <Text style={styles2.text_logout}>Logout</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+
+            </Modal>
+
+            {/* {status == true && (
                 <View>
                     <View style={styles2.container}>
                         <View style={styles2.card_logout}>
@@ -223,7 +271,7 @@ const Keluar = () => {
                         </View>
                     </View>
                 </View>
-            )}
+            )} */}
 
         </ScrollView>
     )
