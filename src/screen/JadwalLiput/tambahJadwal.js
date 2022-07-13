@@ -13,7 +13,6 @@ import {
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { db } from '../../firebase/crudConf';
 import styles from '../component/styleTambahJadwal';
-import { useFocusEffect } from '@react-navigation/native';
 
 const TambahJadwal = ({ navigation }) => {
     const [newName, setNewName] = useState("");
@@ -27,34 +26,28 @@ const TambahJadwal = ({ navigation }) => {
     const createUser = async () => {
         await addDoc(usersCollectionRef, { nama: newName, lokasi: newLokasi, tanggal: selectedDate, keterangan: newKeterangan });
     };
-
-
-    useFocusEffect(
-        React.useCallback(() => {
-            let today = new Date();
-            // console.log(today.getDate())
-            if (today.getMonth() < 10) {
-                let date = today.getFullYear() + '/0' + (today.getMonth() + 1) + '/' + today.getDate();
+    useEffect(() => {
+        let today = new Date();
+        if (today.getMonth() < 10) {
+            let date = today.getFullYear() + '/0' + (today.getMonth() + 1) + '/' + today.getDate();
+            setSelectedDate(date);
+            if (today.getDay() < 10) {
+                let date = today.getFullYear() + '/0' + (today.getMonth() + 1) + '/0' + today.getDate();
                 setSelectedDate(date);
-                if (today.getDate() < 10) {
-
-                    let date = today.getFullYear() + '/0' + (today.getMonth() + 1) + '/0' + today.getDate();
-                    setSelectedDate(date);
-                }
-            } else if (today.getMonth() >= 10) {
-                if (today.getDate() < 10) {
-                    let date = today.getFullYear() + '/' + (today.getMonth() + 1) + '/0' + today.getDate();
-                    setSelectedDate(date);
-                } else if (today.getDate() >= 10) {
-
-
-                    let date = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
-                    setSelectedDate(date);
-                }
             }
-        }, [])
-    );
+        } else {
+            if (today.getDay() < 10) {
+                let date = today.getFullYear() + '/' + (today.getMonth() + 1) + '/0' + today.getDate();
+                setSelectedDate(date);
+            } else {
 
+
+                let date = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
+                setSelectedDate(date);
+            }
+        }
+
+    }, []);
     return (
 
         <ScrollView style={styles.container}>
