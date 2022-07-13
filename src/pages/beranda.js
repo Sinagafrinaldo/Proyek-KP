@@ -63,24 +63,27 @@ const Beranda1 = ({ navigation }) => {
             getJadwal()
             getId()
             let today = new Date();
+            // console.log(today.getDate())
             if (today.getMonth() < 10) {
                 let date = today.getFullYear() + '/0' + (today.getMonth() + 1) + '/' + today.getDate();
                 setSelectedDate(date);
-                if (today.getDay() < 10) {
+                if (today.getDate() < 10) {
+
                     let date = today.getFullYear() + '/0' + (today.getMonth() + 1) + '/0' + today.getDate();
                     setSelectedDate(date);
                 }
-            } else {
-                if (today.getDay() < 10) {
+            } else if (today.getMonth() >= 10) {
+                if (today.getDate() < 10) {
                     let date = today.getFullYear() + '/' + (today.getMonth() + 1) + '/0' + today.getDate();
                     setSelectedDate(date);
-                } else {
+                } else if (today.getDate() >= 10) {
 
 
                     let date = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
                     setSelectedDate(date);
                 }
             }
+
             const unsubscribe = auth.onAuthStateChanged(user => {
                 if (user != null) {
                     if (user.email.toLocaleLowerCase() == 'admin@gmail.com') {
