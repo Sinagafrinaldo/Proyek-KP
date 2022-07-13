@@ -7,6 +7,8 @@ import React, { useState } from 'react';
 // import Container from './src/Container';
 import MainContainer from './src/pages/MainContainer'
 import useFonts from './useFont';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
+
 export default function App() {
   const [IsReady, SetIsReady] = useState(false);
 
