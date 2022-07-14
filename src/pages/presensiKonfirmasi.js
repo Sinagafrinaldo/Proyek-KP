@@ -22,7 +22,7 @@ import * as Network from 'expo-network';
 import publicIP from 'react-native-public-ip';
 
 const PresensiKonfirmasi = ({ route, navigation }) => {
-    const { pengguna1, presensi1, verif, email, idhp, id } = route.params;
+    const { pengguna1, presensi1, verif, email, idhp, id, admin } = route.params;
     const [alerts, setShowAlert] = useState(false);
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
@@ -32,8 +32,6 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
 
     const [pengguna, setPengguna] = useState([])
 
-    const [nama, setNama] = useState('')
-    const [nip, setNip] = useState('')
     const [presensi, setPresensi] = useState([])
     const [check, setCheck] = useState(false)
     const [cp, setCp] = useState(false)
@@ -44,6 +42,7 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
     const [ipfix, setIpfix] = useState('')
     const [kerja, setKerja] = useState()
     const [valid, setValid] = useState(false)
+    const [tanggal_only, setSelectedDate] = useState()
     const getUsers = async () => {
         const data = await getDocs(usersCollectionRef);
         setPengguna(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
@@ -91,8 +90,29 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
         await addDoc(presensiCollectionRef, { nama: nama, waktu: onlyTime, nip: nip, tanggal: onlyDate, keterangan: 'Hadir', email: email });
     };
     const handleMasuk = (nama, nip) => {
-        let today = new Date()
-        let onlyDate = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
+        let today = new Date();
+        // console.log(today.getDate())
+        var onlyDate = null
+        if (today.getMonth() < 10) {
+            let date = today.getFullYear() + '/0' + (today.getMonth() + 1) + '/' + today.getDate();
+            onlyDate = date
+            if (today.getDate() < 10) {
+
+                let date = today.getFullYear() + '/0' + (today.getMonth() + 1) + '/0' + today.getDate();
+                onlyDate = date
+            }
+        } else if (today.getMonth() >= 10) {
+            if (today.getDate() < 10) {
+                let date = today.getFullYear() + '/' + (today.getMonth() + 1) + '/0' + today.getDate();
+                onlyDate = date
+            } else if (today.getDate() >= 10) {
+
+
+                let date = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
+                onlyDate = date
+            }
+        }
+
         let onlyTime = today.getHours() + ':' + today.getMinutes() + ' WIB'
         createPresensi(nama, onlyTime, nip, onlyDate)
         setShowAlert(true)
@@ -106,8 +126,29 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
                 } else {
                     presensi1.map((data, index) => {
                         let today = new Date()
-                        let tanggal_verif = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
-                        if (data.nip == item.nip && data.tanggal == tanggal_verif) {
+
+                        var onlyDate = null
+                        if (today.getMonth() < 10) {
+                            let date = today.getFullYear() + '/0' + (today.getMonth() + 1) + '/' + today.getDate();
+                            onlyDate = date
+                            if (today.getDate() < 10) {
+
+                                let date = today.getFullYear() + '/0' + (today.getMonth() + 1) + '/0' + today.getDate();
+                                onlyDate = date
+                            }
+                        } else if (today.getMonth() >= 10) {
+                            if (today.getDate() < 10) {
+                                let date = today.getFullYear() + '/' + (today.getMonth() + 1) + '/0' + today.getDate();
+                                onlyDate = date
+                            } else if (today.getDate() >= 10) {
+
+
+                                let date = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
+                                onlyDate = date
+                            }
+                        }
+
+                        if (data.nip == item.nip && data.tanggal == onlyDate) {
                             setCheck(true)
                             setCp(true)
                             console.log('done1')
@@ -174,10 +215,10 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
             // console.log(ipAdds)
         }, [])
     );
-    console.log('status', ipfix)
+    console.log('status admin', admin)
     return (
         <ScrollView contentContainerStyle={{ backgroundColor: 'white', flexGrow: 1 }}>
-            {(verif == true && ori == true && valid == true && kerja == true) && (
+            {(admin == false && verif == true && ori == true && valid == true && kerja == true) && (
                 <View style={styles.container}>
 
                     {/* <Button title='Data Presensi' onPress={() => {
@@ -266,7 +307,7 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
                 </View>
             )}
 
-            {verif == false && (
+            {admin == true && (
                 <View style={styles.container_verif_false}>
 
                     <Image
@@ -274,7 +315,7 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
                         source={require("../../assets/not-user.png")}
                     />
 
-                    <Text style={styles.text_not_verif}>Maaf fitur ini hanya tersedia untuk user yang telah mendaftar..</Text>
+                    <Text style={styles.text_not_verif}>Maaf fitur ini hanya tersedia untuk user yang telah mendaftar dan pengguna biasa..</Text>
                 </View>
             )}
 

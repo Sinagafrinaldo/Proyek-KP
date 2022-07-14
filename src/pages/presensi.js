@@ -37,6 +37,7 @@ const Presensi = ({ navigation }) => {
     const [check, setCheck] = useState(false)
     const [idhp, setIdhp] = useState('')
     const [ori, setOri] = useState(false)
+    const [admin, setAdmin] = useState()
     const getId = () => {
         const deviceId = Device.osBuildId;
         setIdhp(deviceId)
@@ -70,10 +71,34 @@ const Presensi = ({ navigation }) => {
                 } else {
                     presensi.map((data, index) => {
                         let today = new Date()
-                        let tanggal_verif = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
+                        // let tanggal_verif = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
+
+                        var onlyDate = null
+                        if (today.getMonth() < 10) {
+                            let date = today.getFullYear() + '/0' + (today.getMonth() + 1) + '/' + today.getDate();
+                            onlyDate = date
+                            if (today.getDate() < 10) {
+
+                                let date = today.getFullYear() + '/0' + (today.getMonth() + 1) + '/0' + today.getDate();
+                                onlyDate = date
+                            }
+                        } else if (today.getMonth() >= 10) {
+                            if (today.getDate() < 10) {
+                                let date = today.getFullYear() + '/' + (today.getMonth() + 1) + '/0' + today.getDate();
+                                onlyDate = date
+                            } else if (today.getDate() >= 10) {
+
+
+                                let date = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
+                                onlyDate = date
+                            }
+                        }
+
                         if (data.nip == item.nip) {
 
-                            if (data.tanggal == tanggal_verif) {
+                            if (data.tanggal == onlyDate) {
+                                console.log(typeof (data.tanggal))
+                                console.log(typeof (onlyDate))
                                 setCheck(true)
                                 console.log('done1')
                             }
@@ -94,9 +119,14 @@ const Presensi = ({ navigation }) => {
                 getId()
                 getPresensi()
                 if (user != null) {
-                    if (user.email.toLocaleLowerCase() != 'admin@gmail.com') {
+                    if (user.email.toLocaleLowerCase() == 'admin@gmail.com') {
                         setVerif(true)
+                        setAdmin(true)
+                    } else {
+                        setVerif(true)
+                        setAdmin(false)
                     }
+                    setVerif(true)
                     //                     else if (user.email.toLocaleLowerCase() == 'admin@gmail.com'){
                     // set
                     //                     }
@@ -149,10 +179,11 @@ const Presensi = ({ navigation }) => {
                                                 navigation.navigate('PresensiKonfirmasi', {
                                                     pengguna1: pengguna,
                                                     presensi1: presensi,
-                                                    verif: true,
+                                                    verif: verif,
                                                     email: email,
                                                     idhp: item.idhp,
-                                                    id: item.id
+                                                    id: item.id,
+                                                    admin: admin
                                                 })
                                             }}
                                         >

@@ -165,7 +165,10 @@ const JadwalLiput = ({ navigation }) => {
                 {filter == false && (
                     <FlatList
                         contentContainerStyle={{ paddingBottom: 30 }}
-                        data={users.sort((a, b) => a.tanggal - b.tanggal)}
+                        data={users.sort(function (a, b) {
+                            return (a.tanggal > b.tanggal) ? -1 : (a.tanggal > b.tanggal) ? 1 : 0;
+                        })
+                        }
                         renderItem={({ item }) => (
                             <View style={styles.list1}>
                                 <View style={styles.list2}></View>
@@ -215,7 +218,10 @@ const JadwalLiput = ({ navigation }) => {
                 {filter == true && (
                     <FlatList
                         contentContainerStyle={{ paddingBottom: 30 }}
-                        data={users}
+                        data={users.sort(function (a, b) {
+                            return (a.tanggal > b.tanggal) ? -1 : (a.tanggal > b.tanggal) ? 1 : 0;
+                        })
+                        }
                         renderItem={({ item }) => (
 
                             <View>

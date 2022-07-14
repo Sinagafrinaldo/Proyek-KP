@@ -70,11 +70,11 @@ const DataPresensi = ({ route, navigation }) => {
         <View style={styles.container}>
             {admin == true && (
                 <View>
-                    <View style={{...styles.select_box}}>
+                    <View style={{ ...styles.select_box }}>
                         <Picker
                             placeholder="Pilih Pengguna"
                             selectedValue={nip}
-                            style={{ marginLeft: -30, marginTop:-3, color :'gray'}}
+                            style={{ marginLeft: -30, marginTop: -3, color: 'gray' }}
                             onValueChange={(nip) => {
                                 setNip(nip);
                             }}
@@ -92,8 +92,11 @@ const DataPresensi = ({ route, navigation }) => {
                     <View>
                         <FlatList
                             // contentContainerStyle={{ paddingBottom: 30 }}
-                            data={presensi}
-                             contentContainerStyle={{ paddingBottom: 30 }}
+                            data={presensi.sort(function (a, b) {
+                                return (a.tanggal > b.tanggal) ? -1 : (a.tanggal > b.tanggal) ? 1 : 0;
+                            })
+                            }
+                            contentContainerStyle={{ paddingBottom: 30 }}
                             renderItem={({ item }) => (
                                 <View style={{}}>
                                     {nip == '' && (

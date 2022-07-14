@@ -43,14 +43,17 @@ const RiwayatPresensi = () => {
 
         }, [])
     );
-    
+
     return (
         <View style={styles.container}>
             {/* <Text>riwayatPresensi</Text> */}
             {verif == true && (
                 <FlatList
                     contentContainerStyle={{ paddingBottom: 30 }}
-                    data={riwayat}
+                    data={riwayat.sort(function (a, b) {
+                        return (a.tanggal > b.tanggal) ? -1 : (a.tanggal > b.tanggal) ? 1 : 0;
+                    })
+                    }
                     renderItem={({ item }) => (
                         <View style={{}}>
 
@@ -91,7 +94,7 @@ const RiwayatPresensi = () => {
             )}
 
             {verif == false && (
-               <View style={styles.container_verif_false}>
+                <View style={styles.container_verif_false}>
 
                     <Image
                         style={styles.image_not_verif}
