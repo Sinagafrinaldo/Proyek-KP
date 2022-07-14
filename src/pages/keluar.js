@@ -210,7 +210,7 @@ const Keluar = ({ navigation }) => {
                 }
                 }
 
-                style={{ flex: 1, backgroundColor: 'white', padding: 20, borderRadius: 10, marginVertical: '70%' }}
+                style={{ flex: 1, backgroundColor: 'white', padding: 20, borderRadius: 10, maxHeight: 240, justifyContent: 'center', marginTop: '70%' }}
                 onBackdropPress={() => {
                     handleModal1()
                     navigation.goBack()
@@ -219,7 +219,7 @@ const Keluar = ({ navigation }) => {
                 isVisible={modal1}
             >
 
-                <View>
+                <View style={{}}>
                     <Text style={styles2.title_logout}>Logout</Text>
                     <View style={styles2.line}></View>
                     <Text style={styles2.text_out}>Apakah anda yakin ingin keluar?</Text>

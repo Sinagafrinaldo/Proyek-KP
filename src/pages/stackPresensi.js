@@ -11,7 +11,7 @@ const Stack = createStackNavigator();
 
 function StackPresensi() {
     return (
-        <Stack.Navigator initialRouteName="Beranda1">
+        <Stack.Navigator initialRouteName="Presensi1">
             <Stack.Screen
                 options={{ headerShown: false }}
                 name="Presensi1"

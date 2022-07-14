@@ -165,7 +165,7 @@ const JadwalLiput = ({ navigation }) => {
                 {filter == false && (
                     <FlatList
                         contentContainerStyle={{ paddingBottom: 30 }}
-                        data={users}
+                        data={users.sort((a, b) => a.tanggal - b.tanggal)}
                         renderItem={({ item }) => (
                             <View style={styles.list1}>
                                 <View style={styles.list2}></View>

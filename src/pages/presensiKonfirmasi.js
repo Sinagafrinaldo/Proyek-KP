@@ -42,6 +42,7 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
     const [ip, setIp] = useState('')
     const [ipsekarang, setIpsekarang] = useState([])
     const [ipfix, setIpfix] = useState('')
+    const [kerja, setKerja] = useState()
     const [valid, setValid] = useState(false)
     const getUsers = async () => {
         const data = await getDocs(usersCollectionRef);
@@ -152,6 +153,18 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
     }
     useFocusEffect(
         React.useCallback(() => {
+            let hari_ini = new Date();
+            let hours = hari_ini.getHours();
+            let minutes = hari_ini.getMinutes();
+            console.log(hours, minutes)
+            if (hours > 8 && hours < 16) {
+                setKerja(true)
+            } else {
+                setKerja(false)
+            }
+
+
+
             getId()
             getInfo()
 
@@ -164,7 +177,7 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
     console.log('status', ipfix)
     return (
         <ScrollView contentContainerStyle={{ backgroundColor: 'white', flexGrow: 1 }}>
-            {(verif == true && ori == true && valid == true) && (
+            {(verif == true && ori == true && valid == true && kerja == true) && (
                 <View style={styles.container}>
 
                     {/* <Button title='Data Presensi' onPress={() => {
@@ -239,6 +252,17 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
                     />
 
                     <Text style={styles.text_not_verif}>Maaf presensi hanya bisa dilakukan dengan user biasa dan ponsel yang di daftarkan di awal... Jika anda berganti ponsel anda dapat meminta admin untuk mereset status device anda. </Text>
+                </View>
+            )}
+            {(verif == true && kerja == false) && (
+                <View style={styles.container_verif_false}>
+
+                    <Image
+                        style={styles.image_not_verif}
+                        source={require("../../assets/not-user.png")}
+                    />
+
+                    <Text style={styles.text_not_verif}>Maaf presensi hanya bisa dilakukan pada pukul 08.00 WIB sampai dengan pukul 16.00 WIB. </Text>
                 </View>
             )}
 
