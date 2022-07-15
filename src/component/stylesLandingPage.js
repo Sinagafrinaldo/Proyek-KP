@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     style_navbar: {
         display: 'flex',
         flexDirection: 'row',
-        alignItems:'center',
+        alignItems: 'center',
         justifyContent: 'space-between',
         marginTop: 15,
 
@@ -51,11 +51,11 @@ const styles = StyleSheet.create({
         marginTop: 4,
     },
 
-    line_nav :{
-        height: 0.5, 
+    line_nav: {
+        height: 0.5,
         backgroundColor: '#D7DBDD',
     },
-    
+
     // background_page :{
     //     height: 240, 
     //     borderBottomEndRadius: 10,
@@ -63,10 +63,10 @@ const styles = StyleSheet.create({
     // },
 
     background: {
-        alignSelf:'center',
+        alignSelf: 'center',
         resizeMode: 'stretch',
         width: '110%',
-        height:350,
+        height: 350,
     },
 
     info_profile: {
@@ -102,10 +102,10 @@ const styles = StyleSheet.create({
         marginTop: -128,
     },
 
-    image_profile :{
-        height: 80, 
-        borderRadius: 100, 
-        width: 80, 
+    image_profile: {
+        height: 80,
+        borderRadius: 100,
+        width: 80,
         marginLeft: 20
     },
 
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         width: '90%',
         marginTop: 5,
-        padding:5,
+        padding: 5,
         backgroundColor: 'white',
         shadowColor: "#000",
         shadowOffset: {
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
         elevation: 2,
     },
 
-    title_card :{
+    title_card: {
         fontSize: 16,
         marginLeft: 18,
         marginVertical: 8,
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
         display: "flex",
         flexDirection: "row",
         justifyContent: "center",
-        paddingVertical:10,
+        paddingVertical: 10,
     },
 
     bg_menu: {
@@ -181,22 +181,22 @@ const styles = StyleSheet.create({
         fontFamily: 'poppinssemibold'
     },
 
-    flatlist_timetable :{
-        paddingVertical:30,
-        paddingBottom:50,
+    flatlist_timetable: {
+        paddingVertical: 30,
+        paddingBottom: 50,
     },
 
-    text_timetable :{
+    text_timetable: {
         fontSize: 16,
         marginLeft: 18,
-        marginBottom:15,
+        marginBottom: 15,
         color: 'gray',
         fontFamily: 'poppinsbold'
     },
 
-    card_timetable :{
+    card_timetable: {
         backgroundColor: 'white',
-        height:220, 
+        height: 220,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -204,10 +204,10 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.18,
         shadowRadius: 1.00,
-        
+
         elevation: 1,
     },
-    
+
     // Styling Data Jadwal
     list_data: {
         backgroundColor: 'white',
@@ -232,42 +232,42 @@ const styles = StyleSheet.create({
         width: '98%',
     },
 
-    style_position_icon_cover_name :{
-        flexDirection: 'row', 
-        justifyContent: 
-        'space-between',
+    style_position_icon_cover_name: {
+        flexDirection: 'row',
+        justifyContent:
+            'space-between',
     },
 
-    cover_name :{
-        fontSize: 16, 
-        fontFamily: 'poppinssemibold', 
-        paddingBottom: 7, 
+    cover_name: {
+        fontSize: 16,
+        fontFamily: 'poppinssemibold',
+        paddingBottom: 7,
         color: 'grey'
     },
 
-    desc :{
-        paddingBottom: 12, 
-        color: 'grey', 
+    desc: {
+        paddingBottom: 12,
+        color: 'grey',
         fontFamily: 'poppins'
     },
 
-    date :{
-        textAlign: 'right', 
-        paddingBottom: 7, 
-        color: 'grey', 
+    date: {
+        textAlign: 'right',
+        paddingBottom: 7,
+        color: 'grey',
         fontFamily: 'poppins',
     },
 
-    style_position_icon_loc :{
-        paddingTop: 7, 
-        flexDirection: 'row', 
+    style_position_icon_loc: {
+        paddingTop: 7,
+        flexDirection: 'row',
         justifyContent: 'space-between',
     },
 
-    loc :{
-        fontSize: 16, 
-        color: 'grey', 
-        alignSelf: 'center', 
+    loc: {
+        fontSize: 16,
+        color: 'grey',
+        alignSelf: 'center',
         fontFamily: 'poppins'
     },
 })

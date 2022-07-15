@@ -198,7 +198,7 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
             let hours = hari_ini.getHours();
             let minutes = hari_ini.getMinutes();
             console.log(hours, minutes)
-            if (hours > 8 && hours < 16) {
+            if (hours >= 8 && hours <= 16) {
                 setKerja(true)
             } else {
                 setKerja(false)
@@ -295,7 +295,7 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
                     <Text style={styles.text_not_verif}>Maaf presensi hanya bisa dilakukan dengan user biasa dan ponsel yang di daftarkan di awal... Jika anda berganti ponsel anda dapat meminta admin untuk mereset status device anda. </Text>
                 </View>
             )}
-            {(verif == true && kerja == false) && (
+            {(admin == false && verif == true && kerja == false) && (
                 <View style={styles.container_verif_false}>
 
                     <Image

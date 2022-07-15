@@ -146,10 +146,10 @@ const Profil = ({ route, navigation }) => {
 
                                                 </View>
 
-                                            <View style={styles.wrap_item}>
-                                                <Text style={styles.title}>Nama</Text>
-                                                <Text style={styles.subtitle}>{item.nama}</Text>
-                                            </View>
+                                                <View style={styles.wrap_item}>
+                                                    <Text style={styles.title}>Nama</Text>
+                                                    <Text style={styles.subtitle}>{item.nama}</Text>
+                                                </View>
 
                                             </View>
                                             <View style={styles.wrap_item}>

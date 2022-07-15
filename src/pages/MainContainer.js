@@ -98,7 +98,7 @@ function MainContainer() {
                     tabBarStyle: ((route) => {
                         const routeName = getFocusedRouteNameFromRoute(route) ?? ""
                         console.log(routeName)
-                        if (routeName === 'Pengingat') {
+                        if (routeName === 'Pengingat' || routeName === 'Tampil Foto') {
                             return { display: "none" }
                         } else if (routeName === 'Jadwal Liput') {
                             return { display: "none" }

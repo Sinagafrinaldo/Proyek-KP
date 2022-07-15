@@ -63,7 +63,7 @@ const Pengaturan = ({ navigation }) => {
                     navigation.navigate("Privasi");
                 }}>
                 <View style={styles.card_text}>
-                    <Text style={styles.text}>Privasi dan Keamanan</Text>
+                    <Text style={styles.text}>Kebijakan dan Privasi</Text>
                     <Ionicons
                         name="chevron-forward-outline"
                         size={22}

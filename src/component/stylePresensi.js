@@ -74,8 +74,7 @@ const styles = StyleSheet.create({
 
     button_text_absent: {
         color: 'white',
-        fontFamily: 'poppinsmedium',
-        fontWeight: 'bold',
+        fontFamily: 'poppinssemibold',
         padding: 16,
         fontSize: 16,
         textAlign: 'center'
