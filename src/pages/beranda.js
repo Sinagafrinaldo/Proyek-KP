@@ -86,7 +86,7 @@ const Beranda1 = ({ navigation }) => {
 
             const unsubscribe = auth.onAuthStateChanged(user => {
                 if (user != null) {
-                    if (user.email.toLocaleLowerCase() == 'admin@gmail.com') {
+                    if (user.email.toLocaleLowerCase() == 'kpkominfoproyek77@gmail.com') {
                         setAdmin(true)
                     } else {
                         setAdmin(false)
@@ -113,6 +113,7 @@ const Beranda1 = ({ navigation }) => {
         }, [])
     );
     // console.log(jadwal)
+    // console.log(date)
     return (
         <View style={styles.container}>
             <View style={styles.navbar}>

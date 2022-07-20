@@ -119,7 +119,7 @@ const Presensi = ({ navigation }) => {
                 getId()
                 getPresensi()
                 if (user != null) {
-                    if (user.email.toLocaleLowerCase() == 'admin@gmail.com') {
+                    if (user.email.toLocaleLowerCase() == 'kpkominfoproyek77@gmail.com') {
                         setVerif(true)
                         setAdmin(true)
                     } else {

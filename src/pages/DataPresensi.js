@@ -52,7 +52,7 @@ const DataPresensi = ({ route, navigation }) => {
             getUsers()
             const unsubscribe = auth.onAuthStateChanged(user => {
                 if (user != null) {
-                    if (user.email.toLocaleLowerCase() == 'admin@gmail.com') {
+                    if (user.email.toLocaleLowerCase() == 'kpkominfoproyek77@gmail.com') {
                         setAdmin(true)
                     } else {
                         setAdmin(false)

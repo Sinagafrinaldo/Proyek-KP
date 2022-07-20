@@ -284,7 +284,7 @@ const PresensiKonfirmasi = ({ route, navigation }) => {
                 </View>
             )}
 
-            {(verif == true && ori == false) && (
+            {(admin == false && verif == true && ori == false) && (
                 <View style={styles.container_verif_false}>
 
                     <Image

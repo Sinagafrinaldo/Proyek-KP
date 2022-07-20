@@ -16,7 +16,7 @@ const Pengaturan = ({ navigation }) => {
     useFocusEffect(
         React.useCallback(() => {
             const unsubscribe = auth.onAuthStateChanged(user => {
-                if (user != null && user.email == 'admin@gmail.com') {
+                if (user != null && user.email == 'kpkominfoproyek77@gmail.com') {
                     setStatus(true)
                 } else {
                     setStatus(false)
