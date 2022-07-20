@@ -1,5 +1,7 @@
 ### Proyek KP
-
+Oleh:
+Frinaldo Sinaga - 119140064
+Joy Ravelo Tarigan - 119140037
 Aplikasi ini adalah aplikasi untuk melakukan presensi pegawai dan juga untuk menampilkan penjadwalan liputan pegawai.
 Aplikasi ini dibuat dengan menggunakan Expo React Native. Aplikasi ini terdiri dari 3 jenis user yakni: Admin, pengguna biasa atau pegawai dan juga guest atau tamu.
 
