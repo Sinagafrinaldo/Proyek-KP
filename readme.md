@@ -1,12 +1,11 @@
 Proyek KP
 
+Aplikasi ini adalah aplikasi untuk melakukan presensi pegawai dan juga untuk menampilkan penjadwalan liputan pegawai.
+Aplikasi ini dibuat dengan menggunakan Expo React Native. Aplikasi ini terdiri dari 3 jenis user yakni: Admin, pengguna biasa atau pegawai dan juga guest atau tamu.
+
+
+Untuk menjalankan source code
 ```
- npm install @react-navigation/native-stack
- npm add @react-navigation/native
- npm install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
- npm add @react-navigation/stack
- npm add @react-navigation/bottom-tabs
- npm install firebase
-npm i @react-native-picker/picker
-npm i expo-notifications
-npm i expo-constants
+ npm install
+ npm start
+ 
