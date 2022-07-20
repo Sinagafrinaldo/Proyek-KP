@@ -8,7 +8,7 @@ Untuk menjalankan source code
 ```
  npm install
  npm start
- 
+ ```
 ### Screenshoot Aplikasi
 
 <img src='https://raw.githubusercontent.com/Sinagafrinaldo/Proyek-KP/main/Screenshoot/1.jpeg' width=30% height=30% />
